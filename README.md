@@ -1,5 +1,5 @@
 # threatstryker
-A client library for accessing Deepfence ThreatMapper
+A client library for accessing Deepfence ThreatStryker
 
 ## How to Install 
 
