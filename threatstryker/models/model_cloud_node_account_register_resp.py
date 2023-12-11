@@ -19,20 +19,21 @@ class ModelCloudNodeAccountRegisterResp:
         {'data': {'deploy_instances': [{'hostname': 'hostname', 'account_id': 'account_id', 'instance_id':
             'instance_id', 'region': 'region'}, {'hostname': 'hostname', 'account_id': 'account_id', 'instance_id':
             'instance_id', 'region': 'region'}], 'cloudtrail_trails': [{'account_id': 'account_id', 'trail_name':
-            'trail_name'}, {'account_id': 'account_id', 'trail_name': 'trail_name'}], 'scans': {'key': {'account_id':
-            'account_id', 'benchmarks': [{'controls': ['controls', 'controls'], 'compliance_type': 'compliance_type', 'id':
-            'id'}, {'controls': ['controls', 'controls'], 'compliance_type': 'compliance_type', 'id': 'id'}], 'scan_id':
-            'scan_id', 'scan_types': ['scan_types', 'scan_types']}}, 'refresh': 'refresh'}}
+            'trail_name'}, {'account_id': 'account_id', 'trail_name': 'trail_name'}], 'log_action': {'id': 0,
+            'request_payload': 'request_payload'}, 'scans': {'key': {'account_id': 'account_id', 'stop_requested': True,
+            'benchmarks': [{'controls': ['controls', 'controls'], 'compliance_type': 'compliance_type', 'id': 'id'},
+            {'controls': ['controls', 'controls'], 'compliance_type': 'compliance_type', 'id': 'id'}], 'scan_id': 'scan_id',
+            'scan_types': ['scan_types', 'scan_types']}}, 'refresh': 'refresh'}}
 
     Attributes:
         data (Union[Unset, ModelCloudNodeAccountRegisterRespData]):  Example: {'deploy_instances': [{'hostname':
             'hostname', 'account_id': 'account_id', 'instance_id': 'instance_id', 'region': 'region'}, {'hostname':
             'hostname', 'account_id': 'account_id', 'instance_id': 'instance_id', 'region': 'region'}], 'cloudtrail_trails':
             [{'account_id': 'account_id', 'trail_name': 'trail_name'}, {'account_id': 'account_id', 'trail_name':
-            'trail_name'}], 'scans': {'key': {'account_id': 'account_id', 'benchmarks': [{'controls': ['controls',
-            'controls'], 'compliance_type': 'compliance_type', 'id': 'id'}, {'controls': ['controls', 'controls'],
-            'compliance_type': 'compliance_type', 'id': 'id'}], 'scan_id': 'scan_id', 'scan_types': ['scan_types',
-            'scan_types']}}, 'refresh': 'refresh'}.
+            'trail_name'}], 'log_action': {'id': 0, 'request_payload': 'request_payload'}, 'scans': {'key': {'account_id':
+            'account_id', 'stop_requested': True, 'benchmarks': [{'controls': ['controls', 'controls'], 'compliance_type':
+            'compliance_type', 'id': 'id'}, {'controls': ['controls', 'controls'], 'compliance_type': 'compliance_type',
+            'id': 'id'}], 'scan_id': 'scan_id', 'scan_types': ['scan_types', 'scan_types']}}, 'refresh': 'refresh'}.
     """
 
     data: Union[Unset, "ModelCloudNodeAccountRegisterRespData"] = UNSET

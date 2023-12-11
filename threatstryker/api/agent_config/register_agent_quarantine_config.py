@@ -72,9 +72,9 @@ def sync_detailed(
     client: AuthenticatedClient,
     json_body: ControlsQuarantineConfig,
 ) -> Response[Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse]]:
-    """Register Agent Policy config
+    """Register Agent Quarantine config
 
-     Register Agent Policy config
+     Register Agent Quarantine config
 
     Args:
         json_body (ControlsQuarantineConfig):  Example: {'updated_at': 5, 'policies':
@@ -109,9 +109,9 @@ def sync(
     client: AuthenticatedClient,
     json_body: ControlsQuarantineConfig,
 ) -> Optional[Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse]]:
-    """Register Agent Policy config
+    """Register Agent Quarantine config
 
-     Register Agent Policy config
+     Register Agent Quarantine config
 
     Args:
         json_body (ControlsQuarantineConfig):  Example: {'updated_at': 5, 'policies':
@@ -141,9 +141,9 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     json_body: ControlsQuarantineConfig,
 ) -> Response[Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse]]:
-    """Register Agent Policy config
+    """Register Agent Quarantine config
 
-     Register Agent Policy config
+     Register Agent Quarantine config
 
     Args:
         json_body (ControlsQuarantineConfig):  Example: {'updated_at': 5, 'policies':
@@ -176,9 +176,9 @@ async def asyncio(
     client: AuthenticatedClient,
     json_body: ControlsQuarantineConfig,
 ) -> Optional[Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse]]:
-    """Register Agent Policy config
+    """Register Agent Quarantine config
 
-     Register Agent Policy config
+     Register Agent Quarantine config
 
     Args:
         json_body (ControlsQuarantineConfig):  Example: {'updated_at': 5, 'policies':

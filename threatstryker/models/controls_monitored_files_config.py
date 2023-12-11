@@ -10,34 +10,38 @@ T = TypeVar("T", bound="ControlsMonitoredFilesConfig")
 class ControlsMonitoredFilesConfig:
     """
     Example:
-        {'path': 'path', 'weight': 'weight', 'access_types': ['access_types', 'access_types']}
+        {'severity': 'severity', 'accesstypes': ['accesstypes', 'accesstypes'], 'root': 'root', 'recursive': True}
 
     Attributes:
-        path (str):
-        weight (str):
-        access_types (Optional[List[str]]):
+        recursive (bool):
+        root (str):
+        severity (str):
+        accesstypes (Optional[List[str]]):
     """
 
-    path: str
-    weight: str
-    access_types: Optional[List[str]]
+    recursive: bool
+    root: str
+    severity: str
+    accesstypes: Optional[List[str]]
     additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
-        path = self.path
-        weight = self.weight
-        if self.access_types is None:
-            access_types = None
+        recursive = self.recursive
+        root = self.root
+        severity = self.severity
+        if self.accesstypes is None:
+            accesstypes = None
         else:
-            access_types = self.access_types
+            accesstypes = self.accesstypes
 
         field_dict: Dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
-                "path": path,
-                "weight": weight,
-                "access_types": access_types,
+                "recursive": recursive,
+                "root": root,
+                "severity": severity,
+                "accesstypes": accesstypes,
             }
         )
 
@@ -46,16 +50,19 @@ class ControlsMonitoredFilesConfig:
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
         d = src_dict.copy()
-        path = d.pop("path")
+        recursive = d.pop("recursive")
 
-        weight = d.pop("weight")
+        root = d.pop("root")
 
-        access_types = cast(List[str], d.pop("access_types"))
+        severity = d.pop("severity")
+
+        accesstypes = cast(List[str], d.pop("accesstypes"))
 
         controls_monitored_files_config = cls(
-            path=path,
-            weight=weight,
-            access_types=access_types,
+            recursive=recursive,
+            root=root,
+            severity=severity,
+            accesstypes=accesstypes,
         )
 
         controls_monitored_files_config.additional_properties = d

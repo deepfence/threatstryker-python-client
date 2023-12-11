@@ -16,10 +16,10 @@ class ControlsPolicyFilterConfig:
     Example:
         {'updated_at': 5, 'use_waf': True, 'policies': [{'policy_id': 'policy_id', 'updated_at': 5, 'count_limit': 0,
             'action': 'block', 'duration_count_limit_sec': 6, 'matcher': {'fields_matcher': {'key': ['fields_matcher',
-            'fields_matcher']}}, 'duration_sec': 1}, {'policy_id': 'policy_id', 'updated_at': 5, 'count_limit': 0, 'action':
-            'block', 'duration_count_limit_sec': 6, 'matcher': {'fields_matcher': {'key': ['fields_matcher',
-            'fields_matcher']}}, 'duration_sec': 1}], 'ignored_remote_ips': ['ignored_remote_ips', 'ignored_remote_ips'],
-            'node_id': 'node_id'}
+            'fields_matcher']}}, 'uuid': 'uuid', 'duration_sec': 1}, {'policy_id': 'policy_id', 'updated_at': 5,
+            'count_limit': 0, 'action': 'block', 'duration_count_limit_sec': 6, 'matcher': {'fields_matcher': {'key':
+            ['fields_matcher', 'fields_matcher']}}, 'uuid': 'uuid', 'duration_sec': 1}], 'ignored_remote_ips':
+            ['ignored_remote_ips', 'ignored_remote_ips'], 'node_id': 'node_id'}
 
     Attributes:
         node_id (str):

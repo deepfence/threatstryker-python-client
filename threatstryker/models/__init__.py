@@ -4,9 +4,8 @@ from .api_docs_bad_request_response import ApiDocsBadRequestResponse
 from .api_docs_bad_request_response_error_fields import ApiDocsBadRequestResponseErrorFields
 from .api_docs_bad_request_response_error_index import ApiDocsBadRequestResponseErrorIndex
 from .api_docs_failure_response import ApiDocsFailureResponse
-from .api_docs_graph_result import ApiDocsGraphResult
-from .api_docs_graph_result_edges import ApiDocsGraphResultEdges
-from .api_docs_graph_result_nodes import ApiDocsGraphResultNodes
+from .completion_completion_node_field_req import CompletionCompletionNodeFieldReq
+from .completion_completion_node_field_res import CompletionCompletionNodeFieldRes
 from .controls_action import ControlsAction
 from .controls_agent_beat import ControlsAgentBeat
 from .controls_agent_controls import ControlsAgentControls
@@ -20,7 +19,6 @@ from .controls_network_tracer_config_mode import ControlsNetworkTracerConfigMode
 from .controls_policy_alert_matcher import ControlsPolicyAlertMatcher
 from .controls_policy_alert_matcher_fields_matcher import ControlsPolicyAlertMatcherFieldsMatcher
 from .controls_policy_filter_config import ControlsPolicyFilterConfig
-from .controls_process_event_config import ControlsProcessEventConfig
 from .controls_quarantine_config import ControlsQuarantineConfig
 from .controls_runc_policy import ControlsRuncPolicy
 from .controls_runc_policy_action import ControlsRuncPolicyAction
@@ -35,11 +33,14 @@ from .diagnosis_diagnostic_logs_link import DiagnosisDiagnosticLogsLink
 from .diagnosis_diagnostic_logs_status import DiagnosisDiagnosticLogsStatus
 from .diagnosis_diagnostic_notification import DiagnosisDiagnosticNotification
 from .diagnosis_generate_agent_diagnostic_logs_request import DiagnosisGenerateAgentDiagnosticLogsRequest
+from .diagnosis_generate_cloud_scanner_diagnostic_logs_request import DiagnosisGenerateCloudScannerDiagnosticLogsRequest
 from .diagnosis_generate_console_diagnostic_logs_request import DiagnosisGenerateConsoleDiagnosticLogsRequest
 from .diagnosis_get_diagnostic_logs_response import DiagnosisGetDiagnosticLogsResponse
 from .diagnosis_node_identifier import DiagnosisNodeIdentifier
 from .diagnosis_node_identifier_node_type import DiagnosisNodeIdentifierNodeType
 from .download_scan_results_scan_type import DownloadScanResultsScanType
+from .form_data_model_import_agent_policy_config_req import FormDataModelImportAgentPolicyConfigReq
+from .form_data_model_import_quarantine_policy_config_req import FormDataModelImportQuarantinePolicyConfigReq
 from .form_data_model_registry_gcr_add_req import FormDataModelRegistryGCRAddReq
 from .form_data_vulnerability_db_db_upload_request import FormDataVulnerabilityDbDBUploadRequest
 from .get_network_rules_response_200 import GetNetworkRulesResponse200
@@ -112,6 +113,7 @@ from .ingesters_waf_rule import IngestersWAFRule
 from .ingesters_waf_rule_action import IngestersWAFRuleAction
 from .lookup_lookup_filter import LookupLookupFilter
 from .model_add_scheduled_task_request import ModelAddScheduledTaskRequest
+from .model_add_scheduled_task_request_action import ModelAddScheduledTaskRequestAction
 from .model_agent_id import ModelAgentId
 from .model_agent_plugin_config_names import ModelAgentPluginConfigNames
 from .model_agent_plugin_disable import ModelAgentPluginDisable
@@ -177,6 +179,7 @@ from .model_enable_network_tracer_req import ModelEnableNetworkTracerReq
 from .model_export_report import ModelExportReport
 from .model_fetch_window import ModelFetchWindow
 from .model_file_alert import ModelFileAlert
+from .model_filesystem_alert_rule import ModelFilesystemAlertRule
 from .model_filters_req import ModelFiltersReq
 from .model_filters_req_having import ModelFiltersReqHaving
 from .model_filters_result import ModelFiltersResult
@@ -186,6 +189,11 @@ from .model_generate_report_req_duration import ModelGenerateReportReqDuration
 from .model_generate_report_req_report_type import ModelGenerateReportReqReportType
 from .model_generate_report_resp import ModelGenerateReportResp
 from .model_get_agent_config_req import ModelGetAgentConfigReq
+from .model_get_attached_nodes_resp import ModelGetAttachedNodesResp
+from .model_get_audit_logs_request import ModelGetAuditLogsRequest
+from .model_graph_result import ModelGraphResult
+from .model_graph_result_edges import ModelGraphResultEdges
+from .model_graph_result_nodes import ModelGraphResultNodes
 from .model_host import ModelHost
 from .model_host_alerts_counts import ModelHostAlertsCounts
 from .model_image_stub import ModelImageStub
@@ -232,6 +240,8 @@ from .model_pod import ModelPod
 from .model_pod_kubernetes_labels import ModelPodKubernetesLabels
 from .model_posture_provider import ModelPostureProvider
 from .model_process import ModelProcess
+from .model_process_alert import ModelProcessAlert
+from .model_process_alert_rule import ModelProcessAlertRule
 from .model_quarantine_violation import ModelQuarantineViolation
 from .model_register_invited_user_request import ModelRegisterInvitedUserRequest
 from .model_register_license_request import ModelRegisterLicenseRequest
@@ -274,11 +284,13 @@ from .model_scan_info import ModelScanInfo
 from .model_scan_info_severity_counts import ModelScanInfoSeverityCounts
 from .model_scan_list_req import ModelScanListReq
 from .model_scan_list_resp import ModelScanListResp
+from .model_scan_report_fields_response import ModelScanReportFieldsResponse
 from .model_scan_result_basic_node import ModelScanResultBasicNode
 from .model_scan_results_action_request import ModelScanResultsActionRequest
 from .model_scan_results_action_request_scan_type import ModelScanResultsActionRequestScanType
 from .model_scan_results_common import ModelScanResultsCommon
 from .model_scan_results_mask_request import ModelScanResultsMaskRequest
+from .model_scan_results_mask_request_mask_action import ModelScanResultsMaskRequestMaskAction
 from .model_scan_results_mask_request_scan_type import ModelScanResultsMaskRequestScanType
 from .model_scan_results_req import ModelScanResultsReq
 from .model_scan_status_req import ModelScanStatusReq
@@ -297,6 +309,8 @@ from .model_settings_response import ModelSettingsResponse
 from .model_stop_scan_request import ModelStopScanRequest
 from .model_stop_scan_request_scan_type import ModelStopScanRequestScanType
 from .model_summary import ModelSummary
+from .model_topology_delta_req import ModelTopologyDeltaReq
+from .model_topology_delta_response import ModelTopologyDeltaResponse
 from .model_update_scheduled_task_request import ModelUpdateScheduledTaskRequest
 from .model_update_user_id_request import ModelUpdateUserIdRequest
 from .model_update_user_id_request_role import ModelUpdateUserIdRequestRole
@@ -361,9 +375,8 @@ __all__ = (
     "ApiDocsBadRequestResponseErrorFields",
     "ApiDocsBadRequestResponseErrorIndex",
     "ApiDocsFailureResponse",
-    "ApiDocsGraphResult",
-    "ApiDocsGraphResultEdges",
-    "ApiDocsGraphResultNodes",
+    "CompletionCompletionNodeFieldReq",
+    "CompletionCompletionNodeFieldRes",
     "ControlsAction",
     "ControlsAgentBeat",
     "ControlsAgentControls",
@@ -377,7 +390,6 @@ __all__ = (
     "ControlsPolicyAlertMatcher",
     "ControlsPolicyAlertMatcherFieldsMatcher",
     "ControlsPolicyFilterConfig",
-    "ControlsProcessEventConfig",
     "ControlsQuarantineConfig",
     "ControlsRuncPolicy",
     "ControlsRuncPolicyAction",
@@ -392,11 +404,14 @@ __all__ = (
     "DiagnosisDiagnosticLogsStatus",
     "DiagnosisDiagnosticNotification",
     "DiagnosisGenerateAgentDiagnosticLogsRequest",
+    "DiagnosisGenerateCloudScannerDiagnosticLogsRequest",
     "DiagnosisGenerateConsoleDiagnosticLogsRequest",
     "DiagnosisGetDiagnosticLogsResponse",
     "DiagnosisNodeIdentifier",
     "DiagnosisNodeIdentifierNodeType",
     "DownloadScanResultsScanType",
+    "FormDataModelImportAgentPolicyConfigReq",
+    "FormDataModelImportQuarantinePolicyConfigReq",
     "FormDataModelRegistryGCRAddReq",
     "FormDataVulnerabilityDbDBUploadRequest",
     "GetNetworkRulesResponse200",
@@ -455,6 +470,7 @@ __all__ = (
     "IngestersWAFRuleAction",
     "LookupLookupFilter",
     "ModelAddScheduledTaskRequest",
+    "ModelAddScheduledTaskRequestAction",
     "ModelAgentId",
     "ModelAgentPluginConfigNames",
     "ModelAgentPluginDisable",
@@ -518,6 +534,7 @@ __all__ = (
     "ModelExportReport",
     "ModelFetchWindow",
     "ModelFileAlert",
+    "ModelFilesystemAlertRule",
     "ModelFiltersReq",
     "ModelFiltersReqHaving",
     "ModelFiltersResult",
@@ -527,6 +544,11 @@ __all__ = (
     "ModelGenerateReportReqReportType",
     "ModelGenerateReportResp",
     "ModelGetAgentConfigReq",
+    "ModelGetAttachedNodesResp",
+    "ModelGetAuditLogsRequest",
+    "ModelGraphResult",
+    "ModelGraphResultEdges",
+    "ModelGraphResultNodes",
     "ModelHost",
     "ModelHostAlertsCounts",
     "ModelImageStub",
@@ -573,6 +595,8 @@ __all__ = (
     "ModelPodKubernetesLabels",
     "ModelPostureProvider",
     "ModelProcess",
+    "ModelProcessAlert",
+    "ModelProcessAlertRule",
     "ModelQuarantineViolation",
     "ModelRegisterInvitedUserRequest",
     "ModelRegisterLicenseRequest",
@@ -605,11 +629,13 @@ __all__ = (
     "ModelScanInfoSeverityCounts",
     "ModelScanListReq",
     "ModelScanListResp",
+    "ModelScanReportFieldsResponse",
     "ModelScanResultBasicNode",
     "ModelScanResultsActionRequest",
     "ModelScanResultsActionRequestScanType",
     "ModelScanResultsCommon",
     "ModelScanResultsMaskRequest",
+    "ModelScanResultsMaskRequestMaskAction",
     "ModelScanResultsMaskRequestScanType",
     "ModelScanResultsReq",
     "ModelScanStatusReq",
@@ -628,6 +654,8 @@ __all__ = (
     "ModelStopScanRequest",
     "ModelStopScanRequestScanType",
     "ModelSummary",
+    "ModelTopologyDeltaReq",
+    "ModelTopologyDeltaResponse",
     "ModelUpdateScheduledTaskRequest",
     "ModelUpdateUserIdRequest",
     "ModelUpdateUserIdRequestRole",

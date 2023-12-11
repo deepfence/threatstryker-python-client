@@ -11,13 +11,13 @@ class ModelFileAlert:
     """
     Example:
         {'container_ip': 'container_ip', 'kubernetes_cluster_name': 'kubernetes_cluster_name', 'masked': True,
-            'created_at': 6, 'pid': 1, 'signature_id': 5, 'event_type': 'event_type', 'node_type': 'node_type', 'filepath':
-            'filepath', 'top': 'top', 'updated_at': 2, 'process_name': 'process_name', 'direction': 'direction', 'severity':
-            'severity', 'summary': 'summary', 'count': 0, 'resource_type': 'resource_type', 'fstat': 'fstat',
-            'container_image': 'container_image', 'netstat': 'netstat', 'users': 'users', 'pod_name': 'pod_name',
-            'container_name': 'container_name', 'techniques': ['techniques', 'techniques'], 'w': 7, 'tactics': ['tactics',
-            'tactics'], 'proc_status': 'proc_status', 'category': 'category', 'container_id': 'container_id', 'host_name':
-            'host_name', 'node_id': 'node_id', 'severity_score': 5.962133916683182}
+            'created_at': 6, 'pid': 1, 'event_type': 'event_type', 'node_type': 'node_type', 'filepath': 'filepath', 'top':
+            'top', 'updated_at': 5, 'process_name': 'process_name', 'severity': 'severity', 'summary': 'summary',
+            'kubernetes_cluster_id': 'kubernetes_cluster_id', 'count': 0, 'resource_type': 'resource_type', 'fstat':
+            'fstat', 'container_image': 'container_image', 'netstat': 'netstat', 'users': 'users', 'pod_name': 'pod_name',
+            'rule_id': 'rule_id', 'container_name': 'container_name', 'techniques': ['techniques', 'techniques'], 'w': 2,
+            'tactics': ['tactics', 'tactics'], 'proc_status': 'proc_status', 'category': 'category', 'container_id':
+            'container_id', 'host_name': 'host_name', 'node_id': 'node_id', 'severity_score': 5.962133916683182}
 
     Attributes:
         category (str):
@@ -27,11 +27,11 @@ class ModelFileAlert:
         container_name (str):
         count (int):
         created_at (int):
-        direction (str):
         event_type (str):
         filepath (str):
         fstat (str):
         host_name (str):
+        kubernetes_cluster_id (str):
         kubernetes_cluster_name (str):
         masked (bool):
         netstat (str):
@@ -42,9 +42,9 @@ class ModelFileAlert:
         proc_status (str):
         process_name (str):
         resource_type (str):
+        rule_id (str):
         severity (str):
         severity_score (float):
-        signature_id (int):
         summary (str):
         top (str):
         updated_at (int):
@@ -61,11 +61,11 @@ class ModelFileAlert:
     container_name: str
     count: int
     created_at: int
-    direction: str
     event_type: str
     filepath: str
     fstat: str
     host_name: str
+    kubernetes_cluster_id: str
     kubernetes_cluster_name: str
     masked: bool
     netstat: str
@@ -76,9 +76,9 @@ class ModelFileAlert:
     proc_status: str
     process_name: str
     resource_type: str
+    rule_id: str
     severity: str
     severity_score: float
-    signature_id: int
     summary: str
     top: str
     updated_at: int
@@ -96,11 +96,11 @@ class ModelFileAlert:
         container_name = self.container_name
         count = self.count
         created_at = self.created_at
-        direction = self.direction
         event_type = self.event_type
         filepath = self.filepath
         fstat = self.fstat
         host_name = self.host_name
+        kubernetes_cluster_id = self.kubernetes_cluster_id
         kubernetes_cluster_name = self.kubernetes_cluster_name
         masked = self.masked
         netstat = self.netstat
@@ -111,9 +111,9 @@ class ModelFileAlert:
         proc_status = self.proc_status
         process_name = self.process_name
         resource_type = self.resource_type
+        rule_id = self.rule_id
         severity = self.severity
         severity_score = self.severity_score
-        signature_id = self.signature_id
         summary = self.summary
         top = self.top
         updated_at = self.updated_at
@@ -140,11 +140,11 @@ class ModelFileAlert:
                 "container_name": container_name,
                 "count": count,
                 "created_at": created_at,
-                "direction": direction,
                 "event_type": event_type,
                 "filepath": filepath,
                 "fstat": fstat,
                 "host_name": host_name,
+                "kubernetes_cluster_id": kubernetes_cluster_id,
                 "kubernetes_cluster_name": kubernetes_cluster_name,
                 "masked": masked,
                 "netstat": netstat,
@@ -155,9 +155,9 @@ class ModelFileAlert:
                 "proc_status": proc_status,
                 "process_name": process_name,
                 "resource_type": resource_type,
+                "rule_id": rule_id,
                 "severity": severity,
                 "severity_score": severity_score,
-                "signature_id": signature_id,
                 "summary": summary,
                 "top": top,
                 "updated_at": updated_at,
@@ -187,8 +187,6 @@ class ModelFileAlert:
 
         created_at = d.pop("created_at")
 
-        direction = d.pop("direction")
-
         event_type = d.pop("event_type")
 
         filepath = d.pop("filepath")
@@ -196,6 +194,8 @@ class ModelFileAlert:
         fstat = d.pop("fstat")
 
         host_name = d.pop("host_name")
+
+        kubernetes_cluster_id = d.pop("kubernetes_cluster_id")
 
         kubernetes_cluster_name = d.pop("kubernetes_cluster_name")
 
@@ -217,11 +217,11 @@ class ModelFileAlert:
 
         resource_type = d.pop("resource_type")
 
+        rule_id = d.pop("rule_id")
+
         severity = d.pop("severity")
 
         severity_score = d.pop("severity_score")
-
-        signature_id = d.pop("signature_id")
 
         summary = d.pop("summary")
 
@@ -245,11 +245,11 @@ class ModelFileAlert:
             container_name=container_name,
             count=count,
             created_at=created_at,
-            direction=direction,
             event_type=event_type,
             filepath=filepath,
             fstat=fstat,
             host_name=host_name,
+            kubernetes_cluster_id=kubernetes_cluster_id,
             kubernetes_cluster_name=kubernetes_cluster_name,
             masked=masked,
             netstat=netstat,
@@ -260,9 +260,9 @@ class ModelFileAlert:
             proc_status=proc_status,
             process_name=process_name,
             resource_type=resource_type,
+            rule_id=rule_id,
             severity=severity,
             severity_score=severity_score,
-            signature_id=signature_id,
             summary=summary,
             top=top,
             updated_at=updated_at,

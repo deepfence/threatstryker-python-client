@@ -1,36 +1,36 @@
-from typing import Any, Dict, List, Type, TypeVar
+from typing import TYPE_CHECKING, Any, Dict, List, Type, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-T = TypeVar("T", bound="ControlsProcessEventConfig")
+if TYPE_CHECKING:
+    from ..models.model_fetch_window import ModelFetchWindow
+
+
+T = TypeVar("T", bound="ModelGetAuditLogsRequest")
 
 
 @_attrs_define
-class ControlsProcessEventConfig:
+class ModelGetAuditLogsRequest:
     """
     Example:
-        {'event_name': 'event_name', 'weight': 'weight'}
+        {'window': {'offset': 0, 'size': 6}}
 
     Attributes:
-        event_name (str):
-        weight (str):
+        window (ModelFetchWindow):  Example: {'offset': 0, 'size': 6}.
     """
 
-    event_name: str
-    weight: str
+    window: "ModelFetchWindow"
     additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
-        event_name = self.event_name
-        weight = self.weight
+        window = self.window.to_dict()
 
         field_dict: Dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
-                "event_name": event_name,
-                "weight": weight,
+                "window": window,
             }
         )
 
@@ -38,18 +38,17 @@ class ControlsProcessEventConfig:
 
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
+        from ..models.model_fetch_window import ModelFetchWindow
+
         d = src_dict.copy()
-        event_name = d.pop("event_name")
+        window = ModelFetchWindow.from_dict(d.pop("window"))
 
-        weight = d.pop("weight")
-
-        controls_process_event_config = cls(
-            event_name=event_name,
-            weight=weight,
+        model_get_audit_logs_request = cls(
+            window=window,
         )
 
-        controls_process_event_config.additional_properties = d
-        return controls_process_event_config
+        model_get_audit_logs_request.additional_properties = d
+        return model_get_audit_logs_request
 
     @property
     def additional_keys(self) -> List[str]:

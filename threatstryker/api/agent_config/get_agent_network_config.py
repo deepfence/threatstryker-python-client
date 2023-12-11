@@ -79,9 +79,9 @@ def sync_detailed(
     client: AuthenticatedClient,
     json_body: ModelGetAgentConfigReq,
 ) -> Response[Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse, List["ControlsNetworkTracerConfig"]]]:
-    """Register Agent Network config
+    """Get Agent Network config
 
-     Register Agent config
+     Get Agent Network config
 
     Args:
         json_body (ModelGetAgentConfigReq):  Example: {'config_ids': ['config_ids',
@@ -111,9 +111,9 @@ def sync(
     client: AuthenticatedClient,
     json_body: ModelGetAgentConfigReq,
 ) -> Optional[Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse, List["ControlsNetworkTracerConfig"]]]:
-    """Register Agent Network config
+    """Get Agent Network config
 
-     Register Agent config
+     Get Agent Network config
 
     Args:
         json_body (ModelGetAgentConfigReq):  Example: {'config_ids': ['config_ids',
@@ -138,9 +138,9 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     json_body: ModelGetAgentConfigReq,
 ) -> Response[Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse, List["ControlsNetworkTracerConfig"]]]:
-    """Register Agent Network config
+    """Get Agent Network config
 
-     Register Agent config
+     Get Agent Network config
 
     Args:
         json_body (ModelGetAgentConfigReq):  Example: {'config_ids': ['config_ids',
@@ -168,9 +168,9 @@ async def asyncio(
     client: AuthenticatedClient,
     json_body: ModelGetAgentConfigReq,
 ) -> Optional[Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse, List["ControlsNetworkTracerConfig"]]]:
-    """Register Agent Network config
+    """Get Agent Network config
 
-     Register Agent config
+     Get Agent Network config
 
     Args:
         json_body (ModelGetAgentConfigReq):  Example: {'config_ids': ['config_ids',

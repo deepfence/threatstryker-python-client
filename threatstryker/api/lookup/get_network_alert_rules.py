@@ -79,9 +79,9 @@ def sync_detailed(
     client: AuthenticatedClient,
     json_body: LookupLookupFilter,
 ) -> Response[Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse, List["ModelNetworkAlertRule"]]]:
-    """Get Network Alerts
+    """Get Network Alert Rules
 
-     Retrieve network rules resources
+     Retrieve network alert rule resources
 
     Args:
         json_body (LookupLookupFilter):  Example: {'in_field_filter': ['in_field_filter',
@@ -112,9 +112,9 @@ def sync(
     client: AuthenticatedClient,
     json_body: LookupLookupFilter,
 ) -> Optional[Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse, List["ModelNetworkAlertRule"]]]:
-    """Get Network Alerts
+    """Get Network Alert Rules
 
-     Retrieve network rules resources
+     Retrieve network alert rule resources
 
     Args:
         json_body (LookupLookupFilter):  Example: {'in_field_filter': ['in_field_filter',
@@ -140,9 +140,9 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     json_body: LookupLookupFilter,
 ) -> Response[Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse, List["ModelNetworkAlertRule"]]]:
-    """Get Network Alerts
+    """Get Network Alert Rules
 
-     Retrieve network rules resources
+     Retrieve network alert rule resources
 
     Args:
         json_body (LookupLookupFilter):  Example: {'in_field_filter': ['in_field_filter',
@@ -171,9 +171,9 @@ async def asyncio(
     client: AuthenticatedClient,
     json_body: LookupLookupFilter,
 ) -> Optional[Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse, List["ModelNetworkAlertRule"]]]:
-    """Get Network Alerts
+    """Get Network Alert Rules
 
-     Retrieve network rules resources
+     Retrieve network alert rule resources
 
     Args:
         json_body (LookupLookupFilter):  Example: {'in_field_filter': ['in_field_filter',

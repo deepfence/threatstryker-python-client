@@ -1,9 +1,13 @@
-from typing import Any, Dict, List, Type, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, Dict, List, Type, TypeVar, Union
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
 from ..types import UNSET, Unset
+
+if TYPE_CHECKING:
+    from ..models.model_basic_node import ModelBasicNode
+
 
 T = TypeVar("T", bound="ModelCompliance")
 
@@ -12,12 +16,13 @@ T = TypeVar("T", bound="ModelCompliance")
 class ModelCompliance:
     """
     Example:
-        {'resource': 'resource', 'masked': True, 'description': 'description', 'resources': ['resources', 'resources'],
-            'test_category': 'test_category', 'remediation_ansible': 'remediation_ansible', 'compliance_check_type':
-            'compliance_check_type', 'rule_id': 'rule_id', 'test_rationale': 'test_rationale', 'test_severity':
-            'test_severity', 'node_type': 'node_type', 'updated_at': 0, 'remediation_puppet': 'remediation_puppet',
-            'remediation_script': 'remediation_script', 'node_id': 'node_id', 'status': 'status', 'test_desc': 'test_desc',
-            'test_number': 'test_number'}
+        {'resource': 'resource', 'masked': True, 'description': 'description', 'resources': [{'node_type': 'node_type',
+            'name': 'name', 'host_name': 'host_name', 'node_id': 'node_id'}, {'node_type': 'node_type', 'name': 'name',
+            'host_name': 'host_name', 'node_id': 'node_id'}], 'test_category': 'test_category', 'remediation_ansible':
+            'remediation_ansible', 'compliance_check_type': 'compliance_check_type', 'rule_id': 'rule_id', 'test_rationale':
+            'test_rationale', 'test_severity': 'test_severity', 'node_type': 'node_type', 'updated_at': 0,
+            'remediation_puppet': 'remediation_puppet', 'remediation_script': 'remediation_script', 'node_id': 'node_id',
+            'status': 'status', 'test_desc': 'test_desc', 'test_number': 'test_number'}
 
     Attributes:
         compliance_check_type (str):
@@ -37,7 +42,7 @@ class ModelCompliance:
         test_rationale (str):
         test_severity (str):
         updated_at (int):
-        resources (Union[Unset, None, List[str]]):
+        resources (Union[Unset, None, List['ModelBasicNode']]):
     """
 
     compliance_check_type: str
@@ -57,7 +62,7 @@ class ModelCompliance:
     test_rationale: str
     test_severity: str
     updated_at: int
-    resources: Union[Unset, None, List[str]] = UNSET
+    resources: Union[Unset, None, List["ModelBasicNode"]] = UNSET
     additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
@@ -78,12 +83,16 @@ class ModelCompliance:
         test_rationale = self.test_rationale
         test_severity = self.test_severity
         updated_at = self.updated_at
-        resources: Union[Unset, None, List[str]] = UNSET
+        resources: Union[Unset, None, List[Dict[str, Any]]] = UNSET
         if not isinstance(self.resources, Unset):
             if self.resources is None:
                 resources = None
             else:
-                resources = self.resources
+                resources = []
+                for resources_item_data in self.resources:
+                    resources_item = resources_item_data.to_dict()
+
+                    resources.append(resources_item)
 
         field_dict: Dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -115,6 +124,8 @@ class ModelCompliance:
 
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
+        from ..models.model_basic_node import ModelBasicNode
+
         d = src_dict.copy()
         compliance_check_type = d.pop("compliance_check_type")
 
@@ -150,7 +161,12 @@ class ModelCompliance:
 
         updated_at = d.pop("updated_at")
 
-        resources = cast(List[str], d.pop("resources", UNSET))
+        resources = []
+        _resources = d.pop("resources", UNSET)
+        for resources_item_data in _resources or []:
+            resources_item = ModelBasicNode.from_dict(resources_item_data)
+
+            resources.append(resources_item)
 
         model_compliance = cls(
             compliance_check_type=compliance_check_type,

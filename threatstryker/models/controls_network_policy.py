@@ -1,9 +1,10 @@
-from typing import TYPE_CHECKING, Any, Dict, List, Type, TypeVar
+from typing import TYPE_CHECKING, Any, Dict, List, Type, TypeVar, Union
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
 from ..models.controls_network_policy_action import ControlsNetworkPolicyAction
+from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.controls_policy_alert_matcher import ControlsPolicyAlertMatcher
@@ -17,7 +18,7 @@ class ControlsNetworkPolicy:
     """
     Example:
         {'policy_id': 'policy_id', 'updated_at': 5, 'count_limit': 0, 'action': 'block', 'duration_count_limit_sec': 6,
-            'matcher': {'fields_matcher': {'key': ['fields_matcher', 'fields_matcher']}}, 'duration_sec': 1}
+            'matcher': {'fields_matcher': {'key': ['fields_matcher', 'fields_matcher']}}, 'uuid': 'uuid', 'duration_sec': 1}
 
     Attributes:
         action (ControlsNetworkPolicyAction):
@@ -28,6 +29,7 @@ class ControlsNetworkPolicy:
             'fields_matcher']}}.
         policy_id (str):
         updated_at (int):
+        uuid (Union[Unset, str]):
     """
 
     action: ControlsNetworkPolicyAction
@@ -37,6 +39,7 @@ class ControlsNetworkPolicy:
     matcher: "ControlsPolicyAlertMatcher"
     policy_id: str
     updated_at: int
+    uuid: Union[Unset, str] = UNSET
     additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
@@ -49,6 +52,7 @@ class ControlsNetworkPolicy:
 
         policy_id = self.policy_id
         updated_at = self.updated_at
+        uuid = self.uuid
 
         field_dict: Dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -63,6 +67,8 @@ class ControlsNetworkPolicy:
                 "updated_at": updated_at,
             }
         )
+        if uuid is not UNSET:
+            field_dict["uuid"] = uuid
 
         return field_dict
 
@@ -85,6 +91,8 @@ class ControlsNetworkPolicy:
 
         updated_at = d.pop("updated_at")
 
+        uuid = d.pop("uuid", UNSET)
+
         controls_network_policy = cls(
             action=action,
             count_limit=count_limit,
@@ -93,6 +101,7 @@ class ControlsNetworkPolicy:
             matcher=matcher,
             policy_id=policy_id,
             updated_at=updated_at,
+            uuid=uuid,
         )
 
         controls_network_policy.additional_properties = d

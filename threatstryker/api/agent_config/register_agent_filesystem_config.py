@@ -77,11 +77,10 @@ def sync_detailed(
      Register Agent Filesystem config
 
     Args:
-        json_body (ControlsFilesystemTracerConfig):  Example: {'monitored_files': [{'path':
-            'path', 'weight': 'weight', 'access_types': ['access_types', 'access_types']}, {'path':
-            'path', 'weight': 'weight', 'access_types': ['access_types', 'access_types']}],
-            'updated_at': 0, 'process_events': [{'event_name': 'event_name', 'weight': 'weight'},
-            {'event_name': 'event_name', 'weight': 'weight'}], 'node_id': 'node_id'}.
+        json_body (ControlsFilesystemTracerConfig):  Example: {'updated_at': 0, 'watchedentries':
+            [{'severity': 'severity', 'accesstypes': ['accesstypes', 'accesstypes'], 'root': 'root',
+            'recursive': True}, {'severity': 'severity', 'accesstypes': ['accesstypes',
+            'accesstypes'], 'root': 'root', 'recursive': True}], 'node_id': 'node_id'}.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -112,11 +111,10 @@ def sync(
      Register Agent Filesystem config
 
     Args:
-        json_body (ControlsFilesystemTracerConfig):  Example: {'monitored_files': [{'path':
-            'path', 'weight': 'weight', 'access_types': ['access_types', 'access_types']}, {'path':
-            'path', 'weight': 'weight', 'access_types': ['access_types', 'access_types']}],
-            'updated_at': 0, 'process_events': [{'event_name': 'event_name', 'weight': 'weight'},
-            {'event_name': 'event_name', 'weight': 'weight'}], 'node_id': 'node_id'}.
+        json_body (ControlsFilesystemTracerConfig):  Example: {'updated_at': 0, 'watchedentries':
+            [{'severity': 'severity', 'accesstypes': ['accesstypes', 'accesstypes'], 'root': 'root',
+            'recursive': True}, {'severity': 'severity', 'accesstypes': ['accesstypes',
+            'accesstypes'], 'root': 'root', 'recursive': True}], 'node_id': 'node_id'}.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -142,11 +140,10 @@ async def asyncio_detailed(
      Register Agent Filesystem config
 
     Args:
-        json_body (ControlsFilesystemTracerConfig):  Example: {'monitored_files': [{'path':
-            'path', 'weight': 'weight', 'access_types': ['access_types', 'access_types']}, {'path':
-            'path', 'weight': 'weight', 'access_types': ['access_types', 'access_types']}],
-            'updated_at': 0, 'process_events': [{'event_name': 'event_name', 'weight': 'weight'},
-            {'event_name': 'event_name', 'weight': 'weight'}], 'node_id': 'node_id'}.
+        json_body (ControlsFilesystemTracerConfig):  Example: {'updated_at': 0, 'watchedentries':
+            [{'severity': 'severity', 'accesstypes': ['accesstypes', 'accesstypes'], 'root': 'root',
+            'recursive': True}, {'severity': 'severity', 'accesstypes': ['accesstypes',
+            'accesstypes'], 'root': 'root', 'recursive': True}], 'node_id': 'node_id'}.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -175,11 +172,10 @@ async def asyncio(
      Register Agent Filesystem config
 
     Args:
-        json_body (ControlsFilesystemTracerConfig):  Example: {'monitored_files': [{'path':
-            'path', 'weight': 'weight', 'access_types': ['access_types', 'access_types']}, {'path':
-            'path', 'weight': 'weight', 'access_types': ['access_types', 'access_types']}],
-            'updated_at': 0, 'process_events': [{'event_name': 'event_name', 'weight': 'weight'},
-            {'event_name': 'event_name', 'weight': 'weight'}], 'node_id': 'node_id'}.
+        json_body (ControlsFilesystemTracerConfig):  Example: {'updated_at': 0, 'watchedentries':
+            [{'severity': 'severity', 'accesstypes': ['accesstypes', 'accesstypes'], 'root': 'root',
+            'recursive': True}, {'severity': 'severity', 'accesstypes': ['accesstypes',
+            'accesstypes'], 'root': 'root', 'recursive': True}], 'node_id': 'node_id'}.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

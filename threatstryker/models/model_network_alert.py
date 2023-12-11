@@ -12,16 +12,17 @@ class ModelNetworkAlert:
     Example:
         {'internal': 'internal', 'destination_port': 1, 'kubernetes_cluster_name': 'kubernetes_cluster_name', 'masked':
             True, 'created_at': 6, 'description': 'description', 'request_method': 'request_method', 'http_user_agent':
-            'http_user_agent', 'source_ip': 'source_ip', 'protocol': 5, 'signature_id': 7, 'destination_ip':
-            'destination_ip', 'event_type': 'event_type', 'node_type': 'node_type', 'http_content_type': '', 'updated_at':
-            3, 'ip_reputation': 'ip_reputation', 'source_port': 9, 'direction': 'direction', 'request_printable_payload':
+            'http_user_agent', 'source_ip': 'source_ip', 'protocol': 5, 'destination_ip': 'destination_ip', 'event_type':
+            'event_type', 'node_type': 'node_type', 'http_content_type': '', 'updated_at': 9, 'ip_reputation':
+            'ip_reputation', 'source_port': 7, 'direction': 'direction', 'request_printable_payload':
             'request_printable_payload', 'severity': 'severity', 'summary': 'summary', 'headers': 'headers', 'geoip':
-            'geoip', 'local_port': 5, 'count': 0, 'length': '', 'resource_type': 'resource_type', 'http_type': 'http_type',
-            'response_printable_payload': '', 'app_proto': 'app_proto', 'url': 'url', 'pod_name': 'pod_name', 'tags':
-            'tags', 'rule_id': 'rule_id', 'container_name': 'container_name', 'encrypted': 'encrypted', 'techniques':
-            ['techniques', 'techniques'], 'request_path': 'request_path', 'tactics': ['tactics', 'tactics'], 'matched':
-            'matched', 'category': 'category', 'request_payload': 'request_payload', 'host_name': 'host_name',
-            'response_payload': '', 'node_id': 'node_id', 'severity_score': 2.3021358869347655, 'status': ''}
+            'geoip', 'kubernetes_cluster_id': 'kubernetes_cluster_id', 'local_port': 5, 'count': 0, 'length': '',
+            'resource_type': 'resource_type', 'http_type': 'http_type', 'response_printable_payload': '', 'app_proto':
+            'app_proto', 'url': 'url', 'pod_name': 'pod_name', 'tags': 'tags', 'rule_id': 'rule_id', 'container_name':
+            'container_name', 'encrypted': 'encrypted', 'techniques': ['techniques', 'techniques'], 'request_path':
+            'request_path', 'tactics': ['tactics', 'tactics'], 'matched': 'matched', 'category': 'category',
+            'request_payload': 'request_payload', 'host_name': 'host_name', 'response_payload': '', 'node_id': 'node_id',
+            'severity_score': 2.3021358869347655, 'status': ''}
 
     Attributes:
         app_proto (str):
@@ -43,6 +44,7 @@ class ModelNetworkAlert:
         http_user_agent (str):
         internal (str):
         ip_reputation (str):
+        kubernetes_cluster_id (str):
         kubernetes_cluster_name (str):
         length (Any):
         local_port (int):
@@ -62,7 +64,6 @@ class ModelNetworkAlert:
         rule_id (str):
         severity (str):
         severity_score (float):
-        signature_id (int):
         source_ip (str):
         source_port (int):
         status (Any):
@@ -93,6 +94,7 @@ class ModelNetworkAlert:
     http_user_agent: str
     internal: str
     ip_reputation: str
+    kubernetes_cluster_id: str
     kubernetes_cluster_name: str
     length: Any
     local_port: int
@@ -112,7 +114,6 @@ class ModelNetworkAlert:
     rule_id: str
     severity: str
     severity_score: float
-    signature_id: int
     source_ip: str
     source_port: int
     status: Any
@@ -144,6 +145,7 @@ class ModelNetworkAlert:
         http_user_agent = self.http_user_agent
         internal = self.internal
         ip_reputation = self.ip_reputation
+        kubernetes_cluster_id = self.kubernetes_cluster_id
         kubernetes_cluster_name = self.kubernetes_cluster_name
         length = self.length
         local_port = self.local_port
@@ -163,7 +165,6 @@ class ModelNetworkAlert:
         rule_id = self.rule_id
         severity = self.severity
         severity_score = self.severity_score
-        signature_id = self.signature_id
         source_ip = self.source_ip
         source_port = self.source_port
         status = self.status
@@ -204,6 +205,7 @@ class ModelNetworkAlert:
                 "http_user_agent": http_user_agent,
                 "internal": internal,
                 "ip_reputation": ip_reputation,
+                "kubernetes_cluster_id": kubernetes_cluster_id,
                 "kubernetes_cluster_name": kubernetes_cluster_name,
                 "length": length,
                 "local_port": local_port,
@@ -223,7 +225,6 @@ class ModelNetworkAlert:
                 "rule_id": rule_id,
                 "severity": severity,
                 "severity_score": severity_score,
-                "signature_id": signature_id,
                 "source_ip": source_ip,
                 "source_port": source_port,
                 "status": status,
@@ -279,6 +280,8 @@ class ModelNetworkAlert:
 
         ip_reputation = d.pop("ip_reputation")
 
+        kubernetes_cluster_id = d.pop("kubernetes_cluster_id")
+
         kubernetes_cluster_name = d.pop("kubernetes_cluster_name")
 
         length = d.pop("length")
@@ -316,8 +319,6 @@ class ModelNetworkAlert:
         severity = d.pop("severity")
 
         severity_score = d.pop("severity_score")
-
-        signature_id = d.pop("signature_id")
 
         source_ip = d.pop("source_ip")
 
@@ -357,6 +358,7 @@ class ModelNetworkAlert:
             http_user_agent=http_user_agent,
             internal=internal,
             ip_reputation=ip_reputation,
+            kubernetes_cluster_id=kubernetes_cluster_id,
             kubernetes_cluster_name=kubernetes_cluster_name,
             length=length,
             local_port=local_port,
@@ -376,7 +378,6 @@ class ModelNetworkAlert:
             rule_id=rule_id,
             severity=severity,
             severity_score=severity_score,
-            signature_id=signature_id,
             source_ip=source_ip,
             source_port=source_port,
             status=status,

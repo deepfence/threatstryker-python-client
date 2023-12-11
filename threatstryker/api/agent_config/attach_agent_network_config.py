@@ -72,9 +72,9 @@ def sync_detailed(
     client: AuthenticatedClient,
     json_body: ModelAttachAgentConfigReq,
 ) -> Response[Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse]]:
-    """Register Agent Network config
+    """Attach Agent Network config
 
-     Register Agent config
+     Attach Agent Network config
 
     Args:
         json_body (ModelAttachAgentConfigReq):  Example: {'config_id': 'config_id', 'agent_ids':
@@ -105,9 +105,9 @@ def sync(
     client: AuthenticatedClient,
     json_body: ModelAttachAgentConfigReq,
 ) -> Optional[Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse]]:
-    """Register Agent Network config
+    """Attach Agent Network config
 
-     Register Agent config
+     Attach Agent Network config
 
     Args:
         json_body (ModelAttachAgentConfigReq):  Example: {'config_id': 'config_id', 'agent_ids':
@@ -133,9 +133,9 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     json_body: ModelAttachAgentConfigReq,
 ) -> Response[Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse]]:
-    """Register Agent Network config
+    """Attach Agent Network config
 
-     Register Agent config
+     Attach Agent Network config
 
     Args:
         json_body (ModelAttachAgentConfigReq):  Example: {'config_id': 'config_id', 'agent_ids':
@@ -164,9 +164,9 @@ async def asyncio(
     client: AuthenticatedClient,
     json_body: ModelAttachAgentConfigReq,
 ) -> Optional[Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse]]:
-    """Register Agent Network config
+    """Attach Agent Network config
 
-     Register Agent config
+     Attach Agent Network config
 
     Args:
         json_body (ModelAttachAgentConfigReq):  Example: {'config_id': 'config_id', 'agent_ids':

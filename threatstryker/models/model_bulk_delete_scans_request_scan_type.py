@@ -10,6 +10,7 @@ class ModelBulkDeleteScansRequestScanType(str, Enum):
     QUARANTINEPOLICYLOGS = "QuarantinePolicyLogs"
     SECRET = "Secret"
     VULNERABILITY = "Vulnerability"
+    WORKLOADPOLICYLOGS = "WorkloadPolicyLogs"
 
     def __str__(self) -> str:
         return str(self.value)

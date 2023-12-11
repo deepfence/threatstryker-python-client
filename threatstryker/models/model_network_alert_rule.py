@@ -10,9 +10,9 @@ T = TypeVar("T", bound="ModelNetworkAlertRule")
 class ModelNetworkAlertRule:
     """
     Example:
-        {'rule_id': 'rule_id', 'severity': 'severity', 'summary': 'summary', 'signature_id': 6, 'updated_at': 1,
-            'masked': True, 'techniques': ['techniques', 'techniques'], 'description': 'description', 'tactics': ['tactics',
-            'tactics'], 'category': 'category', 'node_id': 'node_id', 'severity_score': 0.8008281904610115}
+        {'rule_id': 'rule_id', 'severity': 'severity', 'summary': 'summary', 'updated_at': 6, 'masked': True,
+            'techniques': ['techniques', 'techniques'], 'description': 'description', 'tactics': ['tactics', 'tactics'],
+            'category': 'category', 'node_id': 'node_id', 'severity_score': 0.8008281904610115}
 
     Attributes:
         category (str):
@@ -22,7 +22,6 @@ class ModelNetworkAlertRule:
         rule_id (str):
         severity (str):
         severity_score (float):
-        signature_id (int):
         summary (str):
         updated_at (int):
         tactics (Optional[List[str]]):
@@ -36,7 +35,6 @@ class ModelNetworkAlertRule:
     rule_id: str
     severity: str
     severity_score: float
-    signature_id: int
     summary: str
     updated_at: int
     tactics: Optional[List[str]]
@@ -51,7 +49,6 @@ class ModelNetworkAlertRule:
         rule_id = self.rule_id
         severity = self.severity
         severity_score = self.severity_score
-        signature_id = self.signature_id
         summary = self.summary
         updated_at = self.updated_at
         if self.tactics is None:
@@ -75,7 +72,6 @@ class ModelNetworkAlertRule:
                 "rule_id": rule_id,
                 "severity": severity,
                 "severity_score": severity_score,
-                "signature_id": signature_id,
                 "summary": summary,
                 "updated_at": updated_at,
                 "tactics": tactics,
@@ -102,8 +98,6 @@ class ModelNetworkAlertRule:
 
         severity_score = d.pop("severity_score")
 
-        signature_id = d.pop("signature_id")
-
         summary = d.pop("summary")
 
         updated_at = d.pop("updated_at")
@@ -120,7 +114,6 @@ class ModelNetworkAlertRule:
             rule_id=rule_id,
             severity=severity,
             severity_score=severity_score,
-            signature_id=signature_id,
             summary=summary,
             updated_at=updated_at,
             tactics=tactics,

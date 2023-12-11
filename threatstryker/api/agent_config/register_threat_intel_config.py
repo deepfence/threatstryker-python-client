@@ -72,9 +72,9 @@ def sync_detailed(
     client: AuthenticatedClient,
     json_body: ControlsThreatIntelInfo,
 ) -> Response[Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse]]:
-    """Register Agent Policy config
+    """Register threat intel config
 
-     Register Agent Policy config
+     Register threat intel config
 
     Args:
         json_body (ControlsThreatIntelInfo):  Example: {'updated_at': 0,
@@ -106,9 +106,9 @@ def sync(
     client: AuthenticatedClient,
     json_body: ControlsThreatIntelInfo,
 ) -> Optional[Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse]]:
-    """Register Agent Policy config
+    """Register threat intel config
 
-     Register Agent Policy config
+     Register threat intel config
 
     Args:
         json_body (ControlsThreatIntelInfo):  Example: {'updated_at': 0,
@@ -135,9 +135,9 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     json_body: ControlsThreatIntelInfo,
 ) -> Response[Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse]]:
-    """Register Agent Policy config
+    """Register threat intel config
 
-     Register Agent Policy config
+     Register threat intel config
 
     Args:
         json_body (ControlsThreatIntelInfo):  Example: {'updated_at': 0,
@@ -167,9 +167,9 @@ async def asyncio(
     client: AuthenticatedClient,
     json_body: ControlsThreatIntelInfo,
 ) -> Optional[Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse]]:
-    """Register Agent Policy config
+    """Register threat intel config
 
-     Register Agent Policy config
+     Register threat intel config
 
     Args:
         json_body (ControlsThreatIntelInfo):  Example: {'updated_at': 0,

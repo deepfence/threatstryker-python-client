@@ -11,10 +11,10 @@ class ModelCommonAlert:
     """
     Example:
         {'severity': 'severity', 'summary': 'summary', 'geoip': 'geoip', 'kubernetes_cluster_name':
-            'kubernetes_cluster_name', 'masked': True, 'count': 0, 'created_at': 6, 'pod_name': 'pod_name', 'event_type':
-            'event_type', 'container_name': 'container_name', 'updated_at': 1, 'techniques': ['techniques', 'techniques'],
-            'tactics': ['tactics', 'tactics'], 'matched': 'matched', 'category': 'category', 'host_name': 'host_name',
-            'node_id': 'node_id'}
+            'kubernetes_cluster_name', 'masked': True, 'count': 0, 'created_at': 6, 'pod_name': 'pod_name', 'rule_id':
+            'rule_id', 'event_type': 'event_type', 'node_type': 'node_type', 'container_name': 'container_name',
+            'updated_at': 1, 'techniques': ['techniques', 'techniques'], 'tactics': ['tactics', 'tactics'], 'matched':
+            'matched', 'category': 'category', 'host_name': 'host_name', 'node_id': 'node_id'}
 
     Attributes:
         category (str):
@@ -28,7 +28,9 @@ class ModelCommonAlert:
         masked (bool):
         matched (str):
         node_id (str):
+        node_type (str):
         pod_name (str):
+        rule_id (str):
         severity (str):
         summary (str):
         updated_at (int):
@@ -47,7 +49,9 @@ class ModelCommonAlert:
     masked: bool
     matched: str
     node_id: str
+    node_type: str
     pod_name: str
+    rule_id: str
     severity: str
     summary: str
     updated_at: int
@@ -67,7 +71,9 @@ class ModelCommonAlert:
         masked = self.masked
         matched = self.matched
         node_id = self.node_id
+        node_type = self.node_type
         pod_name = self.pod_name
+        rule_id = self.rule_id
         severity = self.severity
         summary = self.summary
         updated_at = self.updated_at
@@ -96,7 +102,9 @@ class ModelCommonAlert:
                 "masked": masked,
                 "matched": matched,
                 "node_id": node_id,
+                "node_type": node_type,
                 "pod_name": pod_name,
+                "rule_id": rule_id,
                 "severity": severity,
                 "summary": summary,
                 "updated_at": updated_at,
@@ -132,7 +140,11 @@ class ModelCommonAlert:
 
         node_id = d.pop("node_id")
 
+        node_type = d.pop("node_type")
+
         pod_name = d.pop("pod_name")
+
+        rule_id = d.pop("rule_id")
 
         severity = d.pop("severity")
 
@@ -156,7 +168,9 @@ class ModelCommonAlert:
             masked=masked,
             matched=matched,
             node_id=node_id,
+            node_type=node_type,
             pod_name=pod_name,
+            rule_id=rule_id,
             severity=severity,
             summary=summary,
             updated_at=updated_at,
