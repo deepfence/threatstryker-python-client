@@ -492,8 +492,87 @@ async def start_vulnerability_scan_on_hosts():
        print(response.scan_ids, response.bulk_scan_id)
     except UnexpectedStatus as e:
         print("Exception when calling start_vulnerability_scan_on_hosts-> %s\n" % e)
-```
 
+```
+### Search Alerts/Runtime Incidents ASYNC
+
+```python
+from typing import List
+from deepfence_threat_stryker_client.api.search import search_alerts
+from deepfence_threat_stryker_client.models import SearchSearchNodeReq, ModelCommonAlert
+from threatstryker import AuthenticatedClient
+from threatstryker.errors import UnexpectedStatus
+from typing import List
+
+#  Authenticated Client SSL Disabled
+client = AuthenticatedClient(base_url="YOUR_CONSOLE_URL", token="YOUR_REFRESH_TOKEN", verify_ssl=False)
+#OR
+# Authenticated Client SSL Enabled
+client = AuthenticatedClient(base_url="YOUR_CONSOLE_URL", token="YOUR_REFRESH_TOKEN", verify_ssl="/path/to/certificate_bundle.pem")
+
+async def fetch_alerts():
+    try:
+       payload_dict = {
+                  "extended_node_filter": {
+                            "filters": {
+                              "compare_filter": null,
+                              "contains_filter": {
+                                "filter_in": {}
+                              },
+                              "contains_in_array_filter": {
+                                "filter_in": {}
+                              },
+                              "match_filter": {
+                                "filter_in": {}
+                              },
+                              "order_filter": {
+                                "order_fields": []
+                              }
+                            },
+                            "in_field_filter": null,
+                            "window": {
+                              "offset": 0,
+                              "size": 0
+                            }
+                          },
+                          "node_filter": {
+                            "filters": {
+                              "compare_filter": null,
+                              "contains_filter": {
+                                "filter_in": {}
+                              },
+                              "match_filter": {
+                                "filter_in": {}
+                              },
+                              "order_filter": {
+                                "order_fields": [
+                                  {
+                                    "descending": true,
+                                    "field_name": "updated_at"
+                                  }
+                                ]
+                              }
+                            },
+                            "in_field_filter": null,
+                            "window": {
+                              "offset": 0,
+                              "size": 0
+                            }
+                          },
+                          "window": {
+                            "offset": 0,
+                            "size": 10000
+                          }
+                        }
+       json_body = SearchSearchNodeReq.from_dict(payload_dict)
+       response: ModelCommonAlert = await search_alerts.asyncio(client=client,json_body=json_body)
+       if not res:
+            return f"No Alerts Are present"
+        else:
+            return [_.to_dict() for _ in res]
+    except UnexpectedStatus as e:
+        print("Exception when calling fetch_alerts-> %s\n" % e)
+```
 
 
 ## Building / publishing this package
