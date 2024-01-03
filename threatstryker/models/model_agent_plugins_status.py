@@ -16,17 +16,19 @@ class ModelAgentPluginsStatus:
     Example:
         {'network_tracer_status': {'description': 'description', 'status': 'status'}, 'network_filter_status':
             {'description': 'description', 'status': 'status'}, 'filesystem_tracer_status': {'description': 'description',
-            'status': 'status'}}
+            'status': 'status'}, 'process_tracer_status': {'description': 'description', 'status': 'status'}}
 
     Attributes:
         filesystem_tracer_status (ModelPluginStatus):  Example: {'description': 'description', 'status': 'status'}.
         network_filter_status (ModelPluginStatus):  Example: {'description': 'description', 'status': 'status'}.
         network_tracer_status (ModelPluginStatus):  Example: {'description': 'description', 'status': 'status'}.
+        process_tracer_status (ModelPluginStatus):  Example: {'description': 'description', 'status': 'status'}.
     """
 
     filesystem_tracer_status: "ModelPluginStatus"
     network_filter_status: "ModelPluginStatus"
     network_tracer_status: "ModelPluginStatus"
+    process_tracer_status: "ModelPluginStatus"
     additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
@@ -36,6 +38,8 @@ class ModelAgentPluginsStatus:
 
         network_tracer_status = self.network_tracer_status.to_dict()
 
+        process_tracer_status = self.process_tracer_status.to_dict()
+
         field_dict: Dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -43,6 +47,7 @@ class ModelAgentPluginsStatus:
                 "filesystem_tracer_status": filesystem_tracer_status,
                 "network_filter_status": network_filter_status,
                 "network_tracer_status": network_tracer_status,
+                "process_tracer_status": process_tracer_status,
             }
         )
 
@@ -59,10 +64,13 @@ class ModelAgentPluginsStatus:
 
         network_tracer_status = ModelPluginStatus.from_dict(d.pop("network_tracer_status"))
 
+        process_tracer_status = ModelPluginStatus.from_dict(d.pop("process_tracer_status"))
+
         model_agent_plugins_status = cls(
             filesystem_tracer_status=filesystem_tracer_status,
             network_filter_status=network_filter_status,
             network_tracer_status=network_tracer_status,
+            process_tracer_status=process_tracer_status,
         )
 
         model_agent_plugins_status.additional_properties = d

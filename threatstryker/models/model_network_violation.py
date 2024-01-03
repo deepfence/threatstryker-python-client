@@ -13,15 +13,16 @@ class ModelNetworkViolation:
     """
     Example:
         {'severity': 'severity', 'defenderd': 'defenderd', 'executed_at': 6, 'local_port': 1, 'policy_index': 5,
-            'remote_port': 5, 'created_at': 0, 'node_policy_type': 'node_policy_type', 'ttl': 2, 'local_ip': 'local_ip',
-            'event_type': 'event_type', 'remote_ip': 'remote_ip', 'config_id': 'config_id', 'alert_id': 'alert_id',
-            'action': 'action', 'block_ip': 'block_ip', 'pod_id': 'pod_id', 'packet_direction': 'packet_direction',
-            'container_id': 'container_id', 'host_name': 'host_name', 'direction': 'direction', 'node_id': 'node_id',
-            'status': 'status'}
+            'remote_port': 5, 'created_at': 0, 'node_policy_type': 'node_policy_type', 'applied_by': 'applied_by', 'ttl': 2,
+            'local_ip': 'local_ip', 'event_type': 'event_type', 'remote_ip': 'remote_ip', 'config_id': 'config_id',
+            'alert_id': 'alert_id', 'action': 'action', 'block_ip': 'block_ip', 'pod_id': 'pod_id', 'packet_direction':
+            'packet_direction', 'container_id': 'container_id', 'host_name': 'host_name', 'direction': 'direction',
+            'node_id': 'node_id', 'status': 'status'}
 
     Attributes:
         action (Union[Unset, str]):
         alert_id (Union[Unset, str]):
+        applied_by (Union[Unset, str]):
         block_ip (Union[Unset, str]):
         config_id (Union[Unset, str]):
         container_id (Union[Unset, str]):
@@ -47,6 +48,7 @@ class ModelNetworkViolation:
 
     action: Union[Unset, str] = UNSET
     alert_id: Union[Unset, str] = UNSET
+    applied_by: Union[Unset, str] = UNSET
     block_ip: Union[Unset, str] = UNSET
     config_id: Union[Unset, str] = UNSET
     container_id: Union[Unset, str] = UNSET
@@ -73,6 +75,7 @@ class ModelNetworkViolation:
     def to_dict(self) -> Dict[str, Any]:
         action = self.action
         alert_id = self.alert_id
+        applied_by = self.applied_by
         block_ip = self.block_ip
         config_id = self.config_id
         container_id = self.container_id
@@ -102,6 +105,8 @@ class ModelNetworkViolation:
             field_dict["action"] = action
         if alert_id is not UNSET:
             field_dict["alert_id"] = alert_id
+        if applied_by is not UNSET:
+            field_dict["applied_by"] = applied_by
         if block_ip is not UNSET:
             field_dict["block_ip"] = block_ip
         if config_id is not UNSET:
@@ -154,6 +159,8 @@ class ModelNetworkViolation:
 
         alert_id = d.pop("alert_id", UNSET)
 
+        applied_by = d.pop("applied_by", UNSET)
+
         block_ip = d.pop("block_ip", UNSET)
 
         config_id = d.pop("config_id", UNSET)
@@ -199,6 +206,7 @@ class ModelNetworkViolation:
         model_network_violation = cls(
             action=action,
             alert_id=alert_id,
+            applied_by=applied_by,
             block_ip=block_ip,
             config_id=config_id,
             container_id=container_id,

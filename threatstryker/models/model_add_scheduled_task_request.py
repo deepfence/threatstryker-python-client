@@ -19,12 +19,13 @@ T = TypeVar("T", bound="ModelAddScheduledTaskRequest")
 class ModelAddScheduledTaskRequest:
     """
     Example:
-        {'benchmark_types': ['benchmark_types', 'benchmark_types'], 'scan_config': [{'language': 'base'}, {'language':
-            'base'}], 'cron_expr': 'cron_expr', 'action': 'SecretScan', 'description': 'description', 'filters':
-            {'container_scan_filter': {'filter_in': {'key': ['', '']}}, 'cloud_account_scan_filter': {'filter_in': {'key':
-            ['', '']}}, 'image_scan_filter': {'filter_in': {'key': ['', '']}}, 'kubernetes_cluster_scan_filter':
-            {'filter_in': {'key': ['', '']}}, 'host_scan_filter': {'filter_in': {'key': ['', '']}}}, 'node_ids':
-            [{'node_type': 'image', 'node_id': 'node_id'}, {'node_type': 'image', 'node_id': 'node_id'}]}
+        {'is_priority': True, 'benchmark_types': ['benchmark_types', 'benchmark_types'], 'scan_config': [{'language':
+            'base'}, {'language': 'base'}], 'cron_expr': 'cron_expr', 'action': 'SecretScan', 'description': 'description',
+            'filters': {'container_scan_filter': {'filter_in': {'key': ['', '']}}, 'cloud_account_scan_filter':
+            {'filter_in': {'key': ['', '']}}, 'image_scan_filter': {'filter_in': {'key': ['', '']}},
+            'kubernetes_cluster_scan_filter': {'filter_in': {'key': ['', '']}}, 'host_scan_filter': {'filter_in': {'key':
+            ['', '']}}}, 'node_ids': [{'node_type': 'image', 'node_id': 'node_id'}, {'node_type': 'image', 'node_id':
+            'node_id'}]}
 
     Attributes:
         action (ModelAddScheduledTaskRequestAction):
@@ -35,6 +36,7 @@ class ModelAddScheduledTaskRequest:
         benchmark_types (Optional[List[str]]):
         cron_expr (Union[Unset, str]):
         description (Union[Unset, str]):
+        is_priority (Union[Unset, bool]):
         node_ids (Optional[List['ModelNodeIdentifier']]):
         scan_config (Optional[List['ModelVulnerabilityScanConfigLanguage']]):
     """
@@ -46,6 +48,7 @@ class ModelAddScheduledTaskRequest:
     scan_config: Optional[List["ModelVulnerabilityScanConfigLanguage"]]
     cron_expr: Union[Unset, str] = UNSET
     description: Union[Unset, str] = UNSET
+    is_priority: Union[Unset, bool] = UNSET
     additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
@@ -60,6 +63,7 @@ class ModelAddScheduledTaskRequest:
 
         cron_expr = self.cron_expr
         description = self.description
+        is_priority = self.is_priority
         if self.node_ids is None:
             node_ids = None
         else:
@@ -93,6 +97,8 @@ class ModelAddScheduledTaskRequest:
             field_dict["cron_expr"] = cron_expr
         if description is not UNSET:
             field_dict["description"] = description
+        if is_priority is not UNSET:
+            field_dict["is_priority"] = is_priority
 
         return field_dict
 
@@ -112,6 +118,8 @@ class ModelAddScheduledTaskRequest:
         cron_expr = d.pop("cron_expr", UNSET)
 
         description = d.pop("description", UNSET)
+
+        is_priority = d.pop("is_priority", UNSET)
 
         node_ids = []
         _node_ids = d.pop("node_ids")
@@ -133,6 +141,7 @@ class ModelAddScheduledTaskRequest:
             benchmark_types=benchmark_types,
             cron_expr=cron_expr,
             description=description,
+            is_priority=is_priority,
             node_ids=node_ids,
             scan_config=scan_config,
         )

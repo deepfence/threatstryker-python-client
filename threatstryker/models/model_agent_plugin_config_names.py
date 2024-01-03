@@ -11,23 +11,26 @@ class ModelAgentPluginConfigNames:
     """
     Example:
         {'policy_config_name': 'policy_config_name', 'filesystem_config_name': 'filesystem_config_name',
-            'network_config_name': 'network_config_name'}
+            'process_config_name': 'process_config_name', 'network_config_name': 'network_config_name'}
 
     Attributes:
         filesystem_config_name (str):
         network_config_name (str):
         policy_config_name (str):
+        process_config_name (str):
     """
 
     filesystem_config_name: str
     network_config_name: str
     policy_config_name: str
+    process_config_name: str
     additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
         filesystem_config_name = self.filesystem_config_name
         network_config_name = self.network_config_name
         policy_config_name = self.policy_config_name
+        process_config_name = self.process_config_name
 
         field_dict: Dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -36,6 +39,7 @@ class ModelAgentPluginConfigNames:
                 "filesystem_config_name": filesystem_config_name,
                 "network_config_name": network_config_name,
                 "policy_config_name": policy_config_name,
+                "process_config_name": process_config_name,
             }
         )
 
@@ -50,10 +54,13 @@ class ModelAgentPluginConfigNames:
 
         policy_config_name = d.pop("policy_config_name")
 
+        process_config_name = d.pop("process_config_name")
+
         model_agent_plugin_config_names = cls(
             filesystem_config_name=filesystem_config_name,
             network_config_name=network_config_name,
             policy_config_name=policy_config_name,
+            process_config_name=process_config_name,
         )
 
         model_agent_plugin_config_names.additional_properties = d

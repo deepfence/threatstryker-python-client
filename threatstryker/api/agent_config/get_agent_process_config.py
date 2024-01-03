@@ -7,7 +7,7 @@ from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.api_docs_bad_request_response import ApiDocsBadRequestResponse
 from ...models.api_docs_failure_response import ApiDocsFailureResponse
-from ...models.controls_filesystem_tracer_config import ControlsFilesystemTracerConfig
+from ...models.controls_process_tracer_config import ControlsProcessTracerConfig
 from ...models.model_get_agent_config_req import ModelGetAgentConfigReq
 from ...types import Response
 
@@ -29,12 +29,12 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse, List["ControlsFilesystemTracerConfig"]]]:
+) -> Optional[Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse, List["ControlsProcessTracerConfig"]]]:
     if response.status_code == HTTPStatus.OK:
         response_200 = []
         _response_200 = response.json()
         for response_200_item_data in _response_200:
-            response_200_item = ControlsFilesystemTracerConfig.from_dict(response_200_item_data)
+            response_200_item = ControlsProcessTracerConfig.from_dict(response_200_item_data)
 
             response_200.append(response_200_item)
 
@@ -65,7 +65,7 @@ def _parse_response(
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse, List["ControlsFilesystemTracerConfig"]]]:
+) -> Response[Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse, List["ControlsProcessTracerConfig"]]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -78,7 +78,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     json_body: ModelGetAgentConfigReq,
-) -> Response[Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse, List["ControlsFilesystemTracerConfig"]]]:
+) -> Response[Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse, List["ControlsProcessTracerConfig"]]]:
     """Get Agent Process config
 
      Get Agent Process config
@@ -92,7 +92,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse, List['ControlsFilesystemTracerConfig']]]
+        Response[Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse, List['ControlsProcessTracerConfig']]]
     """
 
     kwargs = _get_kwargs(
@@ -110,7 +110,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     json_body: ModelGetAgentConfigReq,
-) -> Optional[Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse, List["ControlsFilesystemTracerConfig"]]]:
+) -> Optional[Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse, List["ControlsProcessTracerConfig"]]]:
     """Get Agent Process config
 
      Get Agent Process config
@@ -124,7 +124,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse, List['ControlsFilesystemTracerConfig']]
+        Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse, List['ControlsProcessTracerConfig']]
     """
 
     return sync_detailed(
@@ -137,7 +137,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     json_body: ModelGetAgentConfigReq,
-) -> Response[Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse, List["ControlsFilesystemTracerConfig"]]]:
+) -> Response[Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse, List["ControlsProcessTracerConfig"]]]:
     """Get Agent Process config
 
      Get Agent Process config
@@ -151,7 +151,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse, List['ControlsFilesystemTracerConfig']]]
+        Response[Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse, List['ControlsProcessTracerConfig']]]
     """
 
     kwargs = _get_kwargs(
@@ -167,7 +167,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     json_body: ModelGetAgentConfigReq,
-) -> Optional[Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse, List["ControlsFilesystemTracerConfig"]]]:
+) -> Optional[Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse, List["ControlsProcessTracerConfig"]]]:
     """Get Agent Process config
 
      Get Agent Process config
@@ -181,7 +181,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse, List['ControlsFilesystemTracerConfig']]
+        Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse, List['ControlsProcessTracerConfig']]
     """
 
     return (

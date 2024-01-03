@@ -15,9 +15,9 @@ class ModelFileAlert:
             'top', 'updated_at': 5, 'process_name': 'process_name', 'severity': 'severity', 'summary': 'summary',
             'kubernetes_cluster_id': 'kubernetes_cluster_id', 'count': 0, 'resource_type': 'resource_type', 'fstat':
             'fstat', 'container_image': 'container_image', 'netstat': 'netstat', 'users': 'users', 'pod_name': 'pod_name',
-            'rule_id': 'rule_id', 'container_name': 'container_name', 'techniques': ['techniques', 'techniques'], 'w': 2,
-            'tactics': ['tactics', 'tactics'], 'proc_status': 'proc_status', 'category': 'category', 'container_id':
-            'container_id', 'host_name': 'host_name', 'node_id': 'node_id', 'severity_score': 5.962133916683182}
+            'rule_id': 'rule_id', 'container_name': 'container_name', 'techniques': ['techniques', 'techniques'], 'tactics':
+            ['tactics', 'tactics'], 'proc_status': 'proc_status', 'category': 'category', 'container_id': 'container_id',
+            'host_name': 'host_name', 'node_id': 'node_id'}
 
     Attributes:
         category (str):
@@ -44,12 +44,10 @@ class ModelFileAlert:
         resource_type (str):
         rule_id (str):
         severity (str):
-        severity_score (float):
         summary (str):
         top (str):
         updated_at (int):
         users (str):
-        w (int):
         tactics (Optional[List[str]]):
         techniques (Optional[List[str]]):
     """
@@ -78,12 +76,10 @@ class ModelFileAlert:
     resource_type: str
     rule_id: str
     severity: str
-    severity_score: float
     summary: str
     top: str
     updated_at: int
     users: str
-    w: int
     tactics: Optional[List[str]]
     techniques: Optional[List[str]]
     additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -113,12 +109,10 @@ class ModelFileAlert:
         resource_type = self.resource_type
         rule_id = self.rule_id
         severity = self.severity
-        severity_score = self.severity_score
         summary = self.summary
         top = self.top
         updated_at = self.updated_at
         users = self.users
-        w = self.w
         if self.tactics is None:
             tactics = None
         else:
@@ -157,12 +151,10 @@ class ModelFileAlert:
                 "resource_type": resource_type,
                 "rule_id": rule_id,
                 "severity": severity,
-                "severity_score": severity_score,
                 "summary": summary,
                 "top": top,
                 "updated_at": updated_at,
                 "users": users,
-                "w": w,
                 "tactics": tactics,
                 "techniques": techniques,
             }
@@ -221,8 +213,6 @@ class ModelFileAlert:
 
         severity = d.pop("severity")
 
-        severity_score = d.pop("severity_score")
-
         summary = d.pop("summary")
 
         top = d.pop("top")
@@ -230,8 +220,6 @@ class ModelFileAlert:
         updated_at = d.pop("updated_at")
 
         users = d.pop("users")
-
-        w = d.pop("w")
 
         tactics = cast(List[str], d.pop("tactics"))
 
@@ -262,12 +250,10 @@ class ModelFileAlert:
             resource_type=resource_type,
             rule_id=rule_id,
             severity=severity,
-            severity_score=severity_score,
             summary=summary,
             top=top,
             updated_at=updated_at,
             users=users,
-            w=w,
             tactics=tactics,
             techniques=techniques,
         )

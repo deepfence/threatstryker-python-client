@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "threatstryker"
-version = "2.0.1"
-description = "A client library for accessing Deepfence ThreatMapper"
+version = "2.1.0"
+description = "A client library for accessing Deepfence ThreatStryker"
 
 authors = []
 

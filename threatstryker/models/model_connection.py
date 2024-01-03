@@ -12,7 +12,7 @@ T = TypeVar("T", bound="ModelConnection")
 class ModelConnection:
     """
     Example:
-        {'count': 5, 'node_name': 'node_name', 'node_id': 'node_id'}
+        {'count': 2, 'node_name': 'node_name', 'node_id': 'node_id'}
 
     Attributes:
         count (Union[Unset, int]):

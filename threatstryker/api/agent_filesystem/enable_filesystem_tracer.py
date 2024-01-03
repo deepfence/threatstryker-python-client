@@ -7,13 +7,13 @@ from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.api_docs_bad_request_response import ApiDocsBadRequestResponse
 from ...models.api_docs_failure_response import ApiDocsFailureResponse
-from ...models.model_enable_filesystem_tracer_req import ModelEnableFilesystemTracerReq
+from ...models.model_enable_tracer_req import ModelEnableTracerReq
 from ...types import Response
 
 
 def _get_kwargs(
     *,
-    json_body: ModelEnableFilesystemTracerReq,
+    json_body: ModelEnableTracerReq,
 ) -> Dict[str, Any]:
     pass
 
@@ -69,17 +69,16 @@ def _build_response(
 
 def sync_detailed(
     *,
-    client: Union[AuthenticatedClient, Client],
-    json_body: ModelEnableFilesystemTracerReq,
+    client: AuthenticatedClient,
+    json_body: ModelEnableTracerReq,
 ) -> Response[Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse]]:
     """Enable filesystem tracer
 
      Enable filesystem tracer on given agents
 
     Args:
-        json_body (ModelEnableFilesystemTracerReq):  Example: {'path': 'path', 'agent_ids':
-            [{'available_workload': 0, 'node_id': 'node_id'}, {'available_workload': 0, 'node_id':
-            'node_id'}]}.
+        json_body (ModelEnableTracerReq):  Example: {'agent_ids': [{'available_workload': 0,
+            'node_id': 'node_id'}, {'available_workload': 0, 'node_id': 'node_id'}]}.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -102,17 +101,16 @@ def sync_detailed(
 
 def sync(
     *,
-    client: Union[AuthenticatedClient, Client],
-    json_body: ModelEnableFilesystemTracerReq,
+    client: AuthenticatedClient,
+    json_body: ModelEnableTracerReq,
 ) -> Optional[Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse]]:
     """Enable filesystem tracer
 
      Enable filesystem tracer on given agents
 
     Args:
-        json_body (ModelEnableFilesystemTracerReq):  Example: {'path': 'path', 'agent_ids':
-            [{'available_workload': 0, 'node_id': 'node_id'}, {'available_workload': 0, 'node_id':
-            'node_id'}]}.
+        json_body (ModelEnableTracerReq):  Example: {'agent_ids': [{'available_workload': 0,
+            'node_id': 'node_id'}, {'available_workload': 0, 'node_id': 'node_id'}]}.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -130,17 +128,16 @@ def sync(
 
 async def asyncio_detailed(
     *,
-    client: Union[AuthenticatedClient, Client],
-    json_body: ModelEnableFilesystemTracerReq,
+    client: AuthenticatedClient,
+    json_body: ModelEnableTracerReq,
 ) -> Response[Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse]]:
     """Enable filesystem tracer
 
      Enable filesystem tracer on given agents
 
     Args:
-        json_body (ModelEnableFilesystemTracerReq):  Example: {'path': 'path', 'agent_ids':
-            [{'available_workload': 0, 'node_id': 'node_id'}, {'available_workload': 0, 'node_id':
-            'node_id'}]}.
+        json_body (ModelEnableTracerReq):  Example: {'agent_ids': [{'available_workload': 0,
+            'node_id': 'node_id'}, {'available_workload': 0, 'node_id': 'node_id'}]}.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -161,17 +158,16 @@ async def asyncio_detailed(
 
 async def asyncio(
     *,
-    client: Union[AuthenticatedClient, Client],
-    json_body: ModelEnableFilesystemTracerReq,
+    client: AuthenticatedClient,
+    json_body: ModelEnableTracerReq,
 ) -> Optional[Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse]]:
     """Enable filesystem tracer
 
      Enable filesystem tracer on given agents
 
     Args:
-        json_body (ModelEnableFilesystemTracerReq):  Example: {'path': 'path', 'agent_ids':
-            [{'available_workload': 0, 'node_id': 'node_id'}, {'available_workload': 0, 'node_id':
-            'node_id'}]}.
+        json_body (ModelEnableTracerReq):  Example: {'agent_ids': [{'available_workload': 0,
+            'node_id': 'node_id'}, {'available_workload': 0, 'node_id': 'node_id'}]}.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

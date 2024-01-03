@@ -10,9 +10,9 @@ T = TypeVar("T", bound="ModelNetworkAlertRule")
 class ModelNetworkAlertRule:
     """
     Example:
-        {'rule_id': 'rule_id', 'severity': 'severity', 'summary': 'summary', 'updated_at': 6, 'masked': True,
+        {'rule_id': 'rule_id', 'severity': 'severity', 'summary': 'summary', 'updated_at': 0, 'masked': True,
             'techniques': ['techniques', 'techniques'], 'description': 'description', 'tactics': ['tactics', 'tactics'],
-            'category': 'category', 'node_id': 'node_id', 'severity_score': 0.8008281904610115}
+            'category': 'category', 'node_id': 'node_id'}
 
     Attributes:
         category (str):
@@ -21,7 +21,6 @@ class ModelNetworkAlertRule:
         node_id (str):
         rule_id (str):
         severity (str):
-        severity_score (float):
         summary (str):
         updated_at (int):
         tactics (Optional[List[str]]):
@@ -34,7 +33,6 @@ class ModelNetworkAlertRule:
     node_id: str
     rule_id: str
     severity: str
-    severity_score: float
     summary: str
     updated_at: int
     tactics: Optional[List[str]]
@@ -48,7 +46,6 @@ class ModelNetworkAlertRule:
         node_id = self.node_id
         rule_id = self.rule_id
         severity = self.severity
-        severity_score = self.severity_score
         summary = self.summary
         updated_at = self.updated_at
         if self.tactics is None:
@@ -71,7 +68,6 @@ class ModelNetworkAlertRule:
                 "node_id": node_id,
                 "rule_id": rule_id,
                 "severity": severity,
-                "severity_score": severity_score,
                 "summary": summary,
                 "updated_at": updated_at,
                 "tactics": tactics,
@@ -96,8 +92,6 @@ class ModelNetworkAlertRule:
 
         severity = d.pop("severity")
 
-        severity_score = d.pop("severity_score")
-
         summary = d.pop("summary")
 
         updated_at = d.pop("updated_at")
@@ -113,7 +107,6 @@ class ModelNetworkAlertRule:
             node_id=node_id,
             rule_id=rule_id,
             severity=severity,
-            severity_score=severity_score,
             summary=summary,
             updated_at=updated_at,
             tactics=tactics,

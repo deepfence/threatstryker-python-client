@@ -7,13 +7,13 @@ from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.api_docs_bad_request_response import ApiDocsBadRequestResponse
 from ...models.api_docs_failure_response import ApiDocsFailureResponse
-from ...models.controls_filesystem_tracer_config import ControlsFilesystemTracerConfig
+from ...models.controls_process_tracer_config import ControlsProcessTracerConfig
 from ...types import Response
 
 
 def _get_kwargs(
     *,
-    json_body: ControlsFilesystemTracerConfig,
+    json_body: ControlsProcessTracerConfig,
 ) -> Dict[str, Any]:
     pass
 
@@ -70,17 +70,20 @@ def _build_response(
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    json_body: ControlsFilesystemTracerConfig,
+    json_body: ControlsProcessTracerConfig,
 ) -> Response[Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse]]:
     """Register Agent Process config
 
      Register Agent Process config
 
     Args:
-        json_body (ControlsFilesystemTracerConfig):  Example: {'updated_at': 0, 'watchedentries':
-            [{'severity': 'severity', 'accesstypes': ['accesstypes', 'accesstypes'], 'root': 'root',
-            'recursive': True}, {'severity': 'severity', 'accesstypes': ['accesstypes',
-            'accesstypes'], 'root': 'root', 'recursive': True}], 'node_id': 'node_id'}.
+        json_body (ControlsProcessTracerConfig):  Example: {'updated_at': 0,
+            'monitoredprocessevents': [{'skip_path_list': ['skip_path_list', 'skip_path_list'],
+            'failure_severity': 'failure_severity', 'success_severity': 'success_severity', 'event':
+            'bin-execution', 'skip_comm_list': ['skip_comm_list', 'skip_comm_list']},
+            {'skip_path_list': ['skip_path_list', 'skip_path_list'], 'failure_severity':
+            'failure_severity', 'success_severity': 'success_severity', 'event': 'bin-execution',
+            'skip_comm_list': ['skip_comm_list', 'skip_comm_list']}], 'node_id': 'node_id'}.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -104,17 +107,20 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    json_body: ControlsFilesystemTracerConfig,
+    json_body: ControlsProcessTracerConfig,
 ) -> Optional[Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse]]:
     """Register Agent Process config
 
      Register Agent Process config
 
     Args:
-        json_body (ControlsFilesystemTracerConfig):  Example: {'updated_at': 0, 'watchedentries':
-            [{'severity': 'severity', 'accesstypes': ['accesstypes', 'accesstypes'], 'root': 'root',
-            'recursive': True}, {'severity': 'severity', 'accesstypes': ['accesstypes',
-            'accesstypes'], 'root': 'root', 'recursive': True}], 'node_id': 'node_id'}.
+        json_body (ControlsProcessTracerConfig):  Example: {'updated_at': 0,
+            'monitoredprocessevents': [{'skip_path_list': ['skip_path_list', 'skip_path_list'],
+            'failure_severity': 'failure_severity', 'success_severity': 'success_severity', 'event':
+            'bin-execution', 'skip_comm_list': ['skip_comm_list', 'skip_comm_list']},
+            {'skip_path_list': ['skip_path_list', 'skip_path_list'], 'failure_severity':
+            'failure_severity', 'success_severity': 'success_severity', 'event': 'bin-execution',
+            'skip_comm_list': ['skip_comm_list', 'skip_comm_list']}], 'node_id': 'node_id'}.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -133,17 +139,20 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    json_body: ControlsFilesystemTracerConfig,
+    json_body: ControlsProcessTracerConfig,
 ) -> Response[Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse]]:
     """Register Agent Process config
 
      Register Agent Process config
 
     Args:
-        json_body (ControlsFilesystemTracerConfig):  Example: {'updated_at': 0, 'watchedentries':
-            [{'severity': 'severity', 'accesstypes': ['accesstypes', 'accesstypes'], 'root': 'root',
-            'recursive': True}, {'severity': 'severity', 'accesstypes': ['accesstypes',
-            'accesstypes'], 'root': 'root', 'recursive': True}], 'node_id': 'node_id'}.
+        json_body (ControlsProcessTracerConfig):  Example: {'updated_at': 0,
+            'monitoredprocessevents': [{'skip_path_list': ['skip_path_list', 'skip_path_list'],
+            'failure_severity': 'failure_severity', 'success_severity': 'success_severity', 'event':
+            'bin-execution', 'skip_comm_list': ['skip_comm_list', 'skip_comm_list']},
+            {'skip_path_list': ['skip_path_list', 'skip_path_list'], 'failure_severity':
+            'failure_severity', 'success_severity': 'success_severity', 'event': 'bin-execution',
+            'skip_comm_list': ['skip_comm_list', 'skip_comm_list']}], 'node_id': 'node_id'}.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -165,17 +174,20 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    json_body: ControlsFilesystemTracerConfig,
+    json_body: ControlsProcessTracerConfig,
 ) -> Optional[Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse]]:
     """Register Agent Process config
 
      Register Agent Process config
 
     Args:
-        json_body (ControlsFilesystemTracerConfig):  Example: {'updated_at': 0, 'watchedentries':
-            [{'severity': 'severity', 'accesstypes': ['accesstypes', 'accesstypes'], 'root': 'root',
-            'recursive': True}, {'severity': 'severity', 'accesstypes': ['accesstypes',
-            'accesstypes'], 'root': 'root', 'recursive': True}], 'node_id': 'node_id'}.
+        json_body (ControlsProcessTracerConfig):  Example: {'updated_at': 0,
+            'monitoredprocessevents': [{'skip_path_list': ['skip_path_list', 'skip_path_list'],
+            'failure_severity': 'failure_severity', 'success_severity': 'success_severity', 'event':
+            'bin-execution', 'skip_comm_list': ['skip_comm_list', 'skip_comm_list']},
+            {'skip_path_list': ['skip_path_list', 'skip_path_list'], 'failure_severity':
+            'failure_severity', 'success_severity': 'success_severity', 'event': 'bin-execution',
+            'skip_comm_list': ['skip_comm_list', 'skip_comm_list']}], 'node_id': 'node_id'}.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

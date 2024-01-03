@@ -19,6 +19,9 @@ from .controls_network_tracer_config_mode import ControlsNetworkTracerConfigMode
 from .controls_policy_alert_matcher import ControlsPolicyAlertMatcher
 from .controls_policy_alert_matcher_fields_matcher import ControlsPolicyAlertMatcherFieldsMatcher
 from .controls_policy_filter_config import ControlsPolicyFilterConfig
+from .controls_process_event_entry import ControlsProcessEventEntry
+from .controls_process_event_entry_event import ControlsProcessEventEntryEvent
+from .controls_process_tracer_config import ControlsProcessTracerConfig
 from .controls_quarantine_config import ControlsQuarantineConfig
 from .controls_runc_policy import ControlsRuncPolicy
 from .controls_runc_policy_action import ControlsRuncPolicyAction
@@ -111,18 +114,24 @@ from .ingesters_vulnerability import IngestersVulnerability
 from .ingesters_vulnerability_scan_status import IngestersVulnerabilityScanStatus
 from .ingesters_waf_rule import IngestersWAFRule
 from .ingesters_waf_rule_action import IngestersWAFRuleAction
+from .list_generative_ai_integration_integration_type import ListGenerativeAiIntegrationIntegrationType
 from .lookup_lookup_filter import LookupLookupFilter
+from .model_add_generative_ai_bedrock_integration import ModelAddGenerativeAiBedrockIntegration
+from .model_add_generative_ai_bedrock_integration_aws_region import ModelAddGenerativeAiBedrockIntegrationAwsRegion
+from .model_add_generative_ai_bedrock_integration_model_id import ModelAddGenerativeAiBedrockIntegrationModelId
+from .model_add_generative_ai_open_ai_integration import ModelAddGenerativeAiOpenAIIntegration
+from .model_add_generative_ai_open_ai_integration_model_id import ModelAddGenerativeAiOpenAIIntegrationModelId
 from .model_add_scheduled_task_request import ModelAddScheduledTaskRequest
 from .model_add_scheduled_task_request_action import ModelAddScheduledTaskRequestAction
-from .model_agent_id import ModelAgentId
+from .model_agent_id import ModelAgentID
 from .model_agent_plugin_config_names import ModelAgentPluginConfigNames
 from .model_agent_plugin_disable import ModelAgentPluginDisable
 from .model_agent_plugin_enable import ModelAgentPluginEnable
 from .model_agent_plugins_status import ModelAgentPluginsStatus
 from .model_agent_upgrade import ModelAgentUpgrade
 from .model_alerts_action_request import ModelAlertsActionRequest
-from .model_api_auth_request import ModelApiAuthRequest
-from .model_api_token_response import ModelApiTokenResponse
+from .model_api_auth_request import ModelAPIAuthRequest
+from .model_api_token_response import ModelAPITokenResponse
 from .model_attach_agent_config_req import ModelAttachAgentConfigReq
 from .model_basic_node import ModelBasicNode
 from .model_bulk_delete_scans_request import ModelBulkDeleteScansRequest
@@ -169,13 +178,13 @@ from .model_container_docker_labels import ModelContainerDockerLabels
 from .model_container_image import ModelContainerImage
 from .model_container_image_metadata import ModelContainerImageMetadata
 from .model_delete_filter import ModelDeleteFilter
-from .model_disable_network_tracer_req import ModelDisableNetworkTracerReq
+from .model_delete_registry_bulk_req import ModelDeleteRegistryBulkReq
+from .model_disable_tracer_req import ModelDisableTracerReq
 from .model_download_report_response import ModelDownloadReportResponse
 from .model_download_scan_results_response import ModelDownloadScanResultsResponse
 from .model_email_configuration_add import ModelEmailConfigurationAdd
 from .model_email_configuration_resp import ModelEmailConfigurationResp
-from .model_enable_filesystem_tracer_req import ModelEnableFilesystemTracerReq
-from .model_enable_network_tracer_req import ModelEnableNetworkTracerReq
+from .model_enable_tracer_req import ModelEnableTracerReq
 from .model_export_report import ModelExportReport
 from .model_fetch_window import ModelFetchWindow
 from .model_file_alert import ModelFileAlert
@@ -188,6 +197,49 @@ from .model_generate_report_req import ModelGenerateReportReq
 from .model_generate_report_req_duration import ModelGenerateReportReqDuration
 from .model_generate_report_req_report_type import ModelGenerateReportReqReportType
 from .model_generate_report_resp import ModelGenerateReportResp
+from .model_generative_ai_integration_cloud_posture_request import ModelGenerativeAiIntegrationCloudPostureRequest
+from .model_generative_ai_integration_cloud_posture_request_query_type import (
+    ModelGenerativeAiIntegrationCloudPostureRequestQueryType,
+)
+from .model_generative_ai_integration_cloud_posture_request_remediation_format import (
+    ModelGenerativeAiIntegrationCloudPostureRequestRemediationFormat,
+)
+from .model_generative_ai_integration_kubernetes_posture_request import (
+    ModelGenerativeAiIntegrationKubernetesPostureRequest,
+)
+from .model_generative_ai_integration_kubernetes_posture_request_query_type import (
+    ModelGenerativeAiIntegrationKubernetesPostureRequestQueryType,
+)
+from .model_generative_ai_integration_kubernetes_posture_request_remediation_format import (
+    ModelGenerativeAiIntegrationKubernetesPostureRequestRemediationFormat,
+)
+from .model_generative_ai_integration_linux_posture_request import ModelGenerativeAiIntegrationLinuxPostureRequest
+from .model_generative_ai_integration_linux_posture_request_query_type import (
+    ModelGenerativeAiIntegrationLinuxPostureRequestQueryType,
+)
+from .model_generative_ai_integration_linux_posture_request_remediation_format import (
+    ModelGenerativeAiIntegrationLinuxPostureRequestRemediationFormat,
+)
+from .model_generative_ai_integration_list_response import ModelGenerativeAiIntegrationListResponse
+from .model_generative_ai_integration_malware_request import ModelGenerativeAiIntegrationMalwareRequest
+from .model_generative_ai_integration_malware_request_query_type import (
+    ModelGenerativeAiIntegrationMalwareRequestQueryType,
+)
+from .model_generative_ai_integration_runtime_incident_request import ModelGenerativeAiIntegrationRuntimeIncidentRequest
+from .model_generative_ai_integration_runtime_incident_request_query_type import (
+    ModelGenerativeAiIntegrationRuntimeIncidentRequestQueryType,
+)
+from .model_generative_ai_integration_secret_request import ModelGenerativeAiIntegrationSecretRequest
+from .model_generative_ai_integration_secret_request_query_type import (
+    ModelGenerativeAiIntegrationSecretRequestQueryType,
+)
+from .model_generative_ai_integration_vulnerability_request import ModelGenerativeAiIntegrationVulnerabilityRequest
+from .model_generative_ai_integration_vulnerability_request_query_type import (
+    ModelGenerativeAiIntegrationVulnerabilityRequestQueryType,
+)
+from .model_generative_ai_integration_vulnerability_request_remediation_format import (
+    ModelGenerativeAiIntegrationVulnerabilityRequestRemediationFormat,
+)
 from .model_get_agent_config_req import ModelGetAgentConfigReq
 from .model_get_attached_nodes_resp import ModelGetAttachedNodesResp
 from .model_get_audit_logs_request import ModelGetAuditLogsRequest
@@ -209,6 +261,7 @@ from .model_invite_user_request_role import ModelInviteUserRequestRole
 from .model_invite_user_response import ModelInviteUserResponse
 from .model_kubernetes_cluster import ModelKubernetesCluster
 from .model_license import ModelLicense
+from .model_list_agent_version_resp import ModelListAgentVersionResp
 from .model_login_request import ModelLoginRequest
 from .model_login_response import ModelLoginResponse
 from .model_malware import ModelMalware
@@ -219,7 +272,6 @@ from .model_malware_scan_result_rules import ModelMalwareScanResultRules
 from .model_malware_scan_result_severity_counts import ModelMalwareScanResultSeverityCounts
 from .model_malware_scan_trigger_req import ModelMalwareScanTriggerReq
 from .model_message_response import ModelMessageResponse
-from .model_metadata import ModelMetadata
 from .model_mitre_attack_matrix import ModelMitreAttackMatrix
 from .model_mitre_attack_matrix_request import ModelMitreAttackMatrixRequest
 from .model_mitre_attack_matrix_technique_summary import ModelMitreAttackMatrixTechniqueSummary
@@ -312,8 +364,8 @@ from .model_summary import ModelSummary
 from .model_topology_delta_req import ModelTopologyDeltaReq
 from .model_topology_delta_response import ModelTopologyDeltaResponse
 from .model_update_scheduled_task_request import ModelUpdateScheduledTaskRequest
-from .model_update_user_id_request import ModelUpdateUserIdRequest
-from .model_update_user_id_request_role import ModelUpdateUserIdRequestRole
+from .model_update_user_id_request import ModelUpdateUserIDRequest
+from .model_update_user_id_request_role import ModelUpdateUserIDRequestRole
 from .model_update_user_password_request import ModelUpdateUserPasswordRequest
 from .model_update_user_request import ModelUpdateUserRequest
 from .model_update_user_request_role import ModelUpdateUserRequestRole
@@ -390,6 +442,9 @@ __all__ = (
     "ControlsPolicyAlertMatcher",
     "ControlsPolicyAlertMatcherFieldsMatcher",
     "ControlsPolicyFilterConfig",
+    "ControlsProcessEventEntry",
+    "ControlsProcessEventEntryEvent",
+    "ControlsProcessTracerConfig",
     "ControlsQuarantineConfig",
     "ControlsRuncPolicy",
     "ControlsRuncPolicyAction",
@@ -468,18 +523,24 @@ __all__ = (
     "IngestersVulnerabilityScanStatus",
     "IngestersWAFRule",
     "IngestersWAFRuleAction",
+    "ListGenerativeAiIntegrationIntegrationType",
     "LookupLookupFilter",
+    "ModelAddGenerativeAiBedrockIntegration",
+    "ModelAddGenerativeAiBedrockIntegrationAwsRegion",
+    "ModelAddGenerativeAiBedrockIntegrationModelId",
+    "ModelAddGenerativeAiOpenAIIntegration",
+    "ModelAddGenerativeAiOpenAIIntegrationModelId",
     "ModelAddScheduledTaskRequest",
     "ModelAddScheduledTaskRequestAction",
-    "ModelAgentId",
+    "ModelAgentID",
     "ModelAgentPluginConfigNames",
     "ModelAgentPluginDisable",
     "ModelAgentPluginEnable",
     "ModelAgentPluginsStatus",
     "ModelAgentUpgrade",
     "ModelAlertsActionRequest",
-    "ModelApiAuthRequest",
-    "ModelApiTokenResponse",
+    "ModelAPIAuthRequest",
+    "ModelAPITokenResponse",
     "ModelAttachAgentConfigReq",
     "ModelBasicNode",
     "ModelBulkDeleteScansRequest",
@@ -524,13 +585,13 @@ __all__ = (
     "ModelContainerImage",
     "ModelContainerImageMetadata",
     "ModelDeleteFilter",
-    "ModelDisableNetworkTracerReq",
+    "ModelDeleteRegistryBulkReq",
+    "ModelDisableTracerReq",
     "ModelDownloadReportResponse",
     "ModelDownloadScanResultsResponse",
     "ModelEmailConfigurationAdd",
     "ModelEmailConfigurationResp",
-    "ModelEnableFilesystemTracerReq",
-    "ModelEnableNetworkTracerReq",
+    "ModelEnableTracerReq",
     "ModelExportReport",
     "ModelFetchWindow",
     "ModelFileAlert",
@@ -543,6 +604,25 @@ __all__ = (
     "ModelGenerateReportReqDuration",
     "ModelGenerateReportReqReportType",
     "ModelGenerateReportResp",
+    "ModelGenerativeAiIntegrationCloudPostureRequest",
+    "ModelGenerativeAiIntegrationCloudPostureRequestQueryType",
+    "ModelGenerativeAiIntegrationCloudPostureRequestRemediationFormat",
+    "ModelGenerativeAiIntegrationKubernetesPostureRequest",
+    "ModelGenerativeAiIntegrationKubernetesPostureRequestQueryType",
+    "ModelGenerativeAiIntegrationKubernetesPostureRequestRemediationFormat",
+    "ModelGenerativeAiIntegrationLinuxPostureRequest",
+    "ModelGenerativeAiIntegrationLinuxPostureRequestQueryType",
+    "ModelGenerativeAiIntegrationLinuxPostureRequestRemediationFormat",
+    "ModelGenerativeAiIntegrationListResponse",
+    "ModelGenerativeAiIntegrationMalwareRequest",
+    "ModelGenerativeAiIntegrationMalwareRequestQueryType",
+    "ModelGenerativeAiIntegrationRuntimeIncidentRequest",
+    "ModelGenerativeAiIntegrationRuntimeIncidentRequestQueryType",
+    "ModelGenerativeAiIntegrationSecretRequest",
+    "ModelGenerativeAiIntegrationSecretRequestQueryType",
+    "ModelGenerativeAiIntegrationVulnerabilityRequest",
+    "ModelGenerativeAiIntegrationVulnerabilityRequestQueryType",
+    "ModelGenerativeAiIntegrationVulnerabilityRequestRemediationFormat",
     "ModelGetAgentConfigReq",
     "ModelGetAttachedNodesResp",
     "ModelGetAuditLogsRequest",
@@ -564,6 +644,7 @@ __all__ = (
     "ModelInviteUserResponse",
     "ModelKubernetesCluster",
     "ModelLicense",
+    "ModelListAgentVersionResp",
     "ModelLoginRequest",
     "ModelLoginResponse",
     "ModelMalware",
@@ -574,7 +655,6 @@ __all__ = (
     "ModelMalwareScanResultSeverityCounts",
     "ModelMalwareScanTriggerReq",
     "ModelMessageResponse",
-    "ModelMetadata",
     "ModelMitreAttackMatrix",
     "ModelMitreAttackMatrixRequest",
     "ModelMitreAttackMatrixTechniqueSummary",
@@ -657,8 +737,8 @@ __all__ = (
     "ModelTopologyDeltaReq",
     "ModelTopologyDeltaResponse",
     "ModelUpdateScheduledTaskRequest",
-    "ModelUpdateUserIdRequest",
-    "ModelUpdateUserIdRequestRole",
+    "ModelUpdateUserIDRequest",
+    "ModelUpdateUserIDRequestRole",
     "ModelUpdateUserPasswordRequest",
     "ModelUpdateUserRequest",
     "ModelUpdateUserRequestRole",

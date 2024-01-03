@@ -4,24 +4,24 @@ from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
 if TYPE_CHECKING:
-    from ..models.model_agent_id import ModelAgentId
+    from ..models.model_agent_id import ModelAgentID
 
 
-T = TypeVar("T", bound="ModelEnableNetworkTracerReq")
+T = TypeVar("T", bound="ModelDisableTracerReq")
 
 
 @_attrs_define
-class ModelEnableNetworkTracerReq:
+class ModelDisableTracerReq:
     """
     Example:
         {'agent_ids': [{'available_workload': 0, 'node_id': 'node_id'}, {'available_workload': 0, 'node_id':
             'node_id'}]}
 
     Attributes:
-        agent_ids (Optional[List['ModelAgentId']]):
+        agent_ids (Optional[List['ModelAgentID']]):
     """
 
-    agent_ids: Optional[List["ModelAgentId"]]
+    agent_ids: Optional[List["ModelAgentID"]]
     additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
@@ -46,22 +46,22 @@ class ModelEnableNetworkTracerReq:
 
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
-        from ..models.model_agent_id import ModelAgentId
+        from ..models.model_agent_id import ModelAgentID
 
         d = src_dict.copy()
         agent_ids = []
         _agent_ids = d.pop("agent_ids")
         for agent_ids_item_data in _agent_ids or []:
-            agent_ids_item = ModelAgentId.from_dict(agent_ids_item_data)
+            agent_ids_item = ModelAgentID.from_dict(agent_ids_item_data)
 
             agent_ids.append(agent_ids_item)
 
-        model_enable_network_tracer_req = cls(
+        model_disable_tracer_req = cls(
             agent_ids=agent_ids,
         )
 
-        model_enable_network_tracer_req.additional_properties = d
-        return model_enable_network_tracer_req
+        model_disable_tracer_req.additional_properties = d
+        return model_disable_tracer_req
 
     @property
     def additional_keys(self) -> List[str]:

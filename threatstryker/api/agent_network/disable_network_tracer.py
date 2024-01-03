@@ -7,13 +7,13 @@ from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.api_docs_bad_request_response import ApiDocsBadRequestResponse
 from ...models.api_docs_failure_response import ApiDocsFailureResponse
-from ...models.model_disable_network_tracer_req import ModelDisableNetworkTracerReq
+from ...models.model_disable_tracer_req import ModelDisableTracerReq
 from ...types import Response
 
 
 def _get_kwargs(
     *,
-    json_body: ModelDisableNetworkTracerReq,
+    json_body: ModelDisableTracerReq,
 ) -> Dict[str, Any]:
     pass
 
@@ -70,15 +70,15 @@ def _build_response(
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    json_body: ModelDisableNetworkTracerReq,
+    json_body: ModelDisableTracerReq,
 ) -> Response[Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse]]:
     """Disable network tracer
 
      Disable network tracer on given agents
 
     Args:
-        json_body (ModelDisableNetworkTracerReq):  Example: {'agent_ids': [{'available_workload':
-            0, 'node_id': 'node_id'}, {'available_workload': 0, 'node_id': 'node_id'}]}.
+        json_body (ModelDisableTracerReq):  Example: {'agent_ids': [{'available_workload': 0,
+            'node_id': 'node_id'}, {'available_workload': 0, 'node_id': 'node_id'}]}.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -102,15 +102,15 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    json_body: ModelDisableNetworkTracerReq,
+    json_body: ModelDisableTracerReq,
 ) -> Optional[Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse]]:
     """Disable network tracer
 
      Disable network tracer on given agents
 
     Args:
-        json_body (ModelDisableNetworkTracerReq):  Example: {'agent_ids': [{'available_workload':
-            0, 'node_id': 'node_id'}, {'available_workload': 0, 'node_id': 'node_id'}]}.
+        json_body (ModelDisableTracerReq):  Example: {'agent_ids': [{'available_workload': 0,
+            'node_id': 'node_id'}, {'available_workload': 0, 'node_id': 'node_id'}]}.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -129,15 +129,15 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    json_body: ModelDisableNetworkTracerReq,
+    json_body: ModelDisableTracerReq,
 ) -> Response[Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse]]:
     """Disable network tracer
 
      Disable network tracer on given agents
 
     Args:
-        json_body (ModelDisableNetworkTracerReq):  Example: {'agent_ids': [{'available_workload':
-            0, 'node_id': 'node_id'}, {'available_workload': 0, 'node_id': 'node_id'}]}.
+        json_body (ModelDisableTracerReq):  Example: {'agent_ids': [{'available_workload': 0,
+            'node_id': 'node_id'}, {'available_workload': 0, 'node_id': 'node_id'}]}.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -159,15 +159,15 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    json_body: ModelDisableNetworkTracerReq,
+    json_body: ModelDisableTracerReq,
 ) -> Optional[Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse]]:
     """Disable network tracer
 
      Disable network tracer on given agents
 
     Args:
-        json_body (ModelDisableNetworkTracerReq):  Example: {'agent_ids': [{'available_workload':
-            0, 'node_id': 'node_id'}, {'available_workload': 0, 'node_id': 'node_id'}]}.
+        json_body (ModelDisableTracerReq):  Example: {'agent_ids': [{'available_workload': 0,
+            'node_id': 'node_id'}, {'available_workload': 0, 'node_id': 'node_id'}]}.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

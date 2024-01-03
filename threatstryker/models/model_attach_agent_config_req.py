@@ -4,7 +4,7 @@ from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
 if TYPE_CHECKING:
-    from ..models.model_agent_id import ModelAgentId
+    from ..models.model_agent_id import ModelAgentID
 
 
 T = TypeVar("T", bound="ModelAttachAgentConfigReq")
@@ -19,11 +19,11 @@ class ModelAttachAgentConfigReq:
 
     Attributes:
         config_id (str):
-        agent_ids (Optional[List['ModelAgentId']]):
+        agent_ids (Optional[List['ModelAgentID']]):
     """
 
     config_id: str
-    agent_ids: Optional[List["ModelAgentId"]]
+    agent_ids: Optional[List["ModelAgentID"]]
     additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
@@ -50,7 +50,7 @@ class ModelAttachAgentConfigReq:
 
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
-        from ..models.model_agent_id import ModelAgentId
+        from ..models.model_agent_id import ModelAgentID
 
         d = src_dict.copy()
         config_id = d.pop("config_id")
@@ -58,7 +58,7 @@ class ModelAttachAgentConfigReq:
         agent_ids = []
         _agent_ids = d.pop("agent_ids")
         for agent_ids_item_data in _agent_ids or []:
-            agent_ids_item = ModelAgentId.from_dict(agent_ids_item_data)
+            agent_ids_item = ModelAgentID.from_dict(agent_ids_item_data)
 
             agent_ids.append(agent_ids_item)
 
