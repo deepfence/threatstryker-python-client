@@ -1,10 +1,12 @@
-from typing import TYPE_CHECKING, Any, Dict, List, Optional, Type, TypeVar
+from typing import TYPE_CHECKING, Any, Dict, List, Type, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
 if TYPE_CHECKING:
-    from ..models.controls_policy_alert_matcher_fields_matcher import ControlsPolicyAlertMatcherFieldsMatcher
+    from ..models.controls_policy_alert_matcher_fields_matcher_type_0 import (
+        ControlsPolicyAlertMatcherFieldsMatcherType0,
+    )
 
 
 T = TypeVar("T", bound="ControlsPolicyAlertMatcher")
@@ -13,18 +15,23 @@ T = TypeVar("T", bound="ControlsPolicyAlertMatcher")
 @_attrs_define
 class ControlsPolicyAlertMatcher:
     """
-    Example:
-        {'fields_matcher': {'key': ['fields_matcher', 'fields_matcher']}}
-
     Attributes:
-        fields_matcher (Optional[ControlsPolicyAlertMatcherFieldsMatcher]):
+        fields_matcher (Union['ControlsPolicyAlertMatcherFieldsMatcherType0', None]):
     """
 
-    fields_matcher: Optional["ControlsPolicyAlertMatcherFieldsMatcher"]
+    fields_matcher: Union["ControlsPolicyAlertMatcherFieldsMatcherType0", None]
     additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
-        fields_matcher = self.fields_matcher.to_dict() if self.fields_matcher else None
+        from ..models.controls_policy_alert_matcher_fields_matcher_type_0 import (
+            ControlsPolicyAlertMatcherFieldsMatcherType0,
+        )
+
+        fields_matcher: Union[Dict[str, Any], None]
+        if isinstance(self.fields_matcher, ControlsPolicyAlertMatcherFieldsMatcherType0):
+            fields_matcher = self.fields_matcher.to_dict()
+        else:
+            fields_matcher = self.fields_matcher
 
         field_dict: Dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -38,15 +45,26 @@ class ControlsPolicyAlertMatcher:
 
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
-        from ..models.controls_policy_alert_matcher_fields_matcher import ControlsPolicyAlertMatcherFieldsMatcher
+        from ..models.controls_policy_alert_matcher_fields_matcher_type_0 import (
+            ControlsPolicyAlertMatcherFieldsMatcherType0,
+        )
 
         d = src_dict.copy()
-        _fields_matcher = d.pop("fields_matcher")
-        fields_matcher: Optional[ControlsPolicyAlertMatcherFieldsMatcher]
-        if _fields_matcher is None:
-            fields_matcher = None
-        else:
-            fields_matcher = ControlsPolicyAlertMatcherFieldsMatcher.from_dict(_fields_matcher)
+
+        def _parse_fields_matcher(data: object) -> Union["ControlsPolicyAlertMatcherFieldsMatcherType0", None]:
+            if data is None:
+                return data
+            try:
+                if not isinstance(data, dict):
+                    raise TypeError()
+                fields_matcher_type_0 = ControlsPolicyAlertMatcherFieldsMatcherType0.from_dict(data)
+
+                return fields_matcher_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union["ControlsPolicyAlertMatcherFieldsMatcherType0", None], data)
+
+        fields_matcher = _parse_fields_matcher(d.pop("fields_matcher"))
 
         controls_policy_alert_matcher = cls(
             fields_matcher=fields_matcher,

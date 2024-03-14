@@ -1,4 +1,4 @@
-from typing import Any, Dict, List, Optional, Type, TypeVar, cast
+from typing import Any, Dict, List, Type, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -9,19 +9,18 @@ T = TypeVar("T", bound="ModelGetAgentConfigReq")
 @_attrs_define
 class ModelGetAgentConfigReq:
     """
-    Example:
-        {'config_ids': ['config_ids', 'config_ids']}
-
     Attributes:
-        config_ids (Optional[List[str]]):
+        config_ids (Union[List[str], None]):
     """
 
-    config_ids: Optional[List[str]]
+    config_ids: Union[List[str], None]
     additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
-        if self.config_ids is None:
-            config_ids = None
+        config_ids: Union[List[str], None]
+        if isinstance(self.config_ids, list):
+            config_ids = self.config_ids
+
         else:
             config_ids = self.config_ids
 
@@ -38,7 +37,21 @@ class ModelGetAgentConfigReq:
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
         d = src_dict.copy()
-        config_ids = cast(List[str], d.pop("config_ids"))
+
+        def _parse_config_ids(data: object) -> Union[List[str], None]:
+            if data is None:
+                return data
+            try:
+                if not isinstance(data, list):
+                    raise TypeError()
+                config_ids_type_0 = cast(List[str], data)
+
+                return config_ids_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[List[str], None], data)
+
+        config_ids = _parse_config_ids(d.pop("config_ids"))
 
         model_get_agent_config_req = cls(
             config_ids=config_ids,

@@ -1,4 +1,4 @@
-from typing import TYPE_CHECKING, Any, Dict, List, Optional, Type, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, Dict, List, Type, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -16,34 +16,25 @@ T = TypeVar("T", bound="ControlsNetworkTracerConfig")
 @_attrs_define
 class ControlsNetworkTracerConfig:
     """
-    Example:
-        {'mode': 'all', 'process_names': ['process_names', 'process_names'], 'tcp_rules': {'inbound': ['inbound',
-            'inbound'], 'outbound': ['outbound', 'outbound']}, 'http_rules': {'inbound': ['inbound', 'inbound'], 'outbound':
-            ['outbound', 'outbound']}, 'updated_at': 0, 'ignored_rule_ids': ['ignored_rule_ids', 'ignored_rule_ids'],
-            'https_rules': {'inbound': ['inbound', 'inbound'], 'outbound': ['outbound', 'outbound']}, 'node_id': 'node_id'}
-
     Attributes:
-        http_rules (ControlsNetworkRules):  Example: {'inbound': ['inbound', 'inbound'], 'outbound': ['outbound',
-            'outbound']}.
-        https_rules (ControlsNetworkRules):  Example: {'inbound': ['inbound', 'inbound'], 'outbound': ['outbound',
-            'outbound']}.
+        http_rules (ControlsNetworkRules):
+        https_rules (ControlsNetworkRules):
         mode (ControlsNetworkTracerConfigMode):
         node_id (str):
-        tcp_rules (ControlsNetworkRules):  Example: {'inbound': ['inbound', 'inbound'], 'outbound': ['outbound',
-            'outbound']}.
+        process_names (Union[List[str], None]):
+        tcp_rules (ControlsNetworkRules):
         updated_at (int):
-        ignored_rule_ids (Union[Unset, None, List[str]]):
-        process_names (Optional[List[str]]):
+        ignored_rule_ids (Union[List[str], None, Unset]):
     """
 
     http_rules: "ControlsNetworkRules"
     https_rules: "ControlsNetworkRules"
     mode: ControlsNetworkTracerConfigMode
     node_id: str
+    process_names: Union[List[str], None]
     tcp_rules: "ControlsNetworkRules"
     updated_at: int
-    process_names: Optional[List[str]]
-    ignored_rule_ids: Union[Unset, None, List[str]] = UNSET
+    ignored_rule_ids: Union[List[str], None, Unset] = UNSET
     additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
@@ -54,20 +45,26 @@ class ControlsNetworkTracerConfig:
         mode = self.mode.value
 
         node_id = self.node_id
+
+        process_names: Union[List[str], None]
+        if isinstance(self.process_names, list):
+            process_names = self.process_names
+
+        else:
+            process_names = self.process_names
+
         tcp_rules = self.tcp_rules.to_dict()
 
         updated_at = self.updated_at
-        ignored_rule_ids: Union[Unset, None, List[str]] = UNSET
-        if not isinstance(self.ignored_rule_ids, Unset):
-            if self.ignored_rule_ids is None:
-                ignored_rule_ids = None
-            else:
-                ignored_rule_ids = self.ignored_rule_ids
 
-        if self.process_names is None:
-            process_names = None
+        ignored_rule_ids: Union[List[str], None, Unset]
+        if isinstance(self.ignored_rule_ids, Unset):
+            ignored_rule_ids = UNSET
+        elif isinstance(self.ignored_rule_ids, list):
+            ignored_rule_ids = self.ignored_rule_ids
+
         else:
-            process_names = self.process_names
+            ignored_rule_ids = self.ignored_rule_ids
 
         field_dict: Dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -77,9 +74,9 @@ class ControlsNetworkTracerConfig:
                 "https_rules": https_rules,
                 "mode": mode,
                 "node_id": node_id,
+                "process_names": process_names,
                 "tcp_rules": tcp_rules,
                 "updated_at": updated_at,
-                "process_names": process_names,
             }
         )
         if ignored_rule_ids is not UNSET:
@@ -100,23 +97,51 @@ class ControlsNetworkTracerConfig:
 
         node_id = d.pop("node_id")
 
+        def _parse_process_names(data: object) -> Union[List[str], None]:
+            if data is None:
+                return data
+            try:
+                if not isinstance(data, list):
+                    raise TypeError()
+                process_names_type_0 = cast(List[str], data)
+
+                return process_names_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[List[str], None], data)
+
+        process_names = _parse_process_names(d.pop("process_names"))
+
         tcp_rules = ControlsNetworkRules.from_dict(d.pop("tcp_rules"))
 
         updated_at = d.pop("updated_at")
 
-        ignored_rule_ids = cast(List[str], d.pop("ignored_rule_ids", UNSET))
+        def _parse_ignored_rule_ids(data: object) -> Union[List[str], None, Unset]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, list):
+                    raise TypeError()
+                ignored_rule_ids_type_0 = cast(List[str], data)
 
-        process_names = cast(List[str], d.pop("process_names"))
+                return ignored_rule_ids_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[List[str], None, Unset], data)
+
+        ignored_rule_ids = _parse_ignored_rule_ids(d.pop("ignored_rule_ids", UNSET))
 
         controls_network_tracer_config = cls(
             http_rules=http_rules,
             https_rules=https_rules,
             mode=mode,
             node_id=node_id,
+            process_names=process_names,
             tcp_rules=tcp_rules,
             updated_at=updated_at,
             ignored_rule_ids=ignored_rule_ids,
-            process_names=process_names,
         )
 
         controls_network_tracer_config.additional_properties = d

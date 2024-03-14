@@ -9,10 +9,6 @@ T = TypeVar("T", bound="ModelLoginResponse")
 @_attrs_define
 class ModelLoginResponse:
     """
-    Example:
-        {'access_token': 'access_token', 'refresh_token': 'refresh_token', 'license_registered': True,
-            'onboarding_required': True, 'password_invalidated': True}
-
     Attributes:
         access_token (str):
         license_registered (bool):
@@ -30,9 +26,13 @@ class ModelLoginResponse:
 
     def to_dict(self) -> Dict[str, Any]:
         access_token = self.access_token
+
         license_registered = self.license_registered
+
         onboarding_required = self.onboarding_required
+
         password_invalidated = self.password_invalidated
+
         refresh_token = self.refresh_token
 
         field_dict: Dict[str, Any] = {}

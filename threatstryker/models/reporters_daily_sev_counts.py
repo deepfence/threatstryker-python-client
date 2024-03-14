@@ -1,10 +1,12 @@
-from typing import TYPE_CHECKING, Any, Dict, List, Optional, Type, TypeVar
+from typing import TYPE_CHECKING, Any, Dict, List, Type, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
 if TYPE_CHECKING:
-    from ..models.reporters_daily_sev_counts_days_to_sev_counts import ReportersDailySevCountsDaysToSevCounts
+    from ..models.reporters_daily_sev_counts_days_to_sev_counts_type_0 import (
+        ReportersDailySevCountsDaysToSevCountsType0,
+    )
 
 
 T = TypeVar("T", bound="ReportersDailySevCounts")
@@ -13,18 +15,23 @@ T = TypeVar("T", bound="ReportersDailySevCounts")
 @_attrs_define
 class ReportersDailySevCounts:
     """
-    Example:
-        {'days_to_sev_counts': {'key': {'counts': {'key': 0}}}}
-
     Attributes:
-        days_to_sev_counts (Optional[ReportersDailySevCountsDaysToSevCounts]):
+        days_to_sev_counts (Union['ReportersDailySevCountsDaysToSevCountsType0', None]):
     """
 
-    days_to_sev_counts: Optional["ReportersDailySevCountsDaysToSevCounts"]
+    days_to_sev_counts: Union["ReportersDailySevCountsDaysToSevCountsType0", None]
     additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
-        days_to_sev_counts = self.days_to_sev_counts.to_dict() if self.days_to_sev_counts else None
+        from ..models.reporters_daily_sev_counts_days_to_sev_counts_type_0 import (
+            ReportersDailySevCountsDaysToSevCountsType0,
+        )
+
+        days_to_sev_counts: Union[Dict[str, Any], None]
+        if isinstance(self.days_to_sev_counts, ReportersDailySevCountsDaysToSevCountsType0):
+            days_to_sev_counts = self.days_to_sev_counts.to_dict()
+        else:
+            days_to_sev_counts = self.days_to_sev_counts
 
         field_dict: Dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -38,15 +45,26 @@ class ReportersDailySevCounts:
 
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
-        from ..models.reporters_daily_sev_counts_days_to_sev_counts import ReportersDailySevCountsDaysToSevCounts
+        from ..models.reporters_daily_sev_counts_days_to_sev_counts_type_0 import (
+            ReportersDailySevCountsDaysToSevCountsType0,
+        )
 
         d = src_dict.copy()
-        _days_to_sev_counts = d.pop("days_to_sev_counts")
-        days_to_sev_counts: Optional[ReportersDailySevCountsDaysToSevCounts]
-        if _days_to_sev_counts is None:
-            days_to_sev_counts = None
-        else:
-            days_to_sev_counts = ReportersDailySevCountsDaysToSevCounts.from_dict(_days_to_sev_counts)
+
+        def _parse_days_to_sev_counts(data: object) -> Union["ReportersDailySevCountsDaysToSevCountsType0", None]:
+            if data is None:
+                return data
+            try:
+                if not isinstance(data, dict):
+                    raise TypeError()
+                days_to_sev_counts_type_0 = ReportersDailySevCountsDaysToSevCountsType0.from_dict(data)
+
+                return days_to_sev_counts_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union["ReportersDailySevCountsDaysToSevCountsType0", None], data)
+
+        days_to_sev_counts = _parse_days_to_sev_counts(d.pop("days_to_sev_counts"))
 
         reporters_daily_sev_counts = cls(
             days_to_sev_counts=days_to_sev_counts,

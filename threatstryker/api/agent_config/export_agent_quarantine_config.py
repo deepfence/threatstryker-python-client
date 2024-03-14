@@ -14,14 +14,12 @@ from ...types import Response
 def _get_kwargs(
     config_id: str,
 ) -> Dict[str, Any]:
-    pass
-
-    return {
+    _kwargs: Dict[str, Any] = {
         "method": "get",
-        "url": "/deepfence/configs/agent/quarantine/export/{config_id}".format(
-            config_id=config_id,
-        ),
+        "url": f"/deepfence/configs/agent/quarantine/export/{config_id}",
     }
+
+    return _kwargs
 
 
 def _parse_response(

@@ -9,9 +9,6 @@ T = TypeVar("T", bound="ModelPluginStatus")
 @_attrs_define
 class ModelPluginStatus:
     """
-    Example:
-        {'description': 'description', 'status': 'status'}
-
     Attributes:
         description (str):
         status (str):
@@ -23,6 +20,7 @@ class ModelPluginStatus:
 
     def to_dict(self) -> Dict[str, Any]:
         description = self.description
+
         status = self.status
 
         field_dict: Dict[str, Any] = {}

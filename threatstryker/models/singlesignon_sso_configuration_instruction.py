@@ -9,9 +9,6 @@ T = TypeVar("T", bound="SinglesignonSSOConfigurationInstruction")
 @_attrs_define
 class SinglesignonSSOConfigurationInstruction:
     """
-    Example:
-        {'value': 'value', 'key': 'key'}
-
     Attributes:
         key (str):
         value (str):
@@ -23,6 +20,7 @@ class SinglesignonSSOConfigurationInstruction:
 
     def to_dict(self) -> Dict[str, Any]:
         key = self.key
+
         value = self.value
 
         field_dict: Dict[str, Any] = {}

@@ -16,16 +16,11 @@ T = TypeVar("T", bound="ControlsRuncPolicy")
 @_attrs_define
 class ControlsRuncPolicy:
     """
-    Example:
-        {'node_type': 'container', 'policy_id': 'policy_id', 'updated_at': 1, 'count_limit': 0, 'action': 'restart',
-            'duration_count_limit_sec': 6, 'matcher': {'fields_matcher': {'key': ['fields_matcher', 'fields_matcher']}}}
-
     Attributes:
         action (ControlsRuncPolicyAction):
         count_limit (int):
         duration_count_limit_sec (int):
-        matcher (ControlsPolicyAlertMatcher):  Example: {'fields_matcher': {'key': ['fields_matcher',
-            'fields_matcher']}}.
+        matcher (ControlsPolicyAlertMatcher):
         node_type (ControlsRuncPolicyNodeType):
         policy_id (str):
         updated_at (int):
@@ -44,12 +39,15 @@ class ControlsRuncPolicy:
         action = self.action.value
 
         count_limit = self.count_limit
+
         duration_count_limit_sec = self.duration_count_limit_sec
+
         matcher = self.matcher.to_dict()
 
         node_type = self.node_type.value
 
         policy_id = self.policy_id
+
         updated_at = self.updated_at
 
         field_dict: Dict[str, Any] = {}

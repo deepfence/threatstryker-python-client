@@ -15,13 +15,6 @@ T = TypeVar("T", bound="ModelLicense")
 @_attrs_define
 class ModelLicense:
     """
-    Example:
-        {'end_date': 'end_date', 'notification_threshold_percentage': 1, 'current_hosts': 0, 'is_active': True,
-            'license_type': 'license_type', 'notification_threshold_updated_at': 5, 'registry_credentials': {'registry_url':
-            'registry_url', 'password': 'password', 'username': 'username'}, 'description': 'description', 'no_of_hosts': 6,
-            'message': 'message', 'deepfence_support_email': 'deepfence_support_email', 'key': 'key', 'start_date':
-            'start_date'}
-
     Attributes:
         current_hosts (Union[Unset, int]):
         deepfence_support_email (Union[Unset, str]):
@@ -34,8 +27,7 @@ class ModelLicense:
         no_of_hosts (Union[Unset, int]):
         notification_threshold_percentage (Union[Unset, int]):
         notification_threshold_updated_at (Union[Unset, int]):
-        registry_credentials (Union[Unset, ModelRegistryCredentials]):  Example: {'registry_url': 'registry_url',
-            'password': 'password', 'username': 'username'}.
+        registry_credentials (Union[Unset, ModelRegistryCredentials]):
         start_date (Union[Unset, str]):
     """
 
@@ -56,16 +48,27 @@ class ModelLicense:
 
     def to_dict(self) -> Dict[str, Any]:
         current_hosts = self.current_hosts
+
         deepfence_support_email = self.deepfence_support_email
+
         description = self.description
+
         end_date = self.end_date
+
         is_active = self.is_active
+
         key = self.key
+
         license_type = self.license_type
+
         message = self.message
+
         no_of_hosts = self.no_of_hosts
+
         notification_threshold_percentage = self.notification_threshold_percentage
+
         notification_threshold_updated_at = self.notification_threshold_updated_at
+
         registry_credentials: Union[Unset, Dict[str, Any]] = UNSET
         if not isinstance(self.registry_credentials, Unset):
             registry_credentials = self.registry_credentials.to_dict()

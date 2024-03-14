@@ -1,10 +1,10 @@
-from typing import TYPE_CHECKING, Any, Dict, List, Optional, Type, TypeVar
+from typing import TYPE_CHECKING, Any, Dict, List, Type, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
 if TYPE_CHECKING:
-    from ..models.reporters_sev_counts_counts import ReportersSevCountsCounts
+    from ..models.reporters_sev_counts_counts_type_0 import ReportersSevCountsCountsType0
 
 
 T = TypeVar("T", bound="ReportersSevCounts")
@@ -13,18 +13,21 @@ T = TypeVar("T", bound="ReportersSevCounts")
 @_attrs_define
 class ReportersSevCounts:
     """
-    Example:
-        {'counts': {'key': 0}}
-
     Attributes:
-        counts (Optional[ReportersSevCountsCounts]):
+        counts (Union['ReportersSevCountsCountsType0', None]):
     """
 
-    counts: Optional["ReportersSevCountsCounts"]
+    counts: Union["ReportersSevCountsCountsType0", None]
     additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
-        counts = self.counts.to_dict() if self.counts else None
+        from ..models.reporters_sev_counts_counts_type_0 import ReportersSevCountsCountsType0
+
+        counts: Union[Dict[str, Any], None]
+        if isinstance(self.counts, ReportersSevCountsCountsType0):
+            counts = self.counts.to_dict()
+        else:
+            counts = self.counts
 
         field_dict: Dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -38,15 +41,24 @@ class ReportersSevCounts:
 
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
-        from ..models.reporters_sev_counts_counts import ReportersSevCountsCounts
+        from ..models.reporters_sev_counts_counts_type_0 import ReportersSevCountsCountsType0
 
         d = src_dict.copy()
-        _counts = d.pop("counts")
-        counts: Optional[ReportersSevCountsCounts]
-        if _counts is None:
-            counts = None
-        else:
-            counts = ReportersSevCountsCounts.from_dict(_counts)
+
+        def _parse_counts(data: object) -> Union["ReportersSevCountsCountsType0", None]:
+            if data is None:
+                return data
+            try:
+                if not isinstance(data, dict):
+                    raise TypeError()
+                counts_type_0 = ReportersSevCountsCountsType0.from_dict(data)
+
+                return counts_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union["ReportersSevCountsCountsType0", None], data)
+
+        counts = _parse_counts(d.pop("counts"))
 
         reporters_sev_counts = cls(
             counts=counts,

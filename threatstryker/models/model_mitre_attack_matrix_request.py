@@ -11,23 +11,22 @@ T = TypeVar("T", bound="ModelMitreAttackMatrixRequest")
 @_attrs_define
 class ModelMitreAttackMatrixRequest:
     """
-    Example:
-        {'node_ids': ['node_ids', 'node_ids']}
-
     Attributes:
-        node_ids (Union[Unset, None, List[str]]):
+        node_ids (Union[List[str], None, Unset]):
     """
 
-    node_ids: Union[Unset, None, List[str]] = UNSET
+    node_ids: Union[List[str], None, Unset] = UNSET
     additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
-        node_ids: Union[Unset, None, List[str]] = UNSET
-        if not isinstance(self.node_ids, Unset):
-            if self.node_ids is None:
-                node_ids = None
-            else:
-                node_ids = self.node_ids
+        node_ids: Union[List[str], None, Unset]
+        if isinstance(self.node_ids, Unset):
+            node_ids = UNSET
+        elif isinstance(self.node_ids, list):
+            node_ids = self.node_ids
+
+        else:
+            node_ids = self.node_ids
 
         field_dict: Dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -40,7 +39,23 @@ class ModelMitreAttackMatrixRequest:
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
         d = src_dict.copy()
-        node_ids = cast(List[str], d.pop("node_ids", UNSET))
+
+        def _parse_node_ids(data: object) -> Union[List[str], None, Unset]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, list):
+                    raise TypeError()
+                node_ids_type_0 = cast(List[str], data)
+
+                return node_ids_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[List[str], None, Unset], data)
+
+        node_ids = _parse_node_ids(d.pop("node_ids", UNSET))
 
         model_mitre_attack_matrix_request = cls(
             node_ids=node_ids,

@@ -14,10 +14,6 @@ T = TypeVar("T", bound="ModelGenerativeAiIntegrationRuntimeIncidentRequest")
 @_attrs_define
 class ModelGenerativeAiIntegrationRuntimeIncidentRequest:
     """
-    Example:
-        {'summary': 'summary', 'event_type': 'event_type', 'integration_id': 0, 'query_type': 'remediation', 'category':
-            'category'}
-
     Attributes:
         category (str):
         event_type (str):
@@ -35,10 +31,13 @@ class ModelGenerativeAiIntegrationRuntimeIncidentRequest:
 
     def to_dict(self) -> Dict[str, Any]:
         category = self.category
+
         event_type = self.event_type
+
         query_type = self.query_type.value
 
         summary = self.summary
+
         integration_id = self.integration_id
 
         field_dict: Dict[str, Any] = {}

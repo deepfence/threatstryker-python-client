@@ -9,9 +9,6 @@ T = TypeVar("T", bound="SinglesignonVerifySSOAuthRequest")
 @_attrs_define
 class SinglesignonVerifySSOAuthRequest:
     """
-    Example:
-        {'code': 'code', 'user_id': 0, 'namespace': 'namespace'}
-
     Attributes:
         code (str):
         namespace (str):
@@ -25,7 +22,9 @@ class SinglesignonVerifySSOAuthRequest:
 
     def to_dict(self) -> Dict[str, Any]:
         code = self.code
+
         namespace = self.namespace
+
         user_id = self.user_id
 
         field_dict: Dict[str, Any] = {}

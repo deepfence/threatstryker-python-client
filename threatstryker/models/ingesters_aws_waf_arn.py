@@ -11,9 +11,6 @@ T = TypeVar("T", bound="IngestersAWSWafARN")
 @_attrs_define
 class IngestersAWSWafARN:
     """
-    Example:
-        {'arn': 'arn', 'region': 'CLOUDFRONT'}
-
     Attributes:
         arn (str):
         region (IngestersAWSWafARNRegion):
@@ -25,6 +22,7 @@ class IngestersAWSWafARN:
 
     def to_dict(self) -> Dict[str, Any]:
         arn = self.arn
+
         region = self.region.value
 
         field_dict: Dict[str, Any] = {}

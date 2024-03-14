@@ -1,4 +1,4 @@
-from typing import Any, Dict, List, Optional, Type, TypeVar, cast
+from typing import Any, Dict, List, Type, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -9,16 +9,6 @@ T = TypeVar("T", bound="ModelProcessAlert")
 @_attrs_define
 class ModelProcessAlert:
     """
-    Example:
-        {'container_ip': 'container_ip', 'vsize': 0, 'kubernetes_cluster_name': 'kubernetes_cluster_name', 'masked':
-            True, 'session': 3, 'created_at': 1, 'pid': 5, 'exec_path': 'exec_path', 'event_type': 'event_type',
-            'node_type': 'node_type', 'rss': 9, 'updated_at': 2, 'state': 'state', 'group': 'group', 'severity': 'severity',
-            'summary': 'summary', 'cpu_time': 6.027456183070403, 'kubernetes_cluster_id': 'kubernetes_cluster_id', 'count':
-            0, 'priority': 2, 'command': 'command', 'container_image': 'container_image', 'netstat': 'netstat', 'pod_name':
-            'pod_name', 'rule_id': 'rule_id', 'container_name': 'container_name', 'failure': 'failure', 'techniques':
-            ['techniques', 'techniques'], 'num_threads': 5, 'tactics': ['tactics', 'tactics'], 'proc_status': 'proc_status',
-            'category': 'category', 'user': 'user', 'container_id': 'container_id', 'return': 7, 'node_id': 'node_id'}
-
     Attributes:
         category (str):
         command (str):
@@ -31,7 +21,6 @@ class ModelProcessAlert:
         created_at (int):
         event_type (str):
         exec_path (str):
-        failure (str):
         group (str):
         kubernetes_cluster_id (str):
         kubernetes_cluster_name (str):
@@ -51,11 +40,14 @@ class ModelProcessAlert:
         severity (str):
         state (str):
         summary (str):
+        tactics (Union[List[str], None]):
+        techniques (Union[List[str], None]):
+        top (str):
         updated_at (int):
         user (str):
+        user_name (str):
+        users (str):
         vsize (int):
-        tactics (Optional[List[str]]):
-        techniques (Optional[List[str]]):
     """
 
     category: str
@@ -69,7 +61,6 @@ class ModelProcessAlert:
     created_at: int
     event_type: str
     exec_path: str
-    failure: str
     group: str
     kubernetes_cluster_id: str
     kubernetes_cluster_name: str
@@ -89,57 +80,102 @@ class ModelProcessAlert:
     severity: str
     state: str
     summary: str
+    tactics: Union[List[str], None]
+    techniques: Union[List[str], None]
+    top: str
     updated_at: int
     user: str
+    user_name: str
+    users: str
     vsize: int
-    tactics: Optional[List[str]]
-    techniques: Optional[List[str]]
     additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
         category = self.category
+
         command = self.command
+
         container_id = self.container_id
+
         container_image = self.container_image
+
         container_ip = self.container_ip
+
         container_name = self.container_name
+
         count = self.count
+
         cpu_time = self.cpu_time
+
         created_at = self.created_at
+
         event_type = self.event_type
+
         exec_path = self.exec_path
-        failure = self.failure
+
         group = self.group
+
         kubernetes_cluster_id = self.kubernetes_cluster_id
+
         kubernetes_cluster_name = self.kubernetes_cluster_name
+
         masked = self.masked
+
         netstat = self.netstat
+
         node_id = self.node_id
+
         node_type = self.node_type
+
         num_threads = self.num_threads
+
         pid = self.pid
+
         pod_name = self.pod_name
+
         priority = self.priority
+
         proc_status = self.proc_status
+
         return_ = self.return_
+
         rss = self.rss
+
         rule_id = self.rule_id
+
         session = self.session
+
         severity = self.severity
+
         state = self.state
+
         summary = self.summary
-        updated_at = self.updated_at
-        user = self.user
-        vsize = self.vsize
-        if self.tactics is None:
-            tactics = None
+
+        tactics: Union[List[str], None]
+        if isinstance(self.tactics, list):
+            tactics = self.tactics
+
         else:
             tactics = self.tactics
 
-        if self.techniques is None:
-            techniques = None
+        techniques: Union[List[str], None]
+        if isinstance(self.techniques, list):
+            techniques = self.techniques
+
         else:
             techniques = self.techniques
+
+        top = self.top
+
+        updated_at = self.updated_at
+
+        user = self.user
+
+        user_name = self.user_name
+
+        users = self.users
+
+        vsize = self.vsize
 
         field_dict: Dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -156,7 +192,6 @@ class ModelProcessAlert:
                 "created_at": created_at,
                 "event_type": event_type,
                 "exec_path": exec_path,
-                "failure": failure,
                 "group": group,
                 "kubernetes_cluster_id": kubernetes_cluster_id,
                 "kubernetes_cluster_name": kubernetes_cluster_name,
@@ -176,11 +211,14 @@ class ModelProcessAlert:
                 "severity": severity,
                 "state": state,
                 "summary": summary,
-                "updated_at": updated_at,
-                "user": user,
-                "vsize": vsize,
                 "tactics": tactics,
                 "techniques": techniques,
+                "top": top,
+                "updated_at": updated_at,
+                "user": user,
+                "user_name": user_name,
+                "users": users,
+                "vsize": vsize,
             }
         )
 
@@ -210,8 +248,6 @@ class ModelProcessAlert:
         event_type = d.pop("event_type")
 
         exec_path = d.pop("exec_path")
-
-        failure = d.pop("failure")
 
         group = d.pop("group")
 
@@ -251,15 +287,47 @@ class ModelProcessAlert:
 
         summary = d.pop("summary")
 
+        def _parse_tactics(data: object) -> Union[List[str], None]:
+            if data is None:
+                return data
+            try:
+                if not isinstance(data, list):
+                    raise TypeError()
+                tactics_type_0 = cast(List[str], data)
+
+                return tactics_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[List[str], None], data)
+
+        tactics = _parse_tactics(d.pop("tactics"))
+
+        def _parse_techniques(data: object) -> Union[List[str], None]:
+            if data is None:
+                return data
+            try:
+                if not isinstance(data, list):
+                    raise TypeError()
+                techniques_type_0 = cast(List[str], data)
+
+                return techniques_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[List[str], None], data)
+
+        techniques = _parse_techniques(d.pop("techniques"))
+
+        top = d.pop("top")
+
         updated_at = d.pop("updated_at")
 
         user = d.pop("user")
 
+        user_name = d.pop("user_name")
+
+        users = d.pop("users")
+
         vsize = d.pop("vsize")
-
-        tactics = cast(List[str], d.pop("tactics"))
-
-        techniques = cast(List[str], d.pop("techniques"))
 
         model_process_alert = cls(
             category=category,
@@ -273,7 +341,6 @@ class ModelProcessAlert:
             created_at=created_at,
             event_type=event_type,
             exec_path=exec_path,
-            failure=failure,
             group=group,
             kubernetes_cluster_id=kubernetes_cluster_id,
             kubernetes_cluster_name=kubernetes_cluster_name,
@@ -293,11 +360,14 @@ class ModelProcessAlert:
             severity=severity,
             state=state,
             summary=summary,
-            updated_at=updated_at,
-            user=user,
-            vsize=vsize,
             tactics=tactics,
             techniques=techniques,
+            top=top,
+            updated_at=updated_at,
+            user=user,
+            user_name=user_name,
+            users=users,
+            vsize=vsize,
         )
 
         model_process_alert.additional_properties = d

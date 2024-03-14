@@ -12,9 +12,6 @@ T = TypeVar("T", bound="IngestersWAFRule")
 @_attrs_define
 class IngestersWAFRule:
     """
-    Example:
-        {'remote_ip': 'remote_ip', 'executed_at': 0, 'remote_port': 6, 'action': 'block', 'host_name': 'host_name'}
-
     Attributes:
         action (IngestersWAFRuleAction):
         remote_ip (str):
@@ -34,8 +31,11 @@ class IngestersWAFRule:
         action = self.action.value
 
         remote_ip = self.remote_ip
+
         executed_at = self.executed_at
+
         host_name = self.host_name
+
         remote_port = self.remote_port
 
         field_dict: Dict[str, Any] = {}

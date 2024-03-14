@@ -12,10 +12,6 @@ T = TypeVar("T", bound="SinglesignonSSOProviderConfig")
 @_attrs_define
 class SinglesignonSSOProviderConfig:
     """
-    Example:
-        {'issuer_url': 'issuer_url', 'sso_provider_type': 'oidc', 'disable_password_login': True, 'client_secret':
-            'client_secret', 'client_id': 'client_id', 'host_name': 'host_name'}
-
     Attributes:
         client_id (str):
         client_secret (str):
@@ -35,11 +31,15 @@ class SinglesignonSSOProviderConfig:
 
     def to_dict(self) -> Dict[str, Any]:
         client_id = self.client_id
+
         client_secret = self.client_secret
+
         disable_password_login = self.disable_password_login
+
         sso_provider_type = self.sso_provider_type.value
 
         host_name = self.host_name
+
         issuer_url = self.issuer_url
 
         field_dict: Dict[str, Any] = {}

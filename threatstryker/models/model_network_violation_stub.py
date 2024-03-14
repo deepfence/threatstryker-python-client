@@ -9,9 +9,6 @@ T = TypeVar("T", bound="ModelNetworkViolationStub")
 @_attrs_define
 class ModelNetworkViolationStub:
     """
-    Example:
-        {'node_id': 'node_id'}
-
     Attributes:
         node_id (str):
     """

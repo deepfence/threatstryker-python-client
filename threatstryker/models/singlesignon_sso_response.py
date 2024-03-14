@@ -11,12 +11,6 @@ T = TypeVar("T", bound="SinglesignonSSOResponse")
 @_attrs_define
 class SinglesignonSSOResponse:
     """
-    Example:
-        {'issuer_url': 'issuer_url', 'updated_at': datetime.datetime(2000, 1, 23, 4, 56, 7,
-            tzinfo=datetime.timezone.utc), 'sso_provider_type': 'sso_provider_type', 'created_at': datetime.datetime(2000,
-            1, 23, 4, 56, 7, tzinfo=datetime.timezone.utc), 'disable_password_login': True, 'id': 0, 'label': 'label',
-            'client_id': 'client_id'}
-
     Attributes:
         client_id (str):
         created_at (datetime.datetime):
@@ -40,13 +34,19 @@ class SinglesignonSSOResponse:
 
     def to_dict(self) -> Dict[str, Any]:
         client_id = self.client_id
+
         created_at = self.created_at.isoformat()
 
         disable_password_login = self.disable_password_login
+
         id = self.id
+
         issuer_url = self.issuer_url
+
         label = self.label
+
         sso_provider_type = self.sso_provider_type
+
         updated_at = self.updated_at.isoformat()
 
         field_dict: Dict[str, Any] = {}

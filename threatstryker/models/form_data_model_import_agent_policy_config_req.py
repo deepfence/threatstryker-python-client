@@ -1,5 +1,5 @@
 from io import BytesIO
-from typing import Any, Dict, List, Optional, Type, TypeVar
+from typing import Any, Dict, List, Type, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -14,16 +14,17 @@ class FormDataModelImportAgentPolicyConfigReq:
     """
     Attributes:
         config_id (str):
-        network_policy_json (Optional[File]):
+        network_policy_json (File):
     """
 
     config_id: str
-    network_policy_json: Optional[File]
+    network_policy_json: File
     additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
         config_id = self.config_id
-        network_policy_json = self.network_policy_json.to_tuple() if self.network_policy_json else None
+
+        network_policy_json = self.network_policy_json.to_tuple()
 
         field_dict: Dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -40,7 +41,8 @@ class FormDataModelImportAgentPolicyConfigReq:
         config_id = (
             self.config_id if isinstance(self.config_id, Unset) else (None, str(self.config_id).encode(), "text/plain")
         )
-        network_policy_json = self.network_policy_json.to_tuple() if self.network_policy_json else None
+
+        network_policy_json = self.network_policy_json.to_tuple()
 
         field_dict: Dict[str, Any] = {}
         field_dict.update(
@@ -60,12 +62,7 @@ class FormDataModelImportAgentPolicyConfigReq:
         d = src_dict.copy()
         config_id = d.pop("config_id")
 
-        _network_policy_json = d.pop("network_policy_json")
-        network_policy_json: Optional[File]
-        if _network_policy_json is None:
-            network_policy_json = None
-        else:
-            network_policy_json = File(payload=BytesIO(_network_policy_json))
+        network_policy_json = File(payload=BytesIO(d.pop("network_policy_json")))
 
         form_data_model_import_agent_policy_config_req = cls(
             config_id=config_id,

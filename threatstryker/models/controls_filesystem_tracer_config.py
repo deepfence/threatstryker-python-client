@@ -1,4 +1,4 @@
-from typing import TYPE_CHECKING, Any, Dict, List, Optional, Type, TypeVar
+from typing import TYPE_CHECKING, Any, Dict, List, Type, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -13,33 +13,31 @@ T = TypeVar("T", bound="ControlsFilesystemTracerConfig")
 @_attrs_define
 class ControlsFilesystemTracerConfig:
     """
-    Example:
-        {'updated_at': 0, 'watchedentries': [{'severity': 'severity', 'accesstypes': ['accesstypes', 'accesstypes'],
-            'root': 'root', 'recursive': True}, {'severity': 'severity', 'accesstypes': ['accesstypes', 'accesstypes'],
-            'root': 'root', 'recursive': True}], 'node_id': 'node_id'}
-
     Attributes:
         node_id (str):
         updated_at (int):
-        watchedentries (Optional[List['ControlsMonitoredFilesConfig']]):
+        watchedentries (Union[List['ControlsMonitoredFilesConfig'], None]):
     """
 
     node_id: str
     updated_at: int
-    watchedentries: Optional[List["ControlsMonitoredFilesConfig"]]
+    watchedentries: Union[List["ControlsMonitoredFilesConfig"], None]
     additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
         node_id = self.node_id
-        updated_at = self.updated_at
-        if self.watchedentries is None:
-            watchedentries = None
-        else:
-            watchedentries = []
-            for watchedentries_item_data in self.watchedentries:
-                watchedentries_item = watchedentries_item_data.to_dict()
 
-                watchedentries.append(watchedentries_item)
+        updated_at = self.updated_at
+
+        watchedentries: Union[List[Dict[str, Any]], None]
+        if isinstance(self.watchedentries, list):
+            watchedentries = []
+            for watchedentries_type_0_item_data in self.watchedentries:
+                watchedentries_type_0_item = watchedentries_type_0_item_data.to_dict()
+                watchedentries.append(watchedentries_type_0_item)
+
+        else:
+            watchedentries = self.watchedentries
 
         field_dict: Dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -62,12 +60,25 @@ class ControlsFilesystemTracerConfig:
 
         updated_at = d.pop("updated_at")
 
-        watchedentries = []
-        _watchedentries = d.pop("watchedentries")
-        for watchedentries_item_data in _watchedentries or []:
-            watchedentries_item = ControlsMonitoredFilesConfig.from_dict(watchedentries_item_data)
+        def _parse_watchedentries(data: object) -> Union[List["ControlsMonitoredFilesConfig"], None]:
+            if data is None:
+                return data
+            try:
+                if not isinstance(data, list):
+                    raise TypeError()
+                watchedentries_type_0 = []
+                _watchedentries_type_0 = data
+                for watchedentries_type_0_item_data in _watchedentries_type_0:
+                    watchedentries_type_0_item = ControlsMonitoredFilesConfig.from_dict(watchedentries_type_0_item_data)
 
-            watchedentries.append(watchedentries_item)
+                    watchedentries_type_0.append(watchedentries_type_0_item)
+
+                return watchedentries_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[List["ControlsMonitoredFilesConfig"], None], data)
+
+        watchedentries = _parse_watchedentries(d.pop("watchedentries"))
 
         controls_filesystem_tracer_config = cls(
             node_id=node_id,

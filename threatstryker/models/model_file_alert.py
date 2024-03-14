@@ -1,4 +1,4 @@
-from typing import Any, Dict, List, Optional, Type, TypeVar, cast
+from typing import Any, Dict, List, Type, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -9,16 +9,6 @@ T = TypeVar("T", bound="ModelFileAlert")
 @_attrs_define
 class ModelFileAlert:
     """
-    Example:
-        {'container_ip': 'container_ip', 'kubernetes_cluster_name': 'kubernetes_cluster_name', 'masked': True,
-            'created_at': 6, 'pid': 1, 'event_type': 'event_type', 'node_type': 'node_type', 'filepath': 'filepath', 'top':
-            'top', 'updated_at': 5, 'process_name': 'process_name', 'severity': 'severity', 'summary': 'summary',
-            'kubernetes_cluster_id': 'kubernetes_cluster_id', 'count': 0, 'resource_type': 'resource_type', 'fstat':
-            'fstat', 'container_image': 'container_image', 'netstat': 'netstat', 'users': 'users', 'pod_name': 'pod_name',
-            'rule_id': 'rule_id', 'container_name': 'container_name', 'techniques': ['techniques', 'techniques'], 'tactics':
-            ['tactics', 'tactics'], 'proc_status': 'proc_status', 'category': 'category', 'container_id': 'container_id',
-            'host_name': 'host_name', 'node_id': 'node_id'}
-
     Attributes:
         category (str):
         container_id (str):
@@ -45,11 +35,11 @@ class ModelFileAlert:
         rule_id (str):
         severity (str):
         summary (str):
+        tactics (Union[List[str], None]):
+        techniques (Union[List[str], None]):
         top (str):
         updated_at (int):
         users (str):
-        tactics (Optional[List[str]]):
-        techniques (Optional[List[str]]):
     """
 
     category: str
@@ -77,51 +67,83 @@ class ModelFileAlert:
     rule_id: str
     severity: str
     summary: str
+    tactics: Union[List[str], None]
+    techniques: Union[List[str], None]
     top: str
     updated_at: int
     users: str
-    tactics: Optional[List[str]]
-    techniques: Optional[List[str]]
     additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
         category = self.category
+
         container_id = self.container_id
+
         container_image = self.container_image
+
         container_ip = self.container_ip
+
         container_name = self.container_name
+
         count = self.count
+
         created_at = self.created_at
+
         event_type = self.event_type
+
         filepath = self.filepath
+
         fstat = self.fstat
+
         host_name = self.host_name
+
         kubernetes_cluster_id = self.kubernetes_cluster_id
+
         kubernetes_cluster_name = self.kubernetes_cluster_name
+
         masked = self.masked
+
         netstat = self.netstat
+
         node_id = self.node_id
+
         node_type = self.node_type
+
         pid = self.pid
+
         pod_name = self.pod_name
+
         proc_status = self.proc_status
+
         process_name = self.process_name
+
         resource_type = self.resource_type
+
         rule_id = self.rule_id
+
         severity = self.severity
+
         summary = self.summary
-        top = self.top
-        updated_at = self.updated_at
-        users = self.users
-        if self.tactics is None:
-            tactics = None
+
+        tactics: Union[List[str], None]
+        if isinstance(self.tactics, list):
+            tactics = self.tactics
+
         else:
             tactics = self.tactics
 
-        if self.techniques is None:
-            techniques = None
+        techniques: Union[List[str], None]
+        if isinstance(self.techniques, list):
+            techniques = self.techniques
+
         else:
             techniques = self.techniques
+
+        top = self.top
+
+        updated_at = self.updated_at
+
+        users = self.users
 
         field_dict: Dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -152,11 +174,11 @@ class ModelFileAlert:
                 "rule_id": rule_id,
                 "severity": severity,
                 "summary": summary,
+                "tactics": tactics,
+                "techniques": techniques,
                 "top": top,
                 "updated_at": updated_at,
                 "users": users,
-                "tactics": tactics,
-                "techniques": techniques,
             }
         )
 
@@ -215,15 +237,41 @@ class ModelFileAlert:
 
         summary = d.pop("summary")
 
+        def _parse_tactics(data: object) -> Union[List[str], None]:
+            if data is None:
+                return data
+            try:
+                if not isinstance(data, list):
+                    raise TypeError()
+                tactics_type_0 = cast(List[str], data)
+
+                return tactics_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[List[str], None], data)
+
+        tactics = _parse_tactics(d.pop("tactics"))
+
+        def _parse_techniques(data: object) -> Union[List[str], None]:
+            if data is None:
+                return data
+            try:
+                if not isinstance(data, list):
+                    raise TypeError()
+                techniques_type_0 = cast(List[str], data)
+
+                return techniques_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[List[str], None], data)
+
+        techniques = _parse_techniques(d.pop("techniques"))
+
         top = d.pop("top")
 
         updated_at = d.pop("updated_at")
 
         users = d.pop("users")
-
-        tactics = cast(List[str], d.pop("tactics"))
-
-        techniques = cast(List[str], d.pop("techniques"))
 
         model_file_alert = cls(
             category=category,
@@ -251,11 +299,11 @@ class ModelFileAlert:
             rule_id=rule_id,
             severity=severity,
             summary=summary,
+            tactics=tactics,
+            techniques=techniques,
             top=top,
             updated_at=updated_at,
             users=users,
-            tactics=tactics,
-            techniques=techniques,
         )
 
         model_file_alert.additional_properties = d

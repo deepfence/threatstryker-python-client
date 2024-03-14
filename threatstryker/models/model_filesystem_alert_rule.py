@@ -11,52 +11,53 @@ T = TypeVar("T", bound="ModelFilesystemAlertRule")
 @_attrs_define
 class ModelFilesystemAlertRule:
     """
-    Example:
-        {'rule_id': 'rule_id', 'severity': 'severity', 'summary': 'summary', 'anomaly': 'anomaly', 'event_type':
-            'event_type', 'techniques': ['techniques', 'techniques'], 'tactics': ['tactics', 'tactics'], 'category':
-            'category'}
-
     Attributes:
         anomaly (Union[Unset, str]):
         category (Union[Unset, str]):
-        event_type (Union[Unset, str]):
         rule_id (Union[Unset, str]):
         severity (Union[Unset, str]):
         summary (Union[Unset, str]):
-        tactics (Union[Unset, None, List[str]]):
-        techniques (Union[Unset, None, List[str]]):
+        tactics (Union[List[str], None, Unset]):
+        techniques (Union[List[str], None, Unset]):
     """
 
     anomaly: Union[Unset, str] = UNSET
     category: Union[Unset, str] = UNSET
-    event_type: Union[Unset, str] = UNSET
     rule_id: Union[Unset, str] = UNSET
     severity: Union[Unset, str] = UNSET
     summary: Union[Unset, str] = UNSET
-    tactics: Union[Unset, None, List[str]] = UNSET
-    techniques: Union[Unset, None, List[str]] = UNSET
+    tactics: Union[List[str], None, Unset] = UNSET
+    techniques: Union[List[str], None, Unset] = UNSET
     additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
         anomaly = self.anomaly
-        category = self.category
-        event_type = self.event_type
-        rule_id = self.rule_id
-        severity = self.severity
-        summary = self.summary
-        tactics: Union[Unset, None, List[str]] = UNSET
-        if not isinstance(self.tactics, Unset):
-            if self.tactics is None:
-                tactics = None
-            else:
-                tactics = self.tactics
 
-        techniques: Union[Unset, None, List[str]] = UNSET
-        if not isinstance(self.techniques, Unset):
-            if self.techniques is None:
-                techniques = None
-            else:
-                techniques = self.techniques
+        category = self.category
+
+        rule_id = self.rule_id
+
+        severity = self.severity
+
+        summary = self.summary
+
+        tactics: Union[List[str], None, Unset]
+        if isinstance(self.tactics, Unset):
+            tactics = UNSET
+        elif isinstance(self.tactics, list):
+            tactics = self.tactics
+
+        else:
+            tactics = self.tactics
+
+        techniques: Union[List[str], None, Unset]
+        if isinstance(self.techniques, Unset):
+            techniques = UNSET
+        elif isinstance(self.techniques, list):
+            techniques = self.techniques
+
+        else:
+            techniques = self.techniques
 
         field_dict: Dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -65,8 +66,6 @@ class ModelFilesystemAlertRule:
             field_dict["anomaly"] = anomaly
         if category is not UNSET:
             field_dict["category"] = category
-        if event_type is not UNSET:
-            field_dict["event_type"] = event_type
         if rule_id is not UNSET:
             field_dict["rule_id"] = rule_id
         if severity is not UNSET:
@@ -87,22 +86,49 @@ class ModelFilesystemAlertRule:
 
         category = d.pop("category", UNSET)
 
-        event_type = d.pop("event_type", UNSET)
-
         rule_id = d.pop("rule_id", UNSET)
 
         severity = d.pop("severity", UNSET)
 
         summary = d.pop("summary", UNSET)
 
-        tactics = cast(List[str], d.pop("tactics", UNSET))
+        def _parse_tactics(data: object) -> Union[List[str], None, Unset]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, list):
+                    raise TypeError()
+                tactics_type_0 = cast(List[str], data)
 
-        techniques = cast(List[str], d.pop("techniques", UNSET))
+                return tactics_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[List[str], None, Unset], data)
+
+        tactics = _parse_tactics(d.pop("tactics", UNSET))
+
+        def _parse_techniques(data: object) -> Union[List[str], None, Unset]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, list):
+                    raise TypeError()
+                techniques_type_0 = cast(List[str], data)
+
+                return techniques_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[List[str], None, Unset], data)
+
+        techniques = _parse_techniques(d.pop("techniques", UNSET))
 
         model_filesystem_alert_rule = cls(
             anomaly=anomaly,
             category=category,
-            event_type=event_type,
             rule_id=rule_id,
             severity=severity,
             summary=summary,

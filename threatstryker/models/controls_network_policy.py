@@ -16,17 +16,12 @@ T = TypeVar("T", bound="ControlsNetworkPolicy")
 @_attrs_define
 class ControlsNetworkPolicy:
     """
-    Example:
-        {'policy_id': 'policy_id', 'updated_at': 5, 'count_limit': 0, 'action': 'block', 'duration_count_limit_sec': 6,
-            'matcher': {'fields_matcher': {'key': ['fields_matcher', 'fields_matcher']}}, 'uuid': 'uuid', 'duration_sec': 1}
-
     Attributes:
         action (ControlsNetworkPolicyAction):
         count_limit (int):
         duration_count_limit_sec (int):
         duration_sec (int):
-        matcher (ControlsPolicyAlertMatcher):  Example: {'fields_matcher': {'key': ['fields_matcher',
-            'fields_matcher']}}.
+        matcher (ControlsPolicyAlertMatcher):
         policy_id (str):
         updated_at (int):
         uuid (Union[Unset, str]):
@@ -46,12 +41,17 @@ class ControlsNetworkPolicy:
         action = self.action.value
 
         count_limit = self.count_limit
+
         duration_count_limit_sec = self.duration_count_limit_sec
+
         duration_sec = self.duration_sec
+
         matcher = self.matcher.to_dict()
 
         policy_id = self.policy_id
+
         updated_at = self.updated_at
+
         uuid = self.uuid
 
         field_dict: Dict[str, Any] = {}

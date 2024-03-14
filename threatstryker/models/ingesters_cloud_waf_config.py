@@ -1,4 +1,4 @@
-from typing import TYPE_CHECKING, Any, Dict, List, Optional, Type, TypeVar
+from typing import TYPE_CHECKING, Any, Dict, List, Type, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -15,37 +15,34 @@ T = TypeVar("T", bound="IngestersCloudWafConfig")
 @_attrs_define
 class IngestersCloudWafConfig:
     """
-    Example:
-        {'aws_waf_arn': [{'arn': 'arn', 'region': 'CLOUDFRONT'}, {'arn': 'arn', 'region': 'CLOUDFRONT'}],
-            'cloud_provider': 'aws'}
-
     Attributes:
+        aws_waf_arn (Union[List['IngestersAWSWafARN'], None]):
         cloud_provider (IngestersCloudWafConfigCloudProvider):
-        aws_waf_arn (Optional[List['IngestersAWSWafARN']]):
     """
 
+    aws_waf_arn: Union[List["IngestersAWSWafARN"], None]
     cloud_provider: IngestersCloudWafConfigCloudProvider
-    aws_waf_arn: Optional[List["IngestersAWSWafARN"]]
     additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
-        cloud_provider = self.cloud_provider.value
-
-        if self.aws_waf_arn is None:
-            aws_waf_arn = None
-        else:
+        aws_waf_arn: Union[List[Dict[str, Any]], None]
+        if isinstance(self.aws_waf_arn, list):
             aws_waf_arn = []
-            for aws_waf_arn_item_data in self.aws_waf_arn:
-                aws_waf_arn_item = aws_waf_arn_item_data.to_dict()
+            for aws_waf_arn_type_0_item_data in self.aws_waf_arn:
+                aws_waf_arn_type_0_item = aws_waf_arn_type_0_item_data.to_dict()
+                aws_waf_arn.append(aws_waf_arn_type_0_item)
 
-                aws_waf_arn.append(aws_waf_arn_item)
+        else:
+            aws_waf_arn = self.aws_waf_arn
+
+        cloud_provider = self.cloud_provider.value
 
         field_dict: Dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
-                "cloud_provider": cloud_provider,
                 "aws_waf_arn": aws_waf_arn,
+                "cloud_provider": cloud_provider,
             }
         )
 
@@ -56,18 +53,32 @@ class IngestersCloudWafConfig:
         from ..models.ingesters_aws_waf_arn import IngestersAWSWafARN
 
         d = src_dict.copy()
+
+        def _parse_aws_waf_arn(data: object) -> Union[List["IngestersAWSWafARN"], None]:
+            if data is None:
+                return data
+            try:
+                if not isinstance(data, list):
+                    raise TypeError()
+                aws_waf_arn_type_0 = []
+                _aws_waf_arn_type_0 = data
+                for aws_waf_arn_type_0_item_data in _aws_waf_arn_type_0:
+                    aws_waf_arn_type_0_item = IngestersAWSWafARN.from_dict(aws_waf_arn_type_0_item_data)
+
+                    aws_waf_arn_type_0.append(aws_waf_arn_type_0_item)
+
+                return aws_waf_arn_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[List["IngestersAWSWafARN"], None], data)
+
+        aws_waf_arn = _parse_aws_waf_arn(d.pop("aws_waf_arn"))
+
         cloud_provider = IngestersCloudWafConfigCloudProvider(d.pop("cloud_provider"))
 
-        aws_waf_arn = []
-        _aws_waf_arn = d.pop("aws_waf_arn")
-        for aws_waf_arn_item_data in _aws_waf_arn or []:
-            aws_waf_arn_item = IngestersAWSWafARN.from_dict(aws_waf_arn_item_data)
-
-            aws_waf_arn.append(aws_waf_arn_item)
-
         ingesters_cloud_waf_config = cls(
-            cloud_provider=cloud_provider,
             aws_waf_arn=aws_waf_arn,
+            cloud_provider=cloud_provider,
         )
 
         ingesters_cloud_waf_config.additional_properties = d

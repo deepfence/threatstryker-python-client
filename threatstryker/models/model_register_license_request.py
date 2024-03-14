@@ -9,9 +9,6 @@ T = TypeVar("T", bound="ModelRegisterLicenseRequest")
 @_attrs_define
 class ModelRegisterLicenseRequest:
     """
-    Example:
-        {'license_key': 'license_key'}
-
     Attributes:
         license_key (str):
     """

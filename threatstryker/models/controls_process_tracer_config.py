@@ -1,4 +1,4 @@
-from typing import TYPE_CHECKING, Any, Dict, List, Type, TypeVar, Union
+from typing import TYPE_CHECKING, Any, Dict, List, Type, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -15,37 +15,33 @@ T = TypeVar("T", bound="ControlsProcessTracerConfig")
 @_attrs_define
 class ControlsProcessTracerConfig:
     """
-    Example:
-        {'updated_at': 0, 'monitoredprocessevents': [{'skip_path_list': ['skip_path_list', 'skip_path_list'],
-            'failure_severity': 'failure_severity', 'success_severity': 'success_severity', 'event': 'bin-execution',
-            'skip_comm_list': ['skip_comm_list', 'skip_comm_list']}, {'skip_path_list': ['skip_path_list',
-            'skip_path_list'], 'failure_severity': 'failure_severity', 'success_severity': 'success_severity', 'event':
-            'bin-execution', 'skip_comm_list': ['skip_comm_list', 'skip_comm_list']}], 'node_id': 'node_id'}
-
     Attributes:
         node_id (str):
         updated_at (int):
-        monitoredprocessevents (Union[Unset, None, List['ControlsProcessEventEntry']]):
+        monitoredprocessevents (Union[List['ControlsProcessEventEntry'], None, Unset]):
     """
 
     node_id: str
     updated_at: int
-    monitoredprocessevents: Union[Unset, None, List["ControlsProcessEventEntry"]] = UNSET
+    monitoredprocessevents: Union[List["ControlsProcessEventEntry"], None, Unset] = UNSET
     additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
         node_id = self.node_id
-        updated_at = self.updated_at
-        monitoredprocessevents: Union[Unset, None, List[Dict[str, Any]]] = UNSET
-        if not isinstance(self.monitoredprocessevents, Unset):
-            if self.monitoredprocessevents is None:
-                monitoredprocessevents = None
-            else:
-                monitoredprocessevents = []
-                for monitoredprocessevents_item_data in self.monitoredprocessevents:
-                    monitoredprocessevents_item = monitoredprocessevents_item_data.to_dict()
 
-                    monitoredprocessevents.append(monitoredprocessevents_item)
+        updated_at = self.updated_at
+
+        monitoredprocessevents: Union[List[Dict[str, Any]], None, Unset]
+        if isinstance(self.monitoredprocessevents, Unset):
+            monitoredprocessevents = UNSET
+        elif isinstance(self.monitoredprocessevents, list):
+            monitoredprocessevents = []
+            for monitoredprocessevents_type_0_item_data in self.monitoredprocessevents:
+                monitoredprocessevents_type_0_item = monitoredprocessevents_type_0_item_data.to_dict()
+                monitoredprocessevents.append(monitoredprocessevents_type_0_item)
+
+        else:
+            monitoredprocessevents = self.monitoredprocessevents
 
         field_dict: Dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -69,12 +65,29 @@ class ControlsProcessTracerConfig:
 
         updated_at = d.pop("updated_at")
 
-        monitoredprocessevents = []
-        _monitoredprocessevents = d.pop("monitoredprocessevents", UNSET)
-        for monitoredprocessevents_item_data in _monitoredprocessevents or []:
-            monitoredprocessevents_item = ControlsProcessEventEntry.from_dict(monitoredprocessevents_item_data)
+        def _parse_monitoredprocessevents(data: object) -> Union[List["ControlsProcessEventEntry"], None, Unset]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, list):
+                    raise TypeError()
+                monitoredprocessevents_type_0 = []
+                _monitoredprocessevents_type_0 = data
+                for monitoredprocessevents_type_0_item_data in _monitoredprocessevents_type_0:
+                    monitoredprocessevents_type_0_item = ControlsProcessEventEntry.from_dict(
+                        monitoredprocessevents_type_0_item_data
+                    )
 
-            monitoredprocessevents.append(monitoredprocessevents_item)
+                    monitoredprocessevents_type_0.append(monitoredprocessevents_type_0_item)
+
+                return monitoredprocessevents_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[List["ControlsProcessEventEntry"], None, Unset], data)
+
+        monitoredprocessevents = _parse_monitoredprocessevents(d.pop("monitoredprocessevents", UNSET))
 
         controls_process_tracer_config = cls(
             node_id=node_id,

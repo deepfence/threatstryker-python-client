@@ -13,16 +13,11 @@ T = TypeVar("T", bound="ModelAgentPluginsStatus")
 @_attrs_define
 class ModelAgentPluginsStatus:
     """
-    Example:
-        {'network_tracer_status': {'description': 'description', 'status': 'status'}, 'network_filter_status':
-            {'description': 'description', 'status': 'status'}, 'filesystem_tracer_status': {'description': 'description',
-            'status': 'status'}, 'process_tracer_status': {'description': 'description', 'status': 'status'}}
-
     Attributes:
-        filesystem_tracer_status (ModelPluginStatus):  Example: {'description': 'description', 'status': 'status'}.
-        network_filter_status (ModelPluginStatus):  Example: {'description': 'description', 'status': 'status'}.
-        network_tracer_status (ModelPluginStatus):  Example: {'description': 'description', 'status': 'status'}.
-        process_tracer_status (ModelPluginStatus):  Example: {'description': 'description', 'status': 'status'}.
+        filesystem_tracer_status (ModelPluginStatus):
+        network_filter_status (ModelPluginStatus):
+        network_tracer_status (ModelPluginStatus):
+        process_tracer_status (ModelPluginStatus):
     """
 
     filesystem_tracer_status: "ModelPluginStatus"

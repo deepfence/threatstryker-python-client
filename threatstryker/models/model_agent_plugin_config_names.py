@@ -9,10 +9,6 @@ T = TypeVar("T", bound="ModelAgentPluginConfigNames")
 @_attrs_define
 class ModelAgentPluginConfigNames:
     """
-    Example:
-        {'policy_config_name': 'policy_config_name', 'filesystem_config_name': 'filesystem_config_name',
-            'process_config_name': 'process_config_name', 'network_config_name': 'network_config_name'}
-
     Attributes:
         filesystem_config_name (str):
         network_config_name (str):
@@ -28,8 +24,11 @@ class ModelAgentPluginConfigNames:
 
     def to_dict(self) -> Dict[str, Any]:
         filesystem_config_name = self.filesystem_config_name
+
         network_config_name = self.network_config_name
+
         policy_config_name = self.policy_config_name
+
         process_config_name = self.process_config_name
 
         field_dict: Dict[str, Any] = {}

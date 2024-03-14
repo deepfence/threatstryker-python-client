@@ -1,4 +1,4 @@
-from typing import Any, Dict, List, Optional, Type, TypeVar, cast
+from typing import Any, Dict, List, Type, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -9,49 +9,51 @@ T = TypeVar("T", bound="ControlsThreatIntelInfo")
 @_attrs_define
 class ControlsThreatIntelInfo:
     """
-    Example:
-        {'updated_at': 0, 'network_alert_rules_url': 'network_alert_rules_url', 'ignored_alert_rule_ids':
-            ['ignored_alert_rule_ids', 'ignored_alert_rule_ids'], 'internal_ips': ['internal_ips', 'internal_ips'],
-            'rules_hash': 'rules_hash'}
-
     Attributes:
+        ignored_alert_rule_ids (Union[List[str], None]):
+        internal_ips (Union[List[str], None]):
         network_alert_rules_url (str):
         rules_hash (str):
         updated_at (int):
-        ignored_alert_rule_ids (Optional[List[str]]):
-        internal_ips (Optional[List[str]]):
     """
 
+    ignored_alert_rule_ids: Union[List[str], None]
+    internal_ips: Union[List[str], None]
     network_alert_rules_url: str
     rules_hash: str
     updated_at: int
-    ignored_alert_rule_ids: Optional[List[str]]
-    internal_ips: Optional[List[str]]
     additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
-        network_alert_rules_url = self.network_alert_rules_url
-        rules_hash = self.rules_hash
-        updated_at = self.updated_at
-        if self.ignored_alert_rule_ids is None:
-            ignored_alert_rule_ids = None
+        ignored_alert_rule_ids: Union[List[str], None]
+        if isinstance(self.ignored_alert_rule_ids, list):
+            ignored_alert_rule_ids = self.ignored_alert_rule_ids
+
         else:
             ignored_alert_rule_ids = self.ignored_alert_rule_ids
 
-        if self.internal_ips is None:
-            internal_ips = None
+        internal_ips: Union[List[str], None]
+        if isinstance(self.internal_ips, list):
+            internal_ips = self.internal_ips
+
         else:
             internal_ips = self.internal_ips
+
+        network_alert_rules_url = self.network_alert_rules_url
+
+        rules_hash = self.rules_hash
+
+        updated_at = self.updated_at
 
         field_dict: Dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
+                "ignored_alert_rule_ids": ignored_alert_rule_ids,
+                "internal_ips": internal_ips,
                 "network_alert_rules_url": network_alert_rules_url,
                 "rules_hash": rules_hash,
                 "updated_at": updated_at,
-                "ignored_alert_rule_ids": ignored_alert_rule_ids,
-                "internal_ips": internal_ips,
             }
         )
 
@@ -60,22 +62,49 @@ class ControlsThreatIntelInfo:
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
         d = src_dict.copy()
+
+        def _parse_ignored_alert_rule_ids(data: object) -> Union[List[str], None]:
+            if data is None:
+                return data
+            try:
+                if not isinstance(data, list):
+                    raise TypeError()
+                ignored_alert_rule_ids_type_0 = cast(List[str], data)
+
+                return ignored_alert_rule_ids_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[List[str], None], data)
+
+        ignored_alert_rule_ids = _parse_ignored_alert_rule_ids(d.pop("ignored_alert_rule_ids"))
+
+        def _parse_internal_ips(data: object) -> Union[List[str], None]:
+            if data is None:
+                return data
+            try:
+                if not isinstance(data, list):
+                    raise TypeError()
+                internal_ips_type_0 = cast(List[str], data)
+
+                return internal_ips_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[List[str], None], data)
+
+        internal_ips = _parse_internal_ips(d.pop("internal_ips"))
+
         network_alert_rules_url = d.pop("network_alert_rules_url")
 
         rules_hash = d.pop("rules_hash")
 
         updated_at = d.pop("updated_at")
 
-        ignored_alert_rule_ids = cast(List[str], d.pop("ignored_alert_rule_ids"))
-
-        internal_ips = cast(List[str], d.pop("internal_ips"))
-
         controls_threat_intel_info = cls(
+            ignored_alert_rule_ids=ignored_alert_rule_ids,
+            internal_ips=internal_ips,
             network_alert_rules_url=network_alert_rules_url,
             rules_hash=rules_hash,
             updated_at=updated_at,
-            ignored_alert_rule_ids=ignored_alert_rule_ids,
-            internal_ips=internal_ips,
         )
 
         controls_threat_intel_info.additional_properties = d

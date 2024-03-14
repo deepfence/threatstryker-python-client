@@ -13,17 +13,22 @@ from ...types import Response
 
 def _get_kwargs(
     *,
-    json_body: ControlsPolicyFilterConfig,
+    body: ControlsPolicyFilterConfig,
 ) -> Dict[str, Any]:
-    pass
+    headers: Dict[str, Any] = {}
 
-    json_json_body = json_body.to_dict()
-
-    return {
+    _kwargs: Dict[str, Any] = {
         "method": "post",
         "url": "/deepfence/configs/agent/policy/",
-        "json": json_json_body,
     }
+
+    _body = body.to_dict()
+
+    _kwargs["json"] = _body
+    headers["Content-Type"] = "application/json"
+
+    _kwargs["headers"] = headers
+    return _kwargs
 
 
 def _parse_response(
@@ -70,21 +75,14 @@ def _build_response(
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    json_body: ControlsPolicyFilterConfig,
+    body: ControlsPolicyFilterConfig,
 ) -> Response[Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse]]:
     """Register Agent Policy config
 
      Register Agent Policy config
 
     Args:
-        json_body (ControlsPolicyFilterConfig):  Example: {'updated_at': 5, 'use_waf': True,
-            'policies': [{'policy_id': 'policy_id', 'updated_at': 5, 'count_limit': 0, 'action':
-            'block', 'duration_count_limit_sec': 6, 'matcher': {'fields_matcher': {'key':
-            ['fields_matcher', 'fields_matcher']}}, 'uuid': 'uuid', 'duration_sec': 1}, {'policy_id':
-            'policy_id', 'updated_at': 5, 'count_limit': 0, 'action': 'block',
-            'duration_count_limit_sec': 6, 'matcher': {'fields_matcher': {'key': ['fields_matcher',
-            'fields_matcher']}}, 'uuid': 'uuid', 'duration_sec': 1}], 'ignored_remote_ips':
-            ['ignored_remote_ips', 'ignored_remote_ips'], 'node_id': 'node_id'}.
+        body (ControlsPolicyFilterConfig):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -95,7 +93,7 @@ def sync_detailed(
     """
 
     kwargs = _get_kwargs(
-        json_body=json_body,
+        body=body,
     )
 
     response = client.get_httpx_client().request(
@@ -108,21 +106,14 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    json_body: ControlsPolicyFilterConfig,
+    body: ControlsPolicyFilterConfig,
 ) -> Optional[Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse]]:
     """Register Agent Policy config
 
      Register Agent Policy config
 
     Args:
-        json_body (ControlsPolicyFilterConfig):  Example: {'updated_at': 5, 'use_waf': True,
-            'policies': [{'policy_id': 'policy_id', 'updated_at': 5, 'count_limit': 0, 'action':
-            'block', 'duration_count_limit_sec': 6, 'matcher': {'fields_matcher': {'key':
-            ['fields_matcher', 'fields_matcher']}}, 'uuid': 'uuid', 'duration_sec': 1}, {'policy_id':
-            'policy_id', 'updated_at': 5, 'count_limit': 0, 'action': 'block',
-            'duration_count_limit_sec': 6, 'matcher': {'fields_matcher': {'key': ['fields_matcher',
-            'fields_matcher']}}, 'uuid': 'uuid', 'duration_sec': 1}], 'ignored_remote_ips':
-            ['ignored_remote_ips', 'ignored_remote_ips'], 'node_id': 'node_id'}.
+        body (ControlsPolicyFilterConfig):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -134,28 +125,21 @@ def sync(
 
     return sync_detailed(
         client=client,
-        json_body=json_body,
+        body=body,
     ).parsed
 
 
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    json_body: ControlsPolicyFilterConfig,
+    body: ControlsPolicyFilterConfig,
 ) -> Response[Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse]]:
     """Register Agent Policy config
 
      Register Agent Policy config
 
     Args:
-        json_body (ControlsPolicyFilterConfig):  Example: {'updated_at': 5, 'use_waf': True,
-            'policies': [{'policy_id': 'policy_id', 'updated_at': 5, 'count_limit': 0, 'action':
-            'block', 'duration_count_limit_sec': 6, 'matcher': {'fields_matcher': {'key':
-            ['fields_matcher', 'fields_matcher']}}, 'uuid': 'uuid', 'duration_sec': 1}, {'policy_id':
-            'policy_id', 'updated_at': 5, 'count_limit': 0, 'action': 'block',
-            'duration_count_limit_sec': 6, 'matcher': {'fields_matcher': {'key': ['fields_matcher',
-            'fields_matcher']}}, 'uuid': 'uuid', 'duration_sec': 1}], 'ignored_remote_ips':
-            ['ignored_remote_ips', 'ignored_remote_ips'], 'node_id': 'node_id'}.
+        body (ControlsPolicyFilterConfig):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -166,7 +150,7 @@ async def asyncio_detailed(
     """
 
     kwargs = _get_kwargs(
-        json_body=json_body,
+        body=body,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -177,21 +161,14 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    json_body: ControlsPolicyFilterConfig,
+    body: ControlsPolicyFilterConfig,
 ) -> Optional[Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse]]:
     """Register Agent Policy config
 
      Register Agent Policy config
 
     Args:
-        json_body (ControlsPolicyFilterConfig):  Example: {'updated_at': 5, 'use_waf': True,
-            'policies': [{'policy_id': 'policy_id', 'updated_at': 5, 'count_limit': 0, 'action':
-            'block', 'duration_count_limit_sec': 6, 'matcher': {'fields_matcher': {'key':
-            ['fields_matcher', 'fields_matcher']}}, 'uuid': 'uuid', 'duration_sec': 1}, {'policy_id':
-            'policy_id', 'updated_at': 5, 'count_limit': 0, 'action': 'block',
-            'duration_count_limit_sec': 6, 'matcher': {'fields_matcher': {'key': ['fields_matcher',
-            'fields_matcher']}}, 'uuid': 'uuid', 'duration_sec': 1}], 'ignored_remote_ips':
-            ['ignored_remote_ips', 'ignored_remote_ips'], 'node_id': 'node_id'}.
+        body (ControlsPolicyFilterConfig):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -204,6 +181,6 @@ async def asyncio(
     return (
         await asyncio_detailed(
             client=client,
-            json_body=json_body,
+            body=body,
         )
     ).parsed

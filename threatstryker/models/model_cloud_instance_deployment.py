@@ -11,9 +11,6 @@ T = TypeVar("T", bound="ModelCloudInstanceDeployment")
 @_attrs_define
 class ModelCloudInstanceDeployment:
     """
-    Example:
-        {'hostname': 'hostname', 'account_id': 'account_id', 'instance_id': 'instance_id', 'region': 'region'}
-
     Attributes:
         account_id (Union[Unset, str]):
         hostname (Union[Unset, str]):
@@ -29,8 +26,11 @@ class ModelCloudInstanceDeployment:
 
     def to_dict(self) -> Dict[str, Any]:
         account_id = self.account_id
+
         hostname = self.hostname
+
         instance_id = self.instance_id
+
         region = self.region
 
         field_dict: Dict[str, Any] = {}

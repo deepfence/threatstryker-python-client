@@ -9,11 +9,6 @@ T = TypeVar("T", bound="ModelQuarantineViolation")
 @_attrs_define
 class ModelQuarantineViolation:
     """
-    Example:
-        {'severity': 'severity', 'executed_at': 6, 'policy_index': 1, 'created_at': 0, 'type': 'type', 'ttl': 5,
-            'config_id': 'config_id', 'alert_id': 'alert_id', 'action': 'action', 'pod_id': 'pod_id', 'container_id':
-            'container_id', 'host_name': 'host_name', 'node_id': 'node_id'}
-
     Attributes:
         action (str):
         alert_id (str):
@@ -47,17 +42,29 @@ class ModelQuarantineViolation:
 
     def to_dict(self) -> Dict[str, Any]:
         action = self.action
+
         alert_id = self.alert_id
+
         config_id = self.config_id
+
         container_id = self.container_id
+
         created_at = self.created_at
+
         executed_at = self.executed_at
+
         host_name = self.host_name
+
         node_id = self.node_id
+
         pod_id = self.pod_id
+
         policy_index = self.policy_index
+
         severity = self.severity
+
         ttl = self.ttl
+
         type = self.type
 
         field_dict: Dict[str, Any] = {}

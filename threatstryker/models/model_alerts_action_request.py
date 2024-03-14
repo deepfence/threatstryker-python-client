@@ -1,4 +1,4 @@
-from typing import Any, Dict, List, Optional, Type, TypeVar, cast
+from typing import Any, Dict, List, Type, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -9,19 +9,18 @@ T = TypeVar("T", bound="ModelAlertsActionRequest")
 @_attrs_define
 class ModelAlertsActionRequest:
     """
-    Example:
-        {'node_ids': ['node_ids', 'node_ids']}
-
     Attributes:
-        node_ids (Optional[List[str]]):
+        node_ids (Union[List[str], None]):
     """
 
-    node_ids: Optional[List[str]]
+    node_ids: Union[List[str], None]
     additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
-        if self.node_ids is None:
-            node_ids = None
+        node_ids: Union[List[str], None]
+        if isinstance(self.node_ids, list):
+            node_ids = self.node_ids
+
         else:
             node_ids = self.node_ids
 
@@ -38,7 +37,21 @@ class ModelAlertsActionRequest:
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
         d = src_dict.copy()
-        node_ids = cast(List[str], d.pop("node_ids"))
+
+        def _parse_node_ids(data: object) -> Union[List[str], None]:
+            if data is None:
+                return data
+            try:
+                if not isinstance(data, list):
+                    raise TypeError()
+                node_ids_type_0 = cast(List[str], data)
+
+                return node_ids_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[List[str], None], data)
+
+        node_ids = _parse_node_ids(d.pop("node_ids"))
 
         model_alerts_action_request = cls(
             node_ids=node_ids,

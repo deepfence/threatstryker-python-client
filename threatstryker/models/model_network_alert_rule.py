@@ -1,4 +1,4 @@
-from typing import Any, Dict, List, Optional, Type, TypeVar, cast
+from typing import Any, Dict, List, Type, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -9,11 +9,6 @@ T = TypeVar("T", bound="ModelNetworkAlertRule")
 @_attrs_define
 class ModelNetworkAlertRule:
     """
-    Example:
-        {'rule_id': 'rule_id', 'severity': 'severity', 'summary': 'summary', 'updated_at': 0, 'masked': True,
-            'techniques': ['techniques', 'techniques'], 'description': 'description', 'tactics': ['tactics', 'tactics'],
-            'category': 'category', 'node_id': 'node_id'}
-
     Attributes:
         category (str):
         description (str):
@@ -22,9 +17,9 @@ class ModelNetworkAlertRule:
         rule_id (str):
         severity (str):
         summary (str):
+        tactics (Union[List[str], None]):
+        techniques (Union[List[str], None]):
         updated_at (int):
-        tactics (Optional[List[str]]):
-        techniques (Optional[List[str]]):
     """
 
     category: str
@@ -34,29 +29,41 @@ class ModelNetworkAlertRule:
     rule_id: str
     severity: str
     summary: str
+    tactics: Union[List[str], None]
+    techniques: Union[List[str], None]
     updated_at: int
-    tactics: Optional[List[str]]
-    techniques: Optional[List[str]]
     additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
         category = self.category
+
         description = self.description
+
         masked = self.masked
+
         node_id = self.node_id
+
         rule_id = self.rule_id
+
         severity = self.severity
+
         summary = self.summary
-        updated_at = self.updated_at
-        if self.tactics is None:
-            tactics = None
+
+        tactics: Union[List[str], None]
+        if isinstance(self.tactics, list):
+            tactics = self.tactics
+
         else:
             tactics = self.tactics
 
-        if self.techniques is None:
-            techniques = None
+        techniques: Union[List[str], None]
+        if isinstance(self.techniques, list):
+            techniques = self.techniques
+
         else:
             techniques = self.techniques
+
+        updated_at = self.updated_at
 
         field_dict: Dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -69,9 +76,9 @@ class ModelNetworkAlertRule:
                 "rule_id": rule_id,
                 "severity": severity,
                 "summary": summary,
-                "updated_at": updated_at,
                 "tactics": tactics,
                 "techniques": techniques,
+                "updated_at": updated_at,
             }
         )
 
@@ -94,11 +101,37 @@ class ModelNetworkAlertRule:
 
         summary = d.pop("summary")
 
+        def _parse_tactics(data: object) -> Union[List[str], None]:
+            if data is None:
+                return data
+            try:
+                if not isinstance(data, list):
+                    raise TypeError()
+                tactics_type_0 = cast(List[str], data)
+
+                return tactics_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[List[str], None], data)
+
+        tactics = _parse_tactics(d.pop("tactics"))
+
+        def _parse_techniques(data: object) -> Union[List[str], None]:
+            if data is None:
+                return data
+            try:
+                if not isinstance(data, list):
+                    raise TypeError()
+                techniques_type_0 = cast(List[str], data)
+
+                return techniques_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[List[str], None], data)
+
+        techniques = _parse_techniques(d.pop("techniques"))
+
         updated_at = d.pop("updated_at")
-
-        tactics = cast(List[str], d.pop("tactics"))
-
-        techniques = cast(List[str], d.pop("techniques"))
 
         model_network_alert_rule = cls(
             category=category,
@@ -108,9 +141,9 @@ class ModelNetworkAlertRule:
             rule_id=rule_id,
             severity=severity,
             summary=summary,
-            updated_at=updated_at,
             tactics=tactics,
             techniques=techniques,
+            updated_at=updated_at,
         )
 
         model_network_alert_rule.additional_properties = d

@@ -9,9 +9,6 @@ T = TypeVar("T", bound="ModelMitreTechniqueSummary")
 @_attrs_define
 class ModelMitreTechniqueSummary:
     """
-    Example:
-        {'severity': 'severity', 'count': 6}
-
     Attributes:
         count (int):
         severity (str):
@@ -23,6 +20,7 @@ class ModelMitreTechniqueSummary:
 
     def to_dict(self) -> Dict[str, Any]:
         count = self.count
+
         severity = self.severity
 
         field_dict: Dict[str, Any] = {}

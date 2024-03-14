@@ -11,9 +11,6 @@ T = TypeVar("T", bound="ModelRegistryCredentials")
 @_attrs_define
 class ModelRegistryCredentials:
     """
-    Example:
-        {'registry_url': 'registry_url', 'password': 'password', 'username': 'username'}
-
     Attributes:
         password (Union[Unset, str]):
         registry_url (Union[Unset, str]):
@@ -27,7 +24,9 @@ class ModelRegistryCredentials:
 
     def to_dict(self) -> Dict[str, Any]:
         password = self.password
+
         registry_url = self.registry_url
+
         username = self.username
 
         field_dict: Dict[str, Any] = {}
