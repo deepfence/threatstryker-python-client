@@ -11,6 +11,8 @@ class ModelLoginResponse:
     """
     Attributes:
         access_token (str):
+        email_domain (str):
+        license_key (str):
         license_registered (bool):
         onboarding_required (bool):
         password_invalidated (bool):
@@ -18,6 +20,8 @@ class ModelLoginResponse:
     """
 
     access_token: str
+    email_domain: str
+    license_key: str
     license_registered: bool
     onboarding_required: bool
     password_invalidated: bool
@@ -26,6 +30,10 @@ class ModelLoginResponse:
 
     def to_dict(self) -> Dict[str, Any]:
         access_token = self.access_token
+
+        email_domain = self.email_domain
+
+        license_key = self.license_key
 
         license_registered = self.license_registered
 
@@ -40,6 +48,8 @@ class ModelLoginResponse:
         field_dict.update(
             {
                 "access_token": access_token,
+                "email_domain": email_domain,
+                "license_key": license_key,
                 "license_registered": license_registered,
                 "onboarding_required": onboarding_required,
                 "password_invalidated": password_invalidated,
@@ -54,6 +64,10 @@ class ModelLoginResponse:
         d = src_dict.copy()
         access_token = d.pop("access_token")
 
+        email_domain = d.pop("email_domain")
+
+        license_key = d.pop("license_key")
+
         license_registered = d.pop("license_registered")
 
         onboarding_required = d.pop("onboarding_required")
@@ -64,6 +78,8 @@ class ModelLoginResponse:
 
         model_login_response = cls(
             access_token=access_token,
+            email_domain=email_domain,
+            license_key=license_key,
             license_registered=license_registered,
             onboarding_required=onboarding_required,
             password_invalidated=password_invalidated,

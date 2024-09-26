@@ -26,6 +26,7 @@ class ModelContainerImage:
         docker_image_tag_list (Union[List[str], None]):
         docker_image_virtual_size (str):
         image_node_id (str):
+        is_deepfence_system (bool):
         malware_latest_scan_id (str):
         malware_scan_status (str):
         malwares_count (int):
@@ -49,6 +50,7 @@ class ModelContainerImage:
     docker_image_tag_list: Union[List[str], None]
     docker_image_virtual_size: str
     image_node_id: str
+    is_deepfence_system: bool
     malware_latest_scan_id: str
     malware_scan_status: str
     malwares_count: int
@@ -97,6 +99,8 @@ class ModelContainerImage:
 
         image_node_id = self.image_node_id
 
+        is_deepfence_system = self.is_deepfence_system
+
         malware_latest_scan_id = self.malware_latest_scan_id
 
         malware_scan_status = self.malware_scan_status
@@ -140,6 +144,7 @@ class ModelContainerImage:
                 "docker_image_tag_list": docker_image_tag_list,
                 "docker_image_virtual_size": docker_image_virtual_size,
                 "image_node_id": image_node_id,
+                "is_deepfence_system": is_deepfence_system,
                 "malware_latest_scan_id": malware_latest_scan_id,
                 "malware_scan_status": malware_scan_status,
                 "malwares_count": malwares_count,
@@ -214,6 +219,8 @@ class ModelContainerImage:
 
         image_node_id = d.pop("image_node_id")
 
+        is_deepfence_system = d.pop("is_deepfence_system")
+
         malware_latest_scan_id = d.pop("malware_latest_scan_id")
 
         malware_scan_status = d.pop("malware_scan_status")
@@ -263,6 +270,7 @@ class ModelContainerImage:
             docker_image_tag_list=docker_image_tag_list,
             docker_image_virtual_size=docker_image_virtual_size,
             image_node_id=image_node_id,
+            is_deepfence_system=is_deepfence_system,
             malware_latest_scan_id=malware_latest_scan_id,
             malware_scan_status=malware_scan_status,
             malwares_count=malwares_count,

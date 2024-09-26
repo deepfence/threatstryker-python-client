@@ -7,13 +7,13 @@ from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.api_docs_bad_request_response import ApiDocsBadRequestResponse
 from ...models.api_docs_failure_response import ApiDocsFailureResponse
-from ...models.form_data_vulnerability_db_db_upload_request import FormDataVulnerabilityDbDBUploadRequest
+from ...models.form_data_threatintel_db_upload_request import FormDataThreatintelDBUploadRequest
 from ...types import Response
 
 
 def _get_kwargs(
     *,
-    body: FormDataVulnerabilityDbDBUploadRequest,
+    body: FormDataThreatintelDBUploadRequest,
 ) -> Dict[str, Any]:
     headers: Dict[str, Any] = {}
 
@@ -74,14 +74,14 @@ def _build_response(
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    body: FormDataVulnerabilityDbDBUploadRequest,
+    body: FormDataThreatintelDBUploadRequest,
 ) -> Response[Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse]]:
     """Upload Threat Intel Rules
 
      Upload Threat Intel rules for use in Traffic Analysis
 
     Args:
-        body (FormDataVulnerabilityDbDBUploadRequest):
+        body (FormDataThreatintelDBUploadRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -105,14 +105,14 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    body: FormDataVulnerabilityDbDBUploadRequest,
+    body: FormDataThreatintelDBUploadRequest,
 ) -> Optional[Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse]]:
     """Upload Threat Intel Rules
 
      Upload Threat Intel rules for use in Traffic Analysis
 
     Args:
-        body (FormDataVulnerabilityDbDBUploadRequest):
+        body (FormDataThreatintelDBUploadRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -131,14 +131,14 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    body: FormDataVulnerabilityDbDBUploadRequest,
+    body: FormDataThreatintelDBUploadRequest,
 ) -> Response[Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse]]:
     """Upload Threat Intel Rules
 
      Upload Threat Intel rules for use in Traffic Analysis
 
     Args:
-        body (FormDataVulnerabilityDbDBUploadRequest):
+        body (FormDataThreatintelDBUploadRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -160,14 +160,14 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    body: FormDataVulnerabilityDbDBUploadRequest,
+    body: FormDataThreatintelDBUploadRequest,
 ) -> Optional[Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse]]:
     """Upload Threat Intel Rules
 
      Upload Threat Intel rules for use in Traffic Analysis
 
     Args:
-        body (FormDataVulnerabilityDbDBUploadRequest):
+        body (FormDataThreatintelDBUploadRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

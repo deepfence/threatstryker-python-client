@@ -6,7 +6,7 @@ from attrs import field as _attrs_field
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
-    from ..models.model_registry_credentials import ModelRegistryCredentials
+    from ..models.utils_registry_credentials import UtilsRegistryCredentials
 
 
 T = TypeVar("T", bound="ModelLicense")
@@ -22,12 +22,17 @@ class ModelLicense:
         end_date (Union[Unset, str]):
         is_active (Union[Unset, bool]):
         key (Union[Unset, str]):
+        license_email (Union[Unset, str]):
+        license_email_domain (Union[Unset, str]):
         license_type (Union[Unset, str]):
         message (Union[Unset, str]):
+        no_of_cloud_accounts (Union[Unset, int]):
         no_of_hosts (Union[Unset, int]):
+        no_of_images_in_registry (Union[Unset, int]):
+        no_of_registries (Union[Unset, int]):
         notification_threshold_percentage (Union[Unset, int]):
         notification_threshold_updated_at (Union[Unset, int]):
-        registry_credentials (Union[Unset, ModelRegistryCredentials]):
+        registry_credentials (Union[Unset, UtilsRegistryCredentials]):
         start_date (Union[Unset, str]):
     """
 
@@ -37,12 +42,17 @@ class ModelLicense:
     end_date: Union[Unset, str] = UNSET
     is_active: Union[Unset, bool] = UNSET
     key: Union[Unset, str] = UNSET
+    license_email: Union[Unset, str] = UNSET
+    license_email_domain: Union[Unset, str] = UNSET
     license_type: Union[Unset, str] = UNSET
     message: Union[Unset, str] = UNSET
+    no_of_cloud_accounts: Union[Unset, int] = UNSET
     no_of_hosts: Union[Unset, int] = UNSET
+    no_of_images_in_registry: Union[Unset, int] = UNSET
+    no_of_registries: Union[Unset, int] = UNSET
     notification_threshold_percentage: Union[Unset, int] = UNSET
     notification_threshold_updated_at: Union[Unset, int] = UNSET
-    registry_credentials: Union[Unset, "ModelRegistryCredentials"] = UNSET
+    registry_credentials: Union[Unset, "UtilsRegistryCredentials"] = UNSET
     start_date: Union[Unset, str] = UNSET
     additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -59,11 +69,21 @@ class ModelLicense:
 
         key = self.key
 
+        license_email = self.license_email
+
+        license_email_domain = self.license_email_domain
+
         license_type = self.license_type
 
         message = self.message
 
+        no_of_cloud_accounts = self.no_of_cloud_accounts
+
         no_of_hosts = self.no_of_hosts
+
+        no_of_images_in_registry = self.no_of_images_in_registry
+
+        no_of_registries = self.no_of_registries
 
         notification_threshold_percentage = self.notification_threshold_percentage
 
@@ -90,12 +110,22 @@ class ModelLicense:
             field_dict["is_active"] = is_active
         if key is not UNSET:
             field_dict["key"] = key
+        if license_email is not UNSET:
+            field_dict["license_email"] = license_email
+        if license_email_domain is not UNSET:
+            field_dict["license_email_domain"] = license_email_domain
         if license_type is not UNSET:
             field_dict["license_type"] = license_type
         if message is not UNSET:
             field_dict["message"] = message
+        if no_of_cloud_accounts is not UNSET:
+            field_dict["no_of_cloud_accounts"] = no_of_cloud_accounts
         if no_of_hosts is not UNSET:
             field_dict["no_of_hosts"] = no_of_hosts
+        if no_of_images_in_registry is not UNSET:
+            field_dict["no_of_images_in_registry"] = no_of_images_in_registry
+        if no_of_registries is not UNSET:
+            field_dict["no_of_registries"] = no_of_registries
         if notification_threshold_percentage is not UNSET:
             field_dict["notification_threshold_percentage"] = notification_threshold_percentage
         if notification_threshold_updated_at is not UNSET:
@@ -109,7 +139,7 @@ class ModelLicense:
 
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
-        from ..models.model_registry_credentials import ModelRegistryCredentials
+        from ..models.utils_registry_credentials import UtilsRegistryCredentials
 
         d = src_dict.copy()
         current_hosts = d.pop("current_hosts", UNSET)
@@ -124,22 +154,32 @@ class ModelLicense:
 
         key = d.pop("key", UNSET)
 
+        license_email = d.pop("license_email", UNSET)
+
+        license_email_domain = d.pop("license_email_domain", UNSET)
+
         license_type = d.pop("license_type", UNSET)
 
         message = d.pop("message", UNSET)
 
+        no_of_cloud_accounts = d.pop("no_of_cloud_accounts", UNSET)
+
         no_of_hosts = d.pop("no_of_hosts", UNSET)
+
+        no_of_images_in_registry = d.pop("no_of_images_in_registry", UNSET)
+
+        no_of_registries = d.pop("no_of_registries", UNSET)
 
         notification_threshold_percentage = d.pop("notification_threshold_percentage", UNSET)
 
         notification_threshold_updated_at = d.pop("notification_threshold_updated_at", UNSET)
 
         _registry_credentials = d.pop("registry_credentials", UNSET)
-        registry_credentials: Union[Unset, ModelRegistryCredentials]
+        registry_credentials: Union[Unset, UtilsRegistryCredentials]
         if isinstance(_registry_credentials, Unset):
             registry_credentials = UNSET
         else:
-            registry_credentials = ModelRegistryCredentials.from_dict(_registry_credentials)
+            registry_credentials = UtilsRegistryCredentials.from_dict(_registry_credentials)
 
         start_date = d.pop("start_date", UNSET)
 
@@ -150,9 +190,14 @@ class ModelLicense:
             end_date=end_date,
             is_active=is_active,
             key=key,
+            license_email=license_email,
+            license_email_domain=license_email_domain,
             license_type=license_type,
             message=message,
+            no_of_cloud_accounts=no_of_cloud_accounts,
             no_of_hosts=no_of_hosts,
+            no_of_images_in_registry=no_of_images_in_registry,
+            no_of_registries=no_of_registries,
             notification_threshold_percentage=notification_threshold_percentage,
             notification_threshold_updated_at=notification_threshold_updated_at,
             registry_credentials=registry_credentials,

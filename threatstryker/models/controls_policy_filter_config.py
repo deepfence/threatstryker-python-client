@@ -22,6 +22,7 @@ class ControlsPolicyFilterConfig:
         updated_at (int):
         use_waf (bool):
         enable_policy_logs (Union[Unset, bool]):
+        ignored_remote_hosts (Union[List[str], None, Unset]):
     """
 
     ignored_remote_ips: Union[List[str], None]
@@ -30,6 +31,7 @@ class ControlsPolicyFilterConfig:
     updated_at: int
     use_waf: bool
     enable_policy_logs: Union[Unset, bool] = UNSET
+    ignored_remote_hosts: Union[List[str], None, Unset] = UNSET
     additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
@@ -58,6 +60,15 @@ class ControlsPolicyFilterConfig:
 
         enable_policy_logs = self.enable_policy_logs
 
+        ignored_remote_hosts: Union[List[str], None, Unset]
+        if isinstance(self.ignored_remote_hosts, Unset):
+            ignored_remote_hosts = UNSET
+        elif isinstance(self.ignored_remote_hosts, list):
+            ignored_remote_hosts = self.ignored_remote_hosts
+
+        else:
+            ignored_remote_hosts = self.ignored_remote_hosts
+
         field_dict: Dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -71,6 +82,8 @@ class ControlsPolicyFilterConfig:
         )
         if enable_policy_logs is not UNSET:
             field_dict["enable_policy_logs"] = enable_policy_logs
+        if ignored_remote_hosts is not UNSET:
+            field_dict["ignored_remote_hosts"] = ignored_remote_hosts
 
         return field_dict
 
@@ -123,6 +136,23 @@ class ControlsPolicyFilterConfig:
 
         enable_policy_logs = d.pop("enable_policy_logs", UNSET)
 
+        def _parse_ignored_remote_hosts(data: object) -> Union[List[str], None, Unset]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, list):
+                    raise TypeError()
+                ignored_remote_hosts_type_0 = cast(List[str], data)
+
+                return ignored_remote_hosts_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[List[str], None, Unset], data)
+
+        ignored_remote_hosts = _parse_ignored_remote_hosts(d.pop("ignored_remote_hosts", UNSET))
+
         controls_policy_filter_config = cls(
             ignored_remote_ips=ignored_remote_ips,
             node_id=node_id,
@@ -130,6 +160,7 @@ class ControlsPolicyFilterConfig:
             updated_at=updated_at,
             use_waf=use_waf,
             enable_policy_logs=enable_policy_logs,
+            ignored_remote_hosts=ignored_remote_hosts,
         )
 
         controls_policy_filter_config.additional_properties = d

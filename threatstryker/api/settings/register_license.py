@@ -8,6 +8,7 @@ from ...client import AuthenticatedClient, Client
 from ...models.api_docs_bad_request_response import ApiDocsBadRequestResponse
 from ...models.api_docs_failure_response import ApiDocsFailureResponse
 from ...models.model_register_license_request import ModelRegisterLicenseRequest
+from ...models.model_register_license_response import ModelRegisterLicenseResponse
 from ...types import Response
 
 
@@ -33,10 +34,11 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse]]:
-    if response.status_code == HTTPStatus.NO_CONTENT:
-        response_204 = cast(Any, None)
-        return response_204
+) -> Optional[Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse, ModelRegisterLicenseResponse]]:
+    if response.status_code == HTTPStatus.OK:
+        response_200 = ModelRegisterLicenseResponse.from_dict(response.json())
+
+        return response_200
     if response.status_code == HTTPStatus.BAD_REQUEST:
         response_400 = ApiDocsBadRequestResponse.from_dict(response.json())
 
@@ -63,7 +65,7 @@ def _parse_response(
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse]]:
+) -> Response[Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse, ModelRegisterLicenseResponse]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -76,7 +78,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: ModelRegisterLicenseRequest,
-) -> Response[Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse]]:
+) -> Response[Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse, ModelRegisterLicenseResponse]]:
     """Register License
 
      Register new license key to the console and activate
@@ -89,7 +91,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse]]
+        Response[Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse, ModelRegisterLicenseResponse]]
     """
 
     kwargs = _get_kwargs(
@@ -107,7 +109,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     body: ModelRegisterLicenseRequest,
-) -> Optional[Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse]]:
+) -> Optional[Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse, ModelRegisterLicenseResponse]]:
     """Register License
 
      Register new license key to the console and activate
@@ -120,7 +122,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse]
+        Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse, ModelRegisterLicenseResponse]
     """
 
     return sync_detailed(
@@ -133,7 +135,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     body: ModelRegisterLicenseRequest,
-) -> Response[Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse]]:
+) -> Response[Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse, ModelRegisterLicenseResponse]]:
     """Register License
 
      Register new license key to the console and activate
@@ -146,7 +148,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse]]
+        Response[Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse, ModelRegisterLicenseResponse]]
     """
 
     kwargs = _get_kwargs(
@@ -162,7 +164,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     body: ModelRegisterLicenseRequest,
-) -> Optional[Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse]]:
+) -> Optional[Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse, ModelRegisterLicenseResponse]]:
     """Register License
 
      Register new license key to the console and activate
@@ -175,7 +177,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse]
+        Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse, ModelRegisterLicenseResponse]
     """
 
     return (

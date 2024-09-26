@@ -47,6 +47,7 @@ class ReportMetadata:
         interface_ips (Union[Unset, List[str]]):
         interface_names (Union[Unset, List[str]]):
         is_console_vm (Union[Unset, bool]):
+        is_deepfence_system (Union[Unset, bool]):
         kernel_id (Union[Unset, str]):
         kernel_version (Union[Unset, str]):
         kubernetes_cluster_id (Union[Unset, str]):
@@ -123,6 +124,7 @@ class ReportMetadata:
     interface_ips: Union[Unset, List[str]] = UNSET
     interface_names: Union[Unset, List[str]] = UNSET
     is_console_vm: Union[Unset, bool] = UNSET
+    is_deepfence_system: Union[Unset, bool] = UNSET
     kernel_id: Union[Unset, str] = UNSET
     kernel_version: Union[Unset, str] = UNSET
     kubernetes_cluster_id: Union[Unset, str] = UNSET
@@ -240,6 +242,8 @@ class ReportMetadata:
             interface_names = self.interface_names
 
         is_console_vm = self.is_console_vm
+
+        is_deepfence_system = self.is_deepfence_system
 
         kernel_id = self.kernel_id
 
@@ -410,6 +414,8 @@ class ReportMetadata:
             field_dict["interface_names"] = interface_names
         if is_console_vm is not UNSET:
             field_dict["is_console_vm"] = is_console_vm
+        if is_deepfence_system is not UNSET:
+            field_dict["is_deepfence_system"] = is_deepfence_system
         if kernel_id is not UNSET:
             field_dict["kernel_id"] = kernel_id
         if kernel_version is not UNSET:
@@ -564,6 +570,8 @@ class ReportMetadata:
 
         is_console_vm = d.pop("is_console_vm", UNSET)
 
+        is_deepfence_system = d.pop("is_deepfence_system", UNSET)
+
         kernel_id = d.pop("kernel_id", UNSET)
 
         kernel_version = d.pop("kernel_version", UNSET)
@@ -678,6 +686,7 @@ class ReportMetadata:
             interface_ips=interface_ips,
             interface_names=interface_names,
             is_console_vm=is_console_vm,
+            is_deepfence_system=is_deepfence_system,
             kernel_id=kernel_id,
             kernel_version=kernel_version,
             kubernetes_cluster_id=kubernetes_cluster_id,

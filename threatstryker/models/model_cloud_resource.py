@@ -3,6 +3,9 @@ from typing import Any, Dict, List, Type, TypeVar
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
+from ..models.model_cloud_resource_agent_install_availability import ModelCloudResourceAgentInstallAvailability
+from ..models.model_cloud_resource_cloud_provider import ModelCloudResourceCloudProvider
+
 T = TypeVar("T", bound="ModelCloudResource")
 
 
@@ -11,11 +14,13 @@ class ModelCloudResource:
     """
     Attributes:
         account_id (str):
+        agent_install_availability (ModelCloudResourceAgentInstallAvailability):
         cloud_compliance_latest_scan_id (str):
         cloud_compliance_scan_status (str):
         cloud_compliances_count (int):
-        cloud_provider (str):
+        cloud_provider (ModelCloudResourceCloudProvider):
         cloud_region (str):
+        cloud_warn_alarm_count (int):
         node_id (str):
         node_name (str):
         node_type (str):
@@ -23,11 +28,13 @@ class ModelCloudResource:
     """
 
     account_id: str
+    agent_install_availability: ModelCloudResourceAgentInstallAvailability
     cloud_compliance_latest_scan_id: str
     cloud_compliance_scan_status: str
     cloud_compliances_count: int
-    cloud_provider: str
+    cloud_provider: ModelCloudResourceCloudProvider
     cloud_region: str
+    cloud_warn_alarm_count: int
     node_id: str
     node_name: str
     node_type: str
@@ -37,15 +44,19 @@ class ModelCloudResource:
     def to_dict(self) -> Dict[str, Any]:
         account_id = self.account_id
 
+        agent_install_availability = self.agent_install_availability.value
+
         cloud_compliance_latest_scan_id = self.cloud_compliance_latest_scan_id
 
         cloud_compliance_scan_status = self.cloud_compliance_scan_status
 
         cloud_compliances_count = self.cloud_compliances_count
 
-        cloud_provider = self.cloud_provider
+        cloud_provider = self.cloud_provider.value
 
         cloud_region = self.cloud_region
+
+        cloud_warn_alarm_count = self.cloud_warn_alarm_count
 
         node_id = self.node_id
 
@@ -60,11 +71,13 @@ class ModelCloudResource:
         field_dict.update(
             {
                 "account_id": account_id,
+                "agent_install_availability": agent_install_availability,
                 "cloud_compliance_latest_scan_id": cloud_compliance_latest_scan_id,
                 "cloud_compliance_scan_status": cloud_compliance_scan_status,
                 "cloud_compliances_count": cloud_compliances_count,
                 "cloud_provider": cloud_provider,
                 "cloud_region": cloud_region,
+                "cloud_warn_alarm_count": cloud_warn_alarm_count,
                 "node_id": node_id,
                 "node_name": node_name,
                 "node_type": node_type,
@@ -79,15 +92,19 @@ class ModelCloudResource:
         d = src_dict.copy()
         account_id = d.pop("account_id")
 
+        agent_install_availability = ModelCloudResourceAgentInstallAvailability(d.pop("agent_install_availability"))
+
         cloud_compliance_latest_scan_id = d.pop("cloud_compliance_latest_scan_id")
 
         cloud_compliance_scan_status = d.pop("cloud_compliance_scan_status")
 
         cloud_compliances_count = d.pop("cloud_compliances_count")
 
-        cloud_provider = d.pop("cloud_provider")
+        cloud_provider = ModelCloudResourceCloudProvider(d.pop("cloud_provider"))
 
         cloud_region = d.pop("cloud_region")
+
+        cloud_warn_alarm_count = d.pop("cloud_warn_alarm_count")
 
         node_id = d.pop("node_id")
 
@@ -99,11 +116,13 @@ class ModelCloudResource:
 
         model_cloud_resource = cls(
             account_id=account_id,
+            agent_install_availability=agent_install_availability,
             cloud_compliance_latest_scan_id=cloud_compliance_latest_scan_id,
             cloud_compliance_scan_status=cloud_compliance_scan_status,
             cloud_compliances_count=cloud_compliances_count,
             cloud_provider=cloud_provider,
             cloud_region=cloud_region,
+            cloud_warn_alarm_count=cloud_warn_alarm_count,
             node_id=node_id,
             node_name=node_name,
             node_type=node_type,

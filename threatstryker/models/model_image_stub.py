@@ -13,17 +13,21 @@ class ModelImageStub:
     """
     Attributes:
         id (Union[Unset, str]):
+        images (Union[Unset, int]):
         name (Union[Unset, str]):
         tags (Union[List[str], None, Unset]):
     """
 
     id: Union[Unset, str] = UNSET
+    images: Union[Unset, int] = UNSET
     name: Union[Unset, str] = UNSET
     tags: Union[List[str], None, Unset] = UNSET
     additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
         id = self.id
+
+        images = self.images
 
         name = self.name
 
@@ -41,6 +45,8 @@ class ModelImageStub:
         field_dict.update({})
         if id is not UNSET:
             field_dict["id"] = id
+        if images is not UNSET:
+            field_dict["images"] = images
         if name is not UNSET:
             field_dict["name"] = name
         if tags is not UNSET:
@@ -52,6 +58,8 @@ class ModelImageStub:
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
         d = src_dict.copy()
         id = d.pop("id", UNSET)
+
+        images = d.pop("images", UNSET)
 
         name = d.pop("name", UNSET)
 
@@ -74,6 +82,7 @@ class ModelImageStub:
 
         model_image_stub = cls(
             id=id,
+            images=images,
             name=name,
             tags=tags,
         )

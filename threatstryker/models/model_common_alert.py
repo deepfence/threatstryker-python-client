@@ -3,6 +3,9 @@ from typing import Any, Dict, List, Type, TypeVar, Union, cast
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
+from ..models.model_common_alert_event_type import ModelCommonAlertEventType
+from ..models.model_common_alert_severity import ModelCommonAlertSeverity
+
 T = TypeVar("T", bound="ModelCommonAlert")
 
 
@@ -14,7 +17,7 @@ class ModelCommonAlert:
         container_name (str):
         count (int):
         created_at (int):
-        event_type (str):
+        event_type (ModelCommonAlertEventType):
         geoip (str):
         host_name (str):
         kubernetes_cluster_name (str):
@@ -24,7 +27,7 @@ class ModelCommonAlert:
         node_type (str):
         pod_name (str):
         rule_id (str):
-        severity (str):
+        severity (ModelCommonAlertSeverity):
         summary (str):
         tactics (Union[List[str], None]):
         techniques (Union[List[str], None]):
@@ -35,7 +38,7 @@ class ModelCommonAlert:
     container_name: str
     count: int
     created_at: int
-    event_type: str
+    event_type: ModelCommonAlertEventType
     geoip: str
     host_name: str
     kubernetes_cluster_name: str
@@ -45,7 +48,7 @@ class ModelCommonAlert:
     node_type: str
     pod_name: str
     rule_id: str
-    severity: str
+    severity: ModelCommonAlertSeverity
     summary: str
     tactics: Union[List[str], None]
     techniques: Union[List[str], None]
@@ -61,7 +64,7 @@ class ModelCommonAlert:
 
         created_at = self.created_at
 
-        event_type = self.event_type
+        event_type = self.event_type.value
 
         geoip = self.geoip
 
@@ -81,7 +84,7 @@ class ModelCommonAlert:
 
         rule_id = self.rule_id
 
-        severity = self.severity
+        severity = self.severity.value
 
         summary = self.summary
 
@@ -140,7 +143,7 @@ class ModelCommonAlert:
 
         created_at = d.pop("created_at")
 
-        event_type = d.pop("event_type")
+        event_type = ModelCommonAlertEventType(d.pop("event_type"))
 
         geoip = d.pop("geoip")
 
@@ -160,7 +163,7 @@ class ModelCommonAlert:
 
         rule_id = d.pop("rule_id")
 
-        severity = d.pop("severity")
+        severity = ModelCommonAlertSeverity(d.pop("severity"))
 
         summary = d.pop("summary")
 

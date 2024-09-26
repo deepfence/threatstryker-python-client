@@ -3,6 +3,8 @@ from typing import TYPE_CHECKING, Any, Dict, List, Type, TypeVar, Union, cast
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
+from ..models.model_compliance_compliance_check_type import ModelComplianceComplianceCheckType
+from ..models.model_compliance_status import ModelComplianceStatus
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
@@ -16,7 +18,7 @@ T = TypeVar("T", bound="ModelCompliance")
 class ModelCompliance:
     """
     Attributes:
-        compliance_check_type (str):
+        compliance_check_type (ModelComplianceComplianceCheckType):
         description (str):
         masked (bool):
         node_id (str):
@@ -26,7 +28,7 @@ class ModelCompliance:
         remediation_script (str):
         resource (str):
         rule_id (str):
-        status (str):
+        status (ModelComplianceStatus):
         test_category (str):
         test_desc (str):
         test_number (str):
@@ -36,7 +38,7 @@ class ModelCompliance:
         resources (Union[List['ModelBasicNode'], None, Unset]):
     """
 
-    compliance_check_type: str
+    compliance_check_type: ModelComplianceComplianceCheckType
     description: str
     masked: bool
     node_id: str
@@ -46,7 +48,7 @@ class ModelCompliance:
     remediation_script: str
     resource: str
     rule_id: str
-    status: str
+    status: ModelComplianceStatus
     test_category: str
     test_desc: str
     test_number: str
@@ -57,7 +59,7 @@ class ModelCompliance:
     additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
-        compliance_check_type = self.compliance_check_type
+        compliance_check_type = self.compliance_check_type.value
 
         description = self.description
 
@@ -77,7 +79,7 @@ class ModelCompliance:
 
         rule_id = self.rule_id
 
-        status = self.status
+        status = self.status.value
 
         test_category = self.test_category
 
@@ -136,7 +138,7 @@ class ModelCompliance:
         from ..models.model_basic_node import ModelBasicNode
 
         d = src_dict.copy()
-        compliance_check_type = d.pop("compliance_check_type")
+        compliance_check_type = ModelComplianceComplianceCheckType(d.pop("compliance_check_type"))
 
         description = d.pop("description")
 
@@ -156,7 +158,7 @@ class ModelCompliance:
 
         rule_id = d.pop("rule_id")
 
-        status = d.pop("status")
+        status = ModelComplianceStatus(d.pop("status"))
 
         test_category = d.pop("test_category")
 

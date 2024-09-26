@@ -21,12 +21,14 @@ class ModelIntegrationAddReq:
         notification_type (str):
         config (Union['ModelIntegrationAddReqConfigType0', None, Unset]):
         filters (Union[Unset, ModelIntegrationFilters]):
+        send_summary (Union[Unset, bool]):
     """
 
     integration_type: str
     notification_type: str
     config: Union["ModelIntegrationAddReqConfigType0", None, Unset] = UNSET
     filters: Union[Unset, "ModelIntegrationFilters"] = UNSET
+    send_summary: Union[Unset, bool] = UNSET
     additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
@@ -48,6 +50,8 @@ class ModelIntegrationAddReq:
         if not isinstance(self.filters, Unset):
             filters = self.filters.to_dict()
 
+        send_summary = self.send_summary
+
         field_dict: Dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -60,6 +64,8 @@ class ModelIntegrationAddReq:
             field_dict["config"] = config
         if filters is not UNSET:
             field_dict["filters"] = filters
+        if send_summary is not UNSET:
+            field_dict["send_summary"] = send_summary
 
         return field_dict
 
@@ -97,11 +103,14 @@ class ModelIntegrationAddReq:
         else:
             filters = ModelIntegrationFilters.from_dict(_filters)
 
+        send_summary = d.pop("send_summary", UNSET)
+
         model_integration_add_req = cls(
             integration_type=integration_type,
             notification_type=notification_type,
             config=config,
             filters=filters,
+            send_summary=send_summary,
         )
 
         model_integration_add_req.additional_properties = d

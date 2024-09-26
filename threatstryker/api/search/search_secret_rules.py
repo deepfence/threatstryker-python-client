@@ -86,7 +86,7 @@ def sync_detailed(
 ) -> Response[Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse, List["ModelSecretRule"]]]:
     """Search Secret Rules
 
-     Search across all the data associated with secret ruless
+     Search across all the data associated with secret rules
 
     Args:
         body (SearchSearchNodeReq):
@@ -117,7 +117,7 @@ def sync(
 ) -> Optional[Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse, List["ModelSecretRule"]]]:
     """Search Secret Rules
 
-     Search across all the data associated with secret ruless
+     Search across all the data associated with secret rules
 
     Args:
         body (SearchSearchNodeReq):
@@ -143,7 +143,7 @@ async def asyncio_detailed(
 ) -> Response[Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse, List["ModelSecretRule"]]]:
     """Search Secret Rules
 
-     Search across all the data associated with secret ruless
+     Search across all the data associated with secret rules
 
     Args:
         body (SearchSearchNodeReq):
@@ -172,7 +172,7 @@ async def asyncio(
 ) -> Optional[Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse, List["ModelSecretRule"]]]:
     """Search Secret Rules
 
-     Search across all the data associated with secret ruless
+     Search across all the data associated with secret rules
 
     Args:
         body (SearchSearchNodeReq):

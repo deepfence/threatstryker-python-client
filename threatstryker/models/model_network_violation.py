@@ -3,6 +3,7 @@ from typing import Any, Dict, List, Type, TypeVar, Union
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
+from ..models.model_network_violation_direction import ModelNetworkViolationDirection
 from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="ModelNetworkViolation")
@@ -20,7 +21,7 @@ class ModelNetworkViolation:
         container_id (Union[Unset, str]):
         created_at (Union[Unset, int]):
         defenderd (Union[Unset, str]):
-        direction (Union[Unset, str]):
+        direction (Union[Unset, ModelNetworkViolationDirection]):
         event_type (Union[Unset, str]):
         executed_at (Union[Unset, int]):
         host_name (Union[Unset, str]):
@@ -46,7 +47,7 @@ class ModelNetworkViolation:
     container_id: Union[Unset, str] = UNSET
     created_at: Union[Unset, int] = UNSET
     defenderd: Union[Unset, str] = UNSET
-    direction: Union[Unset, str] = UNSET
+    direction: Union[Unset, ModelNetworkViolationDirection] = UNSET
     event_type: Union[Unset, str] = UNSET
     executed_at: Union[Unset, int] = UNSET
     host_name: Union[Unset, str] = UNSET
@@ -81,7 +82,9 @@ class ModelNetworkViolation:
 
         defenderd = self.defenderd
 
-        direction = self.direction
+        direction: Union[Unset, str] = UNSET
+        if not isinstance(self.direction, Unset):
+            direction = self.direction.value
 
         event_type = self.event_type
 
@@ -186,7 +189,12 @@ class ModelNetworkViolation:
 
         defenderd = d.pop("defenderd", UNSET)
 
-        direction = d.pop("direction", UNSET)
+        _direction = d.pop("direction", UNSET)
+        direction: Union[Unset, ModelNetworkViolationDirection]
+        if isinstance(_direction, Unset):
+            direction = UNSET
+        else:
+            direction = ModelNetworkViolationDirection(_direction)
 
         event_type = d.pop("event_type", UNSET)
 

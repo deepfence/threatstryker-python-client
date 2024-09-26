@@ -18,6 +18,7 @@ class ModelPod:
     Attributes:
         containers (Union[List['ModelContainer'], None]):
         host_name (str):
+        is_deepfence_system (bool):
         kubernetes_cluster_id (str):
         kubernetes_cluster_name (str):
         kubernetes_created (str):
@@ -37,6 +38,7 @@ class ModelPod:
 
     containers: Union[List["ModelContainer"], None]
     host_name: str
+    is_deepfence_system: bool
     kubernetes_cluster_id: str
     kubernetes_cluster_name: str
     kubernetes_created: str
@@ -68,6 +70,8 @@ class ModelPod:
             containers = self.containers
 
         host_name = self.host_name
+
+        is_deepfence_system = self.is_deepfence_system
 
         kubernetes_cluster_id = self.kubernetes_cluster_id
 
@@ -117,6 +121,7 @@ class ModelPod:
             {
                 "containers": containers,
                 "host_name": host_name,
+                "is_deepfence_system": is_deepfence_system,
                 "kubernetes_cluster_id": kubernetes_cluster_id,
                 "kubernetes_cluster_name": kubernetes_cluster_name,
                 "kubernetes_created": kubernetes_created,
@@ -166,6 +171,8 @@ class ModelPod:
         containers = _parse_containers(d.pop("containers"))
 
         host_name = d.pop("host_name")
+
+        is_deepfence_system = d.pop("is_deepfence_system")
 
         kubernetes_cluster_id = d.pop("kubernetes_cluster_id")
 
@@ -231,6 +238,7 @@ class ModelPod:
         model_pod = cls(
             containers=containers,
             host_name=host_name,
+            is_deepfence_system=is_deepfence_system,
             kubernetes_cluster_id=kubernetes_cluster_id,
             kubernetes_cluster_name=kubernetes_cluster_name,
             kubernetes_created=kubernetes_created,

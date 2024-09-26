@@ -4,6 +4,12 @@ from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
 if TYPE_CHECKING:
+    from ..models.ingesters_report_ingestion_data_api_endpoints_batch_type_0_item import (
+        IngestersReportIngestionDataApiEndpointsBatchType0Item,
+    )
+    from ..models.ingesters_report_ingestion_data_api_endpoints_edge_batch_type_0_item import (
+        IngestersReportIngestionDataApiEndpointsEdgeBatchType0Item,
+    )
     from ..models.ingesters_report_ingestion_data_container_batch_type_0_item import (
         IngestersReportIngestionDataContainerBatchType0Item,
     )
@@ -56,6 +62,8 @@ T = TypeVar("T", bound="IngestersReportIngestionData")
 class IngestersReportIngestionData:
     """
     Attributes:
+        api_endpoints_batch (Union[List['IngestersReportIngestionDataApiEndpointsBatchType0Item'], None]):
+        api_endpoints_edge_batch (Union[List['IngestersReportIngestionDataApiEndpointsEdgeBatchType0Item'], None]):
         container_batch (Union[List['IngestersReportIngestionDataContainerBatchType0Item'], None]):
         container_edges_batch (Union[List['IngestersReportIngestionDataContainerEdgesBatchType0Item'], None]):
         container_image_batch (Union[List['IngestersReportIngestionDataContainerImageBatchType0Item'], None]):
@@ -76,6 +84,8 @@ class IngestersReportIngestionData:
         process_edges_batch (Union[List['IngestersReportIngestionDataProcessEdgesBatchType0Item'], None]):
     """
 
+    api_endpoints_batch: Union[List["IngestersReportIngestionDataApiEndpointsBatchType0Item"], None]
+    api_endpoints_edge_batch: Union[List["IngestersReportIngestionDataApiEndpointsEdgeBatchType0Item"], None]
     container_batch: Union[List["IngestersReportIngestionDataContainerBatchType0Item"], None]
     container_edges_batch: Union[List["IngestersReportIngestionDataContainerEdgesBatchType0Item"], None]
     container_image_batch: Union[List["IngestersReportIngestionDataContainerImageBatchType0Item"], None]
@@ -95,6 +105,26 @@ class IngestersReportIngestionData:
     additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
+        api_endpoints_batch: Union[List[Dict[str, Any]], None]
+        if isinstance(self.api_endpoints_batch, list):
+            api_endpoints_batch = []
+            for api_endpoints_batch_type_0_item_data in self.api_endpoints_batch:
+                api_endpoints_batch_type_0_item = api_endpoints_batch_type_0_item_data.to_dict()
+                api_endpoints_batch.append(api_endpoints_batch_type_0_item)
+
+        else:
+            api_endpoints_batch = self.api_endpoints_batch
+
+        api_endpoints_edge_batch: Union[List[Dict[str, Any]], None]
+        if isinstance(self.api_endpoints_edge_batch, list):
+            api_endpoints_edge_batch = []
+            for api_endpoints_edge_batch_type_0_item_data in self.api_endpoints_edge_batch:
+                api_endpoints_edge_batch_type_0_item = api_endpoints_edge_batch_type_0_item_data.to_dict()
+                api_endpoints_edge_batch.append(api_endpoints_edge_batch_type_0_item)
+
+        else:
+            api_endpoints_edge_batch = self.api_endpoints_edge_batch
+
         container_batch: Union[List[Dict[str, Any]], None]
         if isinstance(self.container_batch, list):
             container_batch = []
@@ -251,6 +281,8 @@ class IngestersReportIngestionData:
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
+                "api_endpoints_batch": api_endpoints_batch,
+                "api_endpoints_edge_batch": api_endpoints_edge_batch,
                 "container_batch": container_batch,
                 "container_edges_batch": container_edges_batch,
                 "container_image_batch": container_image_batch,
@@ -274,6 +306,12 @@ class IngestersReportIngestionData:
 
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
+        from ..models.ingesters_report_ingestion_data_api_endpoints_batch_type_0_item import (
+            IngestersReportIngestionDataApiEndpointsBatchType0Item,
+        )
+        from ..models.ingesters_report_ingestion_data_api_endpoints_edge_batch_type_0_item import (
+            IngestersReportIngestionDataApiEndpointsEdgeBatchType0Item,
+        )
         from ..models.ingesters_report_ingestion_data_container_batch_type_0_item import (
             IngestersReportIngestionDataContainerBatchType0Item,
         )
@@ -321,6 +359,56 @@ class IngestersReportIngestionData:
         )
 
         d = src_dict.copy()
+
+        def _parse_api_endpoints_batch(
+            data: object,
+        ) -> Union[List["IngestersReportIngestionDataApiEndpointsBatchType0Item"], None]:
+            if data is None:
+                return data
+            try:
+                if not isinstance(data, list):
+                    raise TypeError()
+                api_endpoints_batch_type_0 = []
+                _api_endpoints_batch_type_0 = data
+                for api_endpoints_batch_type_0_item_data in _api_endpoints_batch_type_0:
+                    api_endpoints_batch_type_0_item = IngestersReportIngestionDataApiEndpointsBatchType0Item.from_dict(
+                        api_endpoints_batch_type_0_item_data
+                    )
+
+                    api_endpoints_batch_type_0.append(api_endpoints_batch_type_0_item)
+
+                return api_endpoints_batch_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[List["IngestersReportIngestionDataApiEndpointsBatchType0Item"], None], data)
+
+        api_endpoints_batch = _parse_api_endpoints_batch(d.pop("api_endpoints_batch"))
+
+        def _parse_api_endpoints_edge_batch(
+            data: object,
+        ) -> Union[List["IngestersReportIngestionDataApiEndpointsEdgeBatchType0Item"], None]:
+            if data is None:
+                return data
+            try:
+                if not isinstance(data, list):
+                    raise TypeError()
+                api_endpoints_edge_batch_type_0 = []
+                _api_endpoints_edge_batch_type_0 = data
+                for api_endpoints_edge_batch_type_0_item_data in _api_endpoints_edge_batch_type_0:
+                    api_endpoints_edge_batch_type_0_item = (
+                        IngestersReportIngestionDataApiEndpointsEdgeBatchType0Item.from_dict(
+                            api_endpoints_edge_batch_type_0_item_data
+                        )
+                    )
+
+                    api_endpoints_edge_batch_type_0.append(api_endpoints_edge_batch_type_0_item)
+
+                return api_endpoints_edge_batch_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[List["IngestersReportIngestionDataApiEndpointsEdgeBatchType0Item"], None], data)
+
+        api_endpoints_edge_batch = _parse_api_endpoints_edge_batch(d.pop("api_endpoints_edge_batch"))
 
         def _parse_container_batch(
             data: object,
@@ -691,6 +779,8 @@ class IngestersReportIngestionData:
         process_edges_batch = _parse_process_edges_batch(d.pop("process_edges_batch"))
 
         ingesters_report_ingestion_data = cls(
+            api_endpoints_batch=api_endpoints_batch,
+            api_endpoints_edge_batch=api_endpoints_edge_batch,
             container_batch=container_batch,
             container_edges_batch=container_edges_batch,
             container_image_batch=container_image_batch,

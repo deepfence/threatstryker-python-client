@@ -3,6 +3,8 @@ from typing import Any, Dict, List, Type, TypeVar
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
+from ..models.ingesters_policy_log_direction import IngestersPolicyLogDirection
+
 T = TypeVar("T", bound="IngestersPolicyLog")
 
 
@@ -13,7 +15,7 @@ class IngestersPolicyLog:
         alert_id (str):
         config_id (str):
         created_at (int):
-        direction (str):
+        direction (IngestersPolicyLogDirection):
         host_name (str):
         incident (str):
         local_ip (str):
@@ -27,7 +29,7 @@ class IngestersPolicyLog:
     alert_id: str
     config_id: str
     created_at: int
-    direction: str
+    direction: IngestersPolicyLogDirection
     host_name: str
     incident: str
     local_ip: str
@@ -45,7 +47,7 @@ class IngestersPolicyLog:
 
         created_at = self.created_at
 
-        direction = self.direction
+        direction = self.direction.value
 
         host_name = self.host_name
 
@@ -93,7 +95,7 @@ class IngestersPolicyLog:
 
         created_at = d.pop("created_at")
 
-        direction = d.pop("direction")
+        direction = IngestersPolicyLogDirection(d.pop("direction"))
 
         host_name = d.pop("host_name")
 

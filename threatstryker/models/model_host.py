@@ -3,9 +3,12 @@ from typing import TYPE_CHECKING, Any, Dict, List, Type, TypeVar, Union, cast
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
+from ..types import UNSET, Unset
+
 if TYPE_CHECKING:
     from ..models.model_agent_plugin_config_names import ModelAgentPluginConfigNames
     from ..models.model_agent_plugins_status import ModelAgentPluginsStatus
+    from ..models.model_api_endpoint import ModelAPIEndpoint
     from ..models.model_connection import ModelConnection
     from ..models.model_container import ModelContainer
     from ..models.model_container_image import ModelContainerImage
@@ -21,8 +24,11 @@ T = TypeVar("T", bound="ModelHost")
 class ModelHost:
     """
     Attributes:
+        agent_installer_tracer_status (str):
+        agent_installer_tracer_status_updated_at (int):
         agent_running (bool):
         alerts_counts (Union['ModelHostAlertsCountsType0', None]):
+        api_endpoints (Union[List['ModelAPIEndpoint'], None]):
         availability_zone (str):
         cloud_account_id (str):
         cloud_provider (str):
@@ -79,10 +85,14 @@ class ModelHost:
         vulnerability_latest_scan_id (str):
         vulnerability_scan_status (str):
         warn_alarm_count (int):
+        account_id (Union[Unset, str]):
     """
 
+    agent_installer_tracer_status: str
+    agent_installer_tracer_status_updated_at: int
     agent_running: bool
     alerts_counts: Union["ModelHostAlertsCountsType0", None]
+    api_endpoints: Union[List["ModelAPIEndpoint"], None]
     availability_zone: str
     cloud_account_id: str
     cloud_provider: str
@@ -139,10 +149,15 @@ class ModelHost:
     vulnerability_latest_scan_id: str
     vulnerability_scan_status: str
     warn_alarm_count: int
+    account_id: Union[Unset, str] = UNSET
     additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
         from ..models.model_host_alerts_counts_type_0 import ModelHostAlertsCountsType0
+
+        agent_installer_tracer_status = self.agent_installer_tracer_status
+
+        agent_installer_tracer_status_updated_at = self.agent_installer_tracer_status_updated_at
 
         agent_running = self.agent_running
 
@@ -151,6 +166,16 @@ class ModelHost:
             alerts_counts = self.alerts_counts.to_dict()
         else:
             alerts_counts = self.alerts_counts
+
+        api_endpoints: Union[List[Dict[str, Any]], None]
+        if isinstance(self.api_endpoints, list):
+            api_endpoints = []
+            for api_endpoints_type_0_item_data in self.api_endpoints:
+                api_endpoints_type_0_item = api_endpoints_type_0_item_data.to_dict()
+                api_endpoints.append(api_endpoints_type_0_item)
+
+        else:
+            api_endpoints = self.api_endpoints
 
         availability_zone = self.availability_zone
 
@@ -332,12 +357,17 @@ class ModelHost:
 
         warn_alarm_count = self.warn_alarm_count
 
+        account_id = self.account_id
+
         field_dict: Dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
+                "agent_installer_tracer_status": agent_installer_tracer_status,
+                "agent_installer_tracer_status_updated_at": agent_installer_tracer_status_updated_at,
                 "agent_running": agent_running,
                 "alerts_counts": alerts_counts,
+                "api_endpoints": api_endpoints,
                 "availability_zone": availability_zone,
                 "cloud_account_id": cloud_account_id,
                 "cloud_provider": cloud_provider,
@@ -396,6 +426,8 @@ class ModelHost:
                 "warn_alarm_count": warn_alarm_count,
             }
         )
+        if account_id is not UNSET:
+            field_dict["account_id"] = account_id
 
         return field_dict
 
@@ -403,6 +435,7 @@ class ModelHost:
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
         from ..models.model_agent_plugin_config_names import ModelAgentPluginConfigNames
         from ..models.model_agent_plugins_status import ModelAgentPluginsStatus
+        from ..models.model_api_endpoint import ModelAPIEndpoint
         from ..models.model_connection import ModelConnection
         from ..models.model_container import ModelContainer
         from ..models.model_container_image import ModelContainerImage
@@ -411,6 +444,10 @@ class ModelHost:
         from ..models.model_process import ModelProcess
 
         d = src_dict.copy()
+        agent_installer_tracer_status = d.pop("agent_installer_tracer_status")
+
+        agent_installer_tracer_status_updated_at = d.pop("agent_installer_tracer_status_updated_at")
+
         agent_running = d.pop("agent_running")
 
         def _parse_alerts_counts(data: object) -> Union["ModelHostAlertsCountsType0", None]:
@@ -427,6 +464,26 @@ class ModelHost:
             return cast(Union["ModelHostAlertsCountsType0", None], data)
 
         alerts_counts = _parse_alerts_counts(d.pop("alerts_counts"))
+
+        def _parse_api_endpoints(data: object) -> Union[List["ModelAPIEndpoint"], None]:
+            if data is None:
+                return data
+            try:
+                if not isinstance(data, list):
+                    raise TypeError()
+                api_endpoints_type_0 = []
+                _api_endpoints_type_0 = data
+                for api_endpoints_type_0_item_data in _api_endpoints_type_0:
+                    api_endpoints_type_0_item = ModelAPIEndpoint.from_dict(api_endpoints_type_0_item_data)
+
+                    api_endpoints_type_0.append(api_endpoints_type_0_item)
+
+                return api_endpoints_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[List["ModelAPIEndpoint"], None], data)
+
+        api_endpoints = _parse_api_endpoints(d.pop("api_endpoints"))
 
         availability_zone = d.pop("availability_zone")
 
@@ -700,9 +757,14 @@ class ModelHost:
 
         warn_alarm_count = d.pop("warn_alarm_count")
 
+        account_id = d.pop("account_id", UNSET)
+
         model_host = cls(
+            agent_installer_tracer_status=agent_installer_tracer_status,
+            agent_installer_tracer_status_updated_at=agent_installer_tracer_status_updated_at,
             agent_running=agent_running,
             alerts_counts=alerts_counts,
+            api_endpoints=api_endpoints,
             availability_zone=availability_zone,
             cloud_account_id=cloud_account_id,
             cloud_provider=cloud_provider,
@@ -759,6 +821,7 @@ class ModelHost:
             vulnerability_latest_scan_id=vulnerability_latest_scan_id,
             vulnerability_scan_status=vulnerability_scan_status,
             warn_alarm_count=warn_alarm_count,
+            account_id=account_id,
         )
 
         model_host.additional_properties = d

@@ -12,11 +12,13 @@ class ModelInitAgentReq:
     Attributes:
         available_workload (int):
         node_id (str):
+        node_type (str):
         version (str):
     """
 
     available_workload: int
     node_id: str
+    node_type: str
     version: str
     additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -24,6 +26,8 @@ class ModelInitAgentReq:
         available_workload = self.available_workload
 
         node_id = self.node_id
+
+        node_type = self.node_type
 
         version = self.version
 
@@ -33,6 +37,7 @@ class ModelInitAgentReq:
             {
                 "available_workload": available_workload,
                 "node_id": node_id,
+                "node_type": node_type,
                 "version": version,
             }
         )
@@ -46,11 +51,14 @@ class ModelInitAgentReq:
 
         node_id = d.pop("node_id")
 
+        node_type = d.pop("node_type")
+
         version = d.pop("version")
 
         model_init_agent_req = cls(
             available_workload=available_workload,
             node_id=node_id,
+            node_type=node_type,
             version=version,
         )
 

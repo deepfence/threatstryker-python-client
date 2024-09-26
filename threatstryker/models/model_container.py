@@ -30,6 +30,10 @@ class ModelContainer:
         docker_labels (Union['ModelContainerDockerLabelsType0', None]):
         host_name (str):
         image (ModelContainerImage):
+        is_deepfence_system (bool):
+        kubernetes_cluster_id (str):
+        kubernetes_cluster_name (str):
+        kubernetes_namespace (str):
         malware_latest_scan_id (str):
         malware_scan_status (str):
         malwares_count (int):
@@ -61,6 +65,10 @@ class ModelContainer:
     docker_labels: Union["ModelContainerDockerLabelsType0", None]
     host_name: str
     image: "ModelContainerImage"
+    is_deepfence_system: bool
+    kubernetes_cluster_id: str
+    kubernetes_cluster_name: str
+    kubernetes_namespace: str
     malware_latest_scan_id: str
     malware_scan_status: str
     malwares_count: int
@@ -118,6 +126,14 @@ class ModelContainer:
 
         image = self.image.to_dict()
 
+        is_deepfence_system = self.is_deepfence_system
+
+        kubernetes_cluster_id = self.kubernetes_cluster_id
+
+        kubernetes_cluster_name = self.kubernetes_cluster_name
+
+        kubernetes_namespace = self.kubernetes_namespace
+
         malware_latest_scan_id = self.malware_latest_scan_id
 
         malware_scan_status = self.malware_scan_status
@@ -174,6 +190,10 @@ class ModelContainer:
                 "docker_labels": docker_labels,
                 "host_name": host_name,
                 "image": image,
+                "is_deepfence_system": is_deepfence_system,
+                "kubernetes_cluster_id": kubernetes_cluster_id,
+                "kubernetes_cluster_name": kubernetes_cluster_name,
+                "kubernetes_namespace": kubernetes_namespace,
                 "malware_latest_scan_id": malware_latest_scan_id,
                 "malware_scan_status": malware_scan_status,
                 "malwares_count": malwares_count,
@@ -255,6 +275,14 @@ class ModelContainer:
 
         image = ModelContainerImage.from_dict(d.pop("image"))
 
+        is_deepfence_system = d.pop("is_deepfence_system")
+
+        kubernetes_cluster_id = d.pop("kubernetes_cluster_id")
+
+        kubernetes_cluster_name = d.pop("kubernetes_cluster_name")
+
+        kubernetes_namespace = d.pop("kubernetes_namespace")
+
         malware_latest_scan_id = d.pop("malware_latest_scan_id")
 
         malware_scan_status = d.pop("malware_scan_status")
@@ -318,6 +346,10 @@ class ModelContainer:
             docker_labels=docker_labels,
             host_name=host_name,
             image=image,
+            is_deepfence_system=is_deepfence_system,
+            kubernetes_cluster_id=kubernetes_cluster_id,
+            kubernetes_cluster_name=kubernetes_cluster_name,
+            kubernetes_namespace=kubernetes_namespace,
             malware_latest_scan_id=malware_latest_scan_id,
             malware_scan_status=malware_scan_status,
             malwares_count=malwares_count,

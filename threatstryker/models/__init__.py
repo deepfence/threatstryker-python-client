@@ -46,8 +46,7 @@ from .form_data_model_bin_upload_request import FormDataModelBinUploadRequest
 from .form_data_model_import_agent_policy_config_req import FormDataModelImportAgentPolicyConfigReq
 from .form_data_model_import_quarantine_policy_config_req import FormDataModelImportQuarantinePolicyConfigReq
 from .form_data_model_registry_gcr_add_req import FormDataModelRegistryGCRAddReq
-from .form_data_vulnerability_db_db_upload_request import FormDataVulnerabilityDbDBUploadRequest
-from .get_network_rules_response_200 import GetNetworkRulesResponse200
+from .form_data_threatintel_db_upload_request import FormDataThreatintelDBUploadRequest
 from .graph_cloud_provider_filter import GraphCloudProviderFilter
 from .graph_individual_threat_graph import GraphIndividualThreatGraph
 from .graph_individual_threat_graph_request import GraphIndividualThreatGraphRequest
@@ -77,7 +76,14 @@ from .ingesters_malware import IngestersMalware
 from .ingesters_malware_scan_status import IngestersMalwareScanStatus
 from .ingesters_meta_rules import IngestersMetaRules
 from .ingesters_policy_log import IngestersPolicyLog
+from .ingesters_policy_log_direction import IngestersPolicyLogDirection
 from .ingesters_report_ingestion_data import IngestersReportIngestionData
+from .ingesters_report_ingestion_data_api_endpoints_batch_type_0_item import (
+    IngestersReportIngestionDataApiEndpointsBatchType0Item,
+)
+from .ingesters_report_ingestion_data_api_endpoints_edge_batch_type_0_item import (
+    IngestersReportIngestionDataApiEndpointsEdgeBatchType0Item,
+)
 from .ingesters_report_ingestion_data_container_batch_type_0_item import (
     IngestersReportIngestionDataContainerBatchType0Item,
 )
@@ -134,6 +140,8 @@ from .model_add_generative_ai_open_ai_integration_model_id import ModelAddGenera
 from .model_add_scheduled_task_request import ModelAddScheduledTaskRequest
 from .model_add_scheduled_task_request_action import ModelAddScheduledTaskRequestAction
 from .model_agent_id import ModelAgentID
+from .model_agent_install import ModelAgentInstall
+from .model_agent_install_cloud_provider import ModelAgentInstallCloudProvider
 from .model_agent_plugin_config_names import ModelAgentPluginConfigNames
 from .model_agent_plugin_disable import ModelAgentPluginDisable
 from .model_agent_plugin_enable import ModelAgentPluginEnable
@@ -141,49 +149,62 @@ from .model_agent_plugins_status import ModelAgentPluginsStatus
 from .model_agent_upgrade import ModelAgentUpgrade
 from .model_alerts_action_request import ModelAlertsActionRequest
 from .model_api_auth_request import ModelAPIAuthRequest
+from .model_api_endpoint import ModelAPIEndpoint
+from .model_api_endpoint_direction import ModelAPIEndpointDirection
 from .model_api_token_response import ModelAPITokenResponse
 from .model_attach_agent_config_req import ModelAttachAgentConfigReq
 from .model_basic_node import ModelBasicNode
+from .model_benchmark_type import ModelBenchmarkType
 from .model_bulk_delete_report_req import ModelBulkDeleteReportReq
 from .model_bulk_delete_scans_request import ModelBulkDeleteScansRequest
 from .model_bulk_delete_scans_request_scan_type import ModelBulkDeleteScansRequestScanType
+from .model_cloud_account_delete_req import ModelCloudAccountDeleteReq
 from .model_cloud_account_refresh_req import ModelCloudAccountRefreshReq
 from .model_cloud_compliance import ModelCloudCompliance
-from .model_cloud_compliance_benchmark import ModelCloudComplianceBenchmark
-from .model_cloud_compliance_scan_details import ModelCloudComplianceScanDetails
+from .model_cloud_compliance_compliance_check_type import ModelCloudComplianceComplianceCheckType
+from .model_cloud_compliance_control import ModelCloudComplianceControl
 from .model_cloud_compliance_scan_result import ModelCloudComplianceScanResult
 from .model_cloud_compliance_scan_result_status_counts_type_0 import ModelCloudComplianceScanResultStatusCountsType0
-from .model_cloud_instance_deployment import ModelCloudInstanceDeployment
+from .model_cloud_compliance_status import ModelCloudComplianceStatus
 from .model_cloud_node_account_info import ModelCloudNodeAccountInfo
+from .model_cloud_node_account_info_cloud_provider import ModelCloudNodeAccountInfoCloudProvider
+from .model_cloud_node_account_info_refresh_status_map_type_0 import ModelCloudNodeAccountInfoRefreshStatusMapType0
 from .model_cloud_node_account_info_scan_status_map_type_0 import ModelCloudNodeAccountInfoScanStatusMapType0
 from .model_cloud_node_account_register_req import ModelCloudNodeAccountRegisterReq
 from .model_cloud_node_account_register_req_cloud_provider import ModelCloudNodeAccountRegisterReqCloudProvider
-from .model_cloud_node_account_register_req_monitored_account_ids_type_0 import (
-    ModelCloudNodeAccountRegisterReqMonitoredAccountIdsType0,
-)
-from .model_cloud_node_account_register_resp import ModelCloudNodeAccountRegisterResp
-from .model_cloud_node_account_register_resp_data import ModelCloudNodeAccountRegisterRespData
-from .model_cloud_node_account_register_resp_data_scans_type_0 import ModelCloudNodeAccountRegisterRespDataScansType0
 from .model_cloud_node_accounts_list_req import ModelCloudNodeAccountsListReq
+from .model_cloud_node_accounts_list_req_cloud_provider import ModelCloudNodeAccountsListReqCloudProvider
 from .model_cloud_node_accounts_list_resp import ModelCloudNodeAccountsListResp
-from .model_cloud_node_cloudtrail_trail import ModelCloudNodeCloudtrailTrail
 from .model_cloud_node_compliance_control import ModelCloudNodeComplianceControl
 from .model_cloud_node_control_req import ModelCloudNodeControlReq
 from .model_cloud_node_control_req_cloud_provider import ModelCloudNodeControlReqCloudProvider
+from .model_cloud_node_control_req_compliance_type import ModelCloudNodeControlReqComplianceType
 from .model_cloud_node_control_resp import ModelCloudNodeControlResp
 from .model_cloud_node_enable_disable_req import ModelCloudNodeEnableDisableReq
+from .model_cloud_node_monitored_account import ModelCloudNodeMonitoredAccount
 from .model_cloud_node_providers_list_resp import ModelCloudNodeProvidersListResp
 from .model_cloud_resource import ModelCloudResource
-from .model_cloud_resource_deploy_agent_req import ModelCloudResourceDeployAgentReq
+from .model_cloud_resource_agent_install_availability import ModelCloudResourceAgentInstallAvailability
+from .model_cloud_resource_cloud_provider import ModelCloudResourceCloudProvider
 from .model_common_alert import ModelCommonAlert
+from .model_common_alert_event_type import ModelCommonAlertEventType
+from .model_common_alert_severity import ModelCommonAlertSeverity
 from .model_compliance import ModelCompliance
+from .model_compliance_compliance_check_type import ModelComplianceComplianceCheckType
 from .model_compliance_rule import ModelComplianceRule
 from .model_compliance_scan_info import ModelComplianceScanInfo
 from .model_compliance_scan_info_severity_counts_type_0 import ModelComplianceScanInfoSeverityCountsType0
+from .model_compliance_scan_info_status import ModelComplianceScanInfoStatus
 from .model_compliance_scan_result import ModelComplianceScanResult
+from .model_compliance_scan_result_control_group import ModelComplianceScanResultControlGroup
+from .model_compliance_scan_result_control_group_counts import ModelComplianceScanResultControlGroupCounts
 from .model_compliance_scan_result_status_counts_type_0 import ModelComplianceScanResultStatusCountsType0
+from .model_compliance_scan_results_group_resp import ModelComplianceScanResultsGroupResp
+from .model_compliance_scan_results_group_resp_groups_type_0 import ModelComplianceScanResultsGroupRespGroupsType0
 from .model_compliance_scan_status_resp import ModelComplianceScanStatusResp
 from .model_compliance_scan_trigger_req import ModelComplianceScanTriggerReq
+from .model_compliance_status import ModelComplianceStatus
+from .model_complinace_scan_results_group_req import ModelComplinaceScanResultsGroupReq
 from .model_connection import ModelConnection
 from .model_container import ModelContainer
 from .model_container_docker_labels_type_0 import ModelContainerDockerLabelsType0
@@ -192,11 +213,13 @@ from .model_container_image_metadata_type_0 import ModelContainerImageMetadataTy
 from .model_delete_filter import ModelDeleteFilter
 from .model_delete_integration_req import ModelDeleteIntegrationReq
 from .model_delete_registry_bulk_req import ModelDeleteRegistryBulkReq
+from .model_disable_cloud_tracer_req import ModelDisableCloudTracerReq
 from .model_disable_tracer_req import ModelDisableTracerReq
 from .model_download_report_response import ModelDownloadReportResponse
 from .model_download_scan_results_response import ModelDownloadScanResultsResponse
 from .model_email_configuration_add import ModelEmailConfigurationAdd
 from .model_email_configuration_resp import ModelEmailConfigurationResp
+from .model_enable_cloud_tracer_req import ModelEnableCloudTracerReq
 from .model_enable_tracer_req import ModelEnableTracerReq
 from .model_export_report import ModelExportReport
 from .model_fetch_window import ModelFetchWindow
@@ -206,8 +229,9 @@ from .model_filters_req import ModelFiltersReq
 from .model_filters_req_having_type_0 import ModelFiltersReqHavingType0
 from .model_filters_result import ModelFiltersResult
 from .model_filters_result_filters_type_0 import ModelFiltersResultFiltersType0
+from .model_generate_license_request import ModelGenerateLicenseRequest
+from .model_generate_license_response import ModelGenerateLicenseResponse
 from .model_generate_report_req import ModelGenerateReportReq
-from .model_generate_report_req_duration import ModelGenerateReportReqDuration
 from .model_generate_report_req_report_type import ModelGenerateReportReqReportType
 from .model_generate_report_resp import ModelGenerateReportResp
 from .model_generative_ai_integration_cloud_posture_request import ModelGenerativeAiIntegrationCloudPostureRequest
@@ -253,6 +277,7 @@ from .model_generative_ai_integration_vulnerability_request_query_type import (
 from .model_generative_ai_integration_vulnerability_request_remediation_format import (
     ModelGenerativeAiIntegrationVulnerabilityRequestRemediationFormat,
 )
+from .model_get_agent_binary_download_url_response import ModelGetAgentBinaryDownloadURLResponse
 from .model_get_agent_config_req import ModelGetAgentConfigReq
 from .model_get_attached_nodes_resp import ModelGetAttachedNodesResp
 from .model_get_audit_logs_request import ModelGetAuditLogsRequest
@@ -278,6 +303,7 @@ from .model_list_agent_version_resp import ModelListAgentVersionResp
 from .model_login_request import ModelLoginRequest
 from .model_login_response import ModelLoginResponse
 from .model_malware import ModelMalware
+from .model_malware_file_severity import ModelMalwareFileSeverity
 from .model_malware_rule import ModelMalwareRule
 from .model_malware_scan_result import ModelMalwareScanResult
 from .model_malware_scan_result_class import ModelMalwareScanResultClass
@@ -292,6 +318,7 @@ from .model_mitre_technique_summary import ModelMitreTechniqueSummary
 from .model_network_alert import ModelNetworkAlert
 from .model_network_alert_rule import ModelNetworkAlertRule
 from .model_network_violation import ModelNetworkViolation
+from .model_network_violation_direction import ModelNetworkViolationDirection
 from .model_network_violation_stub import ModelNetworkViolationStub
 from .model_node_identifier import ModelNodeIdentifier
 from .model_node_identifier_node_type import ModelNodeIdentifierNodeType
@@ -308,15 +335,16 @@ from .model_process import ModelProcess
 from .model_process_alert import ModelProcessAlert
 from .model_process_alert_rule import ModelProcessAlertRule
 from .model_quarantine_violation import ModelQuarantineViolation
+from .model_region_i_ds import ModelRegionIDs
 from .model_register_invited_user_request import ModelRegisterInvitedUserRequest
 from .model_register_license_request import ModelRegisterLicenseRequest
+from .model_register_license_response import ModelRegisterLicenseResponse
 from .model_registry_account import ModelRegistryAccount
 from .model_registry_add_req import ModelRegistryAddReq
 from .model_registry_add_req_extras_type_0 import ModelRegistryAddReqExtrasType0
 from .model_registry_add_req_non_secret_type_0 import ModelRegistryAddReqNonSecretType0
 from .model_registry_add_req_secret_type_0 import ModelRegistryAddReqSecretType0
 from .model_registry_count_resp import ModelRegistryCountResp
-from .model_registry_credentials import ModelRegistryCredentials
 from .model_registry_image_stubs_req import ModelRegistryImageStubsReq
 from .model_registry_images_req import ModelRegistryImagesReq
 from .model_registry_list_resp import ModelRegistryListResp
@@ -347,6 +375,7 @@ from .model_scan_compare_res_github_com_deepfence_threat_mapper_deepfence_server
 from .model_scan_filter import ModelScanFilter
 from .model_scan_info import ModelScanInfo
 from .model_scan_info_severity_counts_type_0 import ModelScanInfoSeverityCountsType0
+from .model_scan_info_status import ModelScanInfoStatus
 from .model_scan_list_req import ModelScanListReq
 from .model_scan_list_resp import ModelScanListResp
 from .model_scan_report_fields_response import ModelScanReportFieldsResponse
@@ -363,14 +392,12 @@ from .model_scan_status_resp import ModelScanStatusResp
 from .model_scan_status_resp_statuses_type_0 import ModelScanStatusRespStatusesType0
 from .model_scan_trigger_resp import ModelScanTriggerResp
 from .model_secret import ModelSecret
+from .model_secret_level import ModelSecretLevel
 from .model_secret_rule import ModelSecretRule
 from .model_secret_scan_result import ModelSecretScanResult
 from .model_secret_scan_result_rules import ModelSecretScanResultRules
 from .model_secret_scan_result_severity_counts_type_0 import ModelSecretScanResultSeverityCountsType0
 from .model_secret_scan_trigger_req import ModelSecretScanTriggerReq
-from .model_setting_update_request import ModelSettingUpdateRequest
-from .model_setting_update_request_key import ModelSettingUpdateRequestKey
-from .model_settings_response import ModelSettingsResponse
 from .model_stop_scan_request import ModelStopScanRequest
 from .model_stop_scan_request_scan_type import ModelStopScanRequestScanType
 from .model_summary import ModelSummary
@@ -387,6 +414,7 @@ from .model_user_groups_type_0 import ModelUserGroupsType0
 from .model_user_register_request import ModelUserRegisterRequest
 from .model_user_role import ModelUserRole
 from .model_vulnerability import ModelVulnerability
+from .model_vulnerability_cve_severity import ModelVulnerabilityCveSeverity
 from .model_vulnerability_rule import ModelVulnerabilityRule
 from .model_vulnerability_scan_config_language import ModelVulnerabilityScanConfigLanguage
 from .model_vulnerability_scan_config_language_language import ModelVulnerabilityScanConfigLanguageLanguage
@@ -418,6 +446,9 @@ from .search_search_count_resp_categories_type_0 import SearchSearchCountRespCat
 from .search_search_filter import SearchSearchFilter
 from .search_search_node_req import SearchSearchNodeReq
 from .search_search_scan_req import SearchSearchScanReq
+from .setting_setting_update_request import SettingSettingUpdateRequest
+from .setting_setting_update_request_key import SettingSettingUpdateRequestKey
+from .setting_settings_response import SettingSettingsResponse
 from .singlesignon_get_single_sign_on_response import SinglesignonGetSingleSignOnResponse
 from .singlesignon_sso_configuration_instruction import SinglesignonSSOConfigurationInstruction
 from .singlesignon_sso_configuration_instructions import SinglesignonSSOConfigurationInstructions
@@ -427,7 +458,11 @@ from .singlesignon_sso_response import SinglesignonSSOResponse
 from .singlesignon_update_sso_provider_config import SinglesignonUpdateSSOProviderConfig
 from .singlesignon_verify_sso_auth_request import SinglesignonVerifySSOAuthRequest
 from .sql_null_time import SqlNullTime
+from .threatintel_rules_with_direction import ThreatintelRulesWithDirection
+from .threatintel_rules_with_direction_inbound_type_0 import ThreatintelRulesWithDirectionInboundType0
+from .threatintel_rules_with_direction_outbound_type_0 import ThreatintelRulesWithDirectionOutboundType0
 from .utils_advanced_report_filters import UtilsAdvancedReportFilters
+from .utils_registry_credentials import UtilsRegistryCredentials
 from .utils_report_filters import UtilsReportFilters
 from .utils_report_filters_node_type import UtilsReportFiltersNodeType
 from .utils_report_filters_scan_type import UtilsReportFiltersScanType
@@ -483,8 +518,7 @@ __all__ = (
     "FormDataModelImportAgentPolicyConfigReq",
     "FormDataModelImportQuarantinePolicyConfigReq",
     "FormDataModelRegistryGCRAddReq",
-    "FormDataVulnerabilityDbDBUploadRequest",
-    "GetNetworkRulesResponse200",
+    "FormDataThreatintelDBUploadRequest",
     "GraphCloudProviderFilter",
     "GraphIndividualThreatGraph",
     "GraphIndividualThreatGraphRequest",
@@ -514,7 +548,10 @@ __all__ = (
     "IngestersMalwareScanStatus",
     "IngestersMetaRules",
     "IngestersPolicyLog",
+    "IngestersPolicyLogDirection",
     "IngestersReportIngestionData",
+    "IngestersReportIngestionDataApiEndpointsBatchType0Item",
+    "IngestersReportIngestionDataApiEndpointsEdgeBatchType0Item",
     "IngestersReportIngestionDataContainerBatchType0Item",
     "IngestersReportIngestionDataContainerEdgesBatchType0Item",
     "IngestersReportIngestionDataContainerImageBatchType0Item",
@@ -549,6 +586,8 @@ __all__ = (
     "ModelAddScheduledTaskRequest",
     "ModelAddScheduledTaskRequestAction",
     "ModelAgentID",
+    "ModelAgentInstall",
+    "ModelAgentInstallCloudProvider",
     "ModelAgentPluginConfigNames",
     "ModelAgentPluginDisable",
     "ModelAgentPluginEnable",
@@ -556,47 +595,62 @@ __all__ = (
     "ModelAgentUpgrade",
     "ModelAlertsActionRequest",
     "ModelAPIAuthRequest",
+    "ModelAPIEndpoint",
+    "ModelAPIEndpointDirection",
     "ModelAPITokenResponse",
     "ModelAttachAgentConfigReq",
     "ModelBasicNode",
+    "ModelBenchmarkType",
     "ModelBulkDeleteReportReq",
     "ModelBulkDeleteScansRequest",
     "ModelBulkDeleteScansRequestScanType",
+    "ModelCloudAccountDeleteReq",
     "ModelCloudAccountRefreshReq",
     "ModelCloudCompliance",
-    "ModelCloudComplianceBenchmark",
-    "ModelCloudComplianceScanDetails",
+    "ModelCloudComplianceComplianceCheckType",
+    "ModelCloudComplianceControl",
     "ModelCloudComplianceScanResult",
     "ModelCloudComplianceScanResultStatusCountsType0",
-    "ModelCloudInstanceDeployment",
+    "ModelCloudComplianceStatus",
     "ModelCloudNodeAccountInfo",
+    "ModelCloudNodeAccountInfoCloudProvider",
+    "ModelCloudNodeAccountInfoRefreshStatusMapType0",
     "ModelCloudNodeAccountInfoScanStatusMapType0",
     "ModelCloudNodeAccountRegisterReq",
     "ModelCloudNodeAccountRegisterReqCloudProvider",
-    "ModelCloudNodeAccountRegisterReqMonitoredAccountIdsType0",
-    "ModelCloudNodeAccountRegisterResp",
-    "ModelCloudNodeAccountRegisterRespData",
-    "ModelCloudNodeAccountRegisterRespDataScansType0",
     "ModelCloudNodeAccountsListReq",
+    "ModelCloudNodeAccountsListReqCloudProvider",
     "ModelCloudNodeAccountsListResp",
-    "ModelCloudNodeCloudtrailTrail",
     "ModelCloudNodeComplianceControl",
     "ModelCloudNodeControlReq",
     "ModelCloudNodeControlReqCloudProvider",
+    "ModelCloudNodeControlReqComplianceType",
     "ModelCloudNodeControlResp",
     "ModelCloudNodeEnableDisableReq",
+    "ModelCloudNodeMonitoredAccount",
     "ModelCloudNodeProvidersListResp",
     "ModelCloudResource",
-    "ModelCloudResourceDeployAgentReq",
+    "ModelCloudResourceAgentInstallAvailability",
+    "ModelCloudResourceCloudProvider",
     "ModelCommonAlert",
+    "ModelCommonAlertEventType",
+    "ModelCommonAlertSeverity",
     "ModelCompliance",
+    "ModelComplianceComplianceCheckType",
     "ModelComplianceRule",
     "ModelComplianceScanInfo",
     "ModelComplianceScanInfoSeverityCountsType0",
+    "ModelComplianceScanInfoStatus",
     "ModelComplianceScanResult",
+    "ModelComplianceScanResultControlGroup",
+    "ModelComplianceScanResultControlGroupCounts",
+    "ModelComplianceScanResultsGroupResp",
+    "ModelComplianceScanResultsGroupRespGroupsType0",
     "ModelComplianceScanResultStatusCountsType0",
     "ModelComplianceScanStatusResp",
     "ModelComplianceScanTriggerReq",
+    "ModelComplianceStatus",
+    "ModelComplinaceScanResultsGroupReq",
     "ModelConnection",
     "ModelContainer",
     "ModelContainerDockerLabelsType0",
@@ -605,11 +659,13 @@ __all__ = (
     "ModelDeleteFilter",
     "ModelDeleteIntegrationReq",
     "ModelDeleteRegistryBulkReq",
+    "ModelDisableCloudTracerReq",
     "ModelDisableTracerReq",
     "ModelDownloadReportResponse",
     "ModelDownloadScanResultsResponse",
     "ModelEmailConfigurationAdd",
     "ModelEmailConfigurationResp",
+    "ModelEnableCloudTracerReq",
     "ModelEnableTracerReq",
     "ModelExportReport",
     "ModelFetchWindow",
@@ -619,8 +675,9 @@ __all__ = (
     "ModelFiltersReqHavingType0",
     "ModelFiltersResult",
     "ModelFiltersResultFiltersType0",
+    "ModelGenerateLicenseRequest",
+    "ModelGenerateLicenseResponse",
     "ModelGenerateReportReq",
-    "ModelGenerateReportReqDuration",
     "ModelGenerateReportReqReportType",
     "ModelGenerateReportResp",
     "ModelGenerativeAiIntegrationCloudPostureRequest",
@@ -642,6 +699,7 @@ __all__ = (
     "ModelGenerativeAiIntegrationVulnerabilityRequest",
     "ModelGenerativeAiIntegrationVulnerabilityRequestQueryType",
     "ModelGenerativeAiIntegrationVulnerabilityRequestRemediationFormat",
+    "ModelGetAgentBinaryDownloadURLResponse",
     "ModelGetAgentConfigReq",
     "ModelGetAttachedNodesResp",
     "ModelGetAuditLogsRequest",
@@ -667,6 +725,7 @@ __all__ = (
     "ModelLoginRequest",
     "ModelLoginResponse",
     "ModelMalware",
+    "ModelMalwareFileSeverity",
     "ModelMalwareRule",
     "ModelMalwareScanResult",
     "ModelMalwareScanResultClass",
@@ -681,6 +740,7 @@ __all__ = (
     "ModelNetworkAlert",
     "ModelNetworkAlertRule",
     "ModelNetworkViolation",
+    "ModelNetworkViolationDirection",
     "ModelNetworkViolationStub",
     "ModelNodeIdentifier",
     "ModelNodeIdentifierNodeType",
@@ -697,15 +757,16 @@ __all__ = (
     "ModelProcessAlert",
     "ModelProcessAlertRule",
     "ModelQuarantineViolation",
+    "ModelRegionIDs",
     "ModelRegisterInvitedUserRequest",
     "ModelRegisterLicenseRequest",
+    "ModelRegisterLicenseResponse",
     "ModelRegistryAccount",
     "ModelRegistryAddReq",
     "ModelRegistryAddReqExtrasType0",
     "ModelRegistryAddReqNonSecretType0",
     "ModelRegistryAddReqSecretType0",
     "ModelRegistryCountResp",
-    "ModelRegistryCredentials",
     "ModelRegistryImagesReq",
     "ModelRegistryImageStubsReq",
     "ModelRegistryListResp",
@@ -726,6 +787,7 @@ __all__ = (
     "ModelScanFilter",
     "ModelScanInfo",
     "ModelScanInfoSeverityCountsType0",
+    "ModelScanInfoStatus",
     "ModelScanListReq",
     "ModelScanListResp",
     "ModelScanReportFieldsResponse",
@@ -742,14 +804,12 @@ __all__ = (
     "ModelScanStatusRespStatusesType0",
     "ModelScanTriggerResp",
     "ModelSecret",
+    "ModelSecretLevel",
     "ModelSecretRule",
     "ModelSecretScanResult",
     "ModelSecretScanResultRules",
     "ModelSecretScanResultSeverityCountsType0",
     "ModelSecretScanTriggerReq",
-    "ModelSettingsResponse",
-    "ModelSettingUpdateRequest",
-    "ModelSettingUpdateRequestKey",
     "ModelStopScanRequest",
     "ModelStopScanRequestScanType",
     "ModelSummary",
@@ -766,6 +826,7 @@ __all__ = (
     "ModelUserRegisterRequest",
     "ModelUserRole",
     "ModelVulnerability",
+    "ModelVulnerabilityCveSeverity",
     "ModelVulnerabilityRule",
     "ModelVulnerabilityScanConfigLanguage",
     "ModelVulnerabilityScanConfigLanguageLanguage",
@@ -797,6 +858,9 @@ __all__ = (
     "SearchSearchFilter",
     "SearchSearchNodeReq",
     "SearchSearchScanReq",
+    "SettingSettingsResponse",
+    "SettingSettingUpdateRequest",
+    "SettingSettingUpdateRequestKey",
     "SinglesignonGetSingleSignOnResponse",
     "SinglesignonSSOConfigurationInstruction",
     "SinglesignonSSOConfigurationInstructions",
@@ -806,7 +870,11 @@ __all__ = (
     "SinglesignonUpdateSSOProviderConfig",
     "SinglesignonVerifySSOAuthRequest",
     "SqlNullTime",
+    "ThreatintelRulesWithDirection",
+    "ThreatintelRulesWithDirectionInboundType0",
+    "ThreatintelRulesWithDirectionOutboundType0",
     "UtilsAdvancedReportFilters",
+    "UtilsRegistryCredentials",
     "UtilsReportFilters",
     "UtilsReportFiltersNodeType",
     "UtilsReportFiltersScanType",

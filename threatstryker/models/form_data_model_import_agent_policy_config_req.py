@@ -4,7 +4,7 @@ from typing import Any, Dict, List, Type, TypeVar
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..types import File, Unset
+from ..types import File
 
 T = TypeVar("T", bound="FormDataModelImportAgentPolicyConfigReq")
 
@@ -38,16 +38,14 @@ class FormDataModelImportAgentPolicyConfigReq:
         return field_dict
 
     def to_multipart(self) -> Dict[str, Any]:
-        config_id = (
-            self.config_id if isinstance(self.config_id, Unset) else (None, str(self.config_id).encode(), "text/plain")
-        )
+        config_id = (None, str(self.config_id).encode(), "text/plain")
 
         network_policy_json = self.network_policy_json.to_tuple()
 
         field_dict: Dict[str, Any] = {}
-        field_dict.update(
-            {key: (None, str(value).encode(), "text/plain") for key, value in self.additional_properties.items()}
-        )
+        for prop_name, prop in self.additional_properties.items():
+            field_dict[prop_name] = (None, str(prop).encode(), "text/plain")
+
         field_dict.update(
             {
                 "config_id": config_id,
