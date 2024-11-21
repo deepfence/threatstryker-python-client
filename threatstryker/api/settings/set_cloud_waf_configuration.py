@@ -82,7 +82,8 @@ def sync_detailed(
      Set Cloud WAF Configuration
 
     Args:
-        body (IngestersCloudWafConfig):
+        body (IngestersCloudWafConfig):  Example: {'aws_waf_arn': [{'arn': 'arn', 'region':
+            'CLOUDFRONT'}, {'arn': 'arn', 'region': 'CLOUDFRONT'}], 'cloud_provider': 'aws'}.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -113,7 +114,8 @@ def sync(
      Set Cloud WAF Configuration
 
     Args:
-        body (IngestersCloudWafConfig):
+        body (IngestersCloudWafConfig):  Example: {'aws_waf_arn': [{'arn': 'arn', 'region':
+            'CLOUDFRONT'}, {'arn': 'arn', 'region': 'CLOUDFRONT'}], 'cloud_provider': 'aws'}.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -139,7 +141,8 @@ async def asyncio_detailed(
      Set Cloud WAF Configuration
 
     Args:
-        body (IngestersCloudWafConfig):
+        body (IngestersCloudWafConfig):  Example: {'aws_waf_arn': [{'arn': 'arn', 'region':
+            'CLOUDFRONT'}, {'arn': 'arn', 'region': 'CLOUDFRONT'}], 'cloud_provider': 'aws'}.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -168,7 +171,8 @@ async def asyncio(
      Set Cloud WAF Configuration
 
     Args:
-        body (IngestersCloudWafConfig):
+        body (IngestersCloudWafConfig):  Example: {'aws_waf_arn': [{'arn': 'arn', 'region':
+            'CLOUDFRONT'}, {'arn': 'arn', 'region': 'CLOUDFRONT'}], 'cloud_provider': 'aws'}.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

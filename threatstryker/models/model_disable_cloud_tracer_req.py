@@ -13,6 +13,10 @@ T = TypeVar("T", bound="ModelDisableCloudTracerReq")
 @_attrs_define
 class ModelDisableCloudTracerReq:
     """
+    Example:
+        {'agent_ids': [{'node_type': 'node_type', 'available_workload': 0, 'node_id': 'node_id'}, {'node_type':
+            'node_type', 'available_workload': 0, 'node_id': 'node_id'}]}
+
     Attributes:
         agent_ids (Union[List['ModelAgentID'], None]):
     """

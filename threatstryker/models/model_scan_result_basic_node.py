@@ -13,6 +13,13 @@ T = TypeVar("T", bound="ModelScanResultBasicNode")
 @_attrs_define
 class ModelScanResultBasicNode:
     """
+    Example:
+        {'basic_nodes': [{'node_type': 'node_type', 'live_secrets': ['live_secrets', 'live_secrets'], 'live_cves':
+            ['live_cves', 'live_cves'], 'name': 'name', 'host_name': 'host_name', 'live_malwares': ['live_malwares',
+            'live_malwares'], 'node_id': 'node_id'}, {'node_type': 'node_type', 'live_secrets': ['live_secrets',
+            'live_secrets'], 'live_cves': ['live_cves', 'live_cves'], 'name': 'name', 'host_name': 'host_name',
+            'live_malwares': ['live_malwares', 'live_malwares'], 'node_id': 'node_id'}], 'result_id': 'result_id'}
+
     Attributes:
         basic_nodes (Union[List['ModelBasicNode'], None]):
         result_id (str):

@@ -84,7 +84,8 @@ def sync_detailed(
      Verify code and get access token
 
     Args:
-        body (SinglesignonVerifySSOAuthRequest):
+        body (SinglesignonVerifySSOAuthRequest):  Example: {'code': 'code', 'user_id': 0,
+            'namespace': 'namespace'}.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -115,7 +116,8 @@ def sync(
      Verify code and get access token
 
     Args:
-        body (SinglesignonVerifySSOAuthRequest):
+        body (SinglesignonVerifySSOAuthRequest):  Example: {'code': 'code', 'user_id': 0,
+            'namespace': 'namespace'}.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -141,7 +143,8 @@ async def asyncio_detailed(
      Verify code and get access token
 
     Args:
-        body (SinglesignonVerifySSOAuthRequest):
+        body (SinglesignonVerifySSOAuthRequest):  Example: {'code': 'code', 'user_id': 0,
+            'namespace': 'namespace'}.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -170,7 +173,8 @@ async def asyncio(
      Verify code and get access token
 
     Args:
-        body (SinglesignonVerifySSOAuthRequest):
+        body (SinglesignonVerifySSOAuthRequest):  Example: {'code': 'code', 'user_id': 0,
+            'namespace': 'namespace'}.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

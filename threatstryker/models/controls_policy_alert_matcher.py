@@ -15,6 +15,9 @@ T = TypeVar("T", bound="ControlsPolicyAlertMatcher")
 @_attrs_define
 class ControlsPolicyAlertMatcher:
     """
+    Example:
+        {'fields_matcher': {'key': ['fields_matcher', 'fields_matcher']}}
+
     Attributes:
         fields_matcher (Union['ControlsPolicyAlertMatcherFieldsMatcherType0', None]):
     """

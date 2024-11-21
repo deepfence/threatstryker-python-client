@@ -9,6 +9,9 @@ T = TypeVar("T", bound="ModelPluginStatus")
 @_attrs_define
 class ModelPluginStatus:
     """
+    Example:
+        {'description': 'description', 'status': 'status'}
+
     Attributes:
         description (str):
         status (str):

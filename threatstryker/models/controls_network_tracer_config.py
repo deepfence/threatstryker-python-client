@@ -16,13 +16,22 @@ T = TypeVar("T", bound="ControlsNetworkTracerConfig")
 @_attrs_define
 class ControlsNetworkTracerConfig:
     """
+    Example:
+        {'mode': 'all', 'process_names': ['process_names', 'process_names'], 'tcp_rules': {'inbound': ['inbound',
+            'inbound'], 'outbound': ['outbound', 'outbound']}, 'http_rules': {'inbound': ['inbound', 'inbound'], 'outbound':
+            ['outbound', 'outbound']}, 'updated_at': 0, 'ignored_rule_ids': ['ignored_rule_ids', 'ignored_rule_ids'],
+            'https_rules': {'inbound': ['inbound', 'inbound'], 'outbound': ['outbound', 'outbound']}, 'node_id': 'node_id'}
+
     Attributes:
-        http_rules (ControlsNetworkRules):
-        https_rules (ControlsNetworkRules):
+        http_rules (ControlsNetworkRules):  Example: {'inbound': ['inbound', 'inbound'], 'outbound': ['outbound',
+            'outbound']}.
+        https_rules (ControlsNetworkRules):  Example: {'inbound': ['inbound', 'inbound'], 'outbound': ['outbound',
+            'outbound']}.
         mode (ControlsNetworkTracerConfigMode):
         node_id (str):
         process_names (Union[List[str], None]):
-        tcp_rules (ControlsNetworkRules):
+        tcp_rules (ControlsNetworkRules):  Example: {'inbound': ['inbound', 'inbound'], 'outbound': ['outbound',
+            'outbound']}.
         updated_at (int):
         ignored_rule_ids (Union[List[str], None, Unset]):
     """

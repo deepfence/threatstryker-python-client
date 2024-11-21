@@ -87,7 +87,9 @@ def sync_detailed(
 
     Args:
         id (int):
-        body (SinglesignonUpdateSSOProviderConfig):
+        body (SinglesignonUpdateSSOProviderConfig):  Example: {'issuer_alias_url':
+            'issuer_alias_url', 'issuer_url': 'issuer_url', 'disable_password_login': True,
+            'client_secret': 'client_secret', 'client_id': 'client_id'}.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -121,7 +123,9 @@ def sync(
 
     Args:
         id (int):
-        body (SinglesignonUpdateSSOProviderConfig):
+        body (SinglesignonUpdateSSOProviderConfig):  Example: {'issuer_alias_url':
+            'issuer_alias_url', 'issuer_url': 'issuer_url', 'disable_password_login': True,
+            'client_secret': 'client_secret', 'client_id': 'client_id'}.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -150,7 +154,9 @@ async def asyncio_detailed(
 
     Args:
         id (int):
-        body (SinglesignonUpdateSSOProviderConfig):
+        body (SinglesignonUpdateSSOProviderConfig):  Example: {'issuer_alias_url':
+            'issuer_alias_url', 'issuer_url': 'issuer_url', 'disable_password_login': True,
+            'client_secret': 'client_secret', 'client_id': 'client_id'}.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -182,7 +188,9 @@ async def asyncio(
 
     Args:
         id (int):
-        body (SinglesignonUpdateSSOProviderConfig):
+        body (SinglesignonUpdateSSOProviderConfig):  Example: {'issuer_alias_url':
+            'issuer_alias_url', 'issuer_url': 'issuer_url', 'disable_password_login': True,
+            'client_secret': 'client_secret', 'client_id': 'client_id'}.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

@@ -15,6 +15,10 @@ T = TypeVar("T", bound="IngestersCloudWafConfig")
 @_attrs_define
 class IngestersCloudWafConfig:
     """
+    Example:
+        {'aws_waf_arn': [{'arn': 'arn', 'region': 'CLOUDFRONT'}, {'arn': 'arn', 'region': 'CLOUDFRONT'}],
+            'cloud_provider': 'aws'}
+
     Attributes:
         aws_waf_arn (Union[List['IngestersAWSWafARN'], None]):
         cloud_provider (IngestersCloudWafConfigCloudProvider):

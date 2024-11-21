@@ -11,6 +11,10 @@ T = TypeVar("T", bound="ModelFilesystemAlertRule")
 @_attrs_define
 class ModelFilesystemAlertRule:
     """
+    Example:
+        {'rule_id': 'rule_id', 'severity': 'severity', 'summary': 'summary', 'anomaly': 'anomaly', 'techniques':
+            ['techniques', 'techniques'], 'tactics': ['tactics', 'tactics'], 'category': 'category'}
+
     Attributes:
         anomaly (Union[Unset, str]):
         category (Union[Unset, str]):

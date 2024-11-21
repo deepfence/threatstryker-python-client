@@ -89,7 +89,7 @@ def sync_detailed(
      Get Mitre Attack Matrix
 
     Args:
-        body (ModelMitreAttackMatrixRequest):
+        body (ModelMitreAttackMatrixRequest):  Example: {'node_ids': ['node_ids', 'node_ids']}.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -120,7 +120,7 @@ def sync(
      Get Mitre Attack Matrix
 
     Args:
-        body (ModelMitreAttackMatrixRequest):
+        body (ModelMitreAttackMatrixRequest):  Example: {'node_ids': ['node_ids', 'node_ids']}.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -146,7 +146,7 @@ async def asyncio_detailed(
      Get Mitre Attack Matrix
 
     Args:
-        body (ModelMitreAttackMatrixRequest):
+        body (ModelMitreAttackMatrixRequest):  Example: {'node_ids': ['node_ids', 'node_ids']}.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -175,7 +175,7 @@ async def asyncio(
      Get Mitre Attack Matrix
 
     Args:
-        body (ModelMitreAttackMatrixRequest):
+        body (ModelMitreAttackMatrixRequest):  Example: {'node_ids': ['node_ids', 'node_ids']}.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

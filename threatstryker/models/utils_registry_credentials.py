@@ -11,6 +11,9 @@ T = TypeVar("T", bound="UtilsRegistryCredentials")
 @_attrs_define
 class UtilsRegistryCredentials:
     """
+    Example:
+        {'registry_url': 'registry_url', 'password': 'password', 'username': 'username'}
+
     Attributes:
         password (Union[Unset, str]):
         registry_url (Union[Unset, str]):

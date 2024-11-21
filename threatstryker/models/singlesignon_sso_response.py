@@ -11,11 +11,19 @@ T = TypeVar("T", bound="SinglesignonSSOResponse")
 @_attrs_define
 class SinglesignonSSOResponse:
     """
+    Example:
+        {'issuer_alias_url': 'issuer_alias_url', 'issuer_url': 'issuer_url', 'updated_at': datetime.datetime(2000, 1,
+            23, 4, 56, 7, tzinfo=datetime.timezone(datetime.timedelta(0), '+00:00')), 'sso_provider_type':
+            'sso_provider_type', 'created_at': datetime.datetime(2000, 1, 23, 4, 56, 7,
+            tzinfo=datetime.timezone(datetime.timedelta(0), '+00:00')), 'disable_password_login': True, 'id': 0, 'label':
+            'label', 'client_id': 'client_id'}
+
     Attributes:
         client_id (str):
         created_at (datetime.datetime):
         disable_password_login (bool):
         id (int):
+        issuer_alias_url (str):
         issuer_url (str):
         label (str):
         sso_provider_type (str):
@@ -26,6 +34,7 @@ class SinglesignonSSOResponse:
     created_at: datetime.datetime
     disable_password_login: bool
     id: int
+    issuer_alias_url: str
     issuer_url: str
     label: str
     sso_provider_type: str
@@ -40,6 +49,8 @@ class SinglesignonSSOResponse:
         disable_password_login = self.disable_password_login
 
         id = self.id
+
+        issuer_alias_url = self.issuer_alias_url
 
         issuer_url = self.issuer_url
 
@@ -57,6 +68,7 @@ class SinglesignonSSOResponse:
                 "created_at": created_at,
                 "disable_password_login": disable_password_login,
                 "id": id,
+                "issuer_alias_url": issuer_alias_url,
                 "issuer_url": issuer_url,
                 "label": label,
                 "sso_provider_type": sso_provider_type,
@@ -77,6 +89,8 @@ class SinglesignonSSOResponse:
 
         id = d.pop("id")
 
+        issuer_alias_url = d.pop("issuer_alias_url")
+
         issuer_url = d.pop("issuer_url")
 
         label = d.pop("label")
@@ -90,6 +104,7 @@ class SinglesignonSSOResponse:
             created_at=created_at,
             disable_password_login=disable_password_login,
             id=id,
+            issuer_alias_url=issuer_alias_url,
             issuer_url=issuer_url,
             label=label,
             sso_provider_type=sso_provider_type,

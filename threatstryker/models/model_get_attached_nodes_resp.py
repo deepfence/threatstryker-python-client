@@ -11,6 +11,9 @@ T = TypeVar("T", bound="ModelGetAttachedNodesResp")
 @_attrs_define
 class ModelGetAttachedNodesResp:
     """
+    Example:
+        {'node_ids': ['node_ids', 'node_ids']}
+
     Attributes:
         node_ids (Union[List[str], None, Unset]):
     """

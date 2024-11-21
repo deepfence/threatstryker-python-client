@@ -11,6 +11,11 @@ T = TypeVar("T", bound="IngestersPolicyLog")
 @_attrs_define
 class IngestersPolicyLog:
     """
+    Example:
+        {'local_ip': 'local_ip', 'severity': 'severity', 'remote_ip': 'remote_ip', 'config_id': 'config_id',
+            'local_port': 6, 'alert_id': 'alert_id', 'policy_index': 1, 'remote_port': 5, 'created_at': 0, 'incident':
+            'incident', 'host_name': 'host_name', 'direction': 'inbound'}
+
     Attributes:
         alert_id (str):
         config_id (str):

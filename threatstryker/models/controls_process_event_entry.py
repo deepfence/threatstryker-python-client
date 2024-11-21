@@ -12,6 +12,11 @@ T = TypeVar("T", bound="ControlsProcessEventEntry")
 @_attrs_define
 class ControlsProcessEventEntry:
     """
+    Example:
+        {'skip_path_list': ['skip_path_list', 'skip_path_list'], 'failure_severity': 'failure_severity',
+            'skip_user_list': ['skip_user_list', 'skip_user_list'], 'success_severity': 'success_severity', 'event': 'bin-
+            execution', 'skip_comm_list': ['skip_comm_list', 'skip_comm_list']}
+
     Attributes:
         event (ControlsProcessEventEntryEvent):
         failure_severity (str):

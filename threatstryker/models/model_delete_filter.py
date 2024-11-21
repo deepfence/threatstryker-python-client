@@ -9,6 +9,9 @@ T = TypeVar("T", bound="ModelDeleteFilter")
 @_attrs_define
 class ModelDeleteFilter:
     """
+    Example:
+        {'node_ids': ['node_ids', 'node_ids']}
+
     Attributes:
         node_ids (Union[List[str], None]):
     """

@@ -82,7 +82,12 @@ def sync_detailed(
      Register Agent Network config
 
     Args:
-        body (ControlsNetworkTracerConfig):
+        body (ControlsNetworkTracerConfig):  Example: {'mode': 'all', 'process_names':
+            ['process_names', 'process_names'], 'tcp_rules': {'inbound': ['inbound', 'inbound'],
+            'outbound': ['outbound', 'outbound']}, 'http_rules': {'inbound': ['inbound', 'inbound'],
+            'outbound': ['outbound', 'outbound']}, 'updated_at': 0, 'ignored_rule_ids':
+            ['ignored_rule_ids', 'ignored_rule_ids'], 'https_rules': {'inbound': ['inbound',
+            'inbound'], 'outbound': ['outbound', 'outbound']}, 'node_id': 'node_id'}.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -113,7 +118,12 @@ def sync(
      Register Agent Network config
 
     Args:
-        body (ControlsNetworkTracerConfig):
+        body (ControlsNetworkTracerConfig):  Example: {'mode': 'all', 'process_names':
+            ['process_names', 'process_names'], 'tcp_rules': {'inbound': ['inbound', 'inbound'],
+            'outbound': ['outbound', 'outbound']}, 'http_rules': {'inbound': ['inbound', 'inbound'],
+            'outbound': ['outbound', 'outbound']}, 'updated_at': 0, 'ignored_rule_ids':
+            ['ignored_rule_ids', 'ignored_rule_ids'], 'https_rules': {'inbound': ['inbound',
+            'inbound'], 'outbound': ['outbound', 'outbound']}, 'node_id': 'node_id'}.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -139,7 +149,12 @@ async def asyncio_detailed(
      Register Agent Network config
 
     Args:
-        body (ControlsNetworkTracerConfig):
+        body (ControlsNetworkTracerConfig):  Example: {'mode': 'all', 'process_names':
+            ['process_names', 'process_names'], 'tcp_rules': {'inbound': ['inbound', 'inbound'],
+            'outbound': ['outbound', 'outbound']}, 'http_rules': {'inbound': ['inbound', 'inbound'],
+            'outbound': ['outbound', 'outbound']}, 'updated_at': 0, 'ignored_rule_ids':
+            ['ignored_rule_ids', 'ignored_rule_ids'], 'https_rules': {'inbound': ['inbound',
+            'inbound'], 'outbound': ['outbound', 'outbound']}, 'node_id': 'node_id'}.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -168,7 +183,12 @@ async def asyncio(
      Register Agent Network config
 
     Args:
-        body (ControlsNetworkTracerConfig):
+        body (ControlsNetworkTracerConfig):  Example: {'mode': 'all', 'process_names':
+            ['process_names', 'process_names'], 'tcp_rules': {'inbound': ['inbound', 'inbound'],
+            'outbound': ['outbound', 'outbound']}, 'http_rules': {'inbound': ['inbound', 'inbound'],
+            'outbound': ['outbound', 'outbound']}, 'updated_at': 0, 'ignored_rule_ids':
+            ['ignored_rule_ids', 'ignored_rule_ids'], 'https_rules': {'inbound': ['inbound',
+            'inbound'], 'outbound': ['outbound', 'outbound']}, 'node_id': 'node_id'}.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

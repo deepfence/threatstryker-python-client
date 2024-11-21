@@ -82,7 +82,10 @@ def sync_detailed(
      Control agent installation on cloud
 
     Args:
-        body (ModelAgentInstall):
+        body (ModelAgentInstall):  Example: {'cloud_scanner_id': {'node_type': 'node_type',
+            'available_workload': 0, 'node_id': 'node_id'}, 'cloud_provider': 'aws', 'region_ids':
+            [{'ids': ['ids', 'ids'], 'region': 'region'}, {'ids': ['ids', 'ids'], 'region':
+            'region'}]}.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -113,7 +116,10 @@ def sync(
      Control agent installation on cloud
 
     Args:
-        body (ModelAgentInstall):
+        body (ModelAgentInstall):  Example: {'cloud_scanner_id': {'node_type': 'node_type',
+            'available_workload': 0, 'node_id': 'node_id'}, 'cloud_provider': 'aws', 'region_ids':
+            [{'ids': ['ids', 'ids'], 'region': 'region'}, {'ids': ['ids', 'ids'], 'region':
+            'region'}]}.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -139,7 +145,10 @@ async def asyncio_detailed(
      Control agent installation on cloud
 
     Args:
-        body (ModelAgentInstall):
+        body (ModelAgentInstall):  Example: {'cloud_scanner_id': {'node_type': 'node_type',
+            'available_workload': 0, 'node_id': 'node_id'}, 'cloud_provider': 'aws', 'region_ids':
+            [{'ids': ['ids', 'ids'], 'region': 'region'}, {'ids': ['ids', 'ids'], 'region':
+            'region'}]}.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -168,7 +177,10 @@ async def asyncio(
      Control agent installation on cloud
 
     Args:
-        body (ModelAgentInstall):
+        body (ModelAgentInstall):  Example: {'cloud_scanner_id': {'node_type': 'node_type',
+            'available_workload': 0, 'node_id': 'node_id'}, 'cloud_provider': 'aws', 'region_ids':
+            [{'ids': ['ids', 'ids'], 'region': 'region'}, {'ids': ['ids', 'ids'], 'region':
+            'region'}]}.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

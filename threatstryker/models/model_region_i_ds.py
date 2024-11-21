@@ -9,6 +9,9 @@ T = TypeVar("T", bound="ModelRegionIDs")
 @_attrs_define
 class ModelRegionIDs:
     """
+    Example:
+        {'ids': ['ids', 'ids'], 'region': 'region'}
+
     Attributes:
         ids (Union[List[str], None]):
         region (str):

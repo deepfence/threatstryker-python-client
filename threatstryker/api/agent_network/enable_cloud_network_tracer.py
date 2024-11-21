@@ -82,7 +82,10 @@ def sync_detailed(
      Enable cloud network tracer on given agents
 
     Args:
-        body (ModelEnableCloudTracerReq):
+        body (ModelEnableCloudTracerReq):  Example: {'aws_s3_bucket': ['aws_s3_bucket',
+            'aws_s3_bucket'], 'agent_ids': [{'node_type': 'node_type', 'available_workload': 0,
+            'node_id': 'node_id'}, {'node_type': 'node_type', 'available_workload': 0, 'node_id':
+            'node_id'}]}.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -113,7 +116,10 @@ def sync(
      Enable cloud network tracer on given agents
 
     Args:
-        body (ModelEnableCloudTracerReq):
+        body (ModelEnableCloudTracerReq):  Example: {'aws_s3_bucket': ['aws_s3_bucket',
+            'aws_s3_bucket'], 'agent_ids': [{'node_type': 'node_type', 'available_workload': 0,
+            'node_id': 'node_id'}, {'node_type': 'node_type', 'available_workload': 0, 'node_id':
+            'node_id'}]}.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -139,7 +145,10 @@ async def asyncio_detailed(
      Enable cloud network tracer on given agents
 
     Args:
-        body (ModelEnableCloudTracerReq):
+        body (ModelEnableCloudTracerReq):  Example: {'aws_s3_bucket': ['aws_s3_bucket',
+            'aws_s3_bucket'], 'agent_ids': [{'node_type': 'node_type', 'available_workload': 0,
+            'node_id': 'node_id'}, {'node_type': 'node_type', 'available_workload': 0, 'node_id':
+            'node_id'}]}.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -168,7 +177,10 @@ async def asyncio(
      Enable cloud network tracer on given agents
 
     Args:
-        body (ModelEnableCloudTracerReq):
+        body (ModelEnableCloudTracerReq):  Example: {'aws_s3_bucket': ['aws_s3_bucket',
+            'aws_s3_bucket'], 'agent_ids': [{'node_type': 'node_type', 'available_workload': 0,
+            'node_id': 'node_id'}, {'node_type': 'node_type', 'available_workload': 0, 'node_id':
+            'node_id'}]}.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

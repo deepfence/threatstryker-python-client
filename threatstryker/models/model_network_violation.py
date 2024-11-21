@@ -12,6 +12,14 @@ T = TypeVar("T", bound="ModelNetworkViolation")
 @_attrs_define
 class ModelNetworkViolation:
     """
+    Example:
+        {'severity': 'severity', 'defenderd': 'defenderd', 'executed_at': 6, 'local_port': 1, 'policy_index': 5,
+            'remote_port': 5, 'created_at': 0, 'node_policy_type': 'node_policy_type', 'applied_by': 'applied_by', 'ttl': 2,
+            'local_ip': 'local_ip', 'event_type': 'event_type', 'remote_ip': 'remote_ip', 'config_id': 'config_id',
+            'alert_id': 'alert_id', 'action': 'action', 'block_ip': 'block_ip', 'pod_id': 'pod_id', 'packet_direction':
+            'packet_direction', 'container_id': 'container_id', 'host_name': 'host_name', 'direction': 'inbound', 'node_id':
+            'node_id', 'status': 'status'}
+
     Attributes:
         action (Union[Unset, str]):
         alert_id (Union[Unset, str]):

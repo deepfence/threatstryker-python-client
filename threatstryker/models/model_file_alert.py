@@ -9,6 +9,16 @@ T = TypeVar("T", bound="ModelFileAlert")
 @_attrs_define
 class ModelFileAlert:
     """
+    Example:
+        {'container_ip': 'container_ip', 'kubernetes_cluster_name': 'kubernetes_cluster_name', 'masked': True,
+            'created_at': 6, 'pid': 1, 'event_type': 'event_type', 'node_type': 'node_type', 'filepath': 'filepath', 'top':
+            'top', 'updated_at': 5, 'process_name': 'process_name', 'severity': 'severity', 'summary': 'summary',
+            'kubernetes_cluster_id': 'kubernetes_cluster_id', 'count': 0, 'resource_type': 'resource_type', 'fstat':
+            'fstat', 'container_image': 'container_image', 'netstat': 'netstat', 'users': 'users', 'pod_name': 'pod_name',
+            'rule_id': 'rule_id', 'container_name': 'container_name', 'techniques': ['techniques', 'techniques'], 'tactics':
+            ['tactics', 'tactics'], 'proc_status': 'proc_status', 'category': 'category', 'container_id': 'container_id',
+            'host_name': 'host_name', 'node_id': 'node_id'}
+
     Attributes:
         category (str):
         container_id (str):

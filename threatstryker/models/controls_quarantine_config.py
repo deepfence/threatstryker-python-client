@@ -13,6 +13,13 @@ T = TypeVar("T", bound="ControlsQuarantineConfig")
 @_attrs_define
 class ControlsQuarantineConfig:
     """
+    Example:
+        {'updated_at': 5, 'policies': [{'node_type': 'container', 'policy_id': 'policy_id', 'updated_at': 1,
+            'count_limit': 0, 'action': 'restart', 'duration_count_limit_sec': 6, 'matcher': {'fields_matcher': {'key':
+            ['fields_matcher', 'fields_matcher']}}}, {'node_type': 'container', 'policy_id': 'policy_id', 'updated_at': 1,
+            'count_limit': 0, 'action': 'restart', 'duration_count_limit_sec': 6, 'matcher': {'fields_matcher': {'key':
+            ['fields_matcher', 'fields_matcher']}}}], 'node_id': 'node_id'}
+
     Attributes:
         node_id (str):
         policies (Union[List['ControlsRuncPolicy'], None]):

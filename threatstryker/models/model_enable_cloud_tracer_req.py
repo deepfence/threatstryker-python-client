@@ -13,6 +13,11 @@ T = TypeVar("T", bound="ModelEnableCloudTracerReq")
 @_attrs_define
 class ModelEnableCloudTracerReq:
     """
+    Example:
+        {'aws_s3_bucket': ['aws_s3_bucket', 'aws_s3_bucket'], 'agent_ids': [{'node_type': 'node_type',
+            'available_workload': 0, 'node_id': 'node_id'}, {'node_type': 'node_type', 'available_workload': 0, 'node_id':
+            'node_id'}]}
+
     Attributes:
         agent_ids (Union[List['ModelAgentID'], None]):
         aws_s3_bucket (Union[List[str], None]):

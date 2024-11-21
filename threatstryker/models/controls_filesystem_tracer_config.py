@@ -13,6 +13,11 @@ T = TypeVar("T", bound="ControlsFilesystemTracerConfig")
 @_attrs_define
 class ControlsFilesystemTracerConfig:
     """
+    Example:
+        {'updated_at': 0, 'watchedentries': [{'severity': 'severity', 'accesstypes': ['accesstypes', 'accesstypes'],
+            'root': 'root', 'recursive': True}, {'severity': 'severity', 'accesstypes': ['accesstypes', 'accesstypes'],
+            'root': 'root', 'recursive': True}], 'node_id': 'node_id'}
+
     Attributes:
         node_id (str):
         updated_at (int):

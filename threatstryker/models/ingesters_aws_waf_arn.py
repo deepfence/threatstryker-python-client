@@ -11,6 +11,9 @@ T = TypeVar("T", bound="IngestersAWSWafARN")
 @_attrs_define
 class IngestersAWSWafARN:
     """
+    Example:
+        {'arn': 'arn', 'region': 'CLOUDFRONT'}
+
     Attributes:
         arn (str):
         region (IngestersAWSWafARNRegion):

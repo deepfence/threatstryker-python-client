@@ -9,6 +9,17 @@ T = TypeVar("T", bound="ModelProcessAlert")
 @_attrs_define
 class ModelProcessAlert:
     """
+    Example:
+        {'container_ip': 'container_ip', 'vsize': 0, 'kubernetes_cluster_name': 'kubernetes_cluster_name', 'masked':
+            True, 'session': 3, 'user_name': 'user_name', 'created_at': 1, 'pid': 5, 'exec_path': 'exec_path', 'event_type':
+            'event_type', 'node_type': 'node_type', 'rss': 9, 'top': 'top', 'updated_at': 2, 'state': 'state', 'group':
+            'group', 'severity': 'severity', 'summary': 'summary', 'cpu_time': 6.027456183070403, 'kubernetes_cluster_id':
+            'kubernetes_cluster_id', 'count': 0, 'priority': 2, 'command': 'command', 'container_image': 'container_image',
+            'netstat': 'netstat', 'users': 'users', 'pod_name': 'pod_name', 'rule_id': 'rule_id', 'container_name':
+            'container_name', 'techniques': ['techniques', 'techniques'], 'num_threads': 5, 'tactics': ['tactics',
+            'tactics'], 'proc_status': 'proc_status', 'category': 'category', 'user': 'user', 'container_id':
+            'container_id', 'return': 7, 'node_id': 'node_id'}
+
     Attributes:
         category (str):
         command (str):

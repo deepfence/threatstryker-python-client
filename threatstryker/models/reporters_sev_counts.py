@@ -13,6 +13,9 @@ T = TypeVar("T", bound="ReportersSevCounts")
 @_attrs_define
 class ReportersSevCounts:
     """
+    Example:
+        {'counts': {'key': 0}}
+
     Attributes:
         counts (Union['ReportersSevCountsCountsType0', None]):
     """

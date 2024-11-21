@@ -15,6 +15,11 @@ T = TypeVar("T", bound="SinglesignonSSOConfigurationInstructions")
 @_attrs_define
 class SinglesignonSSOConfigurationInstructions:
     """
+    Example:
+        {'github': [{'value': 'value', 'key': 'key'}, {'value': 'value', 'key': 'key'}], 'google': [{'value': 'value',
+            'key': 'key'}, {'value': 'value', 'key': 'key'}], 'microsoft': [{'value': 'value', 'key': 'key'}, {'value':
+            'value', 'key': 'key'}], 'oidc': [{'value': 'value', 'key': 'key'}, {'value': 'value', 'key': 'key'}]}
+
     Attributes:
         github (Union[List['SinglesignonSSOConfigurationInstruction'], None, Unset]):
         google (Union[List['SinglesignonSSOConfigurationInstruction'], None, Unset]):

@@ -11,6 +11,31 @@ T = TypeVar("T", bound="IngestersCloudResource")
 @_attrs_define
 class IngestersCloudResource:
     """
+    Example:
+        {'iam_instance_profile_arn': 'iam_instance_profile_arn', 'allow_blob_public_access': True, 'ingress_settings':
+            'ingress_settings', 'vpc_id': 'vpc_id', 'event_notification_configuration': '', 'ip_configuration': '',
+            'access_level': 'access_level', 'path': 'path', 'connectivity': 'connectivity', 'policy_std': '',
+            'target_health_descriptions': '', 'iam_policy': '', 'action': 'action', 'private_ip_address':
+            'private_ip_address', 'id': 'id', 'create_date': 'create_date', 'resource_vpc_config': '', 'inline_policies':
+            '', 'restrict_public_buckets': True, 'db_cluster_identifier': 'db_cluster_identifier', 'group': 'group',
+            'target_group_arn': 'target_group_arn', 'ignore_public_acls': True, 'storage_account_name':
+            'storage_account_name', 'service_name': 'service_name', 'instance_profile_arns': '', 'users': '',
+            'network_interfaces': '', 'tags': '', 'security_groups': '', 'task_arn': 'task_arn', 'block_public_acls': True,
+            'organization_master_account_email': 'organization_master_account_email', 'instance_id': 'instance_id',
+            'public_access': 'public_access', 'task_definition': '', 'user_id': 'user_id', 'organization_id':
+            'organization_id', 'name': 'name', 'resources_vpc_config': '', 'attached_policy_arns': '',
+            'task_definition_arn': 'task_definition_arn', 'containers': '', 'region': 'region', 'container_definitions': '',
+            'instance_type': 'instance_type', 'scheme': 'scheme', 'instances': '', 'network_mode': 'network_mode',
+            'is_egress': True, 'description': 'description', 'privilege': 'privilege', 'network_configuration': '',
+            'public_network_access': 'public_network_access', 'vpc_options': '', 'resource_group': 'resource_group',
+            'vpc_security_group_ids': '', 'arn': 'arn', 'private_dns_name': 'private_dns_name', 'policy': '', 'public_ips':
+            '', 'cluster_name': 'cluster_name', 'cluster_arn': 'cluster_arn', 'public_ip_address': 'public_ip_address',
+            'cidr_ipv4': 'cidr_ipv4', 'last_status': 'last_status', 'groups': '', 'user-groups': '', 'cloud_provider':
+            'cloud_provider', 'vpc_security_groups': '', 'block_public_policy': True, 'account_id': 'account_id',
+            'iam_instance_profile_id': 'iam_instance_profile_id', 'group_id': 'group_id', 'organization_master_account_arn':
+            'organization_master_account_arn', 'resource_id': 'resource_id', 'bucket_policy_is_public': True, 'host_name':
+            'host_name'}
+
     Attributes:
         access_level (Union[Unset, str]):
         account_id (Union[Unset, str]):
@@ -68,6 +93,7 @@ class IngestersCloudResource:
         public_ips (Union[Unset, Any]):
         public_network_access (Union[Unset, str]):
         region (Union[Unset, str]):
+        resource_group (Union[Unset, str]):
         resource_id (Union[Unset, str]):
         resource_vpc_config (Union[Unset, Any]):
         resources_vpc_config (Union[Unset, Any]):
@@ -147,6 +173,7 @@ class IngestersCloudResource:
     public_ips: Union[Unset, Any] = UNSET
     public_network_access: Union[Unset, str] = UNSET
     region: Union[Unset, str] = UNSET
+    resource_group: Union[Unset, str] = UNSET
     resource_id: Union[Unset, str] = UNSET
     resource_vpc_config: Union[Unset, Any] = UNSET
     resources_vpc_config: Union[Unset, Any] = UNSET
@@ -282,6 +309,8 @@ class IngestersCloudResource:
         public_network_access = self.public_network_access
 
         region = self.region
+
+        resource_group = self.resource_group
 
         resource_id = self.resource_id
 
@@ -440,6 +469,8 @@ class IngestersCloudResource:
             field_dict["public_network_access"] = public_network_access
         if region is not UNSET:
             field_dict["region"] = region
+        if resource_group is not UNSET:
+            field_dict["resource_group"] = resource_group
         if resource_id is not UNSET:
             field_dict["resource_id"] = resource_id
         if resource_vpc_config is not UNSET:
@@ -600,6 +631,8 @@ class IngestersCloudResource:
 
         region = d.pop("region", UNSET)
 
+        resource_group = d.pop("resource_group", UNSET)
+
         resource_id = d.pop("resource_id", UNSET)
 
         resource_vpc_config = d.pop("resource_vpc_config", UNSET)
@@ -699,6 +732,7 @@ class IngestersCloudResource:
             public_ips=public_ips,
             public_network_access=public_network_access,
             region=region,
+            resource_group=resource_group,
             resource_id=resource_id,
             resource_vpc_config=resource_vpc_config,
             resources_vpc_config=resources_vpc_config,

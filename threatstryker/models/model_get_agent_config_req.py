@@ -9,6 +9,9 @@ T = TypeVar("T", bound="ModelGetAgentConfigReq")
 @_attrs_define
 class ModelGetAgentConfigReq:
     """
+    Example:
+        {'config_ids': ['config_ids', 'config_ids']}
+
     Attributes:
         config_ids (Union[List[str], None]):
     """

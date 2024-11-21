@@ -84,7 +84,17 @@ def sync_detailed(
      generate report for given type and filters
 
     Args:
-        body (ModelGenerateReportReq):
+        body (ModelGenerateReportReq):  Example: {'to_timestamp': 1, 'options': {'sbom_format':
+            'syft-json'}, 'from_timestamp': 6, 'zipped_report': True, 'filters':
+            {'include_dead_nodes': True, 'node_type': ['node_type', 'node_type'],
+            'most_exploitable_report': True, 'advanced_report_filters': {'image_name': ['image_name',
+            'image_name'], 'most_exploitable_scores': [0, 0], 'container_name': ['container_name',
+            'container_name'], 'scan_status': ['scan_status', 'scan_status'],
+            'kubernetes_cluster_name': ['kubernetes_cluster_name', 'kubernetes_cluster_name'],
+            'masked': [True, True], 'host_name': ['host_name', 'host_name'], 'node_id': ['node_id',
+            'node_id'], 'pod_name': ['pod_name', 'pod_name']}, 'include_dormant_exploitable': True,
+            'scan_type': 'vulnerability', 'scan_id': 'scan_id', 'severity_or_check_type':
+            ['severity_or_check_type', 'severity_or_check_type']}, 'report_type': 'pdf'}.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -115,7 +125,17 @@ def sync(
      generate report for given type and filters
 
     Args:
-        body (ModelGenerateReportReq):
+        body (ModelGenerateReportReq):  Example: {'to_timestamp': 1, 'options': {'sbom_format':
+            'syft-json'}, 'from_timestamp': 6, 'zipped_report': True, 'filters':
+            {'include_dead_nodes': True, 'node_type': ['node_type', 'node_type'],
+            'most_exploitable_report': True, 'advanced_report_filters': {'image_name': ['image_name',
+            'image_name'], 'most_exploitable_scores': [0, 0], 'container_name': ['container_name',
+            'container_name'], 'scan_status': ['scan_status', 'scan_status'],
+            'kubernetes_cluster_name': ['kubernetes_cluster_name', 'kubernetes_cluster_name'],
+            'masked': [True, True], 'host_name': ['host_name', 'host_name'], 'node_id': ['node_id',
+            'node_id'], 'pod_name': ['pod_name', 'pod_name']}, 'include_dormant_exploitable': True,
+            'scan_type': 'vulnerability', 'scan_id': 'scan_id', 'severity_or_check_type':
+            ['severity_or_check_type', 'severity_or_check_type']}, 'report_type': 'pdf'}.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -141,7 +161,17 @@ async def asyncio_detailed(
      generate report for given type and filters
 
     Args:
-        body (ModelGenerateReportReq):
+        body (ModelGenerateReportReq):  Example: {'to_timestamp': 1, 'options': {'sbom_format':
+            'syft-json'}, 'from_timestamp': 6, 'zipped_report': True, 'filters':
+            {'include_dead_nodes': True, 'node_type': ['node_type', 'node_type'],
+            'most_exploitable_report': True, 'advanced_report_filters': {'image_name': ['image_name',
+            'image_name'], 'most_exploitable_scores': [0, 0], 'container_name': ['container_name',
+            'container_name'], 'scan_status': ['scan_status', 'scan_status'],
+            'kubernetes_cluster_name': ['kubernetes_cluster_name', 'kubernetes_cluster_name'],
+            'masked': [True, True], 'host_name': ['host_name', 'host_name'], 'node_id': ['node_id',
+            'node_id'], 'pod_name': ['pod_name', 'pod_name']}, 'include_dormant_exploitable': True,
+            'scan_type': 'vulnerability', 'scan_id': 'scan_id', 'severity_or_check_type':
+            ['severity_or_check_type', 'severity_or_check_type']}, 'report_type': 'pdf'}.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -170,7 +200,17 @@ async def asyncio(
      generate report for given type and filters
 
     Args:
-        body (ModelGenerateReportReq):
+        body (ModelGenerateReportReq):  Example: {'to_timestamp': 1, 'options': {'sbom_format':
+            'syft-json'}, 'from_timestamp': 6, 'zipped_report': True, 'filters':
+            {'include_dead_nodes': True, 'node_type': ['node_type', 'node_type'],
+            'most_exploitable_report': True, 'advanced_report_filters': {'image_name': ['image_name',
+            'image_name'], 'most_exploitable_scores': [0, 0], 'container_name': ['container_name',
+            'container_name'], 'scan_status': ['scan_status', 'scan_status'],
+            'kubernetes_cluster_name': ['kubernetes_cluster_name', 'kubernetes_cluster_name'],
+            'masked': [True, True], 'host_name': ['host_name', 'host_name'], 'node_id': ['node_id',
+            'node_id'], 'pod_name': ['pod_name', 'pod_name']}, 'include_dormant_exploitable': True,
+            'scan_type': 'vulnerability', 'scan_id': 'scan_id', 'severity_or_check_type':
+            ['severity_or_check_type', 'severity_or_check_type']}, 'report_type': 'pdf'}.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

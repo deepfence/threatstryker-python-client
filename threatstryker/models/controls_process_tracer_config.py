@@ -15,6 +15,15 @@ T = TypeVar("T", bound="ControlsProcessTracerConfig")
 @_attrs_define
 class ControlsProcessTracerConfig:
     """
+    Example:
+        {'updated_at': 0, 'monitoredprocessevents': [{'skip_path_list': ['skip_path_list', 'skip_path_list'],
+            'failure_severity': 'failure_severity', 'skip_user_list': ['skip_user_list', 'skip_user_list'],
+            'success_severity': 'success_severity', 'event': 'bin-execution', 'skip_comm_list': ['skip_comm_list',
+            'skip_comm_list']}, {'skip_path_list': ['skip_path_list', 'skip_path_list'], 'failure_severity':
+            'failure_severity', 'skip_user_list': ['skip_user_list', 'skip_user_list'], 'success_severity':
+            'success_severity', 'event': 'bin-execution', 'skip_comm_list': ['skip_comm_list', 'skip_comm_list']}],
+            'node_id': 'node_id'}
+
     Attributes:
         node_id (str):
         updated_at (int):

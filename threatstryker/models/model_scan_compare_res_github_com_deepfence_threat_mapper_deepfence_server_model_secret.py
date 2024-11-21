@@ -13,6 +13,23 @@ T = TypeVar("T", bound="ModelScanCompareResGithubComDeepfenceThreatMapperDeepfen
 @_attrs_define
 class ModelScanCompareResGithubComDeepfenceThreatMapperDeepfenceServerModelSecret:
     """
+    Example:
+        {'new': [{'rule_id': 'rule_id', 'score': 1.4658129805029452, 'full_filename': 'full_filename',
+            'matched_content': 'matched_content', 'updated_at': 5, 'level': 'critical', 'masked': True, 'starting_index': 5,
+            'resources': [{'node_type': 'node_type', 'live_secrets': ['live_secrets', 'live_secrets'], 'live_cves':
+            ['live_cves', 'live_cves'], 'name': 'name', 'host_name': 'host_name', 'live_malwares': ['live_malwares',
+            'live_malwares'], 'node_id': 'node_id'}, {'node_type': 'node_type', 'live_secrets': ['live_secrets',
+            'live_secrets'], 'live_cves': ['live_cves', 'live_cves'], 'name': 'name', 'host_name': 'host_name',
+            'live_malwares': ['live_malwares', 'live_malwares'], 'node_id': 'node_id'}], 'exploitability_score': 0,
+            'max_exploitability_score': 6, 'node_id': 'node_id'}, {'rule_id': 'rule_id', 'score': 1.4658129805029452,
+            'full_filename': 'full_filename', 'matched_content': 'matched_content', 'updated_at': 5, 'level': 'critical',
+            'masked': True, 'starting_index': 5, 'resources': [{'node_type': 'node_type', 'live_secrets': ['live_secrets',
+            'live_secrets'], 'live_cves': ['live_cves', 'live_cves'], 'name': 'name', 'host_name': 'host_name',
+            'live_malwares': ['live_malwares', 'live_malwares'], 'node_id': 'node_id'}, {'node_type': 'node_type',
+            'live_secrets': ['live_secrets', 'live_secrets'], 'live_cves': ['live_cves', 'live_cves'], 'name': 'name',
+            'host_name': 'host_name', 'live_malwares': ['live_malwares', 'live_malwares'], 'node_id': 'node_id'}],
+            'exploitability_score': 0, 'max_exploitability_score': 6, 'node_id': 'node_id'}]}
+
     Attributes:
         new (Union[List['ModelSecret'], None]):
     """

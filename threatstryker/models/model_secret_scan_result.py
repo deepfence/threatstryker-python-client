@@ -14,6 +14,26 @@ T = TypeVar("T", bound="ModelSecretScanResult")
 @_attrs_define
 class ModelSecretScanResult:
     """
+    Example:
+        {'severity_counts': {'key': 6}, 'docker_container_name': 'docker_container_name', 'kubernetes_cluster_name':
+            'kubernetes_cluster_name', 'node_name': 'node_name', 'created_at': 0, 'secrets': [{'rule_id': 'rule_id',
+            'score': 1.4658129805029452, 'full_filename': 'full_filename', 'matched_content': 'matched_content',
+            'updated_at': 5, 'level': 'critical', 'masked': True, 'starting_index': 5, 'resources': [{'node_type':
+            'node_type', 'live_secrets': ['live_secrets', 'live_secrets'], 'live_cves': ['live_cves', 'live_cves'], 'name':
+            'name', 'host_name': 'host_name', 'live_malwares': ['live_malwares', 'live_malwares'], 'node_id': 'node_id'},
+            {'node_type': 'node_type', 'live_secrets': ['live_secrets', 'live_secrets'], 'live_cves': ['live_cves',
+            'live_cves'], 'name': 'name', 'host_name': 'host_name', 'live_malwares': ['live_malwares', 'live_malwares'],
+            'node_id': 'node_id'}], 'exploitability_score': 0, 'max_exploitability_score': 6, 'node_id': 'node_id'},
+            {'rule_id': 'rule_id', 'score': 1.4658129805029452, 'full_filename': 'full_filename', 'matched_content':
+            'matched_content', 'updated_at': 5, 'level': 'critical', 'masked': True, 'starting_index': 5, 'resources':
+            [{'node_type': 'node_type', 'live_secrets': ['live_secrets', 'live_secrets'], 'live_cves': ['live_cves',
+            'live_cves'], 'name': 'name', 'host_name': 'host_name', 'live_malwares': ['live_malwares', 'live_malwares'],
+            'node_id': 'node_id'}, {'node_type': 'node_type', 'live_secrets': ['live_secrets', 'live_secrets'], 'live_cves':
+            ['live_cves', 'live_cves'], 'name': 'name', 'host_name': 'host_name', 'live_malwares': ['live_malwares',
+            'live_malwares'], 'node_id': 'node_id'}], 'exploitability_score': 0, 'max_exploitability_score': 6, 'node_id':
+            'node_id'}], 'cloud_account_id': 'cloud_account_id', 'node_type': 'node_type', 'updated_at': 1, 'scan_id':
+            'scan_id', 'docker_image_name': 'docker_image_name', 'host_name': 'host_name', 'node_id': 'node_id'}
+
     Attributes:
         cloud_account_id (str):
         created_at (int):

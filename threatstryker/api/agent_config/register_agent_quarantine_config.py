@@ -82,7 +82,13 @@ def sync_detailed(
      Register Agent Quarantine config
 
     Args:
-        body (ControlsQuarantineConfig):
+        body (ControlsQuarantineConfig):  Example: {'updated_at': 5, 'policies': [{'node_type':
+            'container', 'policy_id': 'policy_id', 'updated_at': 1, 'count_limit': 0, 'action':
+            'restart', 'duration_count_limit_sec': 6, 'matcher': {'fields_matcher': {'key':
+            ['fields_matcher', 'fields_matcher']}}}, {'node_type': 'container', 'policy_id':
+            'policy_id', 'updated_at': 1, 'count_limit': 0, 'action': 'restart',
+            'duration_count_limit_sec': 6, 'matcher': {'fields_matcher': {'key': ['fields_matcher',
+            'fields_matcher']}}}], 'node_id': 'node_id'}.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -113,7 +119,13 @@ def sync(
      Register Agent Quarantine config
 
     Args:
-        body (ControlsQuarantineConfig):
+        body (ControlsQuarantineConfig):  Example: {'updated_at': 5, 'policies': [{'node_type':
+            'container', 'policy_id': 'policy_id', 'updated_at': 1, 'count_limit': 0, 'action':
+            'restart', 'duration_count_limit_sec': 6, 'matcher': {'fields_matcher': {'key':
+            ['fields_matcher', 'fields_matcher']}}}, {'node_type': 'container', 'policy_id':
+            'policy_id', 'updated_at': 1, 'count_limit': 0, 'action': 'restart',
+            'duration_count_limit_sec': 6, 'matcher': {'fields_matcher': {'key': ['fields_matcher',
+            'fields_matcher']}}}], 'node_id': 'node_id'}.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -139,7 +151,13 @@ async def asyncio_detailed(
      Register Agent Quarantine config
 
     Args:
-        body (ControlsQuarantineConfig):
+        body (ControlsQuarantineConfig):  Example: {'updated_at': 5, 'policies': [{'node_type':
+            'container', 'policy_id': 'policy_id', 'updated_at': 1, 'count_limit': 0, 'action':
+            'restart', 'duration_count_limit_sec': 6, 'matcher': {'fields_matcher': {'key':
+            ['fields_matcher', 'fields_matcher']}}}, {'node_type': 'container', 'policy_id':
+            'policy_id', 'updated_at': 1, 'count_limit': 0, 'action': 'restart',
+            'duration_count_limit_sec': 6, 'matcher': {'fields_matcher': {'key': ['fields_matcher',
+            'fields_matcher']}}}], 'node_id': 'node_id'}.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -168,7 +186,13 @@ async def asyncio(
      Register Agent Quarantine config
 
     Args:
-        body (ControlsQuarantineConfig):
+        body (ControlsQuarantineConfig):  Example: {'updated_at': 5, 'policies': [{'node_type':
+            'container', 'policy_id': 'policy_id', 'updated_at': 1, 'count_limit': 0, 'action':
+            'restart', 'duration_count_limit_sec': 6, 'matcher': {'fields_matcher': {'key':
+            ['fields_matcher', 'fields_matcher']}}}, {'node_type': 'container', 'policy_id':
+            'policy_id', 'updated_at': 1, 'count_limit': 0, 'action': 'restart',
+            'duration_count_limit_sec': 6, 'matcher': {'fields_matcher': {'key': ['fields_matcher',
+            'fields_matcher']}}}], 'node_id': 'node_id'}.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

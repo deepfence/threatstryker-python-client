@@ -9,6 +9,9 @@ T = TypeVar("T", bound="ModelMitreTechniqueSummary")
 @_attrs_define
 class ModelMitreTechniqueSummary:
     """
+    Example:
+        {'severity': 'severity', 'count': 6}
+
     Attributes:
         count (int):
         severity (str):

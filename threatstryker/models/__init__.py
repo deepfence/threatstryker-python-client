@@ -221,6 +221,7 @@ from .model_email_configuration_add import ModelEmailConfigurationAdd
 from .model_email_configuration_resp import ModelEmailConfigurationResp
 from .model_enable_cloud_tracer_req import ModelEnableCloudTracerReq
 from .model_enable_tracer_req import ModelEnableTracerReq
+from .model_exploitable_alert import ModelExploitableAlert
 from .model_export_report import ModelExportReport
 from .model_fetch_window import ModelFetchWindow
 from .model_file_alert import ModelFileAlert
@@ -282,6 +283,8 @@ from .model_get_agent_config_req import ModelGetAgentConfigReq
 from .model_get_attached_nodes_resp import ModelGetAttachedNodesResp
 from .model_get_audit_logs_request import ModelGetAuditLogsRequest
 from .model_graph_result import ModelGraphResult
+from .model_graph_result_edges import ModelGraphResultEdges
+from .model_graph_result_nodes import ModelGraphResultNodes
 from .model_host import ModelHost
 from .model_host_alerts_counts_type_0 import ModelHostAlertsCountsType0
 from .model_image_stub import ModelImageStub
@@ -354,6 +357,7 @@ from .model_registry_update_req_extras_type_0 import ModelRegistryUpdateReqExtra
 from .model_registry_update_req_non_secret_type_0 import ModelRegistryUpdateReqNonSecretType0
 from .model_registry_update_req_secret_type_0 import ModelRegistryUpdateReqSecretType0
 from .model_response_access_token import ModelResponseAccessToken
+from .model_rules_action_request import ModelRulesActionRequest
 from .model_sbom_request import ModelSbomRequest
 from .model_sbom_response import ModelSbomResponse
 from .model_scan_compare_req import ModelScanCompareReq
@@ -423,6 +427,7 @@ from .model_vulnerability_scan_result_severity_counts_type_0 import ModelVulnera
 from .model_vulnerability_scan_trigger_req import ModelVulnerabilityScanTriggerReq
 from .postgresql_db_get_audit_logs_row import PostgresqlDbGetAuditLogsRow
 from .postgresql_db_scheduler import PostgresqlDbScheduler
+from .postgresql_db_scheduler_last_ran_at import PostgresqlDbSchedulerLastRanAt
 from .report_metadata import ReportMetadata
 from .report_raw_report import ReportRawReport
 from .reporters_compare_filter import ReportersCompareFilter
@@ -438,6 +443,7 @@ from .reporters_order_spec import ReportersOrderSpec
 from .reporters_sev_counts import ReportersSevCounts
 from .reporters_sev_counts_counts_type_0 import ReportersSevCountsCountsType0
 from .search_chained_search_filter import SearchChainedSearchFilter
+from .search_most_exploitable_count_resp import SearchMostExploitableCountResp
 from .search_node_count_resp import SearchNodeCountResp
 from .search_result_group import SearchResultGroup
 from .search_result_group_resp import SearchResultGroupResp
@@ -667,6 +673,7 @@ __all__ = (
     "ModelEmailConfigurationResp",
     "ModelEnableCloudTracerReq",
     "ModelEnableTracerReq",
+    "ModelExploitableAlert",
     "ModelExportReport",
     "ModelFetchWindow",
     "ModelFileAlert",
@@ -704,6 +711,8 @@ __all__ = (
     "ModelGetAttachedNodesResp",
     "ModelGetAuditLogsRequest",
     "ModelGraphResult",
+    "ModelGraphResultEdges",
+    "ModelGraphResultNodes",
     "ModelHost",
     "ModelHostAlertsCountsType0",
     "ModelImageStub",
@@ -776,6 +785,7 @@ __all__ = (
     "ModelRegistryUpdateReqNonSecretType0",
     "ModelRegistryUpdateReqSecretType0",
     "ModelResponseAccessToken",
+    "ModelRulesActionRequest",
     "ModelSbomRequest",
     "ModelSbomResponse",
     "ModelScanCompareReq",
@@ -835,6 +845,7 @@ __all__ = (
     "ModelVulnerabilityScanTriggerReq",
     "PostgresqlDbGetAuditLogsRow",
     "PostgresqlDbScheduler",
+    "PostgresqlDbSchedulerLastRanAt",
     "ReportersCompareFilter",
     "ReportersContainsFilter",
     "ReportersContainsFilterFilterInType0",
@@ -850,6 +861,7 @@ __all__ = (
     "ReportMetadata",
     "ReportRawReport",
     "SearchChainedSearchFilter",
+    "SearchMostExploitableCountResp",
     "SearchNodeCountResp",
     "SearchResultGroup",
     "SearchResultGroupResp",

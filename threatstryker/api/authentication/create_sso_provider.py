@@ -82,7 +82,9 @@ def sync_detailed(
      Configure Single sign-on (OIDC, Google, Microsoft, Github)
 
     Args:
-        body (SinglesignonSSOProviderConfig):
+        body (SinglesignonSSOProviderConfig):  Example: {'issuer_alias_url': 'issuer_alias_url',
+            'issuer_url': 'issuer_url', 'sso_provider_type': 'oidc', 'disable_password_login': True,
+            'client_secret': 'client_secret', 'client_id': 'client_id', 'host_name': 'host_name'}.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -113,7 +115,9 @@ def sync(
      Configure Single sign-on (OIDC, Google, Microsoft, Github)
 
     Args:
-        body (SinglesignonSSOProviderConfig):
+        body (SinglesignonSSOProviderConfig):  Example: {'issuer_alias_url': 'issuer_alias_url',
+            'issuer_url': 'issuer_url', 'sso_provider_type': 'oidc', 'disable_password_login': True,
+            'client_secret': 'client_secret', 'client_id': 'client_id', 'host_name': 'host_name'}.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -139,7 +143,9 @@ async def asyncio_detailed(
      Configure Single sign-on (OIDC, Google, Microsoft, Github)
 
     Args:
-        body (SinglesignonSSOProviderConfig):
+        body (SinglesignonSSOProviderConfig):  Example: {'issuer_alias_url': 'issuer_alias_url',
+            'issuer_url': 'issuer_url', 'sso_provider_type': 'oidc', 'disable_password_login': True,
+            'client_secret': 'client_secret', 'client_id': 'client_id', 'host_name': 'host_name'}.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -168,7 +174,9 @@ async def asyncio(
      Configure Single sign-on (OIDC, Google, Microsoft, Github)
 
     Args:
-        body (SinglesignonSSOProviderConfig):
+        body (SinglesignonSSOProviderConfig):  Example: {'issuer_alias_url': 'issuer_alias_url',
+            'issuer_url': 'issuer_url', 'sso_provider_type': 'oidc', 'disable_password_login': True,
+            'client_secret': 'client_secret', 'client_id': 'client_id', 'host_name': 'host_name'}.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

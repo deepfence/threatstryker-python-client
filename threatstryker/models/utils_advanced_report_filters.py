@@ -11,12 +11,19 @@ T = TypeVar("T", bound="UtilsAdvancedReportFilters")
 @_attrs_define
 class UtilsAdvancedReportFilters:
     """
+    Example:
+        {'image_name': ['image_name', 'image_name'], 'most_exploitable_scores': [0, 0], 'container_name':
+            ['container_name', 'container_name'], 'scan_status': ['scan_status', 'scan_status'], 'kubernetes_cluster_name':
+            ['kubernetes_cluster_name', 'kubernetes_cluster_name'], 'masked': [True, True], 'host_name': ['host_name',
+            'host_name'], 'node_id': ['node_id', 'node_id'], 'pod_name': ['pod_name', 'pod_name']}
+
     Attributes:
         container_name (Union[Unset, List[str]]):
         host_name (Union[Unset, List[str]]):
         image_name (Union[Unset, List[str]]):
         kubernetes_cluster_name (Union[Unset, List[str]]):
         masked (Union[Unset, List[bool]]):
+        most_exploitable_scores (Union[Unset, List[int]]):
         node_id (Union[Unset, List[str]]):
         pod_name (Union[Unset, List[str]]):
         scan_status (Union[Unset, List[str]]):
@@ -27,6 +34,7 @@ class UtilsAdvancedReportFilters:
     image_name: Union[Unset, List[str]] = UNSET
     kubernetes_cluster_name: Union[Unset, List[str]] = UNSET
     masked: Union[Unset, List[bool]] = UNSET
+    most_exploitable_scores: Union[Unset, List[int]] = UNSET
     node_id: Union[Unset, List[str]] = UNSET
     pod_name: Union[Unset, List[str]] = UNSET
     scan_status: Union[Unset, List[str]] = UNSET
@@ -53,6 +61,10 @@ class UtilsAdvancedReportFilters:
         if not isinstance(self.masked, Unset):
             masked = self.masked
 
+        most_exploitable_scores: Union[Unset, List[int]] = UNSET
+        if not isinstance(self.most_exploitable_scores, Unset):
+            most_exploitable_scores = self.most_exploitable_scores
+
         node_id: Union[Unset, List[str]] = UNSET
         if not isinstance(self.node_id, Unset):
             node_id = self.node_id
@@ -78,6 +90,8 @@ class UtilsAdvancedReportFilters:
             field_dict["kubernetes_cluster_name"] = kubernetes_cluster_name
         if masked is not UNSET:
             field_dict["masked"] = masked
+        if most_exploitable_scores is not UNSET:
+            field_dict["most_exploitable_scores"] = most_exploitable_scores
         if node_id is not UNSET:
             field_dict["node_id"] = node_id
         if pod_name is not UNSET:
@@ -100,6 +114,8 @@ class UtilsAdvancedReportFilters:
 
         masked = cast(List[bool], d.pop("masked", UNSET))
 
+        most_exploitable_scores = cast(List[int], d.pop("most_exploitable_scores", UNSET))
+
         node_id = cast(List[str], d.pop("node_id", UNSET))
 
         pod_name = cast(List[str], d.pop("pod_name", UNSET))
@@ -112,6 +128,7 @@ class UtilsAdvancedReportFilters:
             image_name=image_name,
             kubernetes_cluster_name=kubernetes_cluster_name,
             masked=masked,
+            most_exploitable_scores=most_exploitable_scores,
             node_id=node_id,
             pod_name=pod_name,
             scan_status=scan_status,

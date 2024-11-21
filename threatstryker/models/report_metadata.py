@@ -11,7 +11,41 @@ T = TypeVar("T", bound="ReportMetadata")
 @_attrs_define
 class ReportMetadata:
     """
+    Example:
+        {'docker_image_name_with_tag': 'docker_image_name_with_tag', 'kubernetes_ip': 'kubernetes_ip', 'public_ip':
+            ['public_ip', 'public_ip'], 'kubernetes_cluster_name': 'kubernetes_cluster_name', 'docker_container_state':
+            'docker_container_state', 'cpu_max': 6.027456183070403, 'pid': 7, 'kubernetes_created': 'kubernetes_created',
+            'kubernetes_namespace': 'kubernetes_namespace', 'cmdline': 'cmdline', 'node_type': 'node_type',
+            'interface_ip_map': 'interface_ip_map', 'pseudo': True, 'docker_container_name': 'docker_container_name',
+            'docker_container_created': 'docker_container_created', 'kubernetes_cluster_id': 'kubernetes_cluster_id',
+            'docker_container_networks': 'docker_container_networks', 'kubernetes_ports': ['kubernetes_ports',
+            'kubernetes_ports'], 'version': 'version', 'pod_name': 'pod_name', 'ppid': 9, 'tags': ['tags', 'tags'],
+            'docker_container_ports': 'docker_container_ports', 'kubernetes_is_in_host_network': True, 'instance_id':
+            'instance_id', 'kernel_id': 'kernel_id', 'active_cves': ['active_cves', 'active_cves'], 'copy_of': 'copy_of',
+            'open_files': ['open_files', 'open_files'], 'docker_env': 'docker_env', 'connection_count': 0,
+            'docker_image_size': 'docker_image_size', 'short_name': 'short_name', 'cpu_usage': 1.4658129805029452, 'pod_id':
+            'pod_id', 'docker_label': 'docker_label', 'instance_type': 'instance_type', 'docker_image_name':
+            'docker_image_name', 'user_defined_tags': ['user_defined_tags', 'user_defined_tags'], 'local_networks':
+            ['local_networks', 'local_networks'], 'cloud_region': 'cloud_region', 'kubernetes_state': 'kubernetes_state',
+            'interface_names': ['interface_names', 'interface_names'], 'memory_usage': 5, 'open_files_count': 2,
+            'kubernetes_public_ip': 'kubernetes_public_ip', 'private_ip': ['private_ip', 'private_ip'],
+            'docker_container_network_mode': 'docker_container_network_mode', 'cloud_account_id': 'cloud_account_id',
+            'kubernetes_type': 'kubernetes_type', 'active_secrets': ['active_secrets', 'active_secrets'], 'resource_group':
+            'resource_group', 'docker_image_tag': 'docker_image_tag', 'active_malwares': ['active_malwares',
+            'active_malwares'], 'kubernetes_labels': 'kubernetes_labels', 'docker_container_ips': ['docker_container_ips',
+            'docker_container_ips'], 'docker_image_id': 'docker_image_id', 'timestamp': 'timestamp', 'interface_ips':
+            ['interface_ips', 'interface_ips'], 'is_deepfence_system': True, 'availability_zone': 'availability_zone',
+            'is_console_vm': True, 'os': 'os', 'local_cidr': ['local_cidr', 'local_cidr'], 'node_name': 'node_name',
+            'threads': 3, 'cloud_provider': 'cloud_provider', 'docker_container_command': 'docker_container_command',
+            'agent_running': True, 'uptime': 2, 'memory_max': 5, 'docker_image_created_at': 'docker_image_created_at',
+            'kernel_version': 'kernel_version', 'docker_container_state_human': 'docker_container_state_human',
+            'docker_image_virtual_size': 'docker_image_virtual_size', 'kubernetes_ingress_ip': ['kubernetes_ingress_ip',
+            'kubernetes_ingress_ip'], 'host_name': 'host_name', 'node_id': 'node_id'}
+
     Attributes:
+        active_cves (Union[Unset, List[str]]):
+        active_malwares (Union[Unset, List[str]]):
+        active_secrets (Union[Unset, List[str]]):
         agent_running (Union[Unset, bool]):
         availability_zone (Union[Unset, str]):
         cloud_account_id (Union[Unset, str]):
@@ -89,6 +123,9 @@ class ReportMetadata:
         version (Union[Unset, str]):
     """
 
+    active_cves: Union[Unset, List[str]] = UNSET
+    active_malwares: Union[Unset, List[str]] = UNSET
+    active_secrets: Union[Unset, List[str]] = UNSET
     agent_running: Union[Unset, bool] = UNSET
     availability_zone: Union[Unset, str] = UNSET
     cloud_account_id: Union[Unset, str] = UNSET
@@ -167,6 +204,18 @@ class ReportMetadata:
     additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
+        active_cves: Union[Unset, List[str]] = UNSET
+        if not isinstance(self.active_cves, Unset):
+            active_cves = self.active_cves
+
+        active_malwares: Union[Unset, List[str]] = UNSET
+        if not isinstance(self.active_malwares, Unset):
+            active_malwares = self.active_malwares
+
+        active_secrets: Union[Unset, List[str]] = UNSET
+        if not isinstance(self.active_secrets, Unset):
+            active_secrets = self.active_secrets
+
         agent_running = self.agent_running
 
         availability_zone = self.availability_zone
@@ -344,6 +393,12 @@ class ReportMetadata:
         field_dict: Dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
+        if active_cves is not UNSET:
+            field_dict["active_cves"] = active_cves
+        if active_malwares is not UNSET:
+            field_dict["active_malwares"] = active_malwares
+        if active_secrets is not UNSET:
+            field_dict["active_secrets"] = active_secrets
         if agent_running is not UNSET:
             field_dict["agent_running"] = agent_running
         if availability_zone is not UNSET:
@@ -500,6 +555,12 @@ class ReportMetadata:
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
         d = src_dict.copy()
+        active_cves = cast(List[str], d.pop("active_cves", UNSET))
+
+        active_malwares = cast(List[str], d.pop("active_malwares", UNSET))
+
+        active_secrets = cast(List[str], d.pop("active_secrets", UNSET))
+
         agent_running = d.pop("agent_running", UNSET)
 
         availability_zone = d.pop("availability_zone", UNSET)
@@ -651,6 +712,9 @@ class ReportMetadata:
         version = d.pop("version", UNSET)
 
         report_metadata = cls(
+            active_cves=active_cves,
+            active_malwares=active_malwares,
+            active_secrets=active_secrets,
             agent_running=agent_running,
             availability_zone=availability_zone,
             cloud_account_id=cloud_account_id,

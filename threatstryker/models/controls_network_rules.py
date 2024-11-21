@@ -9,6 +9,9 @@ T = TypeVar("T", bound="ControlsNetworkRules")
 @_attrs_define
 class ControlsNetworkRules:
     """
+    Example:
+        {'inbound': ['inbound', 'inbound'], 'outbound': ['outbound', 'outbound']}
+
     Attributes:
         inbound (Union[List[str], None]):
         outbound (Union[List[str], None]):

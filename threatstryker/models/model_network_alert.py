@@ -11,6 +11,17 @@ T = TypeVar("T", bound="ModelNetworkAlert")
 @_attrs_define
 class ModelNetworkAlert:
     """
+    Example:
+        {'request': 'request', 'references': 'references', 'destination_port': 1, 'kubernetes_cluster_name':
+            'kubernetes_cluster_name', 'masked': True, 'created_at': 6, 'source_ip': 'source_ip', 'protocol': 'protocol',
+            'base_64_payload': 'base_64_payload', 'destination_ip': 'destination_ip', 'event_type': 'event_type',
+            'node_type': 'node_type', 'updated_at': 5, 'payload': 'payload', 'source_port': 5, 'direction': 'direction',
+            'severity': 'severity', 'summary': 'summary', 'headers': 'headers', 'kubernetes_cluster_id':
+            'kubernetes_cluster_id', 'count': 0, 'http_type': 'http_type', 'url': 'url', 'pod_name': 'pod_name', 'tags':
+            'tags', 'rule_id': 'rule_id', 'container_name': 'container_name', 'encrypted': True, 'response': 'response',
+            'techniques': ['techniques', 'techniques'], 'tactics': ['tactics', 'tactics'], 'category': 'category',
+            'host_name': 'host_name', 'node_id': 'node_id'}
+
     Attributes:
         base_64_payload (str):
         category (str):
@@ -30,6 +41,7 @@ class ModelNetworkAlert:
         masked (bool):
         node_id (str):
         node_type (str):
+        payload (str):
         pod_name (str):
         protocol (str):
         references (str):
@@ -65,6 +77,7 @@ class ModelNetworkAlert:
     masked: bool
     node_id: str
     node_type: str
+    payload: str
     pod_name: str
     protocol: str
     references: str
@@ -118,6 +131,8 @@ class ModelNetworkAlert:
         node_id = self.node_id
 
         node_type = self.node_type
+
+        payload = self.payload
 
         pod_name = self.pod_name
 
@@ -181,6 +196,7 @@ class ModelNetworkAlert:
                 "masked": masked,
                 "node_id": node_id,
                 "node_type": node_type,
+                "payload": payload,
                 "pod_name": pod_name,
                 "protocol": protocol,
                 "references": references,
@@ -241,6 +257,8 @@ class ModelNetworkAlert:
         node_id = d.pop("node_id")
 
         node_type = d.pop("node_type")
+
+        payload = d.pop("payload")
 
         pod_name = d.pop("pod_name")
 
@@ -317,6 +335,7 @@ class ModelNetworkAlert:
             masked=masked,
             node_id=node_id,
             node_type=node_type,
+            payload=payload,
             pod_name=pod_name,
             protocol=protocol,
             references=references,

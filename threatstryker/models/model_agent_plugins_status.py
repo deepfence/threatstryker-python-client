@@ -13,13 +13,20 @@ T = TypeVar("T", bound="ModelAgentPluginsStatus")
 @_attrs_define
 class ModelAgentPluginsStatus:
     """
+    Example:
+        {'network_tracer_status': {'description': 'description', 'status': 'status'}, 'network_filter_status':
+            {'description': 'description', 'status': 'status'}, 'cloud_network_tracer_status': {'description':
+            'description', 'status': 'status'}, 'filesystem_tracer_status': {'description': 'description', 'status':
+            'status'}, 'process_tracer_status': {'description': 'description', 'status': 'status'},
+            'agent_installer_tracer_status': {'description': 'description', 'status': 'status'}}
+
     Attributes:
-        agent_installer_tracer_status (ModelPluginStatus):
-        cloud_network_tracer_status (ModelPluginStatus):
-        filesystem_tracer_status (ModelPluginStatus):
-        network_filter_status (ModelPluginStatus):
-        network_tracer_status (ModelPluginStatus):
-        process_tracer_status (ModelPluginStatus):
+        agent_installer_tracer_status (ModelPluginStatus):  Example: {'description': 'description', 'status': 'status'}.
+        cloud_network_tracer_status (ModelPluginStatus):  Example: {'description': 'description', 'status': 'status'}.
+        filesystem_tracer_status (ModelPluginStatus):  Example: {'description': 'description', 'status': 'status'}.
+        network_filter_status (ModelPluginStatus):  Example: {'description': 'description', 'status': 'status'}.
+        network_tracer_status (ModelPluginStatus):  Example: {'description': 'description', 'status': 'status'}.
+        process_tracer_status (ModelPluginStatus):  Example: {'description': 'description', 'status': 'status'}.
     """
 
     agent_installer_tracer_status: "ModelPluginStatus"

@@ -13,6 +13,9 @@ T = TypeVar("T", bound="ModelMitreAttackMatrix")
 @_attrs_define
 class ModelMitreAttackMatrix:
     """
+    Example:
+        {'count': 0, 'technique_summary': {'key': {'severity': 'severity', 'count': 6}}, 'tactic': 'tactic'}
+
     Attributes:
         count (int):
         tactic (str):

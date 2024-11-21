@@ -12,6 +12,13 @@ T = TypeVar("T", bound="ModelCommonAlert")
 @_attrs_define
 class ModelCommonAlert:
     """
+    Example:
+        {'severity': 'critical', 'summary': 'summary', 'geoip': 'geoip', 'kubernetes_cluster_name':
+            'kubernetes_cluster_name', 'masked': True, 'count': 0, 'created_at': 6, 'pod_name': 'pod_name', 'rule_id':
+            'rule_id', 'event_type': 'network_anomaly', 'node_type': 'node_type', 'container_name': 'container_name',
+            'updated_at': 1, 'techniques': ['techniques', 'techniques'], 'tactics': ['tactics', 'tactics'], 'matched':
+            'matched', 'category': 'category', 'host_name': 'host_name', 'node_id': 'node_id'}
+
     Attributes:
         category (str):
         container_name (str):

@@ -9,6 +9,9 @@ T = TypeVar("T", bound="ModelAlertsActionRequest")
 @_attrs_define
 class ModelAlertsActionRequest:
     """
+    Example:
+        {'node_ids': ['node_ids', 'node_ids']}
+
     Attributes:
         node_ids (Union[List[str], None]):
     """

@@ -82,7 +82,15 @@ def sync_detailed(
      Register Agent Process config
 
     Args:
-        body (ControlsProcessTracerConfig):
+        body (ControlsProcessTracerConfig):  Example: {'updated_at': 0, 'monitoredprocessevents':
+            [{'skip_path_list': ['skip_path_list', 'skip_path_list'], 'failure_severity':
+            'failure_severity', 'skip_user_list': ['skip_user_list', 'skip_user_list'],
+            'success_severity': 'success_severity', 'event': 'bin-execution', 'skip_comm_list':
+            ['skip_comm_list', 'skip_comm_list']}, {'skip_path_list': ['skip_path_list',
+            'skip_path_list'], 'failure_severity': 'failure_severity', 'skip_user_list':
+            ['skip_user_list', 'skip_user_list'], 'success_severity': 'success_severity', 'event':
+            'bin-execution', 'skip_comm_list': ['skip_comm_list', 'skip_comm_list']}], 'node_id':
+            'node_id'}.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -113,7 +121,15 @@ def sync(
      Register Agent Process config
 
     Args:
-        body (ControlsProcessTracerConfig):
+        body (ControlsProcessTracerConfig):  Example: {'updated_at': 0, 'monitoredprocessevents':
+            [{'skip_path_list': ['skip_path_list', 'skip_path_list'], 'failure_severity':
+            'failure_severity', 'skip_user_list': ['skip_user_list', 'skip_user_list'],
+            'success_severity': 'success_severity', 'event': 'bin-execution', 'skip_comm_list':
+            ['skip_comm_list', 'skip_comm_list']}, {'skip_path_list': ['skip_path_list',
+            'skip_path_list'], 'failure_severity': 'failure_severity', 'skip_user_list':
+            ['skip_user_list', 'skip_user_list'], 'success_severity': 'success_severity', 'event':
+            'bin-execution', 'skip_comm_list': ['skip_comm_list', 'skip_comm_list']}], 'node_id':
+            'node_id'}.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -139,7 +155,15 @@ async def asyncio_detailed(
      Register Agent Process config
 
     Args:
-        body (ControlsProcessTracerConfig):
+        body (ControlsProcessTracerConfig):  Example: {'updated_at': 0, 'monitoredprocessevents':
+            [{'skip_path_list': ['skip_path_list', 'skip_path_list'], 'failure_severity':
+            'failure_severity', 'skip_user_list': ['skip_user_list', 'skip_user_list'],
+            'success_severity': 'success_severity', 'event': 'bin-execution', 'skip_comm_list':
+            ['skip_comm_list', 'skip_comm_list']}, {'skip_path_list': ['skip_path_list',
+            'skip_path_list'], 'failure_severity': 'failure_severity', 'skip_user_list':
+            ['skip_user_list', 'skip_user_list'], 'success_severity': 'success_severity', 'event':
+            'bin-execution', 'skip_comm_list': ['skip_comm_list', 'skip_comm_list']}], 'node_id':
+            'node_id'}.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -168,7 +192,15 @@ async def asyncio(
      Register Agent Process config
 
     Args:
-        body (ControlsProcessTracerConfig):
+        body (ControlsProcessTracerConfig):  Example: {'updated_at': 0, 'monitoredprocessevents':
+            [{'skip_path_list': ['skip_path_list', 'skip_path_list'], 'failure_severity':
+            'failure_severity', 'skip_user_list': ['skip_user_list', 'skip_user_list'],
+            'success_severity': 'success_severity', 'event': 'bin-execution', 'skip_comm_list':
+            ['skip_comm_list', 'skip_comm_list']}, {'skip_path_list': ['skip_path_list',
+            'skip_path_list'], 'failure_severity': 'failure_severity', 'skip_user_list':
+            ['skip_user_list', 'skip_user_list'], 'success_severity': 'success_severity', 'event':
+            'bin-execution', 'skip_comm_list': ['skip_comm_list', 'skip_comm_list']}], 'node_id':
+            'node_id'}.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

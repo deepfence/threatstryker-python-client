@@ -13,6 +13,10 @@ T = TypeVar("T", bound="ModelAttachAgentConfigReq")
 @_attrs_define
 class ModelAttachAgentConfigReq:
     """
+    Example:
+        {'config_id': 'config_id', 'agent_ids': [{'node_type': 'node_type', 'available_workload': 0, 'node_id':
+            'node_id'}, {'node_type': 'node_type', 'available_workload': 0, 'node_id': 'node_id'}]}
+
     Attributes:
         agent_ids (Union[List['ModelAgentID'], None]):
         config_id (str):

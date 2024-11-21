@@ -16,9 +16,15 @@ T = TypeVar("T", bound="ModelAgentInstall")
 @_attrs_define
 class ModelAgentInstall:
     """
+    Example:
+        {'cloud_scanner_id': {'node_type': 'node_type', 'available_workload': 0, 'node_id': 'node_id'},
+            'cloud_provider': 'aws', 'region_ids': [{'ids': ['ids', 'ids'], 'region': 'region'}, {'ids': ['ids', 'ids'],
+            'region': 'region'}]}
+
     Attributes:
         cloud_provider (ModelAgentInstallCloudProvider):
-        cloud_scanner_id (ModelAgentID):
+        cloud_scanner_id (ModelAgentID):  Example: {'node_type': 'node_type', 'available_workload': 0, 'node_id':
+            'node_id'}.
         region_ids (Union[List['ModelRegionIDs'], None]):
     """
 

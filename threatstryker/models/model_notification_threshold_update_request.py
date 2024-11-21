@@ -9,6 +9,9 @@ T = TypeVar("T", bound="ModelNotificationThresholdUpdateRequest")
 @_attrs_define
 class ModelNotificationThresholdUpdateRequest:
     """
+    Example:
+        {'notification_threshold_percentage': 0}
+
     Attributes:
         notification_threshold_percentage (int):
     """

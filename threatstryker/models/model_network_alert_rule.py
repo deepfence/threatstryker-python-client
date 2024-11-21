@@ -9,11 +9,17 @@ T = TypeVar("T", bound="ModelNetworkAlertRule")
 @_attrs_define
 class ModelNetworkAlertRule:
     """
+    Example:
+        {'rule_id': 'rule_id', 'severity': 'severity', 'summary': 'summary', 'updated_at': 0, 'payload': 'payload',
+            'masked': True, 'techniques': ['techniques', 'techniques'], 'description': 'description', 'tactics': ['tactics',
+            'tactics'], 'category': 'category', 'node_id': 'node_id'}
+
     Attributes:
         category (str):
         description (str):
         masked (bool):
         node_id (str):
+        payload (str):
         rule_id (str):
         severity (str):
         summary (str):
@@ -26,6 +32,7 @@ class ModelNetworkAlertRule:
     description: str
     masked: bool
     node_id: str
+    payload: str
     rule_id: str
     severity: str
     summary: str
@@ -42,6 +49,8 @@ class ModelNetworkAlertRule:
         masked = self.masked
 
         node_id = self.node_id
+
+        payload = self.payload
 
         rule_id = self.rule_id
 
@@ -73,6 +82,7 @@ class ModelNetworkAlertRule:
                 "description": description,
                 "masked": masked,
                 "node_id": node_id,
+                "payload": payload,
                 "rule_id": rule_id,
                 "severity": severity,
                 "summary": summary,
@@ -94,6 +104,8 @@ class ModelNetworkAlertRule:
         masked = d.pop("masked")
 
         node_id = d.pop("node_id")
+
+        payload = d.pop("payload")
 
         rule_id = d.pop("rule_id")
 
@@ -138,6 +150,7 @@ class ModelNetworkAlertRule:
             description=description,
             masked=masked,
             node_id=node_id,
+            payload=payload,
             rule_id=rule_id,
             severity=severity,
             summary=summary,

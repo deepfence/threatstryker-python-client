@@ -82,7 +82,7 @@ def sync_detailed(
      Remove quarantine violations
 
     Args:
-        body (ModelDeleteFilter):
+        body (ModelDeleteFilter):  Example: {'node_ids': ['node_ids', 'node_ids']}.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -113,7 +113,7 @@ def sync(
      Remove quarantine violations
 
     Args:
-        body (ModelDeleteFilter):
+        body (ModelDeleteFilter):  Example: {'node_ids': ['node_ids', 'node_ids']}.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -139,7 +139,7 @@ async def asyncio_detailed(
      Remove quarantine violations
 
     Args:
-        body (ModelDeleteFilter):
+        body (ModelDeleteFilter):  Example: {'node_ids': ['node_ids', 'node_ids']}.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -168,7 +168,7 @@ async def asyncio(
      Remove quarantine violations
 
     Args:
-        body (ModelDeleteFilter):
+        body (ModelDeleteFilter):  Example: {'node_ids': ['node_ids', 'node_ids']}.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

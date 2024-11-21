@@ -16,6 +16,9 @@ T = TypeVar("T", bound="ThreatintelRulesWithDirection")
 @_attrs_define
 class ThreatintelRulesWithDirection:
     """
+    Example:
+        {'inbound': {'key': 'inbound'}, 'outbound': {'key': 'outbound'}}
+
     Attributes:
         inbound (Union['ThreatintelRulesWithDirectionInboundType0', None, Unset]):
         outbound (Union['ThreatintelRulesWithDirectionOutboundType0', None, Unset]):

@@ -11,16 +11,22 @@ T = TypeVar("T", bound="SinglesignonUpdateSSOProviderConfig")
 @_attrs_define
 class SinglesignonUpdateSSOProviderConfig:
     """
+    Example:
+        {'issuer_alias_url': 'issuer_alias_url', 'issuer_url': 'issuer_url', 'disable_password_login': True,
+            'client_secret': 'client_secret', 'client_id': 'client_id'}
+
     Attributes:
         client_id (str):
         disable_password_login (bool):
         client_secret (Union[Unset, str]):
+        issuer_alias_url (Union[Unset, str]):
         issuer_url (Union[Unset, str]):
     """
 
     client_id: str
     disable_password_login: bool
     client_secret: Union[Unset, str] = UNSET
+    issuer_alias_url: Union[Unset, str] = UNSET
     issuer_url: Union[Unset, str] = UNSET
     additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -30,6 +36,8 @@ class SinglesignonUpdateSSOProviderConfig:
         disable_password_login = self.disable_password_login
 
         client_secret = self.client_secret
+
+        issuer_alias_url = self.issuer_alias_url
 
         issuer_url = self.issuer_url
 
@@ -43,6 +51,8 @@ class SinglesignonUpdateSSOProviderConfig:
         )
         if client_secret is not UNSET:
             field_dict["client_secret"] = client_secret
+        if issuer_alias_url is not UNSET:
+            field_dict["issuer_alias_url"] = issuer_alias_url
         if issuer_url is not UNSET:
             field_dict["issuer_url"] = issuer_url
 
@@ -57,12 +67,15 @@ class SinglesignonUpdateSSOProviderConfig:
 
         client_secret = d.pop("client_secret", UNSET)
 
+        issuer_alias_url = d.pop("issuer_alias_url", UNSET)
+
         issuer_url = d.pop("issuer_url", UNSET)
 
         singlesignon_update_sso_provider_config = cls(
             client_id=client_id,
             disable_password_login=disable_password_login,
             client_secret=client_secret,
+            issuer_alias_url=issuer_alias_url,
             issuer_url=issuer_url,
         )
 

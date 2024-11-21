@@ -82,7 +82,8 @@ def sync_detailed(
      Update notification threshold percentage
 
     Args:
-        body (ModelNotificationThresholdUpdateRequest):
+        body (ModelNotificationThresholdUpdateRequest):  Example:
+            {'notification_threshold_percentage': 0}.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -113,7 +114,8 @@ def sync(
      Update notification threshold percentage
 
     Args:
-        body (ModelNotificationThresholdUpdateRequest):
+        body (ModelNotificationThresholdUpdateRequest):  Example:
+            {'notification_threshold_percentage': 0}.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -139,7 +141,8 @@ async def asyncio_detailed(
      Update notification threshold percentage
 
     Args:
-        body (ModelNotificationThresholdUpdateRequest):
+        body (ModelNotificationThresholdUpdateRequest):  Example:
+            {'notification_threshold_percentage': 0}.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -168,7 +171,8 @@ async def asyncio(
      Update notification threshold percentage
 
     Args:
-        body (ModelNotificationThresholdUpdateRequest):
+        body (ModelNotificationThresholdUpdateRequest):  Example:
+            {'notification_threshold_percentage': 0}.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

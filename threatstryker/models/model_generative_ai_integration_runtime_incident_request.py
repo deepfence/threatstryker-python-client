@@ -14,6 +14,10 @@ T = TypeVar("T", bound="ModelGenerativeAiIntegrationRuntimeIncidentRequest")
 @_attrs_define
 class ModelGenerativeAiIntegrationRuntimeIncidentRequest:
     """
+    Example:
+        {'summary': 'summary', 'event_type': 'event_type', 'integration_id': 0, 'query_type': 'remediation', 'category':
+            'category'}
+
     Attributes:
         category (str):
         event_type (str):

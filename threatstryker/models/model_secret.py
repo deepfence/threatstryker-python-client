@@ -16,16 +16,28 @@ T = TypeVar("T", bound="ModelSecret")
 @_attrs_define
 class ModelSecret:
     """
+    Example:
+        {'rule_id': 'rule_id', 'score': 1.4658129805029452, 'full_filename': 'full_filename', 'matched_content':
+            'matched_content', 'updated_at': 5, 'level': 'critical', 'masked': True, 'starting_index': 5, 'resources':
+            [{'node_type': 'node_type', 'live_secrets': ['live_secrets', 'live_secrets'], 'live_cves': ['live_cves',
+            'live_cves'], 'name': 'name', 'host_name': 'host_name', 'live_malwares': ['live_malwares', 'live_malwares'],
+            'node_id': 'node_id'}, {'node_type': 'node_type', 'live_secrets': ['live_secrets', 'live_secrets'], 'live_cves':
+            ['live_cves', 'live_cves'], 'name': 'name', 'host_name': 'host_name', 'live_malwares': ['live_malwares',
+            'live_malwares'], 'node_id': 'node_id'}], 'exploitability_score': 0, 'max_exploitability_score': 6, 'node_id':
+            'node_id'}
+
     Attributes:
         full_filename (str):
         level (ModelSecretLevel):
         masked (bool):
         matched_content (str):
-        name (str):
         node_id (str):
+        rule_id (str):
         score (float):
         starting_index (int):
         updated_at (int):
+        exploitability_score (Union[Unset, int]):
+        max_exploitability_score (Union[Unset, int]):
         resources (Union[List['ModelBasicNode'], None, Unset]):
     """
 
@@ -33,11 +45,13 @@ class ModelSecret:
     level: ModelSecretLevel
     masked: bool
     matched_content: str
-    name: str
     node_id: str
+    rule_id: str
     score: float
     starting_index: int
     updated_at: int
+    exploitability_score: Union[Unset, int] = UNSET
+    max_exploitability_score: Union[Unset, int] = UNSET
     resources: Union[List["ModelBasicNode"], None, Unset] = UNSET
     additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -50,15 +64,19 @@ class ModelSecret:
 
         matched_content = self.matched_content
 
-        name = self.name
-
         node_id = self.node_id
+
+        rule_id = self.rule_id
 
         score = self.score
 
         starting_index = self.starting_index
 
         updated_at = self.updated_at
+
+        exploitability_score = self.exploitability_score
+
+        max_exploitability_score = self.max_exploitability_score
 
         resources: Union[List[Dict[str, Any]], None, Unset]
         if isinstance(self.resources, Unset):
@@ -80,13 +98,17 @@ class ModelSecret:
                 "level": level,
                 "masked": masked,
                 "matched_content": matched_content,
-                "name": name,
                 "node_id": node_id,
+                "rule_id": rule_id,
                 "score": score,
                 "starting_index": starting_index,
                 "updated_at": updated_at,
             }
         )
+        if exploitability_score is not UNSET:
+            field_dict["exploitability_score"] = exploitability_score
+        if max_exploitability_score is not UNSET:
+            field_dict["max_exploitability_score"] = max_exploitability_score
         if resources is not UNSET:
             field_dict["resources"] = resources
 
@@ -105,15 +127,19 @@ class ModelSecret:
 
         matched_content = d.pop("matched_content")
 
-        name = d.pop("name")
-
         node_id = d.pop("node_id")
+
+        rule_id = d.pop("rule_id")
 
         score = d.pop("score")
 
         starting_index = d.pop("starting_index")
 
         updated_at = d.pop("updated_at")
+
+        exploitability_score = d.pop("exploitability_score", UNSET)
+
+        max_exploitability_score = d.pop("max_exploitability_score", UNSET)
 
         def _parse_resources(data: object) -> Union[List["ModelBasicNode"], None, Unset]:
             if data is None:
@@ -142,11 +168,13 @@ class ModelSecret:
             level=level,
             masked=masked,
             matched_content=matched_content,
-            name=name,
             node_id=node_id,
+            rule_id=rule_id,
             score=score,
             starting_index=starting_index,
             updated_at=updated_at,
+            exploitability_score=exploitability_score,
+            max_exploitability_score=max_exploitability_score,
             resources=resources,
         )
 

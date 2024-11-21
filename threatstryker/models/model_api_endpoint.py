@@ -12,6 +12,11 @@ T = TypeVar("T", bound="ModelAPIEndpoint")
 @_attrs_define
 class ModelAPIEndpoint:
     """
+    Example:
+        {'host_ip': 'host_ip', 'cloud_region': 'cloud_region', 'method': 'method', 'created_at': 0, 'cloud_provider':
+            'cloud_provider', 'schema_info': 'schema_info', 'path': 'path', 'cloud_type': 'cloud_type', 'source_hosts':
+            ['source_hosts', 'source_hosts'], 'updated_at': 1, 'port': 0, 'host': 'host', 'direction': 'ingress'}
+
     Attributes:
         cloud_provider (Union[Unset, str]):
         cloud_region (Union[Unset, str]):

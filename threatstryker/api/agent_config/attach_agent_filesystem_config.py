@@ -82,7 +82,9 @@ def sync_detailed(
      Attach Agent Filesystem config
 
     Args:
-        body (ModelAttachAgentConfigReq):
+        body (ModelAttachAgentConfigReq):  Example: {'config_id': 'config_id', 'agent_ids':
+            [{'node_type': 'node_type', 'available_workload': 0, 'node_id': 'node_id'}, {'node_type':
+            'node_type', 'available_workload': 0, 'node_id': 'node_id'}]}.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -113,7 +115,9 @@ def sync(
      Attach Agent Filesystem config
 
     Args:
-        body (ModelAttachAgentConfigReq):
+        body (ModelAttachAgentConfigReq):  Example: {'config_id': 'config_id', 'agent_ids':
+            [{'node_type': 'node_type', 'available_workload': 0, 'node_id': 'node_id'}, {'node_type':
+            'node_type', 'available_workload': 0, 'node_id': 'node_id'}]}.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -139,7 +143,9 @@ async def asyncio_detailed(
      Attach Agent Filesystem config
 
     Args:
-        body (ModelAttachAgentConfigReq):
+        body (ModelAttachAgentConfigReq):  Example: {'config_id': 'config_id', 'agent_ids':
+            [{'node_type': 'node_type', 'available_workload': 0, 'node_id': 'node_id'}, {'node_type':
+            'node_type', 'available_workload': 0, 'node_id': 'node_id'}]}.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -168,7 +174,9 @@ async def asyncio(
      Attach Agent Filesystem config
 
     Args:
-        body (ModelAttachAgentConfigReq):
+        body (ModelAttachAgentConfigReq):  Example: {'config_id': 'config_id', 'agent_ids':
+            [{'node_type': 'node_type', 'available_workload': 0, 'node_id': 'node_id'}, {'node_type':
+            'node_type', 'available_workload': 0, 'node_id': 'node_id'}]}.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

@@ -14,9 +14,26 @@ T = TypeVar("T", bound="SinglesignonGetSingleSignOnResponse")
 @_attrs_define
 class SinglesignonGetSingleSignOnResponse:
     """
+    Example:
+        {'instructions': {'github': [{'value': 'value', 'key': 'key'}, {'value': 'value', 'key': 'key'}], 'google':
+            [{'value': 'value', 'key': 'key'}, {'value': 'value', 'key': 'key'}], 'microsoft': [{'value': 'value', 'key':
+            'key'}, {'value': 'value', 'key': 'key'}], 'oidc': [{'value': 'value', 'key': 'key'}, {'value': 'value', 'key':
+            'key'}]}, 'config': [{'issuer_alias_url': 'issuer_alias_url', 'issuer_url': 'issuer_url', 'updated_at':
+            datetime.datetime(2000, 1, 23, 4, 56, 7, tzinfo=datetime.timezone(datetime.timedelta(0), '+00:00')),
+            'sso_provider_type': 'sso_provider_type', 'created_at': datetime.datetime(2000, 1, 23, 4, 56, 7,
+            tzinfo=datetime.timezone(datetime.timedelta(0), '+00:00')), 'disable_password_login': True, 'id': 0, 'label':
+            'label', 'client_id': 'client_id'}, {'issuer_alias_url': 'issuer_alias_url', 'issuer_url': 'issuer_url',
+            'updated_at': datetime.datetime(2000, 1, 23, 4, 56, 7, tzinfo=datetime.timezone(datetime.timedelta(0),
+            '+00:00')), 'sso_provider_type': 'sso_provider_type', 'created_at': datetime.datetime(2000, 1, 23, 4, 56, 7,
+            tzinfo=datetime.timezone(datetime.timedelta(0), '+00:00')), 'disable_password_login': True, 'id': 0, 'label':
+            'label', 'client_id': 'client_id'}]}
+
     Attributes:
         config (Union[List['SinglesignonSSOResponse'], None]):
-        instructions (SinglesignonSSOConfigurationInstructions):
+        instructions (SinglesignonSSOConfigurationInstructions):  Example: {'github': [{'value': 'value', 'key': 'key'},
+            {'value': 'value', 'key': 'key'}], 'google': [{'value': 'value', 'key': 'key'}, {'value': 'value', 'key':
+            'key'}], 'microsoft': [{'value': 'value', 'key': 'key'}, {'value': 'value', 'key': 'key'}], 'oidc': [{'value':
+            'value', 'key': 'key'}, {'value': 'value', 'key': 'key'}]}.
     """
 
     config: Union[List["SinglesignonSSOResponse"], None]

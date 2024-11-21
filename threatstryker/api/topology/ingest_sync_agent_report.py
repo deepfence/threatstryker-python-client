@@ -82,7 +82,17 @@ def sync_detailed(
      Ingest data reported by one Agent
 
     Args:
-        body (IngestersReportIngestionData):
+        body (IngestersReportIngestionData):  Example: {'hosts': [{'key': ''}, {'key': ''}],
+            'host_batch': [{'key': ''}, {'key': ''}], 'kubernetes_cluster_edge_batch': [{'key': ''},
+            {'key': ''}], 'process_batch': [{'key': ''}, {'key': ''}], 'container_image_edge_batch':
+            [{'key': ''}, {'key': ''}], 'num_merged': 0, 'container_process_edge_batch': [{'key': ''},
+            {'key': ''}], 'pod_batch': [{'key': ''}, {'key': ''}], 'process_edges_batch': [{'key':
+            ''}, {'key': ''}], 'container_edges_batch': [{'key': ''}, {'key': ''}],
+            'api_endpoints_edge_batch': [{'key': ''}, {'key': ''}], 'container_batch': [{'key': ''},
+            {'key': ''}], 'container_image_batch': [{'key': ''}, {'key': ''}],
+            'kubernetes_cluster_batch': [{'key': ''}, {'key': ''}], 'api_endpoints_batch': [{'key':
+            ''}, {'key': ''}], 'pod_edges_batch': [{'key': ''}, {'key': ''}], 'endpoint_edges_batch':
+            [{'key': ''}, {'key': ''}], 'pod_host_edges_batch': [{'key': ''}, {'key': ''}]}.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -113,7 +123,17 @@ def sync(
      Ingest data reported by one Agent
 
     Args:
-        body (IngestersReportIngestionData):
+        body (IngestersReportIngestionData):  Example: {'hosts': [{'key': ''}, {'key': ''}],
+            'host_batch': [{'key': ''}, {'key': ''}], 'kubernetes_cluster_edge_batch': [{'key': ''},
+            {'key': ''}], 'process_batch': [{'key': ''}, {'key': ''}], 'container_image_edge_batch':
+            [{'key': ''}, {'key': ''}], 'num_merged': 0, 'container_process_edge_batch': [{'key': ''},
+            {'key': ''}], 'pod_batch': [{'key': ''}, {'key': ''}], 'process_edges_batch': [{'key':
+            ''}, {'key': ''}], 'container_edges_batch': [{'key': ''}, {'key': ''}],
+            'api_endpoints_edge_batch': [{'key': ''}, {'key': ''}], 'container_batch': [{'key': ''},
+            {'key': ''}], 'container_image_batch': [{'key': ''}, {'key': ''}],
+            'kubernetes_cluster_batch': [{'key': ''}, {'key': ''}], 'api_endpoints_batch': [{'key':
+            ''}, {'key': ''}], 'pod_edges_batch': [{'key': ''}, {'key': ''}], 'endpoint_edges_batch':
+            [{'key': ''}, {'key': ''}], 'pod_host_edges_batch': [{'key': ''}, {'key': ''}]}.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -139,7 +159,17 @@ async def asyncio_detailed(
      Ingest data reported by one Agent
 
     Args:
-        body (IngestersReportIngestionData):
+        body (IngestersReportIngestionData):  Example: {'hosts': [{'key': ''}, {'key': ''}],
+            'host_batch': [{'key': ''}, {'key': ''}], 'kubernetes_cluster_edge_batch': [{'key': ''},
+            {'key': ''}], 'process_batch': [{'key': ''}, {'key': ''}], 'container_image_edge_batch':
+            [{'key': ''}, {'key': ''}], 'num_merged': 0, 'container_process_edge_batch': [{'key': ''},
+            {'key': ''}], 'pod_batch': [{'key': ''}, {'key': ''}], 'process_edges_batch': [{'key':
+            ''}, {'key': ''}], 'container_edges_batch': [{'key': ''}, {'key': ''}],
+            'api_endpoints_edge_batch': [{'key': ''}, {'key': ''}], 'container_batch': [{'key': ''},
+            {'key': ''}], 'container_image_batch': [{'key': ''}, {'key': ''}],
+            'kubernetes_cluster_batch': [{'key': ''}, {'key': ''}], 'api_endpoints_batch': [{'key':
+            ''}, {'key': ''}], 'pod_edges_batch': [{'key': ''}, {'key': ''}], 'endpoint_edges_batch':
+            [{'key': ''}, {'key': ''}], 'pod_host_edges_batch': [{'key': ''}, {'key': ''}]}.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -168,7 +198,17 @@ async def asyncio(
      Ingest data reported by one Agent
 
     Args:
-        body (IngestersReportIngestionData):
+        body (IngestersReportIngestionData):  Example: {'hosts': [{'key': ''}, {'key': ''}],
+            'host_batch': [{'key': ''}, {'key': ''}], 'kubernetes_cluster_edge_batch': [{'key': ''},
+            {'key': ''}], 'process_batch': [{'key': ''}, {'key': ''}], 'container_image_edge_batch':
+            [{'key': ''}, {'key': ''}], 'num_merged': 0, 'container_process_edge_batch': [{'key': ''},
+            {'key': ''}], 'pod_batch': [{'key': ''}, {'key': ''}], 'process_edges_batch': [{'key':
+            ''}, {'key': ''}], 'container_edges_batch': [{'key': ''}, {'key': ''}],
+            'api_endpoints_edge_batch': [{'key': ''}, {'key': ''}], 'container_batch': [{'key': ''},
+            {'key': ''}], 'container_image_batch': [{'key': ''}, {'key': ''}],
+            'kubernetes_cluster_batch': [{'key': ''}, {'key': ''}], 'api_endpoints_batch': [{'key':
+            ''}, {'key': ''}], 'pod_edges_batch': [{'key': ''}, {'key': ''}], 'endpoint_edges_batch':
+            [{'key': ''}, {'key': ''}], 'pod_host_edges_batch': [{'key': ''}, {'key': ''}]}.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

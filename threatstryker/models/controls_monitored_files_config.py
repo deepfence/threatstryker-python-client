@@ -9,6 +9,9 @@ T = TypeVar("T", bound="ControlsMonitoredFilesConfig")
 @_attrs_define
 class ControlsMonitoredFilesConfig:
     """
+    Example:
+        {'severity': 'severity', 'accesstypes': ['accesstypes', 'accesstypes'], 'root': 'root', 'recursive': True}
+
     Attributes:
         accesstypes (Union[List[str], None]):
         recursive (bool):

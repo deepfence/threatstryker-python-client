@@ -9,6 +9,9 @@ T = TypeVar("T", bound="SinglesignonSSOConfigurationInstruction")
 @_attrs_define
 class SinglesignonSSOConfigurationInstruction:
     """
+    Example:
+        {'value': 'value', 'key': 'key'}
+
     Attributes:
         key (str):
         value (str):

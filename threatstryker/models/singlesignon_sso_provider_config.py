@@ -12,12 +12,18 @@ T = TypeVar("T", bound="SinglesignonSSOProviderConfig")
 @_attrs_define
 class SinglesignonSSOProviderConfig:
     """
+    Example:
+        {'issuer_alias_url': 'issuer_alias_url', 'issuer_url': 'issuer_url', 'sso_provider_type': 'oidc',
+            'disable_password_login': True, 'client_secret': 'client_secret', 'client_id': 'client_id', 'host_name':
+            'host_name'}
+
     Attributes:
         client_id (str):
         client_secret (str):
         disable_password_login (bool):
         sso_provider_type (SinglesignonSSOProviderConfigSsoProviderType):
         host_name (Union[Unset, str]):
+        issuer_alias_url (Union[Unset, str]):
         issuer_url (Union[Unset, str]):
     """
 
@@ -26,6 +32,7 @@ class SinglesignonSSOProviderConfig:
     disable_password_login: bool
     sso_provider_type: SinglesignonSSOProviderConfigSsoProviderType
     host_name: Union[Unset, str] = UNSET
+    issuer_alias_url: Union[Unset, str] = UNSET
     issuer_url: Union[Unset, str] = UNSET
     additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -39,6 +46,8 @@ class SinglesignonSSOProviderConfig:
         sso_provider_type = self.sso_provider_type.value
 
         host_name = self.host_name
+
+        issuer_alias_url = self.issuer_alias_url
 
         issuer_url = self.issuer_url
 
@@ -54,6 +63,8 @@ class SinglesignonSSOProviderConfig:
         )
         if host_name is not UNSET:
             field_dict["host_name"] = host_name
+        if issuer_alias_url is not UNSET:
+            field_dict["issuer_alias_url"] = issuer_alias_url
         if issuer_url is not UNSET:
             field_dict["issuer_url"] = issuer_url
 
@@ -72,6 +83,8 @@ class SinglesignonSSOProviderConfig:
 
         host_name = d.pop("host_name", UNSET)
 
+        issuer_alias_url = d.pop("issuer_alias_url", UNSET)
+
         issuer_url = d.pop("issuer_url", UNSET)
 
         singlesignon_sso_provider_config = cls(
@@ -80,6 +93,7 @@ class SinglesignonSSOProviderConfig:
             disable_password_login=disable_password_login,
             sso_provider_type=sso_provider_type,
             host_name=host_name,
+            issuer_alias_url=issuer_alias_url,
             issuer_url=issuer_url,
         )
 

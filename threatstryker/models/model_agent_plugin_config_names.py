@@ -9,6 +9,10 @@ T = TypeVar("T", bound="ModelAgentPluginConfigNames")
 @_attrs_define
 class ModelAgentPluginConfigNames:
     """
+    Example:
+        {'policy_config_name': 'policy_config_name', 'filesystem_config_name': 'filesystem_config_name',
+            'process_config_name': 'process_config_name', 'network_config_name': 'network_config_name'}
+
     Attributes:
         filesystem_config_name (str):
         network_config_name (str):

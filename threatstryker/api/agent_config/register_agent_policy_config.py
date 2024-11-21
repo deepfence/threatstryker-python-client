@@ -82,7 +82,16 @@ def sync_detailed(
      Register Agent Policy config
 
     Args:
-        body (ControlsPolicyFilterConfig):
+        body (ControlsPolicyFilterConfig):  Example: {'ignored_remote_hosts':
+            ['ignored_remote_hosts', 'ignored_remote_hosts'], 'updated_at': 5, 'use_waf': True,
+            'policies': [{'policy_id': 'policy_id', 'updated_at': 5, 'count_limit': 0, 'action':
+            'block', 'duration_count_limit_sec': 6, 'matcher': {'fields_matcher': {'key':
+            ['fields_matcher', 'fields_matcher']}}, 'uuid': 'uuid', 'duration_sec': 1}, {'policy_id':
+            'policy_id', 'updated_at': 5, 'count_limit': 0, 'action': 'block',
+            'duration_count_limit_sec': 6, 'matcher': {'fields_matcher': {'key': ['fields_matcher',
+            'fields_matcher']}}, 'uuid': 'uuid', 'duration_sec': 1}], 'ignored_remote_ips':
+            ['ignored_remote_ips', 'ignored_remote_ips'], 'enable_policy_logs': True, 'node_id':
+            'node_id'}.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -113,7 +122,16 @@ def sync(
      Register Agent Policy config
 
     Args:
-        body (ControlsPolicyFilterConfig):
+        body (ControlsPolicyFilterConfig):  Example: {'ignored_remote_hosts':
+            ['ignored_remote_hosts', 'ignored_remote_hosts'], 'updated_at': 5, 'use_waf': True,
+            'policies': [{'policy_id': 'policy_id', 'updated_at': 5, 'count_limit': 0, 'action':
+            'block', 'duration_count_limit_sec': 6, 'matcher': {'fields_matcher': {'key':
+            ['fields_matcher', 'fields_matcher']}}, 'uuid': 'uuid', 'duration_sec': 1}, {'policy_id':
+            'policy_id', 'updated_at': 5, 'count_limit': 0, 'action': 'block',
+            'duration_count_limit_sec': 6, 'matcher': {'fields_matcher': {'key': ['fields_matcher',
+            'fields_matcher']}}, 'uuid': 'uuid', 'duration_sec': 1}], 'ignored_remote_ips':
+            ['ignored_remote_ips', 'ignored_remote_ips'], 'enable_policy_logs': True, 'node_id':
+            'node_id'}.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -139,7 +157,16 @@ async def asyncio_detailed(
      Register Agent Policy config
 
     Args:
-        body (ControlsPolicyFilterConfig):
+        body (ControlsPolicyFilterConfig):  Example: {'ignored_remote_hosts':
+            ['ignored_remote_hosts', 'ignored_remote_hosts'], 'updated_at': 5, 'use_waf': True,
+            'policies': [{'policy_id': 'policy_id', 'updated_at': 5, 'count_limit': 0, 'action':
+            'block', 'duration_count_limit_sec': 6, 'matcher': {'fields_matcher': {'key':
+            ['fields_matcher', 'fields_matcher']}}, 'uuid': 'uuid', 'duration_sec': 1}, {'policy_id':
+            'policy_id', 'updated_at': 5, 'count_limit': 0, 'action': 'block',
+            'duration_count_limit_sec': 6, 'matcher': {'fields_matcher': {'key': ['fields_matcher',
+            'fields_matcher']}}, 'uuid': 'uuid', 'duration_sec': 1}], 'ignored_remote_ips':
+            ['ignored_remote_ips', 'ignored_remote_ips'], 'enable_policy_logs': True, 'node_id':
+            'node_id'}.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -168,7 +195,16 @@ async def asyncio(
      Register Agent Policy config
 
     Args:
-        body (ControlsPolicyFilterConfig):
+        body (ControlsPolicyFilterConfig):  Example: {'ignored_remote_hosts':
+            ['ignored_remote_hosts', 'ignored_remote_hosts'], 'updated_at': 5, 'use_waf': True,
+            'policies': [{'policy_id': 'policy_id', 'updated_at': 5, 'count_limit': 0, 'action':
+            'block', 'duration_count_limit_sec': 6, 'matcher': {'fields_matcher': {'key':
+            ['fields_matcher', 'fields_matcher']}}, 'uuid': 'uuid', 'duration_sec': 1}, {'policy_id':
+            'policy_id', 'updated_at': 5, 'count_limit': 0, 'action': 'block',
+            'duration_count_limit_sec': 6, 'matcher': {'fields_matcher': {'key': ['fields_matcher',
+            'fields_matcher']}}, 'uuid': 'uuid', 'duration_sec': 1}], 'ignored_remote_ips':
+            ['ignored_remote_ips', 'ignored_remote_ips'], 'enable_policy_logs': True, 'node_id':
+            'node_id'}.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

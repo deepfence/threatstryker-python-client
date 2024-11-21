@@ -12,6 +12,9 @@ T = TypeVar("T", bound="IngestersWAFRule")
 @_attrs_define
 class IngestersWAFRule:
     """
+    Example:
+        {'remote_ip': 'remote_ip', 'executed_at': 0, 'remote_port': 6, 'action': 'block', 'host_name': 'host_name'}
+
     Attributes:
         action (IngestersWAFRuleAction):
         remote_ip (str):

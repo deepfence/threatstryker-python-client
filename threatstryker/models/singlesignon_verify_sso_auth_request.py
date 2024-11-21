@@ -9,6 +9,9 @@ T = TypeVar("T", bound="SinglesignonVerifySSOAuthRequest")
 @_attrs_define
 class SinglesignonVerifySSOAuthRequest:
     """
+    Example:
+        {'code': 'code', 'user_id': 0, 'namespace': 'namespace'}
+
     Attributes:
         code (str):
         namespace (str):

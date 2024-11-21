@@ -9,6 +9,14 @@ T = TypeVar("T", bound="ControlsThreatIntelInfo")
 @_attrs_define
 class ControlsThreatIntelInfo:
     """
+    Example:
+        {'cloud_posture_controls_hash': 'cloud_posture_controls_hash', 'cloud_posture_controls_url':
+            'cloud_posture_controls_url', 'updated_at': 0, 'network_alert_rules_url': 'network_alert_rules_url',
+            'ignored_alert_rule_ids': ['ignored_alert_rule_ids', 'ignored_alert_rule_ids'], 'internal_ips': ['internal_ips',
+            'internal_ips'], 'secret_scanner_rules_hash': 'secret_scanner_rules_hash', 'secret_scanner_rules_url':
+            'secret_scanner_rules_url', 'malware_scanner_rules_hash': 'malware_scanner_rules_hash',
+            'malware_scanner_rules_url': 'malware_scanner_rules_url', 'rules_hash': 'rules_hash'}
+
     Attributes:
         cloud_posture_controls_hash (str):
         cloud_posture_controls_url (str):
