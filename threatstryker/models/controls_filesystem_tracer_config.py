@@ -1,4 +1,5 @@
-from typing import TYPE_CHECKING, Any, Dict, List, Type, TypeVar, Union, cast
+from collections.abc import Mapping
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -13,28 +14,23 @@ T = TypeVar("T", bound="ControlsFilesystemTracerConfig")
 @_attrs_define
 class ControlsFilesystemTracerConfig:
     """
-    Example:
-        {'updated_at': 0, 'watchedentries': [{'severity': 'severity', 'accesstypes': ['accesstypes', 'accesstypes'],
-            'root': 'root', 'recursive': True}, {'severity': 'severity', 'accesstypes': ['accesstypes', 'accesstypes'],
-            'root': 'root', 'recursive': True}], 'node_id': 'node_id'}
-
     Attributes:
         node_id (str):
         updated_at (int):
-        watchedentries (Union[List['ControlsMonitoredFilesConfig'], None]):
+        watchedentries (Union[None, list['ControlsMonitoredFilesConfig']]):
     """
 
     node_id: str
     updated_at: int
-    watchedentries: Union[List["ControlsMonitoredFilesConfig"], None]
-    additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
+    watchedentries: Union[None, list["ControlsMonitoredFilesConfig"]]
+    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
-    def to_dict(self) -> Dict[str, Any]:
+    def to_dict(self) -> dict[str, Any]:
         node_id = self.node_id
 
         updated_at = self.updated_at
 
-        watchedentries: Union[List[Dict[str, Any]], None]
+        watchedentries: Union[None, list[dict[str, Any]]]
         if isinstance(self.watchedentries, list):
             watchedentries = []
             for watchedentries_type_0_item_data in self.watchedentries:
@@ -44,7 +40,7 @@ class ControlsFilesystemTracerConfig:
         else:
             watchedentries = self.watchedentries
 
-        field_dict: Dict[str, Any] = {}
+        field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
@@ -57,15 +53,15 @@ class ControlsFilesystemTracerConfig:
         return field_dict
 
     @classmethod
-    def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.controls_monitored_files_config import ControlsMonitoredFilesConfig
 
-        d = src_dict.copy()
+        d = dict(src_dict)
         node_id = d.pop("node_id")
 
         updated_at = d.pop("updated_at")
 
-        def _parse_watchedentries(data: object) -> Union[List["ControlsMonitoredFilesConfig"], None]:
+        def _parse_watchedentries(data: object) -> Union[None, list["ControlsMonitoredFilesConfig"]]:
             if data is None:
                 return data
             try:
@@ -81,7 +77,7 @@ class ControlsFilesystemTracerConfig:
                 return watchedentries_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[List["ControlsMonitoredFilesConfig"], None], data)
+            return cast(Union[None, list["ControlsMonitoredFilesConfig"]], data)
 
         watchedentries = _parse_watchedentries(d.pop("watchedentries"))
 
@@ -95,7 +91,7 @@ class ControlsFilesystemTracerConfig:
         return controls_filesystem_tracer_config
 
     @property
-    def additional_keys(self) -> List[str]:
+    def additional_keys(self) -> list[str]:
         return list(self.additional_properties.keys())
 
     def __getitem__(self, key: str) -> Any:

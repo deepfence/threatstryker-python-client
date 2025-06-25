@@ -1,4 +1,5 @@
-from typing import Any, Dict, List, Type, TypeVar, Union, cast
+from collections.abc import Mapping
+from typing import Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -11,41 +12,10 @@ T = TypeVar("T", bound="ReportMetadata")
 @_attrs_define
 class ReportMetadata:
     """
-    Example:
-        {'docker_image_name_with_tag': 'docker_image_name_with_tag', 'kubernetes_ip': 'kubernetes_ip', 'public_ip':
-            ['public_ip', 'public_ip'], 'kubernetes_cluster_name': 'kubernetes_cluster_name', 'docker_container_state':
-            'docker_container_state', 'cpu_max': 6.027456183070403, 'pid': 7, 'kubernetes_created': 'kubernetes_created',
-            'kubernetes_namespace': 'kubernetes_namespace', 'cmdline': 'cmdline', 'node_type': 'node_type',
-            'interface_ip_map': 'interface_ip_map', 'pseudo': True, 'docker_container_name': 'docker_container_name',
-            'docker_container_created': 'docker_container_created', 'kubernetes_cluster_id': 'kubernetes_cluster_id',
-            'docker_container_networks': 'docker_container_networks', 'kubernetes_ports': ['kubernetes_ports',
-            'kubernetes_ports'], 'version': 'version', 'pod_name': 'pod_name', 'ppid': 9, 'tags': ['tags', 'tags'],
-            'docker_container_ports': 'docker_container_ports', 'kubernetes_is_in_host_network': True, 'instance_id':
-            'instance_id', 'kernel_id': 'kernel_id', 'active_cves': ['active_cves', 'active_cves'], 'copy_of': 'copy_of',
-            'open_files': ['open_files', 'open_files'], 'docker_env': 'docker_env', 'connection_count': 0,
-            'docker_image_size': 'docker_image_size', 'short_name': 'short_name', 'cpu_usage': 1.4658129805029452, 'pod_id':
-            'pod_id', 'docker_label': 'docker_label', 'instance_type': 'instance_type', 'docker_image_name':
-            'docker_image_name', 'user_defined_tags': ['user_defined_tags', 'user_defined_tags'], 'local_networks':
-            ['local_networks', 'local_networks'], 'cloud_region': 'cloud_region', 'kubernetes_state': 'kubernetes_state',
-            'interface_names': ['interface_names', 'interface_names'], 'memory_usage': 5, 'open_files_count': 2,
-            'kubernetes_public_ip': 'kubernetes_public_ip', 'private_ip': ['private_ip', 'private_ip'],
-            'docker_container_network_mode': 'docker_container_network_mode', 'cloud_account_id': 'cloud_account_id',
-            'kubernetes_type': 'kubernetes_type', 'active_secrets': ['active_secrets', 'active_secrets'], 'resource_group':
-            'resource_group', 'docker_image_tag': 'docker_image_tag', 'active_malwares': ['active_malwares',
-            'active_malwares'], 'kubernetes_labels': 'kubernetes_labels', 'docker_container_ips': ['docker_container_ips',
-            'docker_container_ips'], 'docker_image_id': 'docker_image_id', 'timestamp': 'timestamp', 'interface_ips':
-            ['interface_ips', 'interface_ips'], 'is_deepfence_system': True, 'availability_zone': 'availability_zone',
-            'is_console_vm': True, 'os': 'os', 'local_cidr': ['local_cidr', 'local_cidr'], 'node_name': 'node_name',
-            'threads': 3, 'cloud_provider': 'cloud_provider', 'docker_container_command': 'docker_container_command',
-            'agent_running': True, 'uptime': 2, 'memory_max': 5, 'docker_image_created_at': 'docker_image_created_at',
-            'kernel_version': 'kernel_version', 'docker_container_state_human': 'docker_container_state_human',
-            'docker_image_virtual_size': 'docker_image_virtual_size', 'kubernetes_ingress_ip': ['kubernetes_ingress_ip',
-            'kubernetes_ingress_ip'], 'host_name': 'host_name', 'node_id': 'node_id'}
-
     Attributes:
-        active_cves (Union[Unset, List[str]]):
-        active_malwares (Union[Unset, List[str]]):
-        active_secrets (Union[Unset, List[str]]):
+        active_cves (Union[Unset, list[str]]):
+        active_malwares (Union[Unset, list[str]]):
+        active_secrets (Union[Unset, list[str]]):
         agent_running (Union[Unset, bool]):
         availability_zone (Union[Unset, str]):
         cloud_account_id (Union[Unset, str]):
@@ -58,7 +28,7 @@ class ReportMetadata:
         cpu_usage (Union[Unset, float]):
         docker_container_command (Union[Unset, str]):
         docker_container_created (Union[Unset, str]):
-        docker_container_ips (Union[Unset, List[str]]):
+        docker_container_ips (Union[Unset, list[str]]):
         docker_container_name (Union[Unset, str]):
         docker_container_network_mode (Union[Unset, str]):
         docker_container_networks (Union[Unset, str]):
@@ -78,8 +48,8 @@ class ReportMetadata:
         instance_id (Union[Unset, str]):
         instance_type (Union[Unset, str]):
         interface_ip_map (Union[Unset, str]):
-        interface_ips (Union[Unset, List[str]]):
-        interface_names (Union[Unset, List[str]]):
+        interface_ips (Union[Unset, list[str]]):
+        interface_names (Union[Unset, list[str]]):
         is_console_vm (Union[Unset, bool]):
         is_deepfence_system (Union[Unset, bool]):
         kernel_id (Union[Unset, str]):
@@ -87,45 +57,44 @@ class ReportMetadata:
         kubernetes_cluster_id (Union[Unset, str]):
         kubernetes_cluster_name (Union[Unset, str]):
         kubernetes_created (Union[Unset, str]):
-        kubernetes_ingress_ip (Union[Unset, List[str]]):
+        kubernetes_ingress_ip (Union[Unset, list[str]]):
         kubernetes_ip (Union[Unset, str]):
         kubernetes_is_in_host_network (Union[Unset, bool]):
         kubernetes_labels (Union[Unset, str]):
         kubernetes_namespace (Union[Unset, str]):
-        kubernetes_ports (Union[Unset, List[str]]):
+        kubernetes_ports (Union[Unset, list[str]]):
         kubernetes_public_ip (Union[Unset, str]):
         kubernetes_state (Union[Unset, str]):
         kubernetes_type (Union[Unset, str]):
-        local_cidr (Union[Unset, List[str]]):
-        local_networks (Union[Unset, List[str]]):
+        local_cidr (Union[Unset, list[str]]):
+        local_networks (Union[Unset, list[str]]):
         memory_max (Union[Unset, int]):
         memory_usage (Union[Unset, int]):
         node_id (Union[Unset, str]):
         node_name (Union[Unset, str]):
         node_type (Union[Unset, str]):
-        open_files (Union[Unset, List[str]]):
+        open_files (Union[Unset, list[str]]):
         open_files_count (Union[Unset, int]):
         os (Union[Unset, str]):
         pid (Union[Unset, int]):
         pod_id (Union[Unset, str]):
         pod_name (Union[Unset, str]):
         ppid (Union[Unset, int]):
-        private_ip (Union[Unset, List[str]]):
+        private_ip (Union[Unset, list[str]]):
         pseudo (Union[Unset, bool]):
-        public_ip (Union[Unset, List[str]]):
+        public_ip (Union[Unset, list[str]]):
         resource_group (Union[Unset, str]):
         short_name (Union[Unset, str]):
-        tags (Union[Unset, List[str]]):
+        tags (Union[Unset, list[str]]):
         threads (Union[Unset, int]):
         timestamp (Union[Unset, str]):
         uptime (Union[Unset, int]):
-        user_defined_tags (Union[Unset, List[str]]):
         version (Union[Unset, str]):
     """
 
-    active_cves: Union[Unset, List[str]] = UNSET
-    active_malwares: Union[Unset, List[str]] = UNSET
-    active_secrets: Union[Unset, List[str]] = UNSET
+    active_cves: Union[Unset, list[str]] = UNSET
+    active_malwares: Union[Unset, list[str]] = UNSET
+    active_secrets: Union[Unset, list[str]] = UNSET
     agent_running: Union[Unset, bool] = UNSET
     availability_zone: Union[Unset, str] = UNSET
     cloud_account_id: Union[Unset, str] = UNSET
@@ -138,7 +107,7 @@ class ReportMetadata:
     cpu_usage: Union[Unset, float] = UNSET
     docker_container_command: Union[Unset, str] = UNSET
     docker_container_created: Union[Unset, str] = UNSET
-    docker_container_ips: Union[Unset, List[str]] = UNSET
+    docker_container_ips: Union[Unset, list[str]] = UNSET
     docker_container_name: Union[Unset, str] = UNSET
     docker_container_network_mode: Union[Unset, str] = UNSET
     docker_container_networks: Union[Unset, str] = UNSET
@@ -158,8 +127,8 @@ class ReportMetadata:
     instance_id: Union[Unset, str] = UNSET
     instance_type: Union[Unset, str] = UNSET
     interface_ip_map: Union[Unset, str] = UNSET
-    interface_ips: Union[Unset, List[str]] = UNSET
-    interface_names: Union[Unset, List[str]] = UNSET
+    interface_ips: Union[Unset, list[str]] = UNSET
+    interface_names: Union[Unset, list[str]] = UNSET
     is_console_vm: Union[Unset, bool] = UNSET
     is_deepfence_system: Union[Unset, bool] = UNSET
     kernel_id: Union[Unset, str] = UNSET
@@ -167,52 +136,51 @@ class ReportMetadata:
     kubernetes_cluster_id: Union[Unset, str] = UNSET
     kubernetes_cluster_name: Union[Unset, str] = UNSET
     kubernetes_created: Union[Unset, str] = UNSET
-    kubernetes_ingress_ip: Union[Unset, List[str]] = UNSET
+    kubernetes_ingress_ip: Union[Unset, list[str]] = UNSET
     kubernetes_ip: Union[Unset, str] = UNSET
     kubernetes_is_in_host_network: Union[Unset, bool] = UNSET
     kubernetes_labels: Union[Unset, str] = UNSET
     kubernetes_namespace: Union[Unset, str] = UNSET
-    kubernetes_ports: Union[Unset, List[str]] = UNSET
+    kubernetes_ports: Union[Unset, list[str]] = UNSET
     kubernetes_public_ip: Union[Unset, str] = UNSET
     kubernetes_state: Union[Unset, str] = UNSET
     kubernetes_type: Union[Unset, str] = UNSET
-    local_cidr: Union[Unset, List[str]] = UNSET
-    local_networks: Union[Unset, List[str]] = UNSET
+    local_cidr: Union[Unset, list[str]] = UNSET
+    local_networks: Union[Unset, list[str]] = UNSET
     memory_max: Union[Unset, int] = UNSET
     memory_usage: Union[Unset, int] = UNSET
     node_id: Union[Unset, str] = UNSET
     node_name: Union[Unset, str] = UNSET
     node_type: Union[Unset, str] = UNSET
-    open_files: Union[Unset, List[str]] = UNSET
+    open_files: Union[Unset, list[str]] = UNSET
     open_files_count: Union[Unset, int] = UNSET
     os: Union[Unset, str] = UNSET
     pid: Union[Unset, int] = UNSET
     pod_id: Union[Unset, str] = UNSET
     pod_name: Union[Unset, str] = UNSET
     ppid: Union[Unset, int] = UNSET
-    private_ip: Union[Unset, List[str]] = UNSET
+    private_ip: Union[Unset, list[str]] = UNSET
     pseudo: Union[Unset, bool] = UNSET
-    public_ip: Union[Unset, List[str]] = UNSET
+    public_ip: Union[Unset, list[str]] = UNSET
     resource_group: Union[Unset, str] = UNSET
     short_name: Union[Unset, str] = UNSET
-    tags: Union[Unset, List[str]] = UNSET
+    tags: Union[Unset, list[str]] = UNSET
     threads: Union[Unset, int] = UNSET
     timestamp: Union[Unset, str] = UNSET
     uptime: Union[Unset, int] = UNSET
-    user_defined_tags: Union[Unset, List[str]] = UNSET
     version: Union[Unset, str] = UNSET
-    additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
+    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
-    def to_dict(self) -> Dict[str, Any]:
-        active_cves: Union[Unset, List[str]] = UNSET
+    def to_dict(self) -> dict[str, Any]:
+        active_cves: Union[Unset, list[str]] = UNSET
         if not isinstance(self.active_cves, Unset):
             active_cves = self.active_cves
 
-        active_malwares: Union[Unset, List[str]] = UNSET
+        active_malwares: Union[Unset, list[str]] = UNSET
         if not isinstance(self.active_malwares, Unset):
             active_malwares = self.active_malwares
 
-        active_secrets: Union[Unset, List[str]] = UNSET
+        active_secrets: Union[Unset, list[str]] = UNSET
         if not isinstance(self.active_secrets, Unset):
             active_secrets = self.active_secrets
 
@@ -240,7 +208,7 @@ class ReportMetadata:
 
         docker_container_created = self.docker_container_created
 
-        docker_container_ips: Union[Unset, List[str]] = UNSET
+        docker_container_ips: Union[Unset, list[str]] = UNSET
         if not isinstance(self.docker_container_ips, Unset):
             docker_container_ips = self.docker_container_ips
 
@@ -282,11 +250,11 @@ class ReportMetadata:
 
         interface_ip_map = self.interface_ip_map
 
-        interface_ips: Union[Unset, List[str]] = UNSET
+        interface_ips: Union[Unset, list[str]] = UNSET
         if not isinstance(self.interface_ips, Unset):
             interface_ips = self.interface_ips
 
-        interface_names: Union[Unset, List[str]] = UNSET
+        interface_names: Union[Unset, list[str]] = UNSET
         if not isinstance(self.interface_names, Unset):
             interface_names = self.interface_names
 
@@ -304,7 +272,7 @@ class ReportMetadata:
 
         kubernetes_created = self.kubernetes_created
 
-        kubernetes_ingress_ip: Union[Unset, List[str]] = UNSET
+        kubernetes_ingress_ip: Union[Unset, list[str]] = UNSET
         if not isinstance(self.kubernetes_ingress_ip, Unset):
             kubernetes_ingress_ip = self.kubernetes_ingress_ip
 
@@ -316,7 +284,7 @@ class ReportMetadata:
 
         kubernetes_namespace = self.kubernetes_namespace
 
-        kubernetes_ports: Union[Unset, List[str]] = UNSET
+        kubernetes_ports: Union[Unset, list[str]] = UNSET
         if not isinstance(self.kubernetes_ports, Unset):
             kubernetes_ports = self.kubernetes_ports
 
@@ -326,11 +294,11 @@ class ReportMetadata:
 
         kubernetes_type = self.kubernetes_type
 
-        local_cidr: Union[Unset, List[str]] = UNSET
+        local_cidr: Union[Unset, list[str]] = UNSET
         if not isinstance(self.local_cidr, Unset):
             local_cidr = self.local_cidr
 
-        local_networks: Union[Unset, List[str]] = UNSET
+        local_networks: Union[Unset, list[str]] = UNSET
         if not isinstance(self.local_networks, Unset):
             local_networks = self.local_networks
 
@@ -344,7 +312,7 @@ class ReportMetadata:
 
         node_type = self.node_type
 
-        open_files: Union[Unset, List[str]] = UNSET
+        open_files: Union[Unset, list[str]] = UNSET
         if not isinstance(self.open_files, Unset):
             open_files = self.open_files
 
@@ -360,13 +328,13 @@ class ReportMetadata:
 
         ppid = self.ppid
 
-        private_ip: Union[Unset, List[str]] = UNSET
+        private_ip: Union[Unset, list[str]] = UNSET
         if not isinstance(self.private_ip, Unset):
             private_ip = self.private_ip
 
         pseudo = self.pseudo
 
-        public_ip: Union[Unset, List[str]] = UNSET
+        public_ip: Union[Unset, list[str]] = UNSET
         if not isinstance(self.public_ip, Unset):
             public_ip = self.public_ip
 
@@ -374,7 +342,7 @@ class ReportMetadata:
 
         short_name = self.short_name
 
-        tags: Union[Unset, List[str]] = UNSET
+        tags: Union[Unset, list[str]] = UNSET
         if not isinstance(self.tags, Unset):
             tags = self.tags
 
@@ -384,13 +352,9 @@ class ReportMetadata:
 
         uptime = self.uptime
 
-        user_defined_tags: Union[Unset, List[str]] = UNSET
-        if not isinstance(self.user_defined_tags, Unset):
-            user_defined_tags = self.user_defined_tags
-
         version = self.version
 
-        field_dict: Dict[str, Any] = {}
+        field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
         if active_cves is not UNSET:
@@ -545,21 +509,19 @@ class ReportMetadata:
             field_dict["timestamp"] = timestamp
         if uptime is not UNSET:
             field_dict["uptime"] = uptime
-        if user_defined_tags is not UNSET:
-            field_dict["user_defined_tags"] = user_defined_tags
         if version is not UNSET:
             field_dict["version"] = version
 
         return field_dict
 
     @classmethod
-    def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
-        d = src_dict.copy()
-        active_cves = cast(List[str], d.pop("active_cves", UNSET))
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        d = dict(src_dict)
+        active_cves = cast(list[str], d.pop("active_cves", UNSET))
 
-        active_malwares = cast(List[str], d.pop("active_malwares", UNSET))
+        active_malwares = cast(list[str], d.pop("active_malwares", UNSET))
 
-        active_secrets = cast(List[str], d.pop("active_secrets", UNSET))
+        active_secrets = cast(list[str], d.pop("active_secrets", UNSET))
 
         agent_running = d.pop("agent_running", UNSET)
 
@@ -585,7 +547,7 @@ class ReportMetadata:
 
         docker_container_created = d.pop("docker_container_created", UNSET)
 
-        docker_container_ips = cast(List[str], d.pop("docker_container_ips", UNSET))
+        docker_container_ips = cast(list[str], d.pop("docker_container_ips", UNSET))
 
         docker_container_name = d.pop("docker_container_name", UNSET)
 
@@ -625,9 +587,9 @@ class ReportMetadata:
 
         interface_ip_map = d.pop("interface_ip_map", UNSET)
 
-        interface_ips = cast(List[str], d.pop("interface_ips", UNSET))
+        interface_ips = cast(list[str], d.pop("interface_ips", UNSET))
 
-        interface_names = cast(List[str], d.pop("interface_names", UNSET))
+        interface_names = cast(list[str], d.pop("interface_names", UNSET))
 
         is_console_vm = d.pop("is_console_vm", UNSET)
 
@@ -643,7 +605,7 @@ class ReportMetadata:
 
         kubernetes_created = d.pop("kubernetes_created", UNSET)
 
-        kubernetes_ingress_ip = cast(List[str], d.pop("kubernetes_ingress_ip", UNSET))
+        kubernetes_ingress_ip = cast(list[str], d.pop("kubernetes_ingress_ip", UNSET))
 
         kubernetes_ip = d.pop("kubernetes_ip", UNSET)
 
@@ -653,7 +615,7 @@ class ReportMetadata:
 
         kubernetes_namespace = d.pop("kubernetes_namespace", UNSET)
 
-        kubernetes_ports = cast(List[str], d.pop("kubernetes_ports", UNSET))
+        kubernetes_ports = cast(list[str], d.pop("kubernetes_ports", UNSET))
 
         kubernetes_public_ip = d.pop("kubernetes_public_ip", UNSET)
 
@@ -661,9 +623,9 @@ class ReportMetadata:
 
         kubernetes_type = d.pop("kubernetes_type", UNSET)
 
-        local_cidr = cast(List[str], d.pop("local_cidr", UNSET))
+        local_cidr = cast(list[str], d.pop("local_cidr", UNSET))
 
-        local_networks = cast(List[str], d.pop("local_networks", UNSET))
+        local_networks = cast(list[str], d.pop("local_networks", UNSET))
 
         memory_max = d.pop("memory_max", UNSET)
 
@@ -675,7 +637,7 @@ class ReportMetadata:
 
         node_type = d.pop("node_type", UNSET)
 
-        open_files = cast(List[str], d.pop("open_files", UNSET))
+        open_files = cast(list[str], d.pop("open_files", UNSET))
 
         open_files_count = d.pop("open_files_count", UNSET)
 
@@ -689,25 +651,23 @@ class ReportMetadata:
 
         ppid = d.pop("ppid", UNSET)
 
-        private_ip = cast(List[str], d.pop("private_ip", UNSET))
+        private_ip = cast(list[str], d.pop("private_ip", UNSET))
 
         pseudo = d.pop("pseudo", UNSET)
 
-        public_ip = cast(List[str], d.pop("public_ip", UNSET))
+        public_ip = cast(list[str], d.pop("public_ip", UNSET))
 
         resource_group = d.pop("resource_group", UNSET)
 
         short_name = d.pop("short_name", UNSET)
 
-        tags = cast(List[str], d.pop("tags", UNSET))
+        tags = cast(list[str], d.pop("tags", UNSET))
 
         threads = d.pop("threads", UNSET)
 
         timestamp = d.pop("timestamp", UNSET)
 
         uptime = d.pop("uptime", UNSET)
-
-        user_defined_tags = cast(List[str], d.pop("user_defined_tags", UNSET))
 
         version = d.pop("version", UNSET)
 
@@ -788,7 +748,6 @@ class ReportMetadata:
             threads=threads,
             timestamp=timestamp,
             uptime=uptime,
-            user_defined_tags=user_defined_tags,
             version=version,
         )
 
@@ -796,7 +755,7 @@ class ReportMetadata:
         return report_metadata
 
     @property
-    def additional_keys(self) -> List[str]:
+    def additional_keys(self) -> list[str]:
         return list(self.additional_properties.keys())
 
     def __getitem__(self, key: str) -> Any:

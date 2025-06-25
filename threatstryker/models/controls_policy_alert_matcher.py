@@ -1,4 +1,5 @@
-from typing import TYPE_CHECKING, Any, Dict, List, Type, TypeVar, Union, cast
+from collections.abc import Mapping
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -15,28 +16,25 @@ T = TypeVar("T", bound="ControlsPolicyAlertMatcher")
 @_attrs_define
 class ControlsPolicyAlertMatcher:
     """
-    Example:
-        {'fields_matcher': {'key': ['fields_matcher', 'fields_matcher']}}
-
     Attributes:
         fields_matcher (Union['ControlsPolicyAlertMatcherFieldsMatcherType0', None]):
     """
 
     fields_matcher: Union["ControlsPolicyAlertMatcherFieldsMatcherType0", None]
-    additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
+    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
-    def to_dict(self) -> Dict[str, Any]:
+    def to_dict(self) -> dict[str, Any]:
         from ..models.controls_policy_alert_matcher_fields_matcher_type_0 import (
             ControlsPolicyAlertMatcherFieldsMatcherType0,
         )
 
-        fields_matcher: Union[Dict[str, Any], None]
+        fields_matcher: Union[None, dict[str, Any]]
         if isinstance(self.fields_matcher, ControlsPolicyAlertMatcherFieldsMatcherType0):
             fields_matcher = self.fields_matcher.to_dict()
         else:
             fields_matcher = self.fields_matcher
 
-        field_dict: Dict[str, Any] = {}
+        field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
@@ -47,12 +45,12 @@ class ControlsPolicyAlertMatcher:
         return field_dict
 
     @classmethod
-    def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.controls_policy_alert_matcher_fields_matcher_type_0 import (
             ControlsPolicyAlertMatcherFieldsMatcherType0,
         )
 
-        d = src_dict.copy()
+        d = dict(src_dict)
 
         def _parse_fields_matcher(data: object) -> Union["ControlsPolicyAlertMatcherFieldsMatcherType0", None]:
             if data is None:
@@ -77,7 +75,7 @@ class ControlsPolicyAlertMatcher:
         return controls_policy_alert_matcher
 
     @property
-    def additional_keys(self) -> List[str]:
+    def additional_keys(self) -> list[str]:
         return list(self.additional_properties.keys())
 
     def __getitem__(self, key: str) -> Any:

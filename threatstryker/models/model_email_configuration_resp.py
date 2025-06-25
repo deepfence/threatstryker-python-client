@@ -1,4 +1,5 @@
-from typing import Any, Dict, List, Type, TypeVar, Union
+from collections.abc import Mapping
+from typing import Any, TypeVar, Union
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -11,10 +12,6 @@ T = TypeVar("T", bound="ModelEmailConfigurationResp")
 @_attrs_define
 class ModelEmailConfigurationResp:
     """
-    Example:
-        {'email_id': 'email_id', 'smtp': 'smtp', 'port': 'port', 'email_provider': 'email_provider', 'id': 6,
-            'created_by_user_id': 0, 'ses_region': 'ses_region'}
-
     Attributes:
         created_by_user_id (Union[Unset, int]):
         email_id (Union[Unset, str]):
@@ -32,9 +29,9 @@ class ModelEmailConfigurationResp:
     port: Union[Unset, str] = UNSET
     ses_region: Union[Unset, str] = UNSET
     smtp: Union[Unset, str] = UNSET
-    additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
+    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
-    def to_dict(self) -> Dict[str, Any]:
+    def to_dict(self) -> dict[str, Any]:
         created_by_user_id = self.created_by_user_id
 
         email_id = self.email_id
@@ -49,7 +46,7 @@ class ModelEmailConfigurationResp:
 
         smtp = self.smtp
 
-        field_dict: Dict[str, Any] = {}
+        field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
         if created_by_user_id is not UNSET:
@@ -70,8 +67,8 @@ class ModelEmailConfigurationResp:
         return field_dict
 
     @classmethod
-    def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
-        d = src_dict.copy()
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        d = dict(src_dict)
         created_by_user_id = d.pop("created_by_user_id", UNSET)
 
         email_id = d.pop("email_id", UNSET)
@@ -100,7 +97,7 @@ class ModelEmailConfigurationResp:
         return model_email_configuration_resp
 
     @property
-    def additional_keys(self) -> List[str]:
+    def additional_keys(self) -> list[str]:
         return list(self.additional_properties.keys())
 
     def __getitem__(self, key: str) -> Any:

@@ -1,4 +1,5 @@
-from typing import TYPE_CHECKING, Any, Dict, List, Type, TypeVar, Union, cast
+from collections.abc import Mapping
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -15,28 +16,23 @@ T = TypeVar("T", bound="ModelTopologyDeltaResponse")
 @_attrs_define
 class ModelTopologyDeltaResponse:
     """
-    Example:
-        {'deletions': [{'node_type': 'image', 'node_id': 'node_id'}, {'node_type': 'image', 'node_id': 'node_id'}],
-            'additons': [{'node_type': 'image', 'node_id': 'node_id'}, {'node_type': 'image', 'node_id': 'node_id'}],
-            'deletion_timestamp': 6, 'addition_timestamp': 0}
-
     Attributes:
         addition_timestamp (Union[Unset, int]):
-        additons (Union[List['ModelNodeIdentifier'], None, Unset]):
+        additons (Union[None, Unset, list['ModelNodeIdentifier']]):
         deletion_timestamp (Union[Unset, int]):
-        deletions (Union[List['ModelNodeIdentifier'], None, Unset]):
+        deletions (Union[None, Unset, list['ModelNodeIdentifier']]):
     """
 
     addition_timestamp: Union[Unset, int] = UNSET
-    additons: Union[List["ModelNodeIdentifier"], None, Unset] = UNSET
+    additons: Union[None, Unset, list["ModelNodeIdentifier"]] = UNSET
     deletion_timestamp: Union[Unset, int] = UNSET
-    deletions: Union[List["ModelNodeIdentifier"], None, Unset] = UNSET
-    additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
+    deletions: Union[None, Unset, list["ModelNodeIdentifier"]] = UNSET
+    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
-    def to_dict(self) -> Dict[str, Any]:
+    def to_dict(self) -> dict[str, Any]:
         addition_timestamp = self.addition_timestamp
 
-        additons: Union[List[Dict[str, Any]], None, Unset]
+        additons: Union[None, Unset, list[dict[str, Any]]]
         if isinstance(self.additons, Unset):
             additons = UNSET
         elif isinstance(self.additons, list):
@@ -50,7 +46,7 @@ class ModelTopologyDeltaResponse:
 
         deletion_timestamp = self.deletion_timestamp
 
-        deletions: Union[List[Dict[str, Any]], None, Unset]
+        deletions: Union[None, Unset, list[dict[str, Any]]]
         if isinstance(self.deletions, Unset):
             deletions = UNSET
         elif isinstance(self.deletions, list):
@@ -62,7 +58,7 @@ class ModelTopologyDeltaResponse:
         else:
             deletions = self.deletions
 
-        field_dict: Dict[str, Any] = {}
+        field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
         if addition_timestamp is not UNSET:
@@ -77,13 +73,13 @@ class ModelTopologyDeltaResponse:
         return field_dict
 
     @classmethod
-    def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.model_node_identifier import ModelNodeIdentifier
 
-        d = src_dict.copy()
+        d = dict(src_dict)
         addition_timestamp = d.pop("addition_timestamp", UNSET)
 
-        def _parse_additons(data: object) -> Union[List["ModelNodeIdentifier"], None, Unset]:
+        def _parse_additons(data: object) -> Union[None, Unset, list["ModelNodeIdentifier"]]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -101,13 +97,13 @@ class ModelTopologyDeltaResponse:
                 return additons_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[List["ModelNodeIdentifier"], None, Unset], data)
+            return cast(Union[None, Unset, list["ModelNodeIdentifier"]], data)
 
         additons = _parse_additons(d.pop("additons", UNSET))
 
         deletion_timestamp = d.pop("deletion_timestamp", UNSET)
 
-        def _parse_deletions(data: object) -> Union[List["ModelNodeIdentifier"], None, Unset]:
+        def _parse_deletions(data: object) -> Union[None, Unset, list["ModelNodeIdentifier"]]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -125,7 +121,7 @@ class ModelTopologyDeltaResponse:
                 return deletions_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[List["ModelNodeIdentifier"], None, Unset], data)
+            return cast(Union[None, Unset, list["ModelNodeIdentifier"]], data)
 
         deletions = _parse_deletions(d.pop("deletions", UNSET))
 
@@ -140,7 +136,7 @@ class ModelTopologyDeltaResponse:
         return model_topology_delta_response
 
     @property
-    def additional_keys(self) -> List[str]:
+    def additional_keys(self) -> list[str]:
         return list(self.additional_properties.keys())
 
     def __getitem__(self, key: str) -> Any:

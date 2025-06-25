@@ -1,4 +1,5 @@
-from typing import TYPE_CHECKING, Any, Dict, List, Type, TypeVar, Union, cast
+from collections.abc import Mapping
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -14,26 +15,6 @@ T = TypeVar("T", bound="ModelSecretScanResult")
 @_attrs_define
 class ModelSecretScanResult:
     """
-    Example:
-        {'severity_counts': {'key': 6}, 'docker_container_name': 'docker_container_name', 'kubernetes_cluster_name':
-            'kubernetes_cluster_name', 'node_name': 'node_name', 'created_at': 0, 'secrets': [{'rule_id': 'rule_id',
-            'score': 1.4658129805029452, 'full_filename': 'full_filename', 'matched_content': 'matched_content',
-            'updated_at': 5, 'level': 'critical', 'masked': True, 'starting_index': 5, 'resources': [{'node_type':
-            'node_type', 'live_secrets': ['live_secrets', 'live_secrets'], 'live_cves': ['live_cves', 'live_cves'], 'name':
-            'name', 'host_name': 'host_name', 'live_malwares': ['live_malwares', 'live_malwares'], 'node_id': 'node_id'},
-            {'node_type': 'node_type', 'live_secrets': ['live_secrets', 'live_secrets'], 'live_cves': ['live_cves',
-            'live_cves'], 'name': 'name', 'host_name': 'host_name', 'live_malwares': ['live_malwares', 'live_malwares'],
-            'node_id': 'node_id'}], 'exploitability_score': 0, 'max_exploitability_score': 6, 'node_id': 'node_id'},
-            {'rule_id': 'rule_id', 'score': 1.4658129805029452, 'full_filename': 'full_filename', 'matched_content':
-            'matched_content', 'updated_at': 5, 'level': 'critical', 'masked': True, 'starting_index': 5, 'resources':
-            [{'node_type': 'node_type', 'live_secrets': ['live_secrets', 'live_secrets'], 'live_cves': ['live_cves',
-            'live_cves'], 'name': 'name', 'host_name': 'host_name', 'live_malwares': ['live_malwares', 'live_malwares'],
-            'node_id': 'node_id'}, {'node_type': 'node_type', 'live_secrets': ['live_secrets', 'live_secrets'], 'live_cves':
-            ['live_cves', 'live_cves'], 'name': 'name', 'host_name': 'host_name', 'live_malwares': ['live_malwares',
-            'live_malwares'], 'node_id': 'node_id'}], 'exploitability_score': 0, 'max_exploitability_score': 6, 'node_id':
-            'node_id'}], 'cloud_account_id': 'cloud_account_id', 'node_type': 'node_type', 'updated_at': 1, 'scan_id':
-            'scan_id', 'docker_image_name': 'docker_image_name', 'host_name': 'host_name', 'node_id': 'node_id'}
-
     Attributes:
         cloud_account_id (str):
         created_at (int):
@@ -45,7 +26,7 @@ class ModelSecretScanResult:
         node_name (str):
         node_type (str):
         scan_id (str):
-        secrets (Union[List['ModelSecret'], None]):
+        secrets (Union[None, list['ModelSecret']]):
         severity_counts (Union['ModelSecretScanResultSeverityCountsType0', None]):
         updated_at (int):
     """
@@ -60,12 +41,12 @@ class ModelSecretScanResult:
     node_name: str
     node_type: str
     scan_id: str
-    secrets: Union[List["ModelSecret"], None]
+    secrets: Union[None, list["ModelSecret"]]
     severity_counts: Union["ModelSecretScanResultSeverityCountsType0", None]
     updated_at: int
-    additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
+    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
-    def to_dict(self) -> Dict[str, Any]:
+    def to_dict(self) -> dict[str, Any]:
         from ..models.model_secret_scan_result_severity_counts_type_0 import ModelSecretScanResultSeverityCountsType0
 
         cloud_account_id = self.cloud_account_id
@@ -88,7 +69,7 @@ class ModelSecretScanResult:
 
         scan_id = self.scan_id
 
-        secrets: Union[List[Dict[str, Any]], None]
+        secrets: Union[None, list[dict[str, Any]]]
         if isinstance(self.secrets, list):
             secrets = []
             for secrets_type_0_item_data in self.secrets:
@@ -98,7 +79,7 @@ class ModelSecretScanResult:
         else:
             secrets = self.secrets
 
-        severity_counts: Union[Dict[str, Any], None]
+        severity_counts: Union[None, dict[str, Any]]
         if isinstance(self.severity_counts, ModelSecretScanResultSeverityCountsType0):
             severity_counts = self.severity_counts.to_dict()
         else:
@@ -106,7 +87,7 @@ class ModelSecretScanResult:
 
         updated_at = self.updated_at
 
-        field_dict: Dict[str, Any] = {}
+        field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
@@ -129,11 +110,11 @@ class ModelSecretScanResult:
         return field_dict
 
     @classmethod
-    def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.model_secret import ModelSecret
         from ..models.model_secret_scan_result_severity_counts_type_0 import ModelSecretScanResultSeverityCountsType0
 
-        d = src_dict.copy()
+        d = dict(src_dict)
         cloud_account_id = d.pop("cloud_account_id")
 
         created_at = d.pop("created_at")
@@ -154,7 +135,7 @@ class ModelSecretScanResult:
 
         scan_id = d.pop("scan_id")
 
-        def _parse_secrets(data: object) -> Union[List["ModelSecret"], None]:
+        def _parse_secrets(data: object) -> Union[None, list["ModelSecret"]]:
             if data is None:
                 return data
             try:
@@ -170,7 +151,7 @@ class ModelSecretScanResult:
                 return secrets_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[List["ModelSecret"], None], data)
+            return cast(Union[None, list["ModelSecret"]], data)
 
         secrets = _parse_secrets(d.pop("secrets"))
 
@@ -211,7 +192,7 @@ class ModelSecretScanResult:
         return model_secret_scan_result
 
     @property
-    def additional_keys(self) -> List[str]:
+    def additional_keys(self) -> list[str]:
         return list(self.additional_properties.keys())
 
     def __getitem__(self, key: str) -> Any:

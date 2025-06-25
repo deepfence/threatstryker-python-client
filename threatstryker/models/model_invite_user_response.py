@@ -1,4 +1,5 @@
-from typing import Any, Dict, List, Type, TypeVar, Union
+from collections.abc import Mapping
+from typing import Any, TypeVar, Union
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -11,9 +12,6 @@ T = TypeVar("T", bound="ModelInviteUserResponse")
 @_attrs_define
 class ModelInviteUserResponse:
     """
-    Example:
-        {'invite_expiry_hours': 0, 'invite_url': 'invite_url', 'message': 'message'}
-
     Attributes:
         invite_expiry_hours (Union[Unset, int]):
         invite_url (Union[Unset, str]):
@@ -23,16 +21,16 @@ class ModelInviteUserResponse:
     invite_expiry_hours: Union[Unset, int] = UNSET
     invite_url: Union[Unset, str] = UNSET
     message: Union[Unset, str] = UNSET
-    additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
+    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
-    def to_dict(self) -> Dict[str, Any]:
+    def to_dict(self) -> dict[str, Any]:
         invite_expiry_hours = self.invite_expiry_hours
 
         invite_url = self.invite_url
 
         message = self.message
 
-        field_dict: Dict[str, Any] = {}
+        field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
         if invite_expiry_hours is not UNSET:
@@ -45,8 +43,8 @@ class ModelInviteUserResponse:
         return field_dict
 
     @classmethod
-    def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
-        d = src_dict.copy()
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        d = dict(src_dict)
         invite_expiry_hours = d.pop("invite_expiry_hours", UNSET)
 
         invite_url = d.pop("invite_url", UNSET)
@@ -63,7 +61,7 @@ class ModelInviteUserResponse:
         return model_invite_user_response
 
     @property
-    def additional_keys(self) -> List[str]:
+    def additional_keys(self) -> list[str]:
         return list(self.additional_properties.keys())
 
     def __getitem__(self, key: str) -> Any:

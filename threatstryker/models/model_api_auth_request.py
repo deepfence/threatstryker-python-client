@@ -1,4 +1,5 @@
-from typing import Any, Dict, List, Type, TypeVar
+from collections.abc import Mapping
+from typing import Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -9,20 +10,17 @@ T = TypeVar("T", bound="ModelAPIAuthRequest")
 @_attrs_define
 class ModelAPIAuthRequest:
     """
-    Example:
-        {'api_token': 'api_token'}
-
     Attributes:
         api_token (str):
     """
 
     api_token: str
-    additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
+    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
-    def to_dict(self) -> Dict[str, Any]:
+    def to_dict(self) -> dict[str, Any]:
         api_token = self.api_token
 
-        field_dict: Dict[str, Any] = {}
+        field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
@@ -33,8 +31,8 @@ class ModelAPIAuthRequest:
         return field_dict
 
     @classmethod
-    def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
-        d = src_dict.copy()
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        d = dict(src_dict)
         api_token = d.pop("api_token")
 
         model_api_auth_request = cls(
@@ -45,7 +43,7 @@ class ModelAPIAuthRequest:
         return model_api_auth_request
 
     @property
-    def additional_keys(self) -> List[str]:
+    def additional_keys(self) -> list[str]:
         return list(self.additional_properties.keys())
 
     def __getitem__(self, key: str) -> Any:

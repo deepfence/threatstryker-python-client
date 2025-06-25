@@ -1,4 +1,5 @@
-from typing import TYPE_CHECKING, Any, Dict, List, Type, TypeVar, Union, cast
+from collections.abc import Mapping
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -13,21 +14,15 @@ T = TypeVar("T", bound="ModelCloudNodeProvidersListResp")
 @_attrs_define
 class ModelCloudNodeProvidersListResp:
     """
-    Example:
-        {'providers': [{'node_count_inactive': 1, 'compliance_percentage': 0.8008281904610115, 'node_label':
-            'node_label', 'name': 'name', 'scan_count': 5, 'node_count': 6, 'resource_count': 5}, {'node_count_inactive': 1,
-            'compliance_percentage': 0.8008281904610115, 'node_label': 'node_label', 'name': 'name', 'scan_count': 5,
-            'node_count': 6, 'resource_count': 5}]}
-
     Attributes:
-        providers (Union[List['ModelPostureProvider'], None]):
+        providers (Union[None, list['ModelPostureProvider']]):
     """
 
-    providers: Union[List["ModelPostureProvider"], None]
-    additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
+    providers: Union[None, list["ModelPostureProvider"]]
+    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
-    def to_dict(self) -> Dict[str, Any]:
-        providers: Union[List[Dict[str, Any]], None]
+    def to_dict(self) -> dict[str, Any]:
+        providers: Union[None, list[dict[str, Any]]]
         if isinstance(self.providers, list):
             providers = []
             for providers_type_0_item_data in self.providers:
@@ -37,7 +32,7 @@ class ModelCloudNodeProvidersListResp:
         else:
             providers = self.providers
 
-        field_dict: Dict[str, Any] = {}
+        field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
@@ -48,12 +43,12 @@ class ModelCloudNodeProvidersListResp:
         return field_dict
 
     @classmethod
-    def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.model_posture_provider import ModelPostureProvider
 
-        d = src_dict.copy()
+        d = dict(src_dict)
 
-        def _parse_providers(data: object) -> Union[List["ModelPostureProvider"], None]:
+        def _parse_providers(data: object) -> Union[None, list["ModelPostureProvider"]]:
             if data is None:
                 return data
             try:
@@ -69,7 +64,7 @@ class ModelCloudNodeProvidersListResp:
                 return providers_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[List["ModelPostureProvider"], None], data)
+            return cast(Union[None, list["ModelPostureProvider"]], data)
 
         providers = _parse_providers(d.pop("providers"))
 
@@ -81,7 +76,7 @@ class ModelCloudNodeProvidersListResp:
         return model_cloud_node_providers_list_resp
 
     @property
-    def additional_keys(self) -> List[str]:
+    def additional_keys(self) -> list[str]:
         return list(self.additional_properties.keys())
 
     def __getitem__(self, key: str) -> Any:

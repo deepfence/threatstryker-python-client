@@ -1,4 +1,5 @@
-from typing import Any, Dict, List, Type, TypeVar, Union
+from collections.abc import Mapping
+from typing import Any, TypeVar, Union
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -11,10 +12,6 @@ T = TypeVar("T", bound="ModelPostureProvider")
 @_attrs_define
 class ModelPostureProvider:
     """
-    Example:
-        {'node_count_inactive': 1, 'compliance_percentage': 0.8008281904610115, 'node_label': 'node_label', 'name':
-            'name', 'scan_count': 5, 'node_count': 6, 'resource_count': 5}
-
     Attributes:
         compliance_percentage (Union[Unset, float]):
         name (Union[Unset, str]):
@@ -32,9 +29,9 @@ class ModelPostureProvider:
     node_label: Union[Unset, str] = UNSET
     resource_count: Union[Unset, int] = UNSET
     scan_count: Union[Unset, int] = UNSET
-    additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
+    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
-    def to_dict(self) -> Dict[str, Any]:
+    def to_dict(self) -> dict[str, Any]:
         compliance_percentage = self.compliance_percentage
 
         name = self.name
@@ -49,7 +46,7 @@ class ModelPostureProvider:
 
         scan_count = self.scan_count
 
-        field_dict: Dict[str, Any] = {}
+        field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
         if compliance_percentage is not UNSET:
@@ -70,8 +67,8 @@ class ModelPostureProvider:
         return field_dict
 
     @classmethod
-    def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
-        d = src_dict.copy()
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        d = dict(src_dict)
         compliance_percentage = d.pop("compliance_percentage", UNSET)
 
         name = d.pop("name", UNSET)
@@ -100,7 +97,7 @@ class ModelPostureProvider:
         return model_posture_provider
 
     @property
-    def additional_keys(self) -> List[str]:
+    def additional_keys(self) -> list[str]:
         return list(self.additional_properties.keys())
 
     def __getitem__(self, key: str) -> Any:

@@ -1,4 +1,5 @@
-from typing import TYPE_CHECKING, Any, Dict, List, Type, TypeVar, Union
+from collections.abc import Mapping
+from typing import TYPE_CHECKING, Any, TypeVar, Union
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -18,23 +19,10 @@ T = TypeVar("T", bound="UtilsReportFilters")
 @_attrs_define
 class UtilsReportFilters:
     """
-    Example:
-        {'include_dead_nodes': True, 'node_type': ['node_type', 'node_type'], 'most_exploitable_report': True,
-            'advanced_report_filters': {'image_name': ['image_name', 'image_name'], 'most_exploitable_scores': [0, 0],
-            'container_name': ['container_name', 'container_name'], 'scan_status': ['scan_status', 'scan_status'],
-            'kubernetes_cluster_name': ['kubernetes_cluster_name', 'kubernetes_cluster_name'], 'masked': [True, True],
-            'host_name': ['host_name', 'host_name'], 'node_id': ['node_id', 'node_id'], 'pod_name': ['pod_name',
-            'pod_name']}, 'include_dormant_exploitable': True, 'scan_type': 'vulnerability', 'scan_id': 'scan_id',
-            'severity_or_check_type': ['severity_or_check_type', 'severity_or_check_type']}
-
     Attributes:
         node_type (UtilsReportFiltersNodeType):
         scan_type (UtilsReportFiltersScanType):
-        advanced_report_filters (Union[Unset, UtilsAdvancedReportFilters]):  Example: {'image_name': ['image_name',
-            'image_name'], 'most_exploitable_scores': [0, 0], 'container_name': ['container_name', 'container_name'],
-            'scan_status': ['scan_status', 'scan_status'], 'kubernetes_cluster_name': ['kubernetes_cluster_name',
-            'kubernetes_cluster_name'], 'masked': [True, True], 'host_name': ['host_name', 'host_name'], 'node_id':
-            ['node_id', 'node_id'], 'pod_name': ['pod_name', 'pod_name']}.
+        advanced_report_filters (Union[Unset, UtilsAdvancedReportFilters]):
         include_dead_nodes (Union[Unset, bool]):
         include_dormant_exploitable (Union[Unset, bool]):
         most_exploitable_report (Union[Unset, bool]):
@@ -50,14 +38,14 @@ class UtilsReportFilters:
     most_exploitable_report: Union[Unset, bool] = UNSET
     scan_id: Union[Unset, str] = UNSET
     severity_or_check_type: Union[Unset, UtilsReportFiltersSeverityOrCheckType] = UNSET
-    additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
+    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
-    def to_dict(self) -> Dict[str, Any]:
+    def to_dict(self) -> dict[str, Any]:
         node_type = self.node_type.value
 
         scan_type = self.scan_type.value
 
-        advanced_report_filters: Union[Unset, Dict[str, Any]] = UNSET
+        advanced_report_filters: Union[Unset, dict[str, Any]] = UNSET
         if not isinstance(self.advanced_report_filters, Unset):
             advanced_report_filters = self.advanced_report_filters.to_dict()
 
@@ -73,7 +61,7 @@ class UtilsReportFilters:
         if not isinstance(self.severity_or_check_type, Unset):
             severity_or_check_type = self.severity_or_check_type.value
 
-        field_dict: Dict[str, Any] = {}
+        field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
@@ -97,10 +85,10 @@ class UtilsReportFilters:
         return field_dict
 
     @classmethod
-    def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.utils_advanced_report_filters import UtilsAdvancedReportFilters
 
-        d = src_dict.copy()
+        d = dict(src_dict)
         node_type = UtilsReportFiltersNodeType(d.pop("node_type"))
 
         scan_type = UtilsReportFiltersScanType(d.pop("scan_type"))
@@ -142,7 +130,7 @@ class UtilsReportFilters:
         return utils_report_filters
 
     @property
-    def additional_keys(self) -> List[str]:
+    def additional_keys(self) -> list[str]:
         return list(self.additional_properties.keys())
 
     def __getitem__(self, key: str) -> Any:

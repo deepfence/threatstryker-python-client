@@ -1,4 +1,5 @@
-from typing import TYPE_CHECKING, Any, Dict, List, Type, TypeVar, Union, cast
+from collections.abc import Mapping
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -13,22 +14,15 @@ T = TypeVar("T", bound="ModelScanListResp")
 @_attrs_define
 class ModelScanListResp:
     """
-    Example:
-        {'scans_info': [{'severity_counts': {'key': 6}, 'status_message': 'status_message', 'node_type': 'node_type',
-            'updated_at': 1, 'node_name': 'node_name', 'created_at': 0, 'scan_id': 'scan_id', 'node_id': 'node_id',
-            'status': 'COMPLETE'}, {'severity_counts': {'key': 6}, 'status_message': 'status_message', 'node_type':
-            'node_type', 'updated_at': 1, 'node_name': 'node_name', 'created_at': 0, 'scan_id': 'scan_id', 'node_id':
-            'node_id', 'status': 'COMPLETE'}]}
-
     Attributes:
-        scans_info (Union[List['ModelScanInfo'], None]):
+        scans_info (Union[None, list['ModelScanInfo']]):
     """
 
-    scans_info: Union[List["ModelScanInfo"], None]
-    additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
+    scans_info: Union[None, list["ModelScanInfo"]]
+    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
-    def to_dict(self) -> Dict[str, Any]:
-        scans_info: Union[List[Dict[str, Any]], None]
+    def to_dict(self) -> dict[str, Any]:
+        scans_info: Union[None, list[dict[str, Any]]]
         if isinstance(self.scans_info, list):
             scans_info = []
             for scans_info_type_0_item_data in self.scans_info:
@@ -38,7 +32,7 @@ class ModelScanListResp:
         else:
             scans_info = self.scans_info
 
-        field_dict: Dict[str, Any] = {}
+        field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
@@ -49,12 +43,12 @@ class ModelScanListResp:
         return field_dict
 
     @classmethod
-    def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.model_scan_info import ModelScanInfo
 
-        d = src_dict.copy()
+        d = dict(src_dict)
 
-        def _parse_scans_info(data: object) -> Union[List["ModelScanInfo"], None]:
+        def _parse_scans_info(data: object) -> Union[None, list["ModelScanInfo"]]:
             if data is None:
                 return data
             try:
@@ -70,7 +64,7 @@ class ModelScanListResp:
                 return scans_info_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[List["ModelScanInfo"], None], data)
+            return cast(Union[None, list["ModelScanInfo"]], data)
 
         scans_info = _parse_scans_info(d.pop("scans_info"))
 
@@ -82,7 +76,7 @@ class ModelScanListResp:
         return model_scan_list_resp
 
     @property
-    def additional_keys(self) -> List[str]:
+    def additional_keys(self) -> list[str]:
         return list(self.additional_properties.keys())
 
     def __getitem__(self, key: str) -> Any:

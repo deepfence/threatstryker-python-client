@@ -1,4 +1,5 @@
-from typing import TYPE_CHECKING, Any, Dict, List, Type, TypeVar, Union, cast
+from collections.abc import Mapping
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -15,29 +16,26 @@ T = TypeVar("T", bound="ModelFiltersReq")
 @_attrs_define
 class ModelFiltersReq:
     """
-    Example:
-        {'having': {'key': ''}, 'filters': ['filters', 'filters']}
-
     Attributes:
-        filters (Union[List[str], None]):
+        filters (Union[None, list[str]]):
         having (Union['ModelFiltersReqHavingType0', None, Unset]):
     """
 
-    filters: Union[List[str], None]
+    filters: Union[None, list[str]]
     having: Union["ModelFiltersReqHavingType0", None, Unset] = UNSET
-    additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
+    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
-    def to_dict(self) -> Dict[str, Any]:
+    def to_dict(self) -> dict[str, Any]:
         from ..models.model_filters_req_having_type_0 import ModelFiltersReqHavingType0
 
-        filters: Union[List[str], None]
+        filters: Union[None, list[str]]
         if isinstance(self.filters, list):
             filters = self.filters
 
         else:
             filters = self.filters
 
-        having: Union[Dict[str, Any], None, Unset]
+        having: Union[None, Unset, dict[str, Any]]
         if isinstance(self.having, Unset):
             having = UNSET
         elif isinstance(self.having, ModelFiltersReqHavingType0):
@@ -45,7 +43,7 @@ class ModelFiltersReq:
         else:
             having = self.having
 
-        field_dict: Dict[str, Any] = {}
+        field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
@@ -58,23 +56,23 @@ class ModelFiltersReq:
         return field_dict
 
     @classmethod
-    def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.model_filters_req_having_type_0 import ModelFiltersReqHavingType0
 
-        d = src_dict.copy()
+        d = dict(src_dict)
 
-        def _parse_filters(data: object) -> Union[List[str], None]:
+        def _parse_filters(data: object) -> Union[None, list[str]]:
             if data is None:
                 return data
             try:
                 if not isinstance(data, list):
                     raise TypeError()
-                filters_type_0 = cast(List[str], data)
+                filters_type_0 = cast(list[str], data)
 
                 return filters_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[List[str], None], data)
+            return cast(Union[None, list[str]], data)
 
         filters = _parse_filters(d.pop("filters"))
 
@@ -104,7 +102,7 @@ class ModelFiltersReq:
         return model_filters_req
 
     @property
-    def additional_keys(self) -> List[str]:
+    def additional_keys(self) -> list[str]:
         return list(self.additional_properties.keys())
 
     def __getitem__(self, key: str) -> Any:

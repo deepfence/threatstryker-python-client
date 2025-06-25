@@ -1,4 +1,5 @@
-from typing import TYPE_CHECKING, Any, Dict, List, Type, TypeVar, Union, cast
+from collections.abc import Mapping
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -16,36 +17,11 @@ T = TypeVar("T", bound="ModelCloudComplianceScanResult")
 @_attrs_define
 class ModelCloudComplianceScanResult:
     """
-    Example:
-        {'benchmark_type': ['benchmark_type', 'benchmark_type'], 'docker_container_name': 'docker_container_name',
-            'kubernetes_cluster_name': 'kubernetes_cluster_name', 'node_name': 'node_name', 'created_at': 6,
-            'cloud_account_id': 'cloud_account_id', 'compliances': [{'severity': 'severity', 'reason': 'reason',
-            'control_id': 'control_id', 'resource': 'resource', 'masked': True, 'count': 0, 'node_name': 'node_name',
-            'description': 'description', 'resources': [{'node_type': 'node_type', 'live_secrets': ['live_secrets',
-            'live_secrets'], 'live_cves': ['live_cves', 'live_cves'], 'name': 'name', 'host_name': 'host_name',
-            'live_malwares': ['live_malwares', 'live_malwares'], 'node_id': 'node_id'}, {'node_type': 'node_type',
-            'live_secrets': ['live_secrets', 'live_secrets'], 'live_cves': ['live_cves', 'live_cves'], 'name': 'name',
-            'host_name': 'host_name', 'live_malwares': ['live_malwares', 'live_malwares'], 'node_id': 'node_id'}],
-            'cloud_provider': 'cloud_provider', 'title': 'title', 'type': 'type', 'compliance_check_type': 'hipaa',
-            'account_id': 'account_id', 'updated_at': 6, 'service': 'service', 'region': 'region', 'group': 'group',
-            'node_id': 'node_id', 'status': 'alarm'}, {'severity': 'severity', 'reason': 'reason', 'control_id':
-            'control_id', 'resource': 'resource', 'masked': True, 'count': 0, 'node_name': 'node_name', 'description':
-            'description', 'resources': [{'node_type': 'node_type', 'live_secrets': ['live_secrets', 'live_secrets'],
-            'live_cves': ['live_cves', 'live_cves'], 'name': 'name', 'host_name': 'host_name', 'live_malwares':
-            ['live_malwares', 'live_malwares'], 'node_id': 'node_id'}, {'node_type': 'node_type', 'live_secrets':
-            ['live_secrets', 'live_secrets'], 'live_cves': ['live_cves', 'live_cves'], 'name': 'name', 'host_name':
-            'host_name', 'live_malwares': ['live_malwares', 'live_malwares'], 'node_id': 'node_id'}], 'cloud_provider':
-            'cloud_provider', 'title': 'title', 'type': 'type', 'compliance_check_type': 'hipaa', 'account_id':
-            'account_id', 'updated_at': 6, 'service': 'service', 'region': 'region', 'group': 'group', 'node_id': 'node_id',
-            'status': 'alarm'}], 'compliance_percentage': 0.8008281904610115, 'node_type': 'node_type', 'updated_at': 5,
-            'scan_id': 'scan_id', 'status_counts': {'key': 1}, 'docker_image_name': 'docker_image_name', 'host_name':
-            'host_name', 'node_id': 'node_id'}
-
     Attributes:
-        benchmark_type (Union[List[str], None]):
+        benchmark_type (Union[None, list[str]]):
         cloud_account_id (str):
         compliance_percentage (float):
-        compliances (Union[List['ModelCloudCompliance'], None]):
+        compliances (Union[None, list['ModelCloudCompliance']]):
         created_at (int):
         docker_container_name (str):
         docker_image_name (str):
@@ -59,10 +35,10 @@ class ModelCloudComplianceScanResult:
         updated_at (int):
     """
 
-    benchmark_type: Union[List[str], None]
+    benchmark_type: Union[None, list[str]]
     cloud_account_id: str
     compliance_percentage: float
-    compliances: Union[List["ModelCloudCompliance"], None]
+    compliances: Union[None, list["ModelCloudCompliance"]]
     created_at: int
     docker_container_name: str
     docker_image_name: str
@@ -74,14 +50,14 @@ class ModelCloudComplianceScanResult:
     scan_id: str
     status_counts: Union["ModelCloudComplianceScanResultStatusCountsType0", None]
     updated_at: int
-    additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
+    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
-    def to_dict(self) -> Dict[str, Any]:
+    def to_dict(self) -> dict[str, Any]:
         from ..models.model_cloud_compliance_scan_result_status_counts_type_0 import (
             ModelCloudComplianceScanResultStatusCountsType0,
         )
 
-        benchmark_type: Union[List[str], None]
+        benchmark_type: Union[None, list[str]]
         if isinstance(self.benchmark_type, list):
             benchmark_type = self.benchmark_type
 
@@ -92,7 +68,7 @@ class ModelCloudComplianceScanResult:
 
         compliance_percentage = self.compliance_percentage
 
-        compliances: Union[List[Dict[str, Any]], None]
+        compliances: Union[None, list[dict[str, Any]]]
         if isinstance(self.compliances, list):
             compliances = []
             for compliances_type_0_item_data in self.compliances:
@@ -120,7 +96,7 @@ class ModelCloudComplianceScanResult:
 
         scan_id = self.scan_id
 
-        status_counts: Union[Dict[str, Any], None]
+        status_counts: Union[None, dict[str, Any]]
         if isinstance(self.status_counts, ModelCloudComplianceScanResultStatusCountsType0):
             status_counts = self.status_counts.to_dict()
         else:
@@ -128,7 +104,7 @@ class ModelCloudComplianceScanResult:
 
         updated_at = self.updated_at
 
-        field_dict: Dict[str, Any] = {}
+        field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
@@ -153,26 +129,26 @@ class ModelCloudComplianceScanResult:
         return field_dict
 
     @classmethod
-    def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.model_cloud_compliance import ModelCloudCompliance
         from ..models.model_cloud_compliance_scan_result_status_counts_type_0 import (
             ModelCloudComplianceScanResultStatusCountsType0,
         )
 
-        d = src_dict.copy()
+        d = dict(src_dict)
 
-        def _parse_benchmark_type(data: object) -> Union[List[str], None]:
+        def _parse_benchmark_type(data: object) -> Union[None, list[str]]:
             if data is None:
                 return data
             try:
                 if not isinstance(data, list):
                     raise TypeError()
-                benchmark_type_type_0 = cast(List[str], data)
+                benchmark_type_type_0 = cast(list[str], data)
 
                 return benchmark_type_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[List[str], None], data)
+            return cast(Union[None, list[str]], data)
 
         benchmark_type = _parse_benchmark_type(d.pop("benchmark_type"))
 
@@ -180,7 +156,7 @@ class ModelCloudComplianceScanResult:
 
         compliance_percentage = d.pop("compliance_percentage")
 
-        def _parse_compliances(data: object) -> Union[List["ModelCloudCompliance"], None]:
+        def _parse_compliances(data: object) -> Union[None, list["ModelCloudCompliance"]]:
             if data is None:
                 return data
             try:
@@ -196,7 +172,7 @@ class ModelCloudComplianceScanResult:
                 return compliances_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[List["ModelCloudCompliance"], None], data)
+            return cast(Union[None, list["ModelCloudCompliance"]], data)
 
         compliances = _parse_compliances(d.pop("compliances"))
 
@@ -257,7 +233,7 @@ class ModelCloudComplianceScanResult:
         return model_cloud_compliance_scan_result
 
     @property
-    def additional_keys(self) -> List[str]:
+    def additional_keys(self) -> list[str]:
         return list(self.additional_properties.keys())
 
     def __getitem__(self, key: str) -> Any:

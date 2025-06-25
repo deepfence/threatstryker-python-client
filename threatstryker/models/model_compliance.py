@@ -1,4 +1,5 @@
-from typing import TYPE_CHECKING, Any, Dict, List, Type, TypeVar, Union, cast
+from collections.abc import Mapping
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -17,18 +18,6 @@ T = TypeVar("T", bound="ModelCompliance")
 @_attrs_define
 class ModelCompliance:
     """
-    Example:
-        {'resource': 'resource', 'masked': True, 'description': 'description', 'resources': [{'node_type': 'node_type',
-            'live_secrets': ['live_secrets', 'live_secrets'], 'live_cves': ['live_cves', 'live_cves'], 'name': 'name',
-            'host_name': 'host_name', 'live_malwares': ['live_malwares', 'live_malwares'], 'node_id': 'node_id'},
-            {'node_type': 'node_type', 'live_secrets': ['live_secrets', 'live_secrets'], 'live_cves': ['live_cves',
-            'live_cves'], 'name': 'name', 'host_name': 'host_name', 'live_malwares': ['live_malwares', 'live_malwares'],
-            'node_id': 'node_id'}], 'test_category': 'test_category', 'remediation_ansible': 'remediation_ansible',
-            'compliance_check_type': 'hipaa', 'rule_id': 'rule_id', 'test_rationale': 'test_rationale', 'test_severity':
-            'test_severity', 'node_type': 'node_type', 'updated_at': 0, 'remediation_puppet': 'remediation_puppet',
-            'remediation_script': 'remediation_script', 'node_id': 'node_id', 'status': 'pass', 'test_desc': 'test_desc',
-            'test_number': 'test_number'}
-
     Attributes:
         compliance_check_type (ModelComplianceComplianceCheckType):
         description (str):
@@ -47,7 +36,7 @@ class ModelCompliance:
         test_rationale (str):
         test_severity (str):
         updated_at (int):
-        resources (Union[List['ModelBasicNode'], None, Unset]):
+        resources (Union[None, Unset, list['ModelBasicNode']]):
     """
 
     compliance_check_type: ModelComplianceComplianceCheckType
@@ -67,10 +56,10 @@ class ModelCompliance:
     test_rationale: str
     test_severity: str
     updated_at: int
-    resources: Union[List["ModelBasicNode"], None, Unset] = UNSET
-    additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
+    resources: Union[None, Unset, list["ModelBasicNode"]] = UNSET
+    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
-    def to_dict(self) -> Dict[str, Any]:
+    def to_dict(self) -> dict[str, Any]:
         compliance_check_type = self.compliance_check_type.value
 
         description = self.description
@@ -105,7 +94,7 @@ class ModelCompliance:
 
         updated_at = self.updated_at
 
-        resources: Union[List[Dict[str, Any]], None, Unset]
+        resources: Union[None, Unset, list[dict[str, Any]]]
         if isinstance(self.resources, Unset):
             resources = UNSET
         elif isinstance(self.resources, list):
@@ -117,7 +106,7 @@ class ModelCompliance:
         else:
             resources = self.resources
 
-        field_dict: Dict[str, Any] = {}
+        field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
@@ -146,10 +135,10 @@ class ModelCompliance:
         return field_dict
 
     @classmethod
-    def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.model_basic_node import ModelBasicNode
 
-        d = src_dict.copy()
+        d = dict(src_dict)
         compliance_check_type = ModelComplianceComplianceCheckType(d.pop("compliance_check_type"))
 
         description = d.pop("description")
@@ -184,7 +173,7 @@ class ModelCompliance:
 
         updated_at = d.pop("updated_at")
 
-        def _parse_resources(data: object) -> Union[List["ModelBasicNode"], None, Unset]:
+        def _parse_resources(data: object) -> Union[None, Unset, list["ModelBasicNode"]]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -202,7 +191,7 @@ class ModelCompliance:
                 return resources_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[List["ModelBasicNode"], None, Unset], data)
+            return cast(Union[None, Unset, list["ModelBasicNode"]], data)
 
         resources = _parse_resources(d.pop("resources", UNSET))
 
@@ -231,7 +220,7 @@ class ModelCompliance:
         return model_compliance
 
     @property
-    def additional_keys(self) -> List[str]:
+    def additional_keys(self) -> list[str]:
         return list(self.additional_properties.keys())
 
     def __getitem__(self, key: str) -> Any:

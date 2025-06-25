@@ -1,5 +1,6 @@
 import datetime
-from typing import Any, Dict, List, Type, TypeVar, Union
+from collections.abc import Mapping
+from typing import Any, TypeVar, Union
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -13,11 +14,6 @@ T = TypeVar("T", bound="PostgresqlDbGetAuditLogsRow")
 @_attrs_define
 class PostgresqlDbGetAuditLogsRow:
     """
-    Example:
-        {'role': 'role', 'success': True, 'action': 'action', 'created_at': datetime.datetime(2000, 1, 23, 4, 56, 7,
-            tzinfo=datetime.timezone(datetime.timedelta(0), '+00:00')), 'resources': 'resources', 'event': 'event', 'email':
-            'email'}
-
     Attributes:
         action (Union[Unset, str]):
         created_at (Union[Unset, datetime.datetime]):
@@ -35,9 +31,9 @@ class PostgresqlDbGetAuditLogsRow:
     resources: Union[Unset, str] = UNSET
     role: Union[Unset, str] = UNSET
     success: Union[Unset, bool] = UNSET
-    additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
+    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
-    def to_dict(self) -> Dict[str, Any]:
+    def to_dict(self) -> dict[str, Any]:
         action = self.action
 
         created_at: Union[Unset, str] = UNSET
@@ -54,7 +50,7 @@ class PostgresqlDbGetAuditLogsRow:
 
         success = self.success
 
-        field_dict: Dict[str, Any] = {}
+        field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
         if action is not UNSET:
@@ -75,8 +71,8 @@ class PostgresqlDbGetAuditLogsRow:
         return field_dict
 
     @classmethod
-    def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
-        d = src_dict.copy()
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        d = dict(src_dict)
         action = d.pop("action", UNSET)
 
         _created_at = d.pop("created_at", UNSET)
@@ -110,7 +106,7 @@ class PostgresqlDbGetAuditLogsRow:
         return postgresql_db_get_audit_logs_row
 
     @property
-    def additional_keys(self) -> List[str]:
+    def additional_keys(self) -> list[str]:
         return list(self.additional_properties.keys())
 
     def __getitem__(self, key: str) -> Any:

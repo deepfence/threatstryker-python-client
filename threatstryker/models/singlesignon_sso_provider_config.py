@@ -1,4 +1,5 @@
-from typing import Any, Dict, List, Type, TypeVar, Union
+from collections.abc import Mapping
+from typing import Any, TypeVar, Union
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -12,11 +13,6 @@ T = TypeVar("T", bound="SinglesignonSSOProviderConfig")
 @_attrs_define
 class SinglesignonSSOProviderConfig:
     """
-    Example:
-        {'issuer_alias_url': 'issuer_alias_url', 'issuer_url': 'issuer_url', 'sso_provider_type': 'oidc',
-            'disable_password_login': True, 'client_secret': 'client_secret', 'client_id': 'client_id', 'host_name':
-            'host_name'}
-
     Attributes:
         client_id (str):
         client_secret (str):
@@ -34,9 +30,9 @@ class SinglesignonSSOProviderConfig:
     host_name: Union[Unset, str] = UNSET
     issuer_alias_url: Union[Unset, str] = UNSET
     issuer_url: Union[Unset, str] = UNSET
-    additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
+    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
-    def to_dict(self) -> Dict[str, Any]:
+    def to_dict(self) -> dict[str, Any]:
         client_id = self.client_id
 
         client_secret = self.client_secret
@@ -51,7 +47,7 @@ class SinglesignonSSOProviderConfig:
 
         issuer_url = self.issuer_url
 
-        field_dict: Dict[str, Any] = {}
+        field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
@@ -71,8 +67,8 @@ class SinglesignonSSOProviderConfig:
         return field_dict
 
     @classmethod
-    def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
-        d = src_dict.copy()
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        d = dict(src_dict)
         client_id = d.pop("client_id")
 
         client_secret = d.pop("client_secret")
@@ -101,7 +97,7 @@ class SinglesignonSSOProviderConfig:
         return singlesignon_sso_provider_config
 
     @property
-    def additional_keys(self) -> List[str]:
+    def additional_keys(self) -> list[str]:
         return list(self.additional_properties.keys())
 
     def __getitem__(self, key: str) -> Any:

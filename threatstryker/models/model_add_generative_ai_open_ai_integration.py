@@ -1,4 +1,5 @@
-from typing import Any, Dict, List, Type, TypeVar
+from collections.abc import Mapping
+from typing import Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -11,9 +12,6 @@ T = TypeVar("T", bound="ModelAddGenerativeAiOpenAIIntegration")
 @_attrs_define
 class ModelAddGenerativeAiOpenAIIntegration:
     """
-    Example:
-        {'api_key': 'api_key', 'model_id': 'gpt-4'}
-
     Attributes:
         api_key (str):
         model_id (ModelAddGenerativeAiOpenAIIntegrationModelId):
@@ -21,14 +19,14 @@ class ModelAddGenerativeAiOpenAIIntegration:
 
     api_key: str
     model_id: ModelAddGenerativeAiOpenAIIntegrationModelId
-    additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
+    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
-    def to_dict(self) -> Dict[str, Any]:
+    def to_dict(self) -> dict[str, Any]:
         api_key = self.api_key
 
         model_id = self.model_id.value
 
-        field_dict: Dict[str, Any] = {}
+        field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
@@ -40,8 +38,8 @@ class ModelAddGenerativeAiOpenAIIntegration:
         return field_dict
 
     @classmethod
-    def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
-        d = src_dict.copy()
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        d = dict(src_dict)
         api_key = d.pop("api_key")
 
         model_id = ModelAddGenerativeAiOpenAIIntegrationModelId(d.pop("model_id"))
@@ -55,7 +53,7 @@ class ModelAddGenerativeAiOpenAIIntegration:
         return model_add_generative_ai_open_ai_integration
 
     @property
-    def additional_keys(self) -> List[str]:
+    def additional_keys(self) -> list[str]:
         return list(self.additional_properties.keys())
 
     def __getitem__(self, key: str) -> Any:

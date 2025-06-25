@@ -1,4 +1,5 @@
-from typing import TYPE_CHECKING, Any, Dict, List, Type, TypeVar, Union, cast
+from collections.abc import Mapping
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -16,29 +17,23 @@ T = TypeVar("T", bound="ModelAgentInstall")
 @_attrs_define
 class ModelAgentInstall:
     """
-    Example:
-        {'cloud_scanner_id': {'node_type': 'node_type', 'available_workload': 0, 'node_id': 'node_id'},
-            'cloud_provider': 'aws', 'region_ids': [{'ids': ['ids', 'ids'], 'region': 'region'}, {'ids': ['ids', 'ids'],
-            'region': 'region'}]}
-
     Attributes:
         cloud_provider (ModelAgentInstallCloudProvider):
-        cloud_scanner_id (ModelAgentID):  Example: {'node_type': 'node_type', 'available_workload': 0, 'node_id':
-            'node_id'}.
-        region_ids (Union[List['ModelRegionIDs'], None]):
+        cloud_scanner_id (ModelAgentID):
+        region_ids (Union[None, list['ModelRegionIDs']]):
     """
 
     cloud_provider: ModelAgentInstallCloudProvider
     cloud_scanner_id: "ModelAgentID"
-    region_ids: Union[List["ModelRegionIDs"], None]
-    additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
+    region_ids: Union[None, list["ModelRegionIDs"]]
+    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
-    def to_dict(self) -> Dict[str, Any]:
+    def to_dict(self) -> dict[str, Any]:
         cloud_provider = self.cloud_provider.value
 
         cloud_scanner_id = self.cloud_scanner_id.to_dict()
 
-        region_ids: Union[List[Dict[str, Any]], None]
+        region_ids: Union[None, list[dict[str, Any]]]
         if isinstance(self.region_ids, list):
             region_ids = []
             for region_ids_type_0_item_data in self.region_ids:
@@ -48,7 +43,7 @@ class ModelAgentInstall:
         else:
             region_ids = self.region_ids
 
-        field_dict: Dict[str, Any] = {}
+        field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
@@ -61,16 +56,16 @@ class ModelAgentInstall:
         return field_dict
 
     @classmethod
-    def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.model_agent_id import ModelAgentID
         from ..models.model_region_i_ds import ModelRegionIDs
 
-        d = src_dict.copy()
+        d = dict(src_dict)
         cloud_provider = ModelAgentInstallCloudProvider(d.pop("cloud_provider"))
 
         cloud_scanner_id = ModelAgentID.from_dict(d.pop("cloud_scanner_id"))
 
-        def _parse_region_ids(data: object) -> Union[List["ModelRegionIDs"], None]:
+        def _parse_region_ids(data: object) -> Union[None, list["ModelRegionIDs"]]:
             if data is None:
                 return data
             try:
@@ -86,7 +81,7 @@ class ModelAgentInstall:
                 return region_ids_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[List["ModelRegionIDs"], None], data)
+            return cast(Union[None, list["ModelRegionIDs"]], data)
 
         region_ids = _parse_region_ids(d.pop("region_ids"))
 
@@ -100,7 +95,7 @@ class ModelAgentInstall:
         return model_agent_install
 
     @property
-    def additional_keys(self) -> List[str]:
+    def additional_keys(self) -> list[str]:
         return list(self.additional_properties.keys())
 
     def __getitem__(self, key: str) -> Any:

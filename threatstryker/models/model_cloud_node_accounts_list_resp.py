@@ -1,4 +1,5 @@
-from typing import TYPE_CHECKING, Any, Dict, List, Type, TypeVar, Union, cast
+from collections.abc import Mapping
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -13,30 +14,17 @@ T = TypeVar("T", bound="ModelCloudNodeAccountsListResp")
 @_attrs_define
 class ModelCloudNodeAccountsListResp:
     """
-    Example:
-        {'total': 5, 'cloud_node_accounts_info': [{'last_scan_status': 'last_scan_status', 'last_scan_id':
-            'last_scan_id', 'refresh_message': 'refresh_message', 'node_name': 'node_name', 'active': True,
-            'cloud_provider': 'aws', 'scan_status_map': {'key': 1}, 'refresh_metadata': 'refresh_metadata', 'host_node_id':
-            'host_node_id', 'version': 'version', 'refresh_status_map': {'key': 6}, 'refresh_status': 'refresh_status',
-            'compliance_percentage': 0.8008281904610115, 'account_name': 'account_name', 'cloud_network_tracer_status':
-            {'description': 'description', 'status': 'status'}, 'node_id': 'node_id'}, {'last_scan_status':
-            'last_scan_status', 'last_scan_id': 'last_scan_id', 'refresh_message': 'refresh_message', 'node_name':
-            'node_name', 'active': True, 'cloud_provider': 'aws', 'scan_status_map': {'key': 1}, 'refresh_metadata':
-            'refresh_metadata', 'host_node_id': 'host_node_id', 'version': 'version', 'refresh_status_map': {'key': 6},
-            'refresh_status': 'refresh_status', 'compliance_percentage': 0.8008281904610115, 'account_name': 'account_name',
-            'cloud_network_tracer_status': {'description': 'description', 'status': 'status'}, 'node_id': 'node_id'}]}
-
     Attributes:
-        cloud_node_accounts_info (Union[List['ModelCloudNodeAccountInfo'], None]):
+        cloud_node_accounts_info (Union[None, list['ModelCloudNodeAccountInfo']]):
         total (int):
     """
 
-    cloud_node_accounts_info: Union[List["ModelCloudNodeAccountInfo"], None]
+    cloud_node_accounts_info: Union[None, list["ModelCloudNodeAccountInfo"]]
     total: int
-    additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
+    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
-    def to_dict(self) -> Dict[str, Any]:
-        cloud_node_accounts_info: Union[List[Dict[str, Any]], None]
+    def to_dict(self) -> dict[str, Any]:
+        cloud_node_accounts_info: Union[None, list[dict[str, Any]]]
         if isinstance(self.cloud_node_accounts_info, list):
             cloud_node_accounts_info = []
             for cloud_node_accounts_info_type_0_item_data in self.cloud_node_accounts_info:
@@ -48,7 +36,7 @@ class ModelCloudNodeAccountsListResp:
 
         total = self.total
 
-        field_dict: Dict[str, Any] = {}
+        field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
@@ -60,12 +48,12 @@ class ModelCloudNodeAccountsListResp:
         return field_dict
 
     @classmethod
-    def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.model_cloud_node_account_info import ModelCloudNodeAccountInfo
 
-        d = src_dict.copy()
+        d = dict(src_dict)
 
-        def _parse_cloud_node_accounts_info(data: object) -> Union[List["ModelCloudNodeAccountInfo"], None]:
+        def _parse_cloud_node_accounts_info(data: object) -> Union[None, list["ModelCloudNodeAccountInfo"]]:
             if data is None:
                 return data
             try:
@@ -83,7 +71,7 @@ class ModelCloudNodeAccountsListResp:
                 return cloud_node_accounts_info_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[List["ModelCloudNodeAccountInfo"], None], data)
+            return cast(Union[None, list["ModelCloudNodeAccountInfo"]], data)
 
         cloud_node_accounts_info = _parse_cloud_node_accounts_info(d.pop("cloud_node_accounts_info"))
 
@@ -98,7 +86,7 @@ class ModelCloudNodeAccountsListResp:
         return model_cloud_node_accounts_list_resp
 
     @property
-    def additional_keys(self) -> List[str]:
+    def additional_keys(self) -> list[str]:
         return list(self.additional_properties.keys())
 
     def __getitem__(self, key: str) -> Any:

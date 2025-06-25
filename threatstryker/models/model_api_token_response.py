@@ -1,5 +1,6 @@
 import datetime
-from typing import Any, Dict, List, Type, TypeVar, Union
+from collections.abc import Mapping
+from typing import Any, TypeVar, Union
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -13,10 +14,6 @@ T = TypeVar("T", bound="ModelAPITokenResponse")
 @_attrs_define
 class ModelAPITokenResponse:
     """
-    Example:
-        {'company_id': 0, 'api_token': 'api_token', 'name': 'name', 'created_at': datetime.datetime(2000, 1, 23, 4, 56,
-            7, tzinfo=datetime.timezone(datetime.timedelta(0), '+00:00')), 'id': 1, 'created_by_user_id': 6}
-
     Attributes:
         api_token (Union[Unset, str]):
         company_id (Union[Unset, int]):
@@ -32,9 +29,9 @@ class ModelAPITokenResponse:
     created_by_user_id: Union[Unset, int] = UNSET
     id: Union[Unset, int] = UNSET
     name: Union[Unset, str] = UNSET
-    additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
+    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
-    def to_dict(self) -> Dict[str, Any]:
+    def to_dict(self) -> dict[str, Any]:
         api_token = self.api_token
 
         company_id = self.company_id
@@ -49,7 +46,7 @@ class ModelAPITokenResponse:
 
         name = self.name
 
-        field_dict: Dict[str, Any] = {}
+        field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
         if api_token is not UNSET:
@@ -68,8 +65,8 @@ class ModelAPITokenResponse:
         return field_dict
 
     @classmethod
-    def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
-        d = src_dict.copy()
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        d = dict(src_dict)
         api_token = d.pop("api_token", UNSET)
 
         company_id = d.pop("company_id", UNSET)
@@ -100,7 +97,7 @@ class ModelAPITokenResponse:
         return model_api_token_response
 
     @property
-    def additional_keys(self) -> List[str]:
+    def additional_keys(self) -> list[str]:
         return list(self.additional_properties.keys())
 
     def __getitem__(self, key: str) -> Any:

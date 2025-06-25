@@ -1,4 +1,5 @@
-from typing import Any, Dict, List, Type, TypeVar, Union
+from collections.abc import Mapping
+from typing import Any, TypeVar, Union
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -11,11 +12,6 @@ T = TypeVar("T", bound="ModelExportReport")
 @_attrs_define
 class ModelExportReport:
     """
-    Example:
-        {'status_message': 'status_message', 'to_timestamp': 1, 'updated_at': 5, 'storage_path': 'storage_path',
-            'report_id': 'report_id', 'created_at': 0, 'from_timestamp': 6, 'filters': 'filters', 'type': 'type', 'url':
-            'url', 'status': 'status'}
-
     Attributes:
         created_at (Union[Unset, int]):
         filters (Union[Unset, str]):
@@ -25,7 +21,7 @@ class ModelExportReport:
         status_message (Union[Unset, str]):
         storage_path (Union[Unset, str]):
         to_timestamp (Union[Unset, int]):
-        type (Union[Unset, str]):
+        type_ (Union[Unset, str]):
         updated_at (Union[Unset, int]):
         url (Union[Unset, str]):
     """
@@ -38,12 +34,12 @@ class ModelExportReport:
     status_message: Union[Unset, str] = UNSET
     storage_path: Union[Unset, str] = UNSET
     to_timestamp: Union[Unset, int] = UNSET
-    type: Union[Unset, str] = UNSET
+    type_: Union[Unset, str] = UNSET
     updated_at: Union[Unset, int] = UNSET
     url: Union[Unset, str] = UNSET
-    additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
+    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
-    def to_dict(self) -> Dict[str, Any]:
+    def to_dict(self) -> dict[str, Any]:
         created_at = self.created_at
 
         filters = self.filters
@@ -60,13 +56,13 @@ class ModelExportReport:
 
         to_timestamp = self.to_timestamp
 
-        type = self.type
+        type_ = self.type_
 
         updated_at = self.updated_at
 
         url = self.url
 
-        field_dict: Dict[str, Any] = {}
+        field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
         if created_at is not UNSET:
@@ -85,8 +81,8 @@ class ModelExportReport:
             field_dict["storage_path"] = storage_path
         if to_timestamp is not UNSET:
             field_dict["to_timestamp"] = to_timestamp
-        if type is not UNSET:
-            field_dict["type"] = type
+        if type_ is not UNSET:
+            field_dict["type"] = type_
         if updated_at is not UNSET:
             field_dict["updated_at"] = updated_at
         if url is not UNSET:
@@ -95,8 +91,8 @@ class ModelExportReport:
         return field_dict
 
     @classmethod
-    def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
-        d = src_dict.copy()
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        d = dict(src_dict)
         created_at = d.pop("created_at", UNSET)
 
         filters = d.pop("filters", UNSET)
@@ -113,7 +109,7 @@ class ModelExportReport:
 
         to_timestamp = d.pop("to_timestamp", UNSET)
 
-        type = d.pop("type", UNSET)
+        type_ = d.pop("type", UNSET)
 
         updated_at = d.pop("updated_at", UNSET)
 
@@ -128,7 +124,7 @@ class ModelExportReport:
             status_message=status_message,
             storage_path=storage_path,
             to_timestamp=to_timestamp,
-            type=type,
+            type_=type_,
             updated_at=updated_at,
             url=url,
         )
@@ -137,7 +133,7 @@ class ModelExportReport:
         return model_export_report
 
     @property
-    def additional_keys(self) -> List[str]:
+    def additional_keys(self) -> list[str]:
         return list(self.additional_properties.keys())
 
     def __getitem__(self, key: str) -> Any:

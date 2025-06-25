@@ -1,4 +1,5 @@
-from typing import TYPE_CHECKING, Any, Dict, List, Type, TypeVar, Union
+from collections.abc import Mapping
+from typing import TYPE_CHECKING, Any, TypeVar, Union
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -15,14 +16,6 @@ T = TypeVar("T", bound="ModelLicense")
 @_attrs_define
 class ModelLicense:
     """
-    Example:
-        {'end_date': 'end_date', 'no_of_registries': 5, 'notification_threshold_percentage': 2, 'current_hosts': 0,
-            'is_active': True, 'license_type': 'license_type', 'notification_threshold_updated_at': 7,
-            'registry_credentials': {'registry_url': 'registry_url', 'password': 'password', 'username': 'username'},
-            'description': 'description', 'no_of_hosts': 1, 'no_of_images_in_registry': 5, 'message': 'message',
-            'deepfence_support_email': 'deepfence_support_email', 'license_email': 'license_email', 'no_of_cloud_accounts':
-            6, 'license_email_domain': 'license_email_domain', 'key': 'key', 'start_date': 'start_date'}
-
     Attributes:
         current_hosts (Union[Unset, int]):
         deepfence_support_email (Union[Unset, str]):
@@ -40,8 +33,7 @@ class ModelLicense:
         no_of_registries (Union[Unset, int]):
         notification_threshold_percentage (Union[Unset, int]):
         notification_threshold_updated_at (Union[Unset, int]):
-        registry_credentials (Union[Unset, UtilsRegistryCredentials]):  Example: {'registry_url': 'registry_url',
-            'password': 'password', 'username': 'username'}.
+        registry_credentials (Union[Unset, UtilsRegistryCredentials]):
         start_date (Union[Unset, str]):
     """
 
@@ -63,9 +55,9 @@ class ModelLicense:
     notification_threshold_updated_at: Union[Unset, int] = UNSET
     registry_credentials: Union[Unset, "UtilsRegistryCredentials"] = UNSET
     start_date: Union[Unset, str] = UNSET
-    additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
+    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
-    def to_dict(self) -> Dict[str, Any]:
+    def to_dict(self) -> dict[str, Any]:
         current_hosts = self.current_hosts
 
         deepfence_support_email = self.deepfence_support_email
@@ -98,13 +90,13 @@ class ModelLicense:
 
         notification_threshold_updated_at = self.notification_threshold_updated_at
 
-        registry_credentials: Union[Unset, Dict[str, Any]] = UNSET
+        registry_credentials: Union[Unset, dict[str, Any]] = UNSET
         if not isinstance(self.registry_credentials, Unset):
             registry_credentials = self.registry_credentials.to_dict()
 
         start_date = self.start_date
 
-        field_dict: Dict[str, Any] = {}
+        field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
         if current_hosts is not UNSET:
@@ -147,10 +139,10 @@ class ModelLicense:
         return field_dict
 
     @classmethod
-    def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.utils_registry_credentials import UtilsRegistryCredentials
 
-        d = src_dict.copy()
+        d = dict(src_dict)
         current_hosts = d.pop("current_hosts", UNSET)
 
         deepfence_support_email = d.pop("deepfence_support_email", UNSET)
@@ -217,7 +209,7 @@ class ModelLicense:
         return model_license
 
     @property
-    def additional_keys(self) -> List[str]:
+    def additional_keys(self) -> list[str]:
         return list(self.additional_properties.keys())
 
     def __getitem__(self, key: str) -> Any:

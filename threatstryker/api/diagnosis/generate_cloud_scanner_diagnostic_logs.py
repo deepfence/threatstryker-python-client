@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Dict, Optional, Union, cast
+from typing import Any, Optional, Union, cast
 
 import httpx
 
@@ -16,17 +16,16 @@ from ...types import Response
 def _get_kwargs(
     *,
     body: DiagnosisGenerateCloudScannerDiagnosticLogsRequest,
-) -> Dict[str, Any]:
-    headers: Dict[str, Any] = {}
+) -> dict[str, Any]:
+    headers: dict[str, Any] = {}
 
-    _kwargs: Dict[str, Any] = {
+    _kwargs: dict[str, Any] = {
         "method": "post",
         "url": "/deepfence/diagnosis/cloud-scanner-logs",
     }
 
-    _body = body.to_dict()
+    _kwargs["json"] = body.to_dict()
 
-    _kwargs["json"] = _body
     headers["Content-Type"] = "application/json"
 
     _kwargs["headers"] = headers
@@ -36,24 +35,24 @@ def _get_kwargs(
 def _parse_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
 ) -> Optional[Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse]]:
-    if response.status_code == HTTPStatus.ACCEPTED:
+    if response.status_code == 202:
         response_202 = cast(Any, None)
         return response_202
-    if response.status_code == HTTPStatus.BAD_REQUEST:
+    if response.status_code == 400:
         response_400 = ApiDocsBadRequestResponse.from_dict(response.json())
 
         return response_400
-    if response.status_code == HTTPStatus.UNAUTHORIZED:
+    if response.status_code == 401:
         response_401 = cast(Any, None)
         return response_401
-    if response.status_code == HTTPStatus.FORBIDDEN:
+    if response.status_code == 403:
         response_403 = cast(Any, None)
         return response_403
-    if response.status_code == HTTPStatus.NOT_FOUND:
+    if response.status_code == 404:
         response_404 = ApiDocsFailureResponse.from_dict(response.json())
 
         return response_404
-    if response.status_code == HTTPStatus.INTERNAL_SERVER_ERROR:
+    if response.status_code == 500:
         response_500 = ApiDocsFailureResponse.from_dict(response.json())
 
         return response_500
@@ -84,9 +83,7 @@ def sync_detailed(
      Generate Cloud Scanner Diagnostic Logs
 
     Args:
-        body (DiagnosisGenerateCloudScannerDiagnosticLogsRequest):  Example: {'tail': 0,
-            'node_ids': [{'node_type': 'host', 'node_id': 'node_id'}, {'node_type': 'host', 'node_id':
-            'node_id'}]}.
+        body (DiagnosisGenerateCloudScannerDiagnosticLogsRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -117,9 +114,7 @@ def sync(
      Generate Cloud Scanner Diagnostic Logs
 
     Args:
-        body (DiagnosisGenerateCloudScannerDiagnosticLogsRequest):  Example: {'tail': 0,
-            'node_ids': [{'node_type': 'host', 'node_id': 'node_id'}, {'node_type': 'host', 'node_id':
-            'node_id'}]}.
+        body (DiagnosisGenerateCloudScannerDiagnosticLogsRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -145,9 +140,7 @@ async def asyncio_detailed(
      Generate Cloud Scanner Diagnostic Logs
 
     Args:
-        body (DiagnosisGenerateCloudScannerDiagnosticLogsRequest):  Example: {'tail': 0,
-            'node_ids': [{'node_type': 'host', 'node_id': 'node_id'}, {'node_type': 'host', 'node_id':
-            'node_id'}]}.
+        body (DiagnosisGenerateCloudScannerDiagnosticLogsRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -176,9 +169,7 @@ async def asyncio(
      Generate Cloud Scanner Diagnostic Logs
 
     Args:
-        body (DiagnosisGenerateCloudScannerDiagnosticLogsRequest):  Example: {'tail': 0,
-            'node_ids': [{'node_type': 'host', 'node_id': 'node_id'}, {'node_type': 'host', 'node_id':
-            'node_id'}]}.
+        body (DiagnosisGenerateCloudScannerDiagnosticLogsRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

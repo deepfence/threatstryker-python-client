@@ -1,4 +1,5 @@
-from typing import Any, Dict, List, Type, TypeVar, Union
+from collections.abc import Mapping
+from typing import Any, TypeVar, Union
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -11,10 +12,6 @@ T = TypeVar("T", bound="ModelRegistryListResp")
 @_attrs_define
 class ModelRegistryListResp:
     """
-    Example:
-        {'is_syncing': True, 'updated_at': 1, 'non_secret': '', 'registry_type': 'registry_type', 'name': 'name',
-            'created_at': 0, 'id': 6, 'node_id': 'node_id'}
-
     Attributes:
         created_at (Union[Unset, int]):
         id (Union[Unset, int]):
@@ -34,9 +31,9 @@ class ModelRegistryListResp:
     non_secret: Union[Unset, Any] = UNSET
     registry_type: Union[Unset, str] = UNSET
     updated_at: Union[Unset, int] = UNSET
-    additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
+    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
-    def to_dict(self) -> Dict[str, Any]:
+    def to_dict(self) -> dict[str, Any]:
         created_at = self.created_at
 
         id = self.id
@@ -53,7 +50,7 @@ class ModelRegistryListResp:
 
         updated_at = self.updated_at
 
-        field_dict: Dict[str, Any] = {}
+        field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
         if created_at is not UNSET:
@@ -76,8 +73,8 @@ class ModelRegistryListResp:
         return field_dict
 
     @classmethod
-    def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
-        d = src_dict.copy()
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        d = dict(src_dict)
         created_at = d.pop("created_at", UNSET)
 
         id = d.pop("id", UNSET)
@@ -109,7 +106,7 @@ class ModelRegistryListResp:
         return model_registry_list_resp
 
     @property
-    def additional_keys(self) -> List[str]:
+    def additional_keys(self) -> list[str]:
         return list(self.additional_properties.keys())
 
     def __getitem__(self, key: str) -> Any:

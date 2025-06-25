@@ -1,4 +1,5 @@
-from typing import TYPE_CHECKING, Any, Dict, List, Type, TypeVar, Union, cast
+from collections.abc import Mapping
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -15,32 +16,23 @@ T = TypeVar("T", bound="ControlsProcessTracerConfig")
 @_attrs_define
 class ControlsProcessTracerConfig:
     """
-    Example:
-        {'updated_at': 0, 'monitoredprocessevents': [{'skip_path_list': ['skip_path_list', 'skip_path_list'],
-            'failure_severity': 'failure_severity', 'skip_user_list': ['skip_user_list', 'skip_user_list'],
-            'success_severity': 'success_severity', 'event': 'bin-execution', 'skip_comm_list': ['skip_comm_list',
-            'skip_comm_list']}, {'skip_path_list': ['skip_path_list', 'skip_path_list'], 'failure_severity':
-            'failure_severity', 'skip_user_list': ['skip_user_list', 'skip_user_list'], 'success_severity':
-            'success_severity', 'event': 'bin-execution', 'skip_comm_list': ['skip_comm_list', 'skip_comm_list']}],
-            'node_id': 'node_id'}
-
     Attributes:
         node_id (str):
         updated_at (int):
-        monitoredprocessevents (Union[List['ControlsProcessEventEntry'], None, Unset]):
+        monitoredprocessevents (Union[None, Unset, list['ControlsProcessEventEntry']]):
     """
 
     node_id: str
     updated_at: int
-    monitoredprocessevents: Union[List["ControlsProcessEventEntry"], None, Unset] = UNSET
-    additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
+    monitoredprocessevents: Union[None, Unset, list["ControlsProcessEventEntry"]] = UNSET
+    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
-    def to_dict(self) -> Dict[str, Any]:
+    def to_dict(self) -> dict[str, Any]:
         node_id = self.node_id
 
         updated_at = self.updated_at
 
-        monitoredprocessevents: Union[List[Dict[str, Any]], None, Unset]
+        monitoredprocessevents: Union[None, Unset, list[dict[str, Any]]]
         if isinstance(self.monitoredprocessevents, Unset):
             monitoredprocessevents = UNSET
         elif isinstance(self.monitoredprocessevents, list):
@@ -52,7 +44,7 @@ class ControlsProcessTracerConfig:
         else:
             monitoredprocessevents = self.monitoredprocessevents
 
-        field_dict: Dict[str, Any] = {}
+        field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
@@ -66,15 +58,15 @@ class ControlsProcessTracerConfig:
         return field_dict
 
     @classmethod
-    def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.controls_process_event_entry import ControlsProcessEventEntry
 
-        d = src_dict.copy()
+        d = dict(src_dict)
         node_id = d.pop("node_id")
 
         updated_at = d.pop("updated_at")
 
-        def _parse_monitoredprocessevents(data: object) -> Union[List["ControlsProcessEventEntry"], None, Unset]:
+        def _parse_monitoredprocessevents(data: object) -> Union[None, Unset, list["ControlsProcessEventEntry"]]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -94,7 +86,7 @@ class ControlsProcessTracerConfig:
                 return monitoredprocessevents_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[List["ControlsProcessEventEntry"], None, Unset], data)
+            return cast(Union[None, Unset, list["ControlsProcessEventEntry"]], data)
 
         monitoredprocessevents = _parse_monitoredprocessevents(d.pop("monitoredprocessevents", UNSET))
 
@@ -108,7 +100,7 @@ class ControlsProcessTracerConfig:
         return controls_process_tracer_config
 
     @property
-    def additional_keys(self) -> List[str]:
+    def additional_keys(self) -> list[str]:
         return list(self.additional_properties.keys())
 
     def __getitem__(self, key: str) -> Any:

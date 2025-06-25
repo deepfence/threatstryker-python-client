@@ -1,4 +1,5 @@
-from typing import TYPE_CHECKING, Any, Dict, List, Type, TypeVar, Union, cast
+from collections.abc import Mapping
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -15,10 +16,6 @@ T = TypeVar("T", bound="ModelScanInfo")
 @_attrs_define
 class ModelScanInfo:
     """
-    Example:
-        {'severity_counts': {'key': 6}, 'status_message': 'status_message', 'node_type': 'node_type', 'updated_at': 1,
-            'node_name': 'node_name', 'created_at': 0, 'scan_id': 'scan_id', 'node_id': 'node_id', 'status': 'COMPLETE'}
-
     Attributes:
         created_at (int):
         node_id (str):
@@ -40,9 +37,9 @@ class ModelScanInfo:
     status: ModelScanInfoStatus
     status_message: str
     updated_at: int
-    additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
+    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
-    def to_dict(self) -> Dict[str, Any]:
+    def to_dict(self) -> dict[str, Any]:
         from ..models.model_scan_info_severity_counts_type_0 import ModelScanInfoSeverityCountsType0
 
         created_at = self.created_at
@@ -55,7 +52,7 @@ class ModelScanInfo:
 
         scan_id = self.scan_id
 
-        severity_counts: Union[Dict[str, Any], None]
+        severity_counts: Union[None, dict[str, Any]]
         if isinstance(self.severity_counts, ModelScanInfoSeverityCountsType0):
             severity_counts = self.severity_counts.to_dict()
         else:
@@ -67,7 +64,7 @@ class ModelScanInfo:
 
         updated_at = self.updated_at
 
-        field_dict: Dict[str, Any] = {}
+        field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
@@ -86,10 +83,10 @@ class ModelScanInfo:
         return field_dict
 
     @classmethod
-    def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.model_scan_info_severity_counts_type_0 import ModelScanInfoSeverityCountsType0
 
-        d = src_dict.copy()
+        d = dict(src_dict)
         created_at = d.pop("created_at")
 
         node_id = d.pop("node_id")
@@ -137,7 +134,7 @@ class ModelScanInfo:
         return model_scan_info
 
     @property
-    def additional_keys(self) -> List[str]:
+    def additional_keys(self) -> list[str]:
         return list(self.additional_properties.keys())
 
     def __getitem__(self, key: str) -> Any:

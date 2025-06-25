@@ -1,4 +1,5 @@
-from typing import Any, Dict, List, Type, TypeVar, Union
+from collections.abc import Mapping
+from typing import Any, TypeVar, Union
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -13,9 +14,6 @@ T = TypeVar("T", bound="ModelCloudNodeControlReq")
 @_attrs_define
 class ModelCloudNodeControlReq:
     """
-    Example:
-        {'cloud_provider': 'aws', 'compliance_type': 'hipaa', 'node_id': 'node_id'}
-
     Attributes:
         cloud_provider (ModelCloudNodeControlReqCloudProvider):
         compliance_type (ModelCloudNodeControlReqComplianceType):
@@ -25,16 +23,16 @@ class ModelCloudNodeControlReq:
     cloud_provider: ModelCloudNodeControlReqCloudProvider
     compliance_type: ModelCloudNodeControlReqComplianceType
     node_id: Union[Unset, str] = UNSET
-    additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
+    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
-    def to_dict(self) -> Dict[str, Any]:
+    def to_dict(self) -> dict[str, Any]:
         cloud_provider = self.cloud_provider.value
 
         compliance_type = self.compliance_type.value
 
         node_id = self.node_id
 
-        field_dict: Dict[str, Any] = {}
+        field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
@@ -48,8 +46,8 @@ class ModelCloudNodeControlReq:
         return field_dict
 
     @classmethod
-    def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
-        d = src_dict.copy()
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        d = dict(src_dict)
         cloud_provider = ModelCloudNodeControlReqCloudProvider(d.pop("cloud_provider"))
 
         compliance_type = ModelCloudNodeControlReqComplianceType(d.pop("compliance_type"))
@@ -66,7 +64,7 @@ class ModelCloudNodeControlReq:
         return model_cloud_node_control_req
 
     @property
-    def additional_keys(self) -> List[str]:
+    def additional_keys(self) -> list[str]:
         return list(self.additional_properties.keys())
 
     def __getitem__(self, key: str) -> Any:

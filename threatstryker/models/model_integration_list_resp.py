@@ -1,4 +1,5 @@
-from typing import TYPE_CHECKING, Any, Dict, List, Type, TypeVar, Union, cast
+from collections.abc import Mapping
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -16,29 +17,9 @@ T = TypeVar("T", bound="ModelIntegrationListResp")
 @_attrs_define
 class ModelIntegrationListResp:
     """
-    Example:
-        {'notification_type': 'notification_type', 'filters': {'fields_filters': {'compare_filter': [{'greater_than':
-            True, 'field_value': '', 'field_name': 'field_name'}, {'greater_than': True, 'field_value': '', 'field_name':
-            'field_name'}], 'not_contains_filter': {'filter_in': {'key': ['', '']}}, 'order_filter': {'order_fields':
-            [{'size': 0, 'descending': True, 'field_name': 'field_name'}, {'size': 0, 'descending': True, 'field_name':
-            'field_name'}]}, 'contains_filter': {'filter_in': {'key': ['', '']}}, 'contains_in_array_filter': {'filter_in':
-            {'key': ['', '']}}, 'match_filter': {'filter_in': {'key': ['', '']}}, 'match_in_array_filter': {'filter_in':
-            {'key': ['', '']}}}, 'cloud_provider': 'cloud_provider', 'container_names': ['container_names',
-            'container_names'], 'node_ids': [{'node_type': 'image', 'node_id': 'node_id'}, {'node_type': 'image', 'node_id':
-            'node_id'}]}, 'id': 0, 'integration_type': 'integration_type', 'config': {'key': ''}, 'last_error_msg':
-            'last_error_msg'}
-
     Attributes:
         config (Union['ModelIntegrationListRespConfigType0', None, Unset]):
-        filters (Union[Unset, ModelIntegrationFilters]):  Example: {'fields_filters': {'compare_filter':
-            [{'greater_than': True, 'field_value': '', 'field_name': 'field_name'}, {'greater_than': True, 'field_value':
-            '', 'field_name': 'field_name'}], 'not_contains_filter': {'filter_in': {'key': ['', '']}}, 'order_filter':
-            {'order_fields': [{'size': 0, 'descending': True, 'field_name': 'field_name'}, {'size': 0, 'descending': True,
-            'field_name': 'field_name'}]}, 'contains_filter': {'filter_in': {'key': ['', '']}}, 'contains_in_array_filter':
-            {'filter_in': {'key': ['', '']}}, 'match_filter': {'filter_in': {'key': ['', '']}}, 'match_in_array_filter':
-            {'filter_in': {'key': ['', '']}}}, 'cloud_provider': 'cloud_provider', 'container_names': ['container_names',
-            'container_names'], 'node_ids': [{'node_type': 'image', 'node_id': 'node_id'}, {'node_type': 'image', 'node_id':
-            'node_id'}]}.
+        filters (Union[Unset, ModelIntegrationFilters]):
         id (Union[Unset, int]):
         integration_type (Union[Unset, str]):
         last_error_msg (Union[Unset, str]):
@@ -51,12 +32,12 @@ class ModelIntegrationListResp:
     integration_type: Union[Unset, str] = UNSET
     last_error_msg: Union[Unset, str] = UNSET
     notification_type: Union[Unset, str] = UNSET
-    additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
+    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
-    def to_dict(self) -> Dict[str, Any]:
+    def to_dict(self) -> dict[str, Any]:
         from ..models.model_integration_list_resp_config_type_0 import ModelIntegrationListRespConfigType0
 
-        config: Union[Dict[str, Any], None, Unset]
+        config: Union[None, Unset, dict[str, Any]]
         if isinstance(self.config, Unset):
             config = UNSET
         elif isinstance(self.config, ModelIntegrationListRespConfigType0):
@@ -64,7 +45,7 @@ class ModelIntegrationListResp:
         else:
             config = self.config
 
-        filters: Union[Unset, Dict[str, Any]] = UNSET
+        filters: Union[Unset, dict[str, Any]] = UNSET
         if not isinstance(self.filters, Unset):
             filters = self.filters.to_dict()
 
@@ -76,7 +57,7 @@ class ModelIntegrationListResp:
 
         notification_type = self.notification_type
 
-        field_dict: Dict[str, Any] = {}
+        field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
         if config is not UNSET:
@@ -95,11 +76,11 @@ class ModelIntegrationListResp:
         return field_dict
 
     @classmethod
-    def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.model_integration_filters import ModelIntegrationFilters
         from ..models.model_integration_list_resp_config_type_0 import ModelIntegrationListRespConfigType0
 
-        d = src_dict.copy()
+        d = dict(src_dict)
 
         def _parse_config(data: object) -> Union["ModelIntegrationListRespConfigType0", None, Unset]:
             if data is None:
@@ -146,7 +127,7 @@ class ModelIntegrationListResp:
         return model_integration_list_resp
 
     @property
-    def additional_keys(self) -> List[str]:
+    def additional_keys(self) -> list[str]:
         return list(self.additional_properties.keys())
 
     def __getitem__(self, key: str) -> Any:

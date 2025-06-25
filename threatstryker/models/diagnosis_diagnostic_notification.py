@@ -1,4 +1,5 @@
-from typing import Any, Dict, List, Type, TypeVar, Union
+from collections.abc import Mapping
+from typing import Any, TypeVar, Union
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -11,10 +12,6 @@ T = TypeVar("T", bound="DiagnosisDiagnosticNotification")
 @_attrs_define
 class DiagnosisDiagnosticNotification:
     """
-    Example:
-        {'expiry_in_secs': '', 'follow_url': '', 'updated_at': 'updated_at', 'source_application_id':
-            'source_application_id', 'content': 'content'}
-
     Attributes:
         content (Union[Unset, str]):
         expiry_in_secs (Union[Unset, Any]):
@@ -28,9 +25,9 @@ class DiagnosisDiagnosticNotification:
     follow_url: Union[Unset, Any] = UNSET
     source_application_id: Union[Unset, str] = UNSET
     updated_at: Union[Unset, str] = UNSET
-    additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
+    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
-    def to_dict(self) -> Dict[str, Any]:
+    def to_dict(self) -> dict[str, Any]:
         content = self.content
 
         expiry_in_secs = self.expiry_in_secs
@@ -41,7 +38,7 @@ class DiagnosisDiagnosticNotification:
 
         updated_at = self.updated_at
 
-        field_dict: Dict[str, Any] = {}
+        field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
         if content is not UNSET:
@@ -58,8 +55,8 @@ class DiagnosisDiagnosticNotification:
         return field_dict
 
     @classmethod
-    def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
-        d = src_dict.copy()
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        d = dict(src_dict)
         content = d.pop("content", UNSET)
 
         expiry_in_secs = d.pop("expiry_in_secs", UNSET)
@@ -82,7 +79,7 @@ class DiagnosisDiagnosticNotification:
         return diagnosis_diagnostic_notification
 
     @property
-    def additional_keys(self) -> List[str]:
+    def additional_keys(self) -> list[str]:
         return list(self.additional_properties.keys())
 
     def __getitem__(self, key: str) -> Any:

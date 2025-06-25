@@ -1,4 +1,5 @@
-from typing import Any, Dict, List, Type, TypeVar
+from collections.abc import Mapping
+from typing import Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -11,11 +12,6 @@ T = TypeVar("T", bound="IngestersPolicyLog")
 @_attrs_define
 class IngestersPolicyLog:
     """
-    Example:
-        {'local_ip': 'local_ip', 'severity': 'severity', 'remote_ip': 'remote_ip', 'config_id': 'config_id',
-            'local_port': 6, 'alert_id': 'alert_id', 'policy_index': 1, 'remote_port': 5, 'created_at': 0, 'incident':
-            'incident', 'host_name': 'host_name', 'direction': 'inbound'}
-
     Attributes:
         alert_id (str):
         config_id (str):
@@ -43,9 +39,9 @@ class IngestersPolicyLog:
     remote_ip: str
     remote_port: int
     severity: str
-    additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
+    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
-    def to_dict(self) -> Dict[str, Any]:
+    def to_dict(self) -> dict[str, Any]:
         alert_id = self.alert_id
 
         config_id = self.config_id
@@ -70,7 +66,7 @@ class IngestersPolicyLog:
 
         severity = self.severity
 
-        field_dict: Dict[str, Any] = {}
+        field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
@@ -92,8 +88,8 @@ class IngestersPolicyLog:
         return field_dict
 
     @classmethod
-    def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
-        d = src_dict.copy()
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        d = dict(src_dict)
         alert_id = d.pop("alert_id")
 
         config_id = d.pop("config_id")
@@ -137,7 +133,7 @@ class IngestersPolicyLog:
         return ingesters_policy_log
 
     @property
-    def additional_keys(self) -> List[str]:
+    def additional_keys(self) -> list[str]:
         return list(self.additional_properties.keys())
 
     def __getitem__(self, key: str) -> Any:

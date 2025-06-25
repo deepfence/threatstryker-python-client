@@ -1,4 +1,5 @@
-from typing import Any, Dict, List, Type, TypeVar, Union, cast
+from collections.abc import Mapping
+from typing import Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -9,25 +10,22 @@ T = TypeVar("T", bound="ModelDeleteIntegrationReq")
 @_attrs_define
 class ModelDeleteIntegrationReq:
     """
-    Example:
-        {'integration_ids': [0, 0]}
-
     Attributes:
-        integration_ids (Union[List[int], None]):
+        integration_ids (Union[None, list[int]]):
     """
 
-    integration_ids: Union[List[int], None]
-    additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
+    integration_ids: Union[None, list[int]]
+    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
-    def to_dict(self) -> Dict[str, Any]:
-        integration_ids: Union[List[int], None]
+    def to_dict(self) -> dict[str, Any]:
+        integration_ids: Union[None, list[int]]
         if isinstance(self.integration_ids, list):
             integration_ids = self.integration_ids
 
         else:
             integration_ids = self.integration_ids
 
-        field_dict: Dict[str, Any] = {}
+        field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
@@ -38,21 +36,21 @@ class ModelDeleteIntegrationReq:
         return field_dict
 
     @classmethod
-    def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
-        d = src_dict.copy()
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        d = dict(src_dict)
 
-        def _parse_integration_ids(data: object) -> Union[List[int], None]:
+        def _parse_integration_ids(data: object) -> Union[None, list[int]]:
             if data is None:
                 return data
             try:
                 if not isinstance(data, list):
                     raise TypeError()
-                integration_ids_type_0 = cast(List[int], data)
+                integration_ids_type_0 = cast(list[int], data)
 
                 return integration_ids_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[List[int], None], data)
+            return cast(Union[None, list[int]], data)
 
         integration_ids = _parse_integration_ids(d.pop("integration_ids"))
 
@@ -64,7 +62,7 @@ class ModelDeleteIntegrationReq:
         return model_delete_integration_req
 
     @property
-    def additional_keys(self) -> List[str]:
+    def additional_keys(self) -> list[str]:
         return list(self.additional_properties.keys())
 
     def __getitem__(self, key: str) -> Any:

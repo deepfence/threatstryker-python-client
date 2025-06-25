@@ -1,4 +1,5 @@
-from typing import Any, Dict, List, Type, TypeVar, Union, cast
+from collections.abc import Mapping
+from typing import Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -11,25 +12,21 @@ T = TypeVar("T", bound="ModelScanReportFieldsResponse")
 @_attrs_define
 class ModelScanReportFieldsResponse:
     """
-    Example:
-        {'malware': ['malware', 'malware'], 'compliance': ['compliance', 'compliance'], 'secret': ['secret', 'secret'],
-            'vulnerability': ['vulnerability', 'vulnerability']}
-
     Attributes:
-        compliance (Union[List[str], None, Unset]):
-        malware (Union[List[str], None, Unset]):
-        secret (Union[List[str], None, Unset]):
-        vulnerability (Union[List[str], None, Unset]):
+        compliance (Union[None, Unset, list[str]]):
+        malware (Union[None, Unset, list[str]]):
+        secret (Union[None, Unset, list[str]]):
+        vulnerability (Union[None, Unset, list[str]]):
     """
 
-    compliance: Union[List[str], None, Unset] = UNSET
-    malware: Union[List[str], None, Unset] = UNSET
-    secret: Union[List[str], None, Unset] = UNSET
-    vulnerability: Union[List[str], None, Unset] = UNSET
-    additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
+    compliance: Union[None, Unset, list[str]] = UNSET
+    malware: Union[None, Unset, list[str]] = UNSET
+    secret: Union[None, Unset, list[str]] = UNSET
+    vulnerability: Union[None, Unset, list[str]] = UNSET
+    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
-    def to_dict(self) -> Dict[str, Any]:
-        compliance: Union[List[str], None, Unset]
+    def to_dict(self) -> dict[str, Any]:
+        compliance: Union[None, Unset, list[str]]
         if isinstance(self.compliance, Unset):
             compliance = UNSET
         elif isinstance(self.compliance, list):
@@ -38,7 +35,7 @@ class ModelScanReportFieldsResponse:
         else:
             compliance = self.compliance
 
-        malware: Union[List[str], None, Unset]
+        malware: Union[None, Unset, list[str]]
         if isinstance(self.malware, Unset):
             malware = UNSET
         elif isinstance(self.malware, list):
@@ -47,7 +44,7 @@ class ModelScanReportFieldsResponse:
         else:
             malware = self.malware
 
-        secret: Union[List[str], None, Unset]
+        secret: Union[None, Unset, list[str]]
         if isinstance(self.secret, Unset):
             secret = UNSET
         elif isinstance(self.secret, list):
@@ -56,7 +53,7 @@ class ModelScanReportFieldsResponse:
         else:
             secret = self.secret
 
-        vulnerability: Union[List[str], None, Unset]
+        vulnerability: Union[None, Unset, list[str]]
         if isinstance(self.vulnerability, Unset):
             vulnerability = UNSET
         elif isinstance(self.vulnerability, list):
@@ -65,7 +62,7 @@ class ModelScanReportFieldsResponse:
         else:
             vulnerability = self.vulnerability
 
-        field_dict: Dict[str, Any] = {}
+        field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
         if compliance is not UNSET:
@@ -80,10 +77,10 @@ class ModelScanReportFieldsResponse:
         return field_dict
 
     @classmethod
-    def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
-        d = src_dict.copy()
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        d = dict(src_dict)
 
-        def _parse_compliance(data: object) -> Union[List[str], None, Unset]:
+        def _parse_compliance(data: object) -> Union[None, Unset, list[str]]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -91,16 +88,16 @@ class ModelScanReportFieldsResponse:
             try:
                 if not isinstance(data, list):
                     raise TypeError()
-                compliance_type_0 = cast(List[str], data)
+                compliance_type_0 = cast(list[str], data)
 
                 return compliance_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[List[str], None, Unset], data)
+            return cast(Union[None, Unset, list[str]], data)
 
         compliance = _parse_compliance(d.pop("compliance", UNSET))
 
-        def _parse_malware(data: object) -> Union[List[str], None, Unset]:
+        def _parse_malware(data: object) -> Union[None, Unset, list[str]]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -108,16 +105,16 @@ class ModelScanReportFieldsResponse:
             try:
                 if not isinstance(data, list):
                     raise TypeError()
-                malware_type_0 = cast(List[str], data)
+                malware_type_0 = cast(list[str], data)
 
                 return malware_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[List[str], None, Unset], data)
+            return cast(Union[None, Unset, list[str]], data)
 
         malware = _parse_malware(d.pop("malware", UNSET))
 
-        def _parse_secret(data: object) -> Union[List[str], None, Unset]:
+        def _parse_secret(data: object) -> Union[None, Unset, list[str]]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -125,16 +122,16 @@ class ModelScanReportFieldsResponse:
             try:
                 if not isinstance(data, list):
                     raise TypeError()
-                secret_type_0 = cast(List[str], data)
+                secret_type_0 = cast(list[str], data)
 
                 return secret_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[List[str], None, Unset], data)
+            return cast(Union[None, Unset, list[str]], data)
 
         secret = _parse_secret(d.pop("secret", UNSET))
 
-        def _parse_vulnerability(data: object) -> Union[List[str], None, Unset]:
+        def _parse_vulnerability(data: object) -> Union[None, Unset, list[str]]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -142,12 +139,12 @@ class ModelScanReportFieldsResponse:
             try:
                 if not isinstance(data, list):
                     raise TypeError()
-                vulnerability_type_0 = cast(List[str], data)
+                vulnerability_type_0 = cast(list[str], data)
 
                 return vulnerability_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[List[str], None, Unset], data)
+            return cast(Union[None, Unset, list[str]], data)
 
         vulnerability = _parse_vulnerability(d.pop("vulnerability", UNSET))
 
@@ -162,7 +159,7 @@ class ModelScanReportFieldsResponse:
         return model_scan_report_fields_response
 
     @property
-    def additional_keys(self) -> List[str]:
+    def additional_keys(self) -> list[str]:
         return list(self.additional_properties.keys())
 
     def __getitem__(self, key: str) -> Any:

@@ -1,4 +1,5 @@
-from typing import Any, Dict, List, Type, TypeVar, Union
+from collections.abc import Mapping
+from typing import Any, TypeVar, Union
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -14,10 +15,6 @@ T = TypeVar("T", bound="ModelGenerativeAiIntegrationRuntimeIncidentRequest")
 @_attrs_define
 class ModelGenerativeAiIntegrationRuntimeIncidentRequest:
     """
-    Example:
-        {'summary': 'summary', 'event_type': 'event_type', 'integration_id': 0, 'query_type': 'remediation', 'category':
-            'category'}
-
     Attributes:
         category (str):
         event_type (str):
@@ -31,9 +28,9 @@ class ModelGenerativeAiIntegrationRuntimeIncidentRequest:
     query_type: ModelGenerativeAiIntegrationRuntimeIncidentRequestQueryType
     summary: str
     integration_id: Union[Unset, int] = UNSET
-    additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
+    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
-    def to_dict(self) -> Dict[str, Any]:
+    def to_dict(self) -> dict[str, Any]:
         category = self.category
 
         event_type = self.event_type
@@ -44,7 +41,7 @@ class ModelGenerativeAiIntegrationRuntimeIncidentRequest:
 
         integration_id = self.integration_id
 
-        field_dict: Dict[str, Any] = {}
+        field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
@@ -60,8 +57,8 @@ class ModelGenerativeAiIntegrationRuntimeIncidentRequest:
         return field_dict
 
     @classmethod
-    def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
-        d = src_dict.copy()
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        d = dict(src_dict)
         category = d.pop("category")
 
         event_type = d.pop("event_type")
@@ -84,7 +81,7 @@ class ModelGenerativeAiIntegrationRuntimeIncidentRequest:
         return model_generative_ai_integration_runtime_incident_request
 
     @property
-    def additional_keys(self) -> List[str]:
+    def additional_keys(self) -> list[str]:
         return list(self.additional_properties.keys())
 
     def __getitem__(self, key: str) -> Any:

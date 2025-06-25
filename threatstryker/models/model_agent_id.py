@@ -1,4 +1,5 @@
-from typing import Any, Dict, List, Type, TypeVar, Union
+from collections.abc import Mapping
+from typing import Any, TypeVar, Union
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -11,9 +12,6 @@ T = TypeVar("T", bound="ModelAgentID")
 @_attrs_define
 class ModelAgentID:
     """
-    Example:
-        {'node_type': 'node_type', 'available_workload': 0, 'node_id': 'node_id'}
-
     Attributes:
         available_workload (int):
         node_id (str):
@@ -23,16 +21,16 @@ class ModelAgentID:
     available_workload: int
     node_id: str
     node_type: Union[Unset, str] = UNSET
-    additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
+    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
-    def to_dict(self) -> Dict[str, Any]:
+    def to_dict(self) -> dict[str, Any]:
         available_workload = self.available_workload
 
         node_id = self.node_id
 
         node_type = self.node_type
 
-        field_dict: Dict[str, Any] = {}
+        field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
@@ -46,8 +44,8 @@ class ModelAgentID:
         return field_dict
 
     @classmethod
-    def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
-        d = src_dict.copy()
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        d = dict(src_dict)
         available_workload = d.pop("available_workload")
 
         node_id = d.pop("node_id")
@@ -64,7 +62,7 @@ class ModelAgentID:
         return model_agent_id
 
     @property
-    def additional_keys(self) -> List[str]:
+    def additional_keys(self) -> list[str]:
         return list(self.additional_properties.keys())
 
     def __getitem__(self, key: str) -> Any:

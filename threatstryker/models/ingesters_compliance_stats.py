@@ -1,4 +1,5 @@
-from typing import Any, Dict, List, Type, TypeVar, Union
+from collections.abc import Mapping
+from typing import Any, TypeVar, Union
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -11,9 +12,6 @@ T = TypeVar("T", bound="IngestersComplianceStats")
 @_attrs_define
 class IngestersComplianceStats:
     """
-    Example:
-        {'compliance_percentage': 6.027456183070403, 'alarm': 0, 'skip': 2, 'error': 1, 'ok': 5, 'info': 5}
-
     Attributes:
         alarm (Union[Unset, int]):
         compliance_percentage (Union[Unset, float]):
@@ -29,9 +27,9 @@ class IngestersComplianceStats:
     info: Union[Unset, int] = UNSET
     ok: Union[Unset, int] = UNSET
     skip: Union[Unset, int] = UNSET
-    additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
+    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
-    def to_dict(self) -> Dict[str, Any]:
+    def to_dict(self) -> dict[str, Any]:
         alarm = self.alarm
 
         compliance_percentage = self.compliance_percentage
@@ -44,7 +42,7 @@ class IngestersComplianceStats:
 
         skip = self.skip
 
-        field_dict: Dict[str, Any] = {}
+        field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
         if alarm is not UNSET:
@@ -63,8 +61,8 @@ class IngestersComplianceStats:
         return field_dict
 
     @classmethod
-    def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
-        d = src_dict.copy()
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        d = dict(src_dict)
         alarm = d.pop("alarm", UNSET)
 
         compliance_percentage = d.pop("compliance_percentage", UNSET)
@@ -90,7 +88,7 @@ class IngestersComplianceStats:
         return ingesters_compliance_stats
 
     @property
-    def additional_keys(self) -> List[str]:
+    def additional_keys(self) -> list[str]:
         return list(self.additional_properties.keys())
 
     def __getitem__(self, key: str) -> Any:

@@ -1,4 +1,5 @@
-from typing import TYPE_CHECKING, Any, Dict, List, Type, TypeVar, Union, cast
+from collections.abc import Mapping
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -13,9 +14,6 @@ T = TypeVar("T", bound="SearchSearchCountResp")
 @_attrs_define
 class SearchSearchCountResp:
     """
-    Example:
-        {'count': 6, 'categories': {'key': 0}}
-
     Attributes:
         categories (Union['SearchSearchCountRespCategoriesType0', None]):
         count (int):
@@ -23,12 +21,12 @@ class SearchSearchCountResp:
 
     categories: Union["SearchSearchCountRespCategoriesType0", None]
     count: int
-    additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
+    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
-    def to_dict(self) -> Dict[str, Any]:
+    def to_dict(self) -> dict[str, Any]:
         from ..models.search_search_count_resp_categories_type_0 import SearchSearchCountRespCategoriesType0
 
-        categories: Union[Dict[str, Any], None]
+        categories: Union[None, dict[str, Any]]
         if isinstance(self.categories, SearchSearchCountRespCategoriesType0):
             categories = self.categories.to_dict()
         else:
@@ -36,7 +34,7 @@ class SearchSearchCountResp:
 
         count = self.count
 
-        field_dict: Dict[str, Any] = {}
+        field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
@@ -48,10 +46,10 @@ class SearchSearchCountResp:
         return field_dict
 
     @classmethod
-    def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.search_search_count_resp_categories_type_0 import SearchSearchCountRespCategoriesType0
 
-        d = src_dict.copy()
+        d = dict(src_dict)
 
         def _parse_categories(data: object) -> Union["SearchSearchCountRespCategoriesType0", None]:
             if data is None:
@@ -79,7 +77,7 @@ class SearchSearchCountResp:
         return search_search_count_resp
 
     @property
-    def additional_keys(self) -> List[str]:
+    def additional_keys(self) -> list[str]:
         return list(self.additional_properties.keys())
 
     def __getitem__(self, key: str) -> Any:

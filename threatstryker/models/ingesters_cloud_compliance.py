@@ -1,4 +1,5 @@
-from typing import Any, Dict, List, Type, TypeVar, Union
+from collections.abc import Mapping
+from typing import Any, TypeVar, Union
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -11,13 +12,6 @@ T = TypeVar("T", bound="IngestersCloudCompliance")
 @_attrs_define
 class IngestersCloudCompliance:
     """
-    Example:
-        {'severity': 'severity', 'reason': 'reason', 'control_id': 'control_id', 'resource': 'resource', 'count': 0,
-            'description': 'description', 'cloud_provider': 'cloud_provider', 'title': 'title', 'type': 'type', 'doc_id':
-            'doc_id', 'compliance_check_type': 'compliance_check_type', '@timestamp': '@timestamp', 'account_id':
-            'account_id', 'service': 'service', 'scan_id': 'scan_id', 'region': 'region', 'group': 'group', 'status':
-            'status'}
-
     Attributes:
         timestamp (Union[Unset, str]):
         account_id (Union[Unset, str]):
@@ -36,7 +30,7 @@ class IngestersCloudCompliance:
         severity (Union[Unset, str]):
         status (Union[Unset, str]):
         title (Union[Unset, str]):
-        type (Union[Unset, str]):
+        type_ (Union[Unset, str]):
     """
 
     timestamp: Union[Unset, str] = UNSET
@@ -56,10 +50,10 @@ class IngestersCloudCompliance:
     severity: Union[Unset, str] = UNSET
     status: Union[Unset, str] = UNSET
     title: Union[Unset, str] = UNSET
-    type: Union[Unset, str] = UNSET
-    additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
+    type_: Union[Unset, str] = UNSET
+    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
-    def to_dict(self) -> Dict[str, Any]:
+    def to_dict(self) -> dict[str, Any]:
         timestamp = self.timestamp
 
         account_id = self.account_id
@@ -94,9 +88,9 @@ class IngestersCloudCompliance:
 
         title = self.title
 
-        type = self.type
+        type_ = self.type_
 
-        field_dict: Dict[str, Any] = {}
+        field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
         if timestamp is not UNSET:
@@ -133,14 +127,14 @@ class IngestersCloudCompliance:
             field_dict["status"] = status
         if title is not UNSET:
             field_dict["title"] = title
-        if type is not UNSET:
-            field_dict["type"] = type
+        if type_ is not UNSET:
+            field_dict["type"] = type_
 
         return field_dict
 
     @classmethod
-    def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
-        d = src_dict.copy()
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        d = dict(src_dict)
         timestamp = d.pop("@timestamp", UNSET)
 
         account_id = d.pop("account_id", UNSET)
@@ -175,7 +169,7 @@ class IngestersCloudCompliance:
 
         title = d.pop("title", UNSET)
 
-        type = d.pop("type", UNSET)
+        type_ = d.pop("type", UNSET)
 
         ingesters_cloud_compliance = cls(
             timestamp=timestamp,
@@ -195,14 +189,14 @@ class IngestersCloudCompliance:
             severity=severity,
             status=status,
             title=title,
-            type=type,
+            type_=type_,
         )
 
         ingesters_cloud_compliance.additional_properties = d
         return ingesters_cloud_compliance
 
     @property
-    def additional_keys(self) -> List[str]:
+    def additional_keys(self) -> list[str]:
         return list(self.additional_properties.keys())
 
     def __getitem__(self, key: str) -> Any:

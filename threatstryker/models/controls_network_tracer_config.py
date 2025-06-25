@@ -1,4 +1,5 @@
-from typing import TYPE_CHECKING, Any, Dict, List, Type, TypeVar, Union, cast
+from collections.abc import Mapping
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -16,37 +17,28 @@ T = TypeVar("T", bound="ControlsNetworkTracerConfig")
 @_attrs_define
 class ControlsNetworkTracerConfig:
     """
-    Example:
-        {'mode': 'all', 'process_names': ['process_names', 'process_names'], 'tcp_rules': {'inbound': ['inbound',
-            'inbound'], 'outbound': ['outbound', 'outbound']}, 'http_rules': {'inbound': ['inbound', 'inbound'], 'outbound':
-            ['outbound', 'outbound']}, 'updated_at': 0, 'ignored_rule_ids': ['ignored_rule_ids', 'ignored_rule_ids'],
-            'https_rules': {'inbound': ['inbound', 'inbound'], 'outbound': ['outbound', 'outbound']}, 'node_id': 'node_id'}
-
     Attributes:
-        http_rules (ControlsNetworkRules):  Example: {'inbound': ['inbound', 'inbound'], 'outbound': ['outbound',
-            'outbound']}.
-        https_rules (ControlsNetworkRules):  Example: {'inbound': ['inbound', 'inbound'], 'outbound': ['outbound',
-            'outbound']}.
+        http_rules (ControlsNetworkRules):
+        https_rules (ControlsNetworkRules):
         mode (ControlsNetworkTracerConfigMode):
         node_id (str):
-        process_names (Union[List[str], None]):
-        tcp_rules (ControlsNetworkRules):  Example: {'inbound': ['inbound', 'inbound'], 'outbound': ['outbound',
-            'outbound']}.
+        process_names (Union[None, list[str]]):
+        tcp_rules (ControlsNetworkRules):
         updated_at (int):
-        ignored_rule_ids (Union[List[str], None, Unset]):
+        ignored_rule_ids (Union[None, Unset, list[str]]):
     """
 
     http_rules: "ControlsNetworkRules"
     https_rules: "ControlsNetworkRules"
     mode: ControlsNetworkTracerConfigMode
     node_id: str
-    process_names: Union[List[str], None]
+    process_names: Union[None, list[str]]
     tcp_rules: "ControlsNetworkRules"
     updated_at: int
-    ignored_rule_ids: Union[List[str], None, Unset] = UNSET
-    additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
+    ignored_rule_ids: Union[None, Unset, list[str]] = UNSET
+    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
-    def to_dict(self) -> Dict[str, Any]:
+    def to_dict(self) -> dict[str, Any]:
         http_rules = self.http_rules.to_dict()
 
         https_rules = self.https_rules.to_dict()
@@ -55,7 +47,7 @@ class ControlsNetworkTracerConfig:
 
         node_id = self.node_id
 
-        process_names: Union[List[str], None]
+        process_names: Union[None, list[str]]
         if isinstance(self.process_names, list):
             process_names = self.process_names
 
@@ -66,7 +58,7 @@ class ControlsNetworkTracerConfig:
 
         updated_at = self.updated_at
 
-        ignored_rule_ids: Union[List[str], None, Unset]
+        ignored_rule_ids: Union[None, Unset, list[str]]
         if isinstance(self.ignored_rule_ids, Unset):
             ignored_rule_ids = UNSET
         elif isinstance(self.ignored_rule_ids, list):
@@ -75,7 +67,7 @@ class ControlsNetworkTracerConfig:
         else:
             ignored_rule_ids = self.ignored_rule_ids
 
-        field_dict: Dict[str, Any] = {}
+        field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
@@ -94,10 +86,10 @@ class ControlsNetworkTracerConfig:
         return field_dict
 
     @classmethod
-    def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.controls_network_rules import ControlsNetworkRules
 
-        d = src_dict.copy()
+        d = dict(src_dict)
         http_rules = ControlsNetworkRules.from_dict(d.pop("http_rules"))
 
         https_rules = ControlsNetworkRules.from_dict(d.pop("https_rules"))
@@ -106,18 +98,18 @@ class ControlsNetworkTracerConfig:
 
         node_id = d.pop("node_id")
 
-        def _parse_process_names(data: object) -> Union[List[str], None]:
+        def _parse_process_names(data: object) -> Union[None, list[str]]:
             if data is None:
                 return data
             try:
                 if not isinstance(data, list):
                     raise TypeError()
-                process_names_type_0 = cast(List[str], data)
+                process_names_type_0 = cast(list[str], data)
 
                 return process_names_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[List[str], None], data)
+            return cast(Union[None, list[str]], data)
 
         process_names = _parse_process_names(d.pop("process_names"))
 
@@ -125,7 +117,7 @@ class ControlsNetworkTracerConfig:
 
         updated_at = d.pop("updated_at")
 
-        def _parse_ignored_rule_ids(data: object) -> Union[List[str], None, Unset]:
+        def _parse_ignored_rule_ids(data: object) -> Union[None, Unset, list[str]]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -133,12 +125,12 @@ class ControlsNetworkTracerConfig:
             try:
                 if not isinstance(data, list):
                     raise TypeError()
-                ignored_rule_ids_type_0 = cast(List[str], data)
+                ignored_rule_ids_type_0 = cast(list[str], data)
 
                 return ignored_rule_ids_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[List[str], None, Unset], data)
+            return cast(Union[None, Unset, list[str]], data)
 
         ignored_rule_ids = _parse_ignored_rule_ids(d.pop("ignored_rule_ids", UNSET))
 
@@ -157,7 +149,7 @@ class ControlsNetworkTracerConfig:
         return controls_network_tracer_config
 
     @property
-    def additional_keys(self) -> List[str]:
+    def additional_keys(self) -> list[str]:
         return list(self.additional_properties.keys())
 
     def __getitem__(self, key: str) -> Any:

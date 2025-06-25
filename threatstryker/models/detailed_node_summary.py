@@ -1,4 +1,5 @@
-from typing import TYPE_CHECKING, Any, Dict, List, Type, TypeVar, Union, cast
+from collections.abc import Mapping
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -15,95 +16,33 @@ T = TypeVar("T", bound="DetailedNodeSummary")
 @_attrs_define
 class DetailedNodeSummary:
     """
-    Example:
-        {'immediate_parent_id': 'immediate_parent_id', 'metadata': {'docker_image_name_with_tag':
-            'docker_image_name_with_tag', 'kubernetes_ip': 'kubernetes_ip', 'public_ip': ['public_ip', 'public_ip'],
-            'kubernetes_cluster_name': 'kubernetes_cluster_name', 'docker_container_state': 'docker_container_state',
-            'cpu_max': 6.027456183070403, 'pid': 7, 'kubernetes_created': 'kubernetes_created', 'kubernetes_namespace':
-            'kubernetes_namespace', 'cmdline': 'cmdline', 'node_type': 'node_type', 'interface_ip_map': 'interface_ip_map',
-            'pseudo': True, 'docker_container_name': 'docker_container_name', 'docker_container_created':
-            'docker_container_created', 'kubernetes_cluster_id': 'kubernetes_cluster_id', 'docker_container_networks':
-            'docker_container_networks', 'kubernetes_ports': ['kubernetes_ports', 'kubernetes_ports'], 'version': 'version',
-            'pod_name': 'pod_name', 'ppid': 9, 'tags': ['tags', 'tags'], 'docker_container_ports': 'docker_container_ports',
-            'kubernetes_is_in_host_network': True, 'instance_id': 'instance_id', 'kernel_id': 'kernel_id', 'active_cves':
-            ['active_cves', 'active_cves'], 'copy_of': 'copy_of', 'open_files': ['open_files', 'open_files'], 'docker_env':
-            'docker_env', 'connection_count': 0, 'docker_image_size': 'docker_image_size', 'short_name': 'short_name',
-            'cpu_usage': 1.4658129805029452, 'pod_id': 'pod_id', 'docker_label': 'docker_label', 'instance_type':
-            'instance_type', 'docker_image_name': 'docker_image_name', 'user_defined_tags': ['user_defined_tags',
-            'user_defined_tags'], 'local_networks': ['local_networks', 'local_networks'], 'cloud_region': 'cloud_region',
-            'kubernetes_state': 'kubernetes_state', 'interface_names': ['interface_names', 'interface_names'],
-            'memory_usage': 5, 'open_files_count': 2, 'kubernetes_public_ip': 'kubernetes_public_ip', 'private_ip':
-            ['private_ip', 'private_ip'], 'docker_container_network_mode': 'docker_container_network_mode',
-            'cloud_account_id': 'cloud_account_id', 'kubernetes_type': 'kubernetes_type', 'active_secrets':
-            ['active_secrets', 'active_secrets'], 'resource_group': 'resource_group', 'docker_image_tag':
-            'docker_image_tag', 'active_malwares': ['active_malwares', 'active_malwares'], 'kubernetes_labels':
-            'kubernetes_labels', 'docker_container_ips': ['docker_container_ips', 'docker_container_ips'],
-            'docker_image_id': 'docker_image_id', 'timestamp': 'timestamp', 'interface_ips': ['interface_ips',
-            'interface_ips'], 'is_deepfence_system': True, 'availability_zone': 'availability_zone', 'is_console_vm': True,
-            'os': 'os', 'local_cidr': ['local_cidr', 'local_cidr'], 'node_name': 'node_name', 'threads': 3,
-            'cloud_provider': 'cloud_provider', 'docker_container_command': 'docker_container_command', 'agent_running':
-            True, 'uptime': 2, 'memory_max': 5, 'docker_image_created_at': 'docker_image_created_at', 'kernel_version':
-            'kernel_version', 'docker_container_state_human': 'docker_container_state_human', 'docker_image_virtual_size':
-            'docker_image_virtual_size', 'kubernetes_ingress_ip': ['kubernetes_ingress_ip', 'kubernetes_ingress_ip'],
-            'host_name': 'host_name', 'node_id': 'node_id'}, 'adjacency': ['adjacency', 'adjacency'], 'ids': ['ids', 'ids'],
-            'id': 'id', 'label': 'label', 'type': 'type'}
-
     Attributes:
-        adjacency (Union[Unset, List[str]]):
+        adjacency (Union[Unset, list[str]]):
         id (Union[Unset, str]):
-        ids (Union[Unset, List[str]]):
+        ids (Union[Unset, list[str]]):
         immediate_parent_id (Union[Unset, str]):
         label (Union[Unset, str]):
-        metadata (Union[Unset, ReportMetadata]):  Example: {'docker_image_name_with_tag': 'docker_image_name_with_tag',
-            'kubernetes_ip': 'kubernetes_ip', 'public_ip': ['public_ip', 'public_ip'], 'kubernetes_cluster_name':
-            'kubernetes_cluster_name', 'docker_container_state': 'docker_container_state', 'cpu_max': 6.027456183070403,
-            'pid': 7, 'kubernetes_created': 'kubernetes_created', 'kubernetes_namespace': 'kubernetes_namespace', 'cmdline':
-            'cmdline', 'node_type': 'node_type', 'interface_ip_map': 'interface_ip_map', 'pseudo': True,
-            'docker_container_name': 'docker_container_name', 'docker_container_created': 'docker_container_created',
-            'kubernetes_cluster_id': 'kubernetes_cluster_id', 'docker_container_networks': 'docker_container_networks',
-            'kubernetes_ports': ['kubernetes_ports', 'kubernetes_ports'], 'version': 'version', 'pod_name': 'pod_name',
-            'ppid': 9, 'tags': ['tags', 'tags'], 'docker_container_ports': 'docker_container_ports',
-            'kubernetes_is_in_host_network': True, 'instance_id': 'instance_id', 'kernel_id': 'kernel_id', 'active_cves':
-            ['active_cves', 'active_cves'], 'copy_of': 'copy_of', 'open_files': ['open_files', 'open_files'], 'docker_env':
-            'docker_env', 'connection_count': 0, 'docker_image_size': 'docker_image_size', 'short_name': 'short_name',
-            'cpu_usage': 1.4658129805029452, 'pod_id': 'pod_id', 'docker_label': 'docker_label', 'instance_type':
-            'instance_type', 'docker_image_name': 'docker_image_name', 'user_defined_tags': ['user_defined_tags',
-            'user_defined_tags'], 'local_networks': ['local_networks', 'local_networks'], 'cloud_region': 'cloud_region',
-            'kubernetes_state': 'kubernetes_state', 'interface_names': ['interface_names', 'interface_names'],
-            'memory_usage': 5, 'open_files_count': 2, 'kubernetes_public_ip': 'kubernetes_public_ip', 'private_ip':
-            ['private_ip', 'private_ip'], 'docker_container_network_mode': 'docker_container_network_mode',
-            'cloud_account_id': 'cloud_account_id', 'kubernetes_type': 'kubernetes_type', 'active_secrets':
-            ['active_secrets', 'active_secrets'], 'resource_group': 'resource_group', 'docker_image_tag':
-            'docker_image_tag', 'active_malwares': ['active_malwares', 'active_malwares'], 'kubernetes_labels':
-            'kubernetes_labels', 'docker_container_ips': ['docker_container_ips', 'docker_container_ips'],
-            'docker_image_id': 'docker_image_id', 'timestamp': 'timestamp', 'interface_ips': ['interface_ips',
-            'interface_ips'], 'is_deepfence_system': True, 'availability_zone': 'availability_zone', 'is_console_vm': True,
-            'os': 'os', 'local_cidr': ['local_cidr', 'local_cidr'], 'node_name': 'node_name', 'threads': 3,
-            'cloud_provider': 'cloud_provider', 'docker_container_command': 'docker_container_command', 'agent_running':
-            True, 'uptime': 2, 'memory_max': 5, 'docker_image_created_at': 'docker_image_created_at', 'kernel_version':
-            'kernel_version', 'docker_container_state_human': 'docker_container_state_human', 'docker_image_virtual_size':
-            'docker_image_virtual_size', 'kubernetes_ingress_ip': ['kubernetes_ingress_ip', 'kubernetes_ingress_ip'],
-            'host_name': 'host_name', 'node_id': 'node_id'}.
-        type (Union[Unset, str]):
+        metadata (Union[Unset, ReportMetadata]):
+        type_ (Union[Unset, str]):
     """
 
-    adjacency: Union[Unset, List[str]] = UNSET
+    adjacency: Union[Unset, list[str]] = UNSET
     id: Union[Unset, str] = UNSET
-    ids: Union[Unset, List[str]] = UNSET
+    ids: Union[Unset, list[str]] = UNSET
     immediate_parent_id: Union[Unset, str] = UNSET
     label: Union[Unset, str] = UNSET
     metadata: Union[Unset, "ReportMetadata"] = UNSET
-    type: Union[Unset, str] = UNSET
-    additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
+    type_: Union[Unset, str] = UNSET
+    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
-    def to_dict(self) -> Dict[str, Any]:
-        adjacency: Union[Unset, List[str]] = UNSET
+    def to_dict(self) -> dict[str, Any]:
+        adjacency: Union[Unset, list[str]] = UNSET
         if not isinstance(self.adjacency, Unset):
             adjacency = self.adjacency
 
         id = self.id
 
-        ids: Union[Unset, List[str]] = UNSET
+        ids: Union[Unset, list[str]] = UNSET
         if not isinstance(self.ids, Unset):
             ids = self.ids
 
@@ -111,13 +50,13 @@ class DetailedNodeSummary:
 
         label = self.label
 
-        metadata: Union[Unset, Dict[str, Any]] = UNSET
+        metadata: Union[Unset, dict[str, Any]] = UNSET
         if not isinstance(self.metadata, Unset):
             metadata = self.metadata.to_dict()
 
-        type = self.type
+        type_ = self.type_
 
-        field_dict: Dict[str, Any] = {}
+        field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
         if adjacency is not UNSET:
@@ -132,21 +71,21 @@ class DetailedNodeSummary:
             field_dict["label"] = label
         if metadata is not UNSET:
             field_dict["metadata"] = metadata
-        if type is not UNSET:
-            field_dict["type"] = type
+        if type_ is not UNSET:
+            field_dict["type"] = type_
 
         return field_dict
 
     @classmethod
-    def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.report_metadata import ReportMetadata
 
-        d = src_dict.copy()
-        adjacency = cast(List[str], d.pop("adjacency", UNSET))
+        d = dict(src_dict)
+        adjacency = cast(list[str], d.pop("adjacency", UNSET))
 
         id = d.pop("id", UNSET)
 
-        ids = cast(List[str], d.pop("ids", UNSET))
+        ids = cast(list[str], d.pop("ids", UNSET))
 
         immediate_parent_id = d.pop("immediate_parent_id", UNSET)
 
@@ -159,7 +98,7 @@ class DetailedNodeSummary:
         else:
             metadata = ReportMetadata.from_dict(_metadata)
 
-        type = d.pop("type", UNSET)
+        type_ = d.pop("type", UNSET)
 
         detailed_node_summary = cls(
             adjacency=adjacency,
@@ -168,14 +107,14 @@ class DetailedNodeSummary:
             immediate_parent_id=immediate_parent_id,
             label=label,
             metadata=metadata,
-            type=type,
+            type_=type_,
         )
 
         detailed_node_summary.additional_properties = d
         return detailed_node_summary
 
     @property
-    def additional_keys(self) -> List[str]:
+    def additional_keys(self) -> list[str]:
         return list(self.additional_properties.keys())
 
     def __getitem__(self, key: str) -> Any:

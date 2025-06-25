@@ -1,4 +1,5 @@
-from typing import Any, Dict, List, Type, TypeVar, Union, cast
+from collections.abc import Mapping
+from typing import Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -9,25 +10,22 @@ T = TypeVar("T", bound="ModelGetAgentConfigReq")
 @_attrs_define
 class ModelGetAgentConfigReq:
     """
-    Example:
-        {'config_ids': ['config_ids', 'config_ids']}
-
     Attributes:
-        config_ids (Union[List[str], None]):
+        config_ids (Union[None, list[str]]):
     """
 
-    config_ids: Union[List[str], None]
-    additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
+    config_ids: Union[None, list[str]]
+    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
-    def to_dict(self) -> Dict[str, Any]:
-        config_ids: Union[List[str], None]
+    def to_dict(self) -> dict[str, Any]:
+        config_ids: Union[None, list[str]]
         if isinstance(self.config_ids, list):
             config_ids = self.config_ids
 
         else:
             config_ids = self.config_ids
 
-        field_dict: Dict[str, Any] = {}
+        field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
@@ -38,21 +36,21 @@ class ModelGetAgentConfigReq:
         return field_dict
 
     @classmethod
-    def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
-        d = src_dict.copy()
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        d = dict(src_dict)
 
-        def _parse_config_ids(data: object) -> Union[List[str], None]:
+        def _parse_config_ids(data: object) -> Union[None, list[str]]:
             if data is None:
                 return data
             try:
                 if not isinstance(data, list):
                     raise TypeError()
-                config_ids_type_0 = cast(List[str], data)
+                config_ids_type_0 = cast(list[str], data)
 
                 return config_ids_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[List[str], None], data)
+            return cast(Union[None, list[str]], data)
 
         config_ids = _parse_config_ids(d.pop("config_ids"))
 
@@ -64,7 +62,7 @@ class ModelGetAgentConfigReq:
         return model_get_agent_config_req
 
     @property
-    def additional_keys(self) -> List[str]:
+    def additional_keys(self) -> list[str]:
         return list(self.additional_properties.keys())
 
     def __getitem__(self, key: str) -> Any:

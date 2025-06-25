@@ -1,4 +1,5 @@
-from typing import TYPE_CHECKING, Any, Dict, List, Type, TypeVar, Union, cast
+from collections.abc import Mapping
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -13,21 +14,17 @@ T = TypeVar("T", bound="DiagnosisGenerateCloudScannerDiagnosticLogsRequest")
 @_attrs_define
 class DiagnosisGenerateCloudScannerDiagnosticLogsRequest:
     """
-    Example:
-        {'tail': 0, 'node_ids': [{'node_type': 'host', 'node_id': 'node_id'}, {'node_type': 'host', 'node_id':
-            'node_id'}]}
-
     Attributes:
-        node_ids (Union[List['DiagnosisNodeIdentifier'], None]):
+        node_ids (Union[None, list['DiagnosisNodeIdentifier']]):
         tail (int):
     """
 
-    node_ids: Union[List["DiagnosisNodeIdentifier"], None]
+    node_ids: Union[None, list["DiagnosisNodeIdentifier"]]
     tail: int
-    additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
+    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
-    def to_dict(self) -> Dict[str, Any]:
-        node_ids: Union[List[Dict[str, Any]], None]
+    def to_dict(self) -> dict[str, Any]:
+        node_ids: Union[None, list[dict[str, Any]]]
         if isinstance(self.node_ids, list):
             node_ids = []
             for node_ids_type_0_item_data in self.node_ids:
@@ -39,7 +36,7 @@ class DiagnosisGenerateCloudScannerDiagnosticLogsRequest:
 
         tail = self.tail
 
-        field_dict: Dict[str, Any] = {}
+        field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
@@ -51,12 +48,12 @@ class DiagnosisGenerateCloudScannerDiagnosticLogsRequest:
         return field_dict
 
     @classmethod
-    def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.diagnosis_node_identifier import DiagnosisNodeIdentifier
 
-        d = src_dict.copy()
+        d = dict(src_dict)
 
-        def _parse_node_ids(data: object) -> Union[List["DiagnosisNodeIdentifier"], None]:
+        def _parse_node_ids(data: object) -> Union[None, list["DiagnosisNodeIdentifier"]]:
             if data is None:
                 return data
             try:
@@ -72,7 +69,7 @@ class DiagnosisGenerateCloudScannerDiagnosticLogsRequest:
                 return node_ids_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[List["DiagnosisNodeIdentifier"], None], data)
+            return cast(Union[None, list["DiagnosisNodeIdentifier"]], data)
 
         node_ids = _parse_node_ids(d.pop("node_ids"))
 
@@ -87,7 +84,7 @@ class DiagnosisGenerateCloudScannerDiagnosticLogsRequest:
         return diagnosis_generate_cloud_scanner_diagnostic_logs_request
 
     @property
-    def additional_keys(self) -> List[str]:
+    def additional_keys(self) -> list[str]:
         return list(self.additional_properties.keys())
 
     def __getitem__(self, key: str) -> Any:

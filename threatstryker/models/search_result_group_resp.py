@@ -1,4 +1,5 @@
-from typing import TYPE_CHECKING, Any, Dict, List, Type, TypeVar, Union, cast
+from collections.abc import Mapping
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -15,19 +16,15 @@ T = TypeVar("T", bound="SearchResultGroupResp")
 @_attrs_define
 class SearchResultGroupResp:
     """
-    Example:
-        {'groups': [{'severity': 'severity', 'count': 0, 'name': 'name'}, {'severity': 'severity', 'count': 0, 'name':
-            'name'}]}
-
     Attributes:
-        groups (Union[List['SearchResultGroup'], None, Unset]):
+        groups (Union[None, Unset, list['SearchResultGroup']]):
     """
 
-    groups: Union[List["SearchResultGroup"], None, Unset] = UNSET
-    additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
+    groups: Union[None, Unset, list["SearchResultGroup"]] = UNSET
+    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
-    def to_dict(self) -> Dict[str, Any]:
-        groups: Union[List[Dict[str, Any]], None, Unset]
+    def to_dict(self) -> dict[str, Any]:
+        groups: Union[None, Unset, list[dict[str, Any]]]
         if isinstance(self.groups, Unset):
             groups = UNSET
         elif isinstance(self.groups, list):
@@ -39,7 +36,7 @@ class SearchResultGroupResp:
         else:
             groups = self.groups
 
-        field_dict: Dict[str, Any] = {}
+        field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
         if groups is not UNSET:
@@ -48,12 +45,12 @@ class SearchResultGroupResp:
         return field_dict
 
     @classmethod
-    def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.search_result_group import SearchResultGroup
 
-        d = src_dict.copy()
+        d = dict(src_dict)
 
-        def _parse_groups(data: object) -> Union[List["SearchResultGroup"], None, Unset]:
+        def _parse_groups(data: object) -> Union[None, Unset, list["SearchResultGroup"]]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -71,7 +68,7 @@ class SearchResultGroupResp:
                 return groups_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[List["SearchResultGroup"], None, Unset], data)
+            return cast(Union[None, Unset, list["SearchResultGroup"]], data)
 
         groups = _parse_groups(d.pop("groups", UNSET))
 
@@ -83,7 +80,7 @@ class SearchResultGroupResp:
         return search_result_group_resp
 
     @property
-    def additional_keys(self) -> List[str]:
+    def additional_keys(self) -> list[str]:
         return list(self.additional_properties.keys())
 
     def __getitem__(self, key: str) -> Any:

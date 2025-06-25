@@ -1,4 +1,5 @@
-from typing import TYPE_CHECKING, Any, Dict, List, Type, TypeVar, Union
+from collections.abc import Mapping
+from typing import TYPE_CHECKING, Any, TypeVar, Union
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -16,17 +17,12 @@ T = TypeVar("T", bound="ControlsNetworkPolicy")
 @_attrs_define
 class ControlsNetworkPolicy:
     """
-    Example:
-        {'policy_id': 'policy_id', 'updated_at': 5, 'count_limit': 0, 'action': 'block', 'duration_count_limit_sec': 6,
-            'matcher': {'fields_matcher': {'key': ['fields_matcher', 'fields_matcher']}}, 'uuid': 'uuid', 'duration_sec': 1}
-
     Attributes:
         action (ControlsNetworkPolicyAction):
         count_limit (int):
         duration_count_limit_sec (int):
         duration_sec (int):
-        matcher (ControlsPolicyAlertMatcher):  Example: {'fields_matcher': {'key': ['fields_matcher',
-            'fields_matcher']}}.
+        matcher (ControlsPolicyAlertMatcher):
         policy_id (str):
         updated_at (int):
         uuid (Union[Unset, str]):
@@ -40,9 +36,9 @@ class ControlsNetworkPolicy:
     policy_id: str
     updated_at: int
     uuid: Union[Unset, str] = UNSET
-    additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
+    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
-    def to_dict(self) -> Dict[str, Any]:
+    def to_dict(self) -> dict[str, Any]:
         action = self.action.value
 
         count_limit = self.count_limit
@@ -59,7 +55,7 @@ class ControlsNetworkPolicy:
 
         uuid = self.uuid
 
-        field_dict: Dict[str, Any] = {}
+        field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
@@ -78,10 +74,10 @@ class ControlsNetworkPolicy:
         return field_dict
 
     @classmethod
-    def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.controls_policy_alert_matcher import ControlsPolicyAlertMatcher
 
-        d = src_dict.copy()
+        d = dict(src_dict)
         action = ControlsNetworkPolicyAction(d.pop("action"))
 
         count_limit = d.pop("count_limit")
@@ -113,7 +109,7 @@ class ControlsNetworkPolicy:
         return controls_network_policy
 
     @property
-    def additional_keys(self) -> List[str]:
+    def additional_keys(self) -> list[str]:
         return list(self.additional_properties.keys())
 
     def __getitem__(self, key: str) -> Any:

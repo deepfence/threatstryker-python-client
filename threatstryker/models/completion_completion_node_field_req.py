@@ -1,4 +1,5 @@
-from typing import TYPE_CHECKING, Any, Dict, List, Type, TypeVar, Union
+from collections.abc import Mapping
+from typing import TYPE_CHECKING, Any, TypeVar, Union
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -16,26 +17,12 @@ T = TypeVar("T", bound="CompletionCompletionNodeFieldReq")
 @_attrs_define
 class CompletionCompletionNodeFieldReq:
     """
-    Example:
-        {'completion': 'completion', 'filters': {'compare_filter': [{'greater_than': True, 'field_value': '',
-            'field_name': 'field_name'}, {'greater_than': True, 'field_value': '', 'field_name': 'field_name'}],
-            'not_contains_filter': {'filter_in': {'key': ['', '']}}, 'order_filter': {'order_fields': [{'size': 0,
-            'descending': True, 'field_name': 'field_name'}, {'size': 0, 'descending': True, 'field_name': 'field_name'}]},
-            'contains_filter': {'filter_in': {'key': ['', '']}}, 'contains_in_array_filter': {'filter_in': {'key': ['',
-            '']}}, 'match_filter': {'filter_in': {'key': ['', '']}}, 'match_in_array_filter': {'filter_in': {'key': ['',
-            '']}}}, 'scan_id': 'scan_id', 'window': {'offset': 0, 'size': 6}, 'field_name': 'field_name'}
-
     Attributes:
         completion (str):
         field_name (str):
-        window (ModelFetchWindow):  Example: {'offset': 0, 'size': 6}.
-        filters (Union[Unset, ReportersFieldsFilters]):  Example: {'compare_filter': [{'greater_than': True,
-            'field_value': '', 'field_name': 'field_name'}, {'greater_than': True, 'field_value': '', 'field_name':
-            'field_name'}], 'not_contains_filter': {'filter_in': {'key': ['', '']}}, 'order_filter': {'order_fields':
-            [{'size': 0, 'descending': True, 'field_name': 'field_name'}, {'size': 0, 'descending': True, 'field_name':
-            'field_name'}]}, 'contains_filter': {'filter_in': {'key': ['', '']}}, 'contains_in_array_filter': {'filter_in':
-            {'key': ['', '']}}, 'match_filter': {'filter_in': {'key': ['', '']}}, 'match_in_array_filter': {'filter_in':
-            {'key': ['', '']}}}.
+        window (ModelFetchWindow):
+        filters (Union[Unset, ReportersFieldsFilters]):
+        is_array_field (Union[Unset, bool]):
         scan_id (Union[Unset, str]):
     """
 
@@ -43,23 +30,26 @@ class CompletionCompletionNodeFieldReq:
     field_name: str
     window: "ModelFetchWindow"
     filters: Union[Unset, "ReportersFieldsFilters"] = UNSET
+    is_array_field: Union[Unset, bool] = UNSET
     scan_id: Union[Unset, str] = UNSET
-    additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
+    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
-    def to_dict(self) -> Dict[str, Any]:
+    def to_dict(self) -> dict[str, Any]:
         completion = self.completion
 
         field_name = self.field_name
 
         window = self.window.to_dict()
 
-        filters: Union[Unset, Dict[str, Any]] = UNSET
+        filters: Union[Unset, dict[str, Any]] = UNSET
         if not isinstance(self.filters, Unset):
             filters = self.filters.to_dict()
 
+        is_array_field = self.is_array_field
+
         scan_id = self.scan_id
 
-        field_dict: Dict[str, Any] = {}
+        field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
@@ -70,17 +60,19 @@ class CompletionCompletionNodeFieldReq:
         )
         if filters is not UNSET:
             field_dict["filters"] = filters
+        if is_array_field is not UNSET:
+            field_dict["is_array_field"] = is_array_field
         if scan_id is not UNSET:
             field_dict["scan_id"] = scan_id
 
         return field_dict
 
     @classmethod
-    def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.model_fetch_window import ModelFetchWindow
         from ..models.reporters_fields_filters import ReportersFieldsFilters
 
-        d = src_dict.copy()
+        d = dict(src_dict)
         completion = d.pop("completion")
 
         field_name = d.pop("field_name")
@@ -94,6 +86,8 @@ class CompletionCompletionNodeFieldReq:
         else:
             filters = ReportersFieldsFilters.from_dict(_filters)
 
+        is_array_field = d.pop("is_array_field", UNSET)
+
         scan_id = d.pop("scan_id", UNSET)
 
         completion_completion_node_field_req = cls(
@@ -101,6 +95,7 @@ class CompletionCompletionNodeFieldReq:
             field_name=field_name,
             window=window,
             filters=filters,
+            is_array_field=is_array_field,
             scan_id=scan_id,
         )
 
@@ -108,7 +103,7 @@ class CompletionCompletionNodeFieldReq:
         return completion_completion_node_field_req
 
     @property
-    def additional_keys(self) -> List[str]:
+    def additional_keys(self) -> list[str]:
         return list(self.additional_properties.keys())
 
     def __getitem__(self, key: str) -> Any:

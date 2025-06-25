@@ -1,4 +1,5 @@
-from typing import TYPE_CHECKING, Any, Dict, List, Type, TypeVar
+from collections.abc import Mapping
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -16,16 +17,11 @@ T = TypeVar("T", bound="ControlsRuncPolicy")
 @_attrs_define
 class ControlsRuncPolicy:
     """
-    Example:
-        {'node_type': 'container', 'policy_id': 'policy_id', 'updated_at': 1, 'count_limit': 0, 'action': 'restart',
-            'duration_count_limit_sec': 6, 'matcher': {'fields_matcher': {'key': ['fields_matcher', 'fields_matcher']}}}
-
     Attributes:
         action (ControlsRuncPolicyAction):
         count_limit (int):
         duration_count_limit_sec (int):
-        matcher (ControlsPolicyAlertMatcher):  Example: {'fields_matcher': {'key': ['fields_matcher',
-            'fields_matcher']}}.
+        matcher (ControlsPolicyAlertMatcher):
         node_type (ControlsRuncPolicyNodeType):
         policy_id (str):
         updated_at (int):
@@ -38,9 +34,9 @@ class ControlsRuncPolicy:
     node_type: ControlsRuncPolicyNodeType
     policy_id: str
     updated_at: int
-    additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
+    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
-    def to_dict(self) -> Dict[str, Any]:
+    def to_dict(self) -> dict[str, Any]:
         action = self.action.value
 
         count_limit = self.count_limit
@@ -55,7 +51,7 @@ class ControlsRuncPolicy:
 
         updated_at = self.updated_at
 
-        field_dict: Dict[str, Any] = {}
+        field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
@@ -72,10 +68,10 @@ class ControlsRuncPolicy:
         return field_dict
 
     @classmethod
-    def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.controls_policy_alert_matcher import ControlsPolicyAlertMatcher
 
-        d = src_dict.copy()
+        d = dict(src_dict)
         action = ControlsRuncPolicyAction(d.pop("action"))
 
         count_limit = d.pop("count_limit")
@@ -104,7 +100,7 @@ class ControlsRuncPolicy:
         return controls_runc_policy
 
     @property
-    def additional_keys(self) -> List[str]:
+    def additional_keys(self) -> list[str]:
         return list(self.additional_properties.keys())
 
     def __getitem__(self, key: str) -> Any:

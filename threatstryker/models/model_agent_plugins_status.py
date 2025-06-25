@@ -1,4 +1,5 @@
-from typing import TYPE_CHECKING, Any, Dict, List, Type, TypeVar
+from collections.abc import Mapping
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -13,20 +14,13 @@ T = TypeVar("T", bound="ModelAgentPluginsStatus")
 @_attrs_define
 class ModelAgentPluginsStatus:
     """
-    Example:
-        {'network_tracer_status': {'description': 'description', 'status': 'status'}, 'network_filter_status':
-            {'description': 'description', 'status': 'status'}, 'cloud_network_tracer_status': {'description':
-            'description', 'status': 'status'}, 'filesystem_tracer_status': {'description': 'description', 'status':
-            'status'}, 'process_tracer_status': {'description': 'description', 'status': 'status'},
-            'agent_installer_tracer_status': {'description': 'description', 'status': 'status'}}
-
     Attributes:
-        agent_installer_tracer_status (ModelPluginStatus):  Example: {'description': 'description', 'status': 'status'}.
-        cloud_network_tracer_status (ModelPluginStatus):  Example: {'description': 'description', 'status': 'status'}.
-        filesystem_tracer_status (ModelPluginStatus):  Example: {'description': 'description', 'status': 'status'}.
-        network_filter_status (ModelPluginStatus):  Example: {'description': 'description', 'status': 'status'}.
-        network_tracer_status (ModelPluginStatus):  Example: {'description': 'description', 'status': 'status'}.
-        process_tracer_status (ModelPluginStatus):  Example: {'description': 'description', 'status': 'status'}.
+        agent_installer_tracer_status (ModelPluginStatus):
+        cloud_network_tracer_status (ModelPluginStatus):
+        filesystem_tracer_status (ModelPluginStatus):
+        network_filter_status (ModelPluginStatus):
+        network_tracer_status (ModelPluginStatus):
+        process_tracer_status (ModelPluginStatus):
     """
 
     agent_installer_tracer_status: "ModelPluginStatus"
@@ -35,9 +29,9 @@ class ModelAgentPluginsStatus:
     network_filter_status: "ModelPluginStatus"
     network_tracer_status: "ModelPluginStatus"
     process_tracer_status: "ModelPluginStatus"
-    additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
+    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
-    def to_dict(self) -> Dict[str, Any]:
+    def to_dict(self) -> dict[str, Any]:
         agent_installer_tracer_status = self.agent_installer_tracer_status.to_dict()
 
         cloud_network_tracer_status = self.cloud_network_tracer_status.to_dict()
@@ -50,7 +44,7 @@ class ModelAgentPluginsStatus:
 
         process_tracer_status = self.process_tracer_status.to_dict()
 
-        field_dict: Dict[str, Any] = {}
+        field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
@@ -66,10 +60,10 @@ class ModelAgentPluginsStatus:
         return field_dict
 
     @classmethod
-    def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.model_plugin_status import ModelPluginStatus
 
-        d = src_dict.copy()
+        d = dict(src_dict)
         agent_installer_tracer_status = ModelPluginStatus.from_dict(d.pop("agent_installer_tracer_status"))
 
         cloud_network_tracer_status = ModelPluginStatus.from_dict(d.pop("cloud_network_tracer_status"))
@@ -95,7 +89,7 @@ class ModelAgentPluginsStatus:
         return model_agent_plugins_status
 
     @property
-    def additional_keys(self) -> List[str]:
+    def additional_keys(self) -> list[str]:
         return list(self.additional_properties.keys())
 
     def __getitem__(self, key: str) -> Any:

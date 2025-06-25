@@ -1,4 +1,5 @@
-from typing import Any, Dict, List, Type, TypeVar
+from collections.abc import Mapping
+from typing import Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -12,13 +13,6 @@ T = TypeVar("T", bound="ModelCloudResource")
 @_attrs_define
 class ModelCloudResource:
     """
-    Example:
-        {'cloud_compliances_count': 0, 'account_id': 'account_id', 'cloud_compliance_latest_scan_id':
-            'cloud_compliance_latest_scan_id', 'node_type': 'node_type', 'cloud_compliance_scan_status':
-            'cloud_compliance_scan_status', 'cloud_region': 'cloud_region', 'agent_install_availability': 'available',
-            'node_name': 'node_name', 'cloud_provider': 'aws', 'type_label': 'type_label', 'cloud_warn_alarm_count': 6,
-            'node_id': 'node_id'}
-
     Attributes:
         account_id (str):
         agent_install_availability (ModelCloudResourceAgentInstallAvailability):
@@ -46,9 +40,9 @@ class ModelCloudResource:
     node_name: str
     node_type: str
     type_label: str
-    additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
+    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
-    def to_dict(self) -> Dict[str, Any]:
+    def to_dict(self) -> dict[str, Any]:
         account_id = self.account_id
 
         agent_install_availability = self.agent_install_availability.value
@@ -73,7 +67,7 @@ class ModelCloudResource:
 
         type_label = self.type_label
 
-        field_dict: Dict[str, Any] = {}
+        field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
@@ -95,8 +89,8 @@ class ModelCloudResource:
         return field_dict
 
     @classmethod
-    def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
-        d = src_dict.copy()
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        d = dict(src_dict)
         account_id = d.pop("account_id")
 
         agent_install_availability = ModelCloudResourceAgentInstallAvailability(d.pop("agent_install_availability"))
@@ -140,7 +134,7 @@ class ModelCloudResource:
         return model_cloud_resource
 
     @property
-    def additional_keys(self) -> List[str]:
+    def additional_keys(self) -> list[str]:
         return list(self.additional_properties.keys())
 
     def __getitem__(self, key: str) -> Any:

@@ -1,4 +1,5 @@
-from typing import TYPE_CHECKING, Any, Dict, List, Type, TypeVar, Union, cast
+from collections.abc import Mapping
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -16,67 +17,14 @@ T = TypeVar("T", bound="ModelContainerImage")
 @_attrs_define
 class ModelContainerImage:
     """
-    Example:
-        {'is_deepfence_system': True, 'metadata': {'key': ''}, 'secret_scan_status': 'secret_scan_status',
-            'vulnerabilities_count': 4, 'secrets_count': 1, 'malware_latest_scan_id': 'malware_latest_scan_id',
-            'malwares_count': 7, 'node_name': 'node_name', 'secret_latest_scan_id': 'secret_latest_scan_id',
-            'vulnerability_latest_scan_id': 'vulnerability_latest_scan_id', 'docker_image_created_at':
-            'docker_image_created_at', 'docker_image_tag': 'docker_image_tag', 'malware_scan_status': 'malware_scan_status',
-            'docker_image_size': 'docker_image_size', 'image_node_id': 'image_node_id', 'docker_image_virtual_size':
-            'docker_image_virtual_size', 'containers': [{'vulnerabilities_count': 6, 'secrets_count': 1,
-            'kubernetes_cluster_name': 'kubernetes_cluster_name', 'docker_container_state': 'docker_container_state',
-            'cpu_max': 0.8008281904610115, 'memory_usage': 5, 'secret_latest_scan_id': 'secret_latest_scan_id',
-            'docker_container_network_mode': 'docker_container_network_mode', 'vulnerability_latest_scan_id':
-            'vulnerability_latest_scan_id', 'kubernetes_namespace': 'kubernetes_namespace', 'malware_scan_status':
-            'malware_scan_status', 'docker_container_ips': ['', ''], 'docker_labels': {'key': ''}, 'is_deepfence_system':
-            True, 'image': None, 'processes': [{'cpu_max': 2.3021358869347655, 'node_name': 'node_name', 'memory_usage': 3,
-            'open_files_count': 2, 'threads': 1, 'pid': 4, 'ppid': 7, 'memory_max': 9, 'active_secrets': ['active_secrets',
-            'active_secrets'], 'cmdline': 'cmdline', 'active_cves': ['active_cves', 'active_cves'], 'active_malwares':
-            ['active_malwares', 'active_malwares'], 'short_name': 'short_name', 'cpu_usage': 7.061401241503109, 'node_id':
-            'node_id'}, {'cpu_max': 2.3021358869347655, 'node_name': 'node_name', 'memory_usage': 3, 'open_files_count': 2,
-            'threads': 1, 'pid': 4, 'ppid': 7, 'memory_max': 9, 'active_secrets': ['active_secrets', 'active_secrets'],
-            'cmdline': 'cmdline', 'active_cves': ['active_cves', 'active_cves'], 'active_malwares': ['active_malwares',
-            'active_malwares'], 'short_name': 'short_name', 'cpu_usage': 7.061401241503109, 'node_id': 'node_id'}],
-            'secret_scan_status': 'secret_scan_status', 'docker_container_name': 'docker_container_name',
-            'docker_container_created': 'docker_container_created', 'malware_latest_scan_id': 'malware_latest_scan_id',
-            'kubernetes_cluster_id': 'kubernetes_cluster_id', 'malwares_count': 1, 'node_name': 'node_name',
-            'docker_container_networks': 'docker_container_networks', 'docker_container_command':
-            'docker_container_command', 'uptime': 1, 'memory_max': 5, 'docker_container_ports': 'docker_container_ports',
-            'docker_container_state_human': 'docker_container_state_human', 'cpu_usage': 6.027456183070403,
-            'vulnerability_scan_status': 'vulnerability_scan_status', 'host_name': 'host_name', 'node_id': 'node_id'},
-            {'vulnerabilities_count': 6, 'secrets_count': 1, 'kubernetes_cluster_name': 'kubernetes_cluster_name',
-            'docker_container_state': 'docker_container_state', 'cpu_max': 0.8008281904610115, 'memory_usage': 5,
-            'secret_latest_scan_id': 'secret_latest_scan_id', 'docker_container_network_mode':
-            'docker_container_network_mode', 'vulnerability_latest_scan_id': 'vulnerability_latest_scan_id',
-            'kubernetes_namespace': 'kubernetes_namespace', 'malware_scan_status': 'malware_scan_status',
-            'docker_container_ips': ['', ''], 'docker_labels': {'key': ''}, 'is_deepfence_system': True, 'image': None,
-            'processes': [{'cpu_max': 2.3021358869347655, 'node_name': 'node_name', 'memory_usage': 3, 'open_files_count':
-            2, 'threads': 1, 'pid': 4, 'ppid': 7, 'memory_max': 9, 'active_secrets': ['active_secrets', 'active_secrets'],
-            'cmdline': 'cmdline', 'active_cves': ['active_cves', 'active_cves'], 'active_malwares': ['active_malwares',
-            'active_malwares'], 'short_name': 'short_name', 'cpu_usage': 7.061401241503109, 'node_id': 'node_id'},
-            {'cpu_max': 2.3021358869347655, 'node_name': 'node_name', 'memory_usage': 3, 'open_files_count': 2, 'threads':
-            1, 'pid': 4, 'ppid': 7, 'memory_max': 9, 'active_secrets': ['active_secrets', 'active_secrets'], 'cmdline':
-            'cmdline', 'active_cves': ['active_cves', 'active_cves'], 'active_malwares': ['active_malwares',
-            'active_malwares'], 'short_name': 'short_name', 'cpu_usage': 7.061401241503109, 'node_id': 'node_id'}],
-            'secret_scan_status': 'secret_scan_status', 'docker_container_name': 'docker_container_name',
-            'docker_container_created': 'docker_container_created', 'malware_latest_scan_id': 'malware_latest_scan_id',
-            'kubernetes_cluster_id': 'kubernetes_cluster_id', 'malwares_count': 1, 'node_name': 'node_name',
-            'docker_container_networks': 'docker_container_networks', 'docker_container_command':
-            'docker_container_command', 'uptime': 1, 'memory_max': 5, 'docker_container_ports': 'docker_container_ports',
-            'docker_container_state_human': 'docker_container_state_human', 'cpu_usage': 6.027456183070403,
-            'vulnerability_scan_status': 'vulnerability_scan_status', 'host_name': 'host_name', 'node_id': 'node_id'}],
-            'docker_image_id': 'docker_image_id', 'vulnerability_scan_status': 'vulnerability_scan_status',
-            'docker_image_name': 'docker_image_name', 'docker_image_tag_list': ['docker_image_tag_list',
-            'docker_image_tag_list'], 'node_id': 'node_id'}
-
     Attributes:
-        containers (Union[List['ModelContainer'], None]):
+        containers (Union[None, list['ModelContainer']]):
         docker_image_created_at (str):
         docker_image_id (str):
         docker_image_name (str):
         docker_image_size (str):
         docker_image_tag (str):
-        docker_image_tag_list (Union[List[str], None]):
+        docker_image_tag_list (Union[None, list[str]]):
         docker_image_virtual_size (str):
         image_node_id (str):
         is_deepfence_system (bool):
@@ -88,19 +36,20 @@ class ModelContainerImage:
         secret_latest_scan_id (str):
         secret_scan_status (str):
         secrets_count (int):
+        tags (Union[None, list[str]]):
         vulnerabilities_count (int):
         vulnerability_latest_scan_id (str):
         vulnerability_scan_status (str):
         metadata (Union['ModelContainerImageMetadataType0', None, Unset]):
     """
 
-    containers: Union[List["ModelContainer"], None]
+    containers: Union[None, list["ModelContainer"]]
     docker_image_created_at: str
     docker_image_id: str
     docker_image_name: str
     docker_image_size: str
     docker_image_tag: str
-    docker_image_tag_list: Union[List[str], None]
+    docker_image_tag_list: Union[None, list[str]]
     docker_image_virtual_size: str
     image_node_id: str
     is_deepfence_system: bool
@@ -112,16 +61,17 @@ class ModelContainerImage:
     secret_latest_scan_id: str
     secret_scan_status: str
     secrets_count: int
+    tags: Union[None, list[str]]
     vulnerabilities_count: int
     vulnerability_latest_scan_id: str
     vulnerability_scan_status: str
     metadata: Union["ModelContainerImageMetadataType0", None, Unset] = UNSET
-    additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
+    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
-    def to_dict(self) -> Dict[str, Any]:
+    def to_dict(self) -> dict[str, Any]:
         from ..models.model_container_image_metadata_type_0 import ModelContainerImageMetadataType0
 
-        containers: Union[List[Dict[str, Any]], None]
+        containers: Union[None, list[dict[str, Any]]]
         if isinstance(self.containers, list):
             containers = []
             for containers_type_0_item_data in self.containers:
@@ -141,7 +91,7 @@ class ModelContainerImage:
 
         docker_image_tag = self.docker_image_tag
 
-        docker_image_tag_list: Union[List[str], None]
+        docker_image_tag_list: Union[None, list[str]]
         if isinstance(self.docker_image_tag_list, list):
             docker_image_tag_list = self.docker_image_tag_list
 
@@ -170,13 +120,20 @@ class ModelContainerImage:
 
         secrets_count = self.secrets_count
 
+        tags: Union[None, list[str]]
+        if isinstance(self.tags, list):
+            tags = self.tags
+
+        else:
+            tags = self.tags
+
         vulnerabilities_count = self.vulnerabilities_count
 
         vulnerability_latest_scan_id = self.vulnerability_latest_scan_id
 
         vulnerability_scan_status = self.vulnerability_scan_status
 
-        metadata: Union[Dict[str, Any], None, Unset]
+        metadata: Union[None, Unset, dict[str, Any]]
         if isinstance(self.metadata, Unset):
             metadata = UNSET
         elif isinstance(self.metadata, ModelContainerImageMetadataType0):
@@ -184,7 +141,7 @@ class ModelContainerImage:
         else:
             metadata = self.metadata
 
-        field_dict: Dict[str, Any] = {}
+        field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
@@ -206,6 +163,7 @@ class ModelContainerImage:
                 "secret_latest_scan_id": secret_latest_scan_id,
                 "secret_scan_status": secret_scan_status,
                 "secrets_count": secrets_count,
+                "tags": tags,
                 "vulnerabilities_count": vulnerabilities_count,
                 "vulnerability_latest_scan_id": vulnerability_latest_scan_id,
                 "vulnerability_scan_status": vulnerability_scan_status,
@@ -217,13 +175,13 @@ class ModelContainerImage:
         return field_dict
 
     @classmethod
-    def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.model_container import ModelContainer
         from ..models.model_container_image_metadata_type_0 import ModelContainerImageMetadataType0
 
-        d = src_dict.copy()
+        d = dict(src_dict)
 
-        def _parse_containers(data: object) -> Union[List["ModelContainer"], None]:
+        def _parse_containers(data: object) -> Union[None, list["ModelContainer"]]:
             if data is None:
                 return data
             try:
@@ -239,7 +197,7 @@ class ModelContainerImage:
                 return containers_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[List["ModelContainer"], None], data)
+            return cast(Union[None, list["ModelContainer"]], data)
 
         containers = _parse_containers(d.pop("containers"))
 
@@ -253,18 +211,18 @@ class ModelContainerImage:
 
         docker_image_tag = d.pop("docker_image_tag")
 
-        def _parse_docker_image_tag_list(data: object) -> Union[List[str], None]:
+        def _parse_docker_image_tag_list(data: object) -> Union[None, list[str]]:
             if data is None:
                 return data
             try:
                 if not isinstance(data, list):
                     raise TypeError()
-                docker_image_tag_list_type_0 = cast(List[str], data)
+                docker_image_tag_list_type_0 = cast(list[str], data)
 
                 return docker_image_tag_list_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[List[str], None], data)
+            return cast(Union[None, list[str]], data)
 
         docker_image_tag_list = _parse_docker_image_tag_list(d.pop("docker_image_tag_list"))
 
@@ -289,6 +247,21 @@ class ModelContainerImage:
         secret_scan_status = d.pop("secret_scan_status")
 
         secrets_count = d.pop("secrets_count")
+
+        def _parse_tags(data: object) -> Union[None, list[str]]:
+            if data is None:
+                return data
+            try:
+                if not isinstance(data, list):
+                    raise TypeError()
+                tags_type_0 = cast(list[str], data)
+
+                return tags_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[None, list[str]], data)
+
+        tags = _parse_tags(d.pop("tags"))
 
         vulnerabilities_count = d.pop("vulnerabilities_count")
 
@@ -332,6 +305,7 @@ class ModelContainerImage:
             secret_latest_scan_id=secret_latest_scan_id,
             secret_scan_status=secret_scan_status,
             secrets_count=secrets_count,
+            tags=tags,
             vulnerabilities_count=vulnerabilities_count,
             vulnerability_latest_scan_id=vulnerability_latest_scan_id,
             vulnerability_scan_status=vulnerability_scan_status,
@@ -342,7 +316,7 @@ class ModelContainerImage:
         return model_container_image
 
     @property
-    def additional_keys(self) -> List[str]:
+    def additional_keys(self) -> list[str]:
         return list(self.additional_properties.keys())
 
     def __getitem__(self, key: str) -> Any:

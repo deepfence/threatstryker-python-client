@@ -1,4 +1,5 @@
-from typing import Any, Dict, List, Type, TypeVar, Union, cast
+from collections.abc import Mapping
+from typing import Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -12,11 +13,6 @@ T = TypeVar("T", bound="ModelAPIEndpoint")
 @_attrs_define
 class ModelAPIEndpoint:
     """
-    Example:
-        {'host_ip': 'host_ip', 'cloud_region': 'cloud_region', 'method': 'method', 'created_at': 0, 'cloud_provider':
-            'cloud_provider', 'schema_info': 'schema_info', 'path': 'path', 'cloud_type': 'cloud_type', 'source_hosts':
-            ['source_hosts', 'source_hosts'], 'updated_at': 1, 'port': 0, 'host': 'host', 'direction': 'ingress'}
-
     Attributes:
         cloud_provider (Union[Unset, str]):
         cloud_region (Union[Unset, str]):
@@ -29,7 +25,7 @@ class ModelAPIEndpoint:
         path (Union[Unset, str]):
         port (Union[Unset, int]):
         schema_info (Union[Unset, str]):
-        source_hosts (Union[List[str], None, Unset]):
+        source_hosts (Union[None, Unset, list[str]]):
         updated_at (Union[Unset, int]):
     """
 
@@ -44,11 +40,11 @@ class ModelAPIEndpoint:
     path: Union[Unset, str] = UNSET
     port: Union[Unset, int] = UNSET
     schema_info: Union[Unset, str] = UNSET
-    source_hosts: Union[List[str], None, Unset] = UNSET
+    source_hosts: Union[None, Unset, list[str]] = UNSET
     updated_at: Union[Unset, int] = UNSET
-    additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
+    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
-    def to_dict(self) -> Dict[str, Any]:
+    def to_dict(self) -> dict[str, Any]:
         cloud_provider = self.cloud_provider
 
         cloud_region = self.cloud_region
@@ -73,7 +69,7 @@ class ModelAPIEndpoint:
 
         schema_info = self.schema_info
 
-        source_hosts: Union[List[str], None, Unset]
+        source_hosts: Union[None, Unset, list[str]]
         if isinstance(self.source_hosts, Unset):
             source_hosts = UNSET
         elif isinstance(self.source_hosts, list):
@@ -84,7 +80,7 @@ class ModelAPIEndpoint:
 
         updated_at = self.updated_at
 
-        field_dict: Dict[str, Any] = {}
+        field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
         if cloud_provider is not UNSET:
@@ -117,8 +113,8 @@ class ModelAPIEndpoint:
         return field_dict
 
     @classmethod
-    def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
-        d = src_dict.copy()
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        d = dict(src_dict)
         cloud_provider = d.pop("cloud_provider", UNSET)
 
         cloud_region = d.pop("cloud_region", UNSET)
@@ -146,7 +142,7 @@ class ModelAPIEndpoint:
 
         schema_info = d.pop("schema_info", UNSET)
 
-        def _parse_source_hosts(data: object) -> Union[List[str], None, Unset]:
+        def _parse_source_hosts(data: object) -> Union[None, Unset, list[str]]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -154,12 +150,12 @@ class ModelAPIEndpoint:
             try:
                 if not isinstance(data, list):
                     raise TypeError()
-                source_hosts_type_0 = cast(List[str], data)
+                source_hosts_type_0 = cast(list[str], data)
 
                 return source_hosts_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[List[str], None, Unset], data)
+            return cast(Union[None, Unset, list[str]], data)
 
         source_hosts = _parse_source_hosts(d.pop("source_hosts", UNSET))
 
@@ -185,7 +181,7 @@ class ModelAPIEndpoint:
         return model_api_endpoint
 
     @property
-    def additional_keys(self) -> List[str]:
+    def additional_keys(self) -> list[str]:
         return list(self.additional_properties.keys())
 
     def __getitem__(self, key: str) -> Any:

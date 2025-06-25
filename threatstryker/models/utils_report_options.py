@@ -1,4 +1,5 @@
-from typing import Any, Dict, List, Type, TypeVar, Union
+from collections.abc import Mapping
+from typing import Any, TypeVar, Union
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -12,22 +13,19 @@ T = TypeVar("T", bound="UtilsReportOptions")
 @_attrs_define
 class UtilsReportOptions:
     """
-    Example:
-        {'sbom_format': 'syft-json'}
-
     Attributes:
         sbom_format (Union[Unset, UtilsReportOptionsSbomFormat]):
     """
 
     sbom_format: Union[Unset, UtilsReportOptionsSbomFormat] = UNSET
-    additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
+    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
-    def to_dict(self) -> Dict[str, Any]:
+    def to_dict(self) -> dict[str, Any]:
         sbom_format: Union[Unset, str] = UNSET
         if not isinstance(self.sbom_format, Unset):
             sbom_format = self.sbom_format.value
 
-        field_dict: Dict[str, Any] = {}
+        field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
         if sbom_format is not UNSET:
@@ -36,8 +34,8 @@ class UtilsReportOptions:
         return field_dict
 
     @classmethod
-    def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
-        d = src_dict.copy()
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        d = dict(src_dict)
         _sbom_format = d.pop("sbom_format", UNSET)
         sbom_format: Union[Unset, UtilsReportOptionsSbomFormat]
         if isinstance(_sbom_format, Unset):
@@ -53,7 +51,7 @@ class UtilsReportOptions:
         return utils_report_options
 
     @property
-    def additional_keys(self) -> List[str]:
+    def additional_keys(self) -> list[str]:
         return list(self.additional_properties.keys())
 
     def __getitem__(self, key: str) -> Any:

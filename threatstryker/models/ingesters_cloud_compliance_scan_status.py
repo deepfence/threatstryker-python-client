@@ -1,5 +1,6 @@
 import datetime
-from typing import TYPE_CHECKING, Any, Dict, List, Type, TypeVar, Union, cast
+from collections.abc import Mapping
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -17,41 +18,33 @@ T = TypeVar("T", bound="IngestersCloudComplianceScanStatus")
 @_attrs_define
 class IngestersCloudComplianceScanStatus:
     """
-    Example:
-        {'result': {'compliance_percentage': 6.027456183070403, 'alarm': 0, 'skip': 2, 'error': 1, 'ok': 5, 'info': 5},
-            'scan_message': 'scan_message', '@timestamp': datetime.datetime(2000, 1, 23, 4, 56, 7,
-            tzinfo=datetime.timezone(datetime.timedelta(0), '+00:00')), 'total_checks': 7, 'scan_status': 'scan_status',
-            'scan_id': 'scan_id', 'type': 'type', 'compliance_check_types': ['compliance_check_types',
-            'compliance_check_types']}
-
     Attributes:
         timestamp (Union[Unset, datetime.datetime]):
-        compliance_check_types (Union[List[str], None, Unset]):
-        result (Union[Unset, IngestersComplianceStats]):  Example: {'compliance_percentage': 6.027456183070403, 'alarm':
-            0, 'skip': 2, 'error': 1, 'ok': 5, 'info': 5}.
+        compliance_check_types (Union[None, Unset, list[str]]):
+        result (Union[Unset, IngestersComplianceStats]):
         scan_id (Union[Unset, str]):
         scan_message (Union[Unset, str]):
         scan_status (Union[Unset, str]):
         total_checks (Union[Unset, int]):
-        type (Union[Unset, str]):
+        type_ (Union[Unset, str]):
     """
 
     timestamp: Union[Unset, datetime.datetime] = UNSET
-    compliance_check_types: Union[List[str], None, Unset] = UNSET
+    compliance_check_types: Union[None, Unset, list[str]] = UNSET
     result: Union[Unset, "IngestersComplianceStats"] = UNSET
     scan_id: Union[Unset, str] = UNSET
     scan_message: Union[Unset, str] = UNSET
     scan_status: Union[Unset, str] = UNSET
     total_checks: Union[Unset, int] = UNSET
-    type: Union[Unset, str] = UNSET
-    additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
+    type_: Union[Unset, str] = UNSET
+    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
-    def to_dict(self) -> Dict[str, Any]:
+    def to_dict(self) -> dict[str, Any]:
         timestamp: Union[Unset, str] = UNSET
         if not isinstance(self.timestamp, Unset):
             timestamp = self.timestamp.isoformat()
 
-        compliance_check_types: Union[List[str], None, Unset]
+        compliance_check_types: Union[None, Unset, list[str]]
         if isinstance(self.compliance_check_types, Unset):
             compliance_check_types = UNSET
         elif isinstance(self.compliance_check_types, list):
@@ -60,7 +53,7 @@ class IngestersCloudComplianceScanStatus:
         else:
             compliance_check_types = self.compliance_check_types
 
-        result: Union[Unset, Dict[str, Any]] = UNSET
+        result: Union[Unset, dict[str, Any]] = UNSET
         if not isinstance(self.result, Unset):
             result = self.result.to_dict()
 
@@ -72,9 +65,9 @@ class IngestersCloudComplianceScanStatus:
 
         total_checks = self.total_checks
 
-        type = self.type
+        type_ = self.type_
 
-        field_dict: Dict[str, Any] = {}
+        field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
         if timestamp is not UNSET:
@@ -91,16 +84,16 @@ class IngestersCloudComplianceScanStatus:
             field_dict["scan_status"] = scan_status
         if total_checks is not UNSET:
             field_dict["total_checks"] = total_checks
-        if type is not UNSET:
-            field_dict["type"] = type
+        if type_ is not UNSET:
+            field_dict["type"] = type_
 
         return field_dict
 
     @classmethod
-    def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.ingesters_compliance_stats import IngestersComplianceStats
 
-        d = src_dict.copy()
+        d = dict(src_dict)
         _timestamp = d.pop("@timestamp", UNSET)
         timestamp: Union[Unset, datetime.datetime]
         if isinstance(_timestamp, Unset):
@@ -108,7 +101,7 @@ class IngestersCloudComplianceScanStatus:
         else:
             timestamp = isoparse(_timestamp)
 
-        def _parse_compliance_check_types(data: object) -> Union[List[str], None, Unset]:
+        def _parse_compliance_check_types(data: object) -> Union[None, Unset, list[str]]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -116,12 +109,12 @@ class IngestersCloudComplianceScanStatus:
             try:
                 if not isinstance(data, list):
                     raise TypeError()
-                compliance_check_types_type_0 = cast(List[str], data)
+                compliance_check_types_type_0 = cast(list[str], data)
 
                 return compliance_check_types_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[List[str], None, Unset], data)
+            return cast(Union[None, Unset, list[str]], data)
 
         compliance_check_types = _parse_compliance_check_types(d.pop("compliance_check_types", UNSET))
 
@@ -140,7 +133,7 @@ class IngestersCloudComplianceScanStatus:
 
         total_checks = d.pop("total_checks", UNSET)
 
-        type = d.pop("type", UNSET)
+        type_ = d.pop("type", UNSET)
 
         ingesters_cloud_compliance_scan_status = cls(
             timestamp=timestamp,
@@ -150,14 +143,14 @@ class IngestersCloudComplianceScanStatus:
             scan_message=scan_message,
             scan_status=scan_status,
             total_checks=total_checks,
-            type=type,
+            type_=type_,
         )
 
         ingesters_cloud_compliance_scan_status.additional_properties = d
         return ingesters_cloud_compliance_scan_status
 
     @property
-    def additional_keys(self) -> List[str]:
+    def additional_keys(self) -> list[str]:
         return list(self.additional_properties.keys())
 
     def __getitem__(self, key: str) -> Any:

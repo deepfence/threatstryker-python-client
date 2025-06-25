@@ -1,4 +1,5 @@
-from typing import Any, Dict, List, Type, TypeVar, Union, cast
+from collections.abc import Mapping
+from typing import Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -9,26 +10,22 @@ T = TypeVar("T", bound="ModelTopologyDeltaReq")
 @_attrs_define
 class ModelTopologyDeltaReq:
     """
-    Example:
-        {'deletion': True, 'entity_types': ['entity_types', 'entity_types'], 'deletion_timestamp': 6,
-            'addition_timestamp': 0, 'addition': True}
-
     Attributes:
         addition (bool):
         addition_timestamp (int):
         deletion (bool):
         deletion_timestamp (int):
-        entity_types (Union[List[str], None]):
+        entity_types (Union[None, list[str]]):
     """
 
     addition: bool
     addition_timestamp: int
     deletion: bool
     deletion_timestamp: int
-    entity_types: Union[List[str], None]
-    additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
+    entity_types: Union[None, list[str]]
+    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
-    def to_dict(self) -> Dict[str, Any]:
+    def to_dict(self) -> dict[str, Any]:
         addition = self.addition
 
         addition_timestamp = self.addition_timestamp
@@ -37,14 +34,14 @@ class ModelTopologyDeltaReq:
 
         deletion_timestamp = self.deletion_timestamp
 
-        entity_types: Union[List[str], None]
+        entity_types: Union[None, list[str]]
         if isinstance(self.entity_types, list):
             entity_types = self.entity_types
 
         else:
             entity_types = self.entity_types
 
-        field_dict: Dict[str, Any] = {}
+        field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
@@ -59,8 +56,8 @@ class ModelTopologyDeltaReq:
         return field_dict
 
     @classmethod
-    def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
-        d = src_dict.copy()
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        d = dict(src_dict)
         addition = d.pop("addition")
 
         addition_timestamp = d.pop("addition_timestamp")
@@ -69,18 +66,18 @@ class ModelTopologyDeltaReq:
 
         deletion_timestamp = d.pop("deletion_timestamp")
 
-        def _parse_entity_types(data: object) -> Union[List[str], None]:
+        def _parse_entity_types(data: object) -> Union[None, list[str]]:
             if data is None:
                 return data
             try:
                 if not isinstance(data, list):
                     raise TypeError()
-                entity_types_type_0 = cast(List[str], data)
+                entity_types_type_0 = cast(list[str], data)
 
                 return entity_types_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[List[str], None], data)
+            return cast(Union[None, list[str]], data)
 
         entity_types = _parse_entity_types(d.pop("entity_types"))
 
@@ -96,7 +93,7 @@ class ModelTopologyDeltaReq:
         return model_topology_delta_req
 
     @property
-    def additional_keys(self) -> List[str]:
+    def additional_keys(self) -> list[str]:
         return list(self.additional_properties.keys())
 
     def __getitem__(self, key: str) -> Any:

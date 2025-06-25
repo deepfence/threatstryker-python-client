@@ -1,4 +1,5 @@
-from typing import TYPE_CHECKING, Any, Dict, List, Type, TypeVar, Union, cast
+from collections.abc import Mapping
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -16,9 +17,6 @@ T = TypeVar("T", bound="ThreatintelRulesWithDirection")
 @_attrs_define
 class ThreatintelRulesWithDirection:
     """
-    Example:
-        {'inbound': {'key': 'inbound'}, 'outbound': {'key': 'outbound'}}
-
     Attributes:
         inbound (Union['ThreatintelRulesWithDirectionInboundType0', None, Unset]):
         outbound (Union['ThreatintelRulesWithDirectionOutboundType0', None, Unset]):
@@ -26,13 +24,13 @@ class ThreatintelRulesWithDirection:
 
     inbound: Union["ThreatintelRulesWithDirectionInboundType0", None, Unset] = UNSET
     outbound: Union["ThreatintelRulesWithDirectionOutboundType0", None, Unset] = UNSET
-    additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
+    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
-    def to_dict(self) -> Dict[str, Any]:
+    def to_dict(self) -> dict[str, Any]:
         from ..models.threatintel_rules_with_direction_inbound_type_0 import ThreatintelRulesWithDirectionInboundType0
         from ..models.threatintel_rules_with_direction_outbound_type_0 import ThreatintelRulesWithDirectionOutboundType0
 
-        inbound: Union[Dict[str, Any], None, Unset]
+        inbound: Union[None, Unset, dict[str, Any]]
         if isinstance(self.inbound, Unset):
             inbound = UNSET
         elif isinstance(self.inbound, ThreatintelRulesWithDirectionInboundType0):
@@ -40,7 +38,7 @@ class ThreatintelRulesWithDirection:
         else:
             inbound = self.inbound
 
-        outbound: Union[Dict[str, Any], None, Unset]
+        outbound: Union[None, Unset, dict[str, Any]]
         if isinstance(self.outbound, Unset):
             outbound = UNSET
         elif isinstance(self.outbound, ThreatintelRulesWithDirectionOutboundType0):
@@ -48,7 +46,7 @@ class ThreatintelRulesWithDirection:
         else:
             outbound = self.outbound
 
-        field_dict: Dict[str, Any] = {}
+        field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
         if inbound is not UNSET:
@@ -59,11 +57,11 @@ class ThreatintelRulesWithDirection:
         return field_dict
 
     @classmethod
-    def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.threatintel_rules_with_direction_inbound_type_0 import ThreatintelRulesWithDirectionInboundType0
         from ..models.threatintel_rules_with_direction_outbound_type_0 import ThreatintelRulesWithDirectionOutboundType0
 
-        d = src_dict.copy()
+        d = dict(src_dict)
 
         def _parse_inbound(data: object) -> Union["ThreatintelRulesWithDirectionInboundType0", None, Unset]:
             if data is None:
@@ -108,7 +106,7 @@ class ThreatintelRulesWithDirection:
         return threatintel_rules_with_direction
 
     @property
-    def additional_keys(self) -> List[str]:
+    def additional_keys(self) -> list[str]:
         return list(self.additional_properties.keys())
 
     def __getitem__(self, key: str) -> Any:

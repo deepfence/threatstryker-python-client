@@ -1,4 +1,5 @@
-from typing import TYPE_CHECKING, Any, Dict, List, Type, TypeVar, Union, cast
+from collections.abc import Mapping
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -13,30 +14,26 @@ T = TypeVar("T", bound="LookupLookupFilter")
 @_attrs_define
 class LookupLookupFilter:
     """
-    Example:
-        {'in_field_filter': ['in_field_filter', 'in_field_filter'], 'window': {'offset': 0, 'size': 6}, 'node_ids':
-            ['node_ids', 'node_ids']}
-
     Attributes:
-        in_field_filter (Union[List[str], None]):
-        node_ids (Union[List[str], None]):
-        window (ModelFetchWindow):  Example: {'offset': 0, 'size': 6}.
+        in_field_filter (Union[None, list[str]]):
+        node_ids (Union[None, list[str]]):
+        window (ModelFetchWindow):
     """
 
-    in_field_filter: Union[List[str], None]
-    node_ids: Union[List[str], None]
+    in_field_filter: Union[None, list[str]]
+    node_ids: Union[None, list[str]]
     window: "ModelFetchWindow"
-    additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
+    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
-    def to_dict(self) -> Dict[str, Any]:
-        in_field_filter: Union[List[str], None]
+    def to_dict(self) -> dict[str, Any]:
+        in_field_filter: Union[None, list[str]]
         if isinstance(self.in_field_filter, list):
             in_field_filter = self.in_field_filter
 
         else:
             in_field_filter = self.in_field_filter
 
-        node_ids: Union[List[str], None]
+        node_ids: Union[None, list[str]]
         if isinstance(self.node_ids, list):
             node_ids = self.node_ids
 
@@ -45,7 +42,7 @@ class LookupLookupFilter:
 
         window = self.window.to_dict()
 
-        field_dict: Dict[str, Any] = {}
+        field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
@@ -58,38 +55,38 @@ class LookupLookupFilter:
         return field_dict
 
     @classmethod
-    def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.model_fetch_window import ModelFetchWindow
 
-        d = src_dict.copy()
+        d = dict(src_dict)
 
-        def _parse_in_field_filter(data: object) -> Union[List[str], None]:
+        def _parse_in_field_filter(data: object) -> Union[None, list[str]]:
             if data is None:
                 return data
             try:
                 if not isinstance(data, list):
                     raise TypeError()
-                in_field_filter_type_0 = cast(List[str], data)
+                in_field_filter_type_0 = cast(list[str], data)
 
                 return in_field_filter_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[List[str], None], data)
+            return cast(Union[None, list[str]], data)
 
         in_field_filter = _parse_in_field_filter(d.pop("in_field_filter"))
 
-        def _parse_node_ids(data: object) -> Union[List[str], None]:
+        def _parse_node_ids(data: object) -> Union[None, list[str]]:
             if data is None:
                 return data
             try:
                 if not isinstance(data, list):
                     raise TypeError()
-                node_ids_type_0 = cast(List[str], data)
+                node_ids_type_0 = cast(list[str], data)
 
                 return node_ids_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[List[str], None], data)
+            return cast(Union[None, list[str]], data)
 
         node_ids = _parse_node_ids(d.pop("node_ids"))
 
@@ -105,7 +102,7 @@ class LookupLookupFilter:
         return lookup_lookup_filter
 
     @property
-    def additional_keys(self) -> List[str]:
+    def additional_keys(self) -> list[str]:
         return list(self.additional_properties.keys())
 
     def __getitem__(self, key: str) -> Any:

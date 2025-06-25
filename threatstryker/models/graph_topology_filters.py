@@ -1,4 +1,5 @@
-from typing import TYPE_CHECKING, Any, Dict, List, Type, TypeVar, Union, cast
+from collections.abc import Mapping
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -13,53 +14,36 @@ T = TypeVar("T", bound="GraphTopologyFilters")
 @_attrs_define
 class GraphTopologyFilters:
     """
-    Example:
-        {'host_filter': ['host_filter', 'host_filter'], 'field_filters': {'compare_filter': [{'greater_than': True,
-            'field_value': '', 'field_name': 'field_name'}, {'greater_than': True, 'field_value': '', 'field_name':
-            'field_name'}], 'not_contains_filter': {'filter_in': {'key': ['', '']}}, 'order_filter': {'order_fields':
-            [{'size': 0, 'descending': True, 'field_name': 'field_name'}, {'size': 0, 'descending': True, 'field_name':
-            'field_name'}]}, 'contains_filter': {'filter_in': {'key': ['', '']}}, 'contains_in_array_filter': {'filter_in':
-            {'key': ['', '']}}, 'match_filter': {'filter_in': {'key': ['', '']}}, 'match_in_array_filter': {'filter_in':
-            {'key': ['', '']}}}, 'container_filter': ['container_filter', 'container_filter'], 'cloud_filter':
-            ['cloud_filter', 'cloud_filter'], 'kubernetes_filter': ['kubernetes_filter', 'kubernetes_filter'], 'pod_filter':
-            ['pod_filter', 'pod_filter'], 'region_filter': ['region_filter', 'region_filter'], 'skip_connections': True}
-
     Attributes:
-        cloud_filter (Union[List[str], None]):
-        container_filter (Union[List[str], None]):
-        field_filters (ReportersFieldsFilters):  Example: {'compare_filter': [{'greater_than': True, 'field_value': '',
-            'field_name': 'field_name'}, {'greater_than': True, 'field_value': '', 'field_name': 'field_name'}],
-            'not_contains_filter': {'filter_in': {'key': ['', '']}}, 'order_filter': {'order_fields': [{'size': 0,
-            'descending': True, 'field_name': 'field_name'}, {'size': 0, 'descending': True, 'field_name': 'field_name'}]},
-            'contains_filter': {'filter_in': {'key': ['', '']}}, 'contains_in_array_filter': {'filter_in': {'key': ['',
-            '']}}, 'match_filter': {'filter_in': {'key': ['', '']}}, 'match_in_array_filter': {'filter_in': {'key': ['',
-            '']}}}.
-        host_filter (Union[List[str], None]):
-        kubernetes_filter (Union[List[str], None]):
-        pod_filter (Union[List[str], None]):
-        region_filter (Union[List[str], None]):
+        cloud_filter (Union[None, list[str]]):
+        container_filter (Union[None, list[str]]):
+        field_filters (ReportersFieldsFilters):
+        host_filter (Union[None, list[str]]):
+        kubernetes_filter (Union[None, list[str]]):
+        pod_filter (Union[None, list[str]]):
+        region_filter (Union[None, list[str]]):
         skip_connections (bool):
     """
 
-    cloud_filter: Union[List[str], None]
-    container_filter: Union[List[str], None]
+    cloud_filter: Union[None, list[str]]
+    container_filter: Union[None, list[str]]
     field_filters: "ReportersFieldsFilters"
-    host_filter: Union[List[str], None]
-    kubernetes_filter: Union[List[str], None]
-    pod_filter: Union[List[str], None]
-    region_filter: Union[List[str], None]
+    host_filter: Union[None, list[str]]
+    kubernetes_filter: Union[None, list[str]]
+    pod_filter: Union[None, list[str]]
+    region_filter: Union[None, list[str]]
     skip_connections: bool
-    additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
+    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
-    def to_dict(self) -> Dict[str, Any]:
-        cloud_filter: Union[List[str], None]
+    def to_dict(self) -> dict[str, Any]:
+        cloud_filter: Union[None, list[str]]
         if isinstance(self.cloud_filter, list):
             cloud_filter = self.cloud_filter
 
         else:
             cloud_filter = self.cloud_filter
 
-        container_filter: Union[List[str], None]
+        container_filter: Union[None, list[str]]
         if isinstance(self.container_filter, list):
             container_filter = self.container_filter
 
@@ -68,28 +52,28 @@ class GraphTopologyFilters:
 
         field_filters = self.field_filters.to_dict()
 
-        host_filter: Union[List[str], None]
+        host_filter: Union[None, list[str]]
         if isinstance(self.host_filter, list):
             host_filter = self.host_filter
 
         else:
             host_filter = self.host_filter
 
-        kubernetes_filter: Union[List[str], None]
+        kubernetes_filter: Union[None, list[str]]
         if isinstance(self.kubernetes_filter, list):
             kubernetes_filter = self.kubernetes_filter
 
         else:
             kubernetes_filter = self.kubernetes_filter
 
-        pod_filter: Union[List[str], None]
+        pod_filter: Union[None, list[str]]
         if isinstance(self.pod_filter, list):
             pod_filter = self.pod_filter
 
         else:
             pod_filter = self.pod_filter
 
-        region_filter: Union[List[str], None]
+        region_filter: Union[None, list[str]]
         if isinstance(self.region_filter, list):
             region_filter = self.region_filter
 
@@ -98,7 +82,7 @@ class GraphTopologyFilters:
 
         skip_connections = self.skip_connections
 
-        field_dict: Dict[str, Any] = {}
+        field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
@@ -116,100 +100,100 @@ class GraphTopologyFilters:
         return field_dict
 
     @classmethod
-    def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.reporters_fields_filters import ReportersFieldsFilters
 
-        d = src_dict.copy()
+        d = dict(src_dict)
 
-        def _parse_cloud_filter(data: object) -> Union[List[str], None]:
+        def _parse_cloud_filter(data: object) -> Union[None, list[str]]:
             if data is None:
                 return data
             try:
                 if not isinstance(data, list):
                     raise TypeError()
-                cloud_filter_type_0 = cast(List[str], data)
+                cloud_filter_type_0 = cast(list[str], data)
 
                 return cloud_filter_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[List[str], None], data)
+            return cast(Union[None, list[str]], data)
 
         cloud_filter = _parse_cloud_filter(d.pop("cloud_filter"))
 
-        def _parse_container_filter(data: object) -> Union[List[str], None]:
+        def _parse_container_filter(data: object) -> Union[None, list[str]]:
             if data is None:
                 return data
             try:
                 if not isinstance(data, list):
                     raise TypeError()
-                container_filter_type_0 = cast(List[str], data)
+                container_filter_type_0 = cast(list[str], data)
 
                 return container_filter_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[List[str], None], data)
+            return cast(Union[None, list[str]], data)
 
         container_filter = _parse_container_filter(d.pop("container_filter"))
 
         field_filters = ReportersFieldsFilters.from_dict(d.pop("field_filters"))
 
-        def _parse_host_filter(data: object) -> Union[List[str], None]:
+        def _parse_host_filter(data: object) -> Union[None, list[str]]:
             if data is None:
                 return data
             try:
                 if not isinstance(data, list):
                     raise TypeError()
-                host_filter_type_0 = cast(List[str], data)
+                host_filter_type_0 = cast(list[str], data)
 
                 return host_filter_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[List[str], None], data)
+            return cast(Union[None, list[str]], data)
 
         host_filter = _parse_host_filter(d.pop("host_filter"))
 
-        def _parse_kubernetes_filter(data: object) -> Union[List[str], None]:
+        def _parse_kubernetes_filter(data: object) -> Union[None, list[str]]:
             if data is None:
                 return data
             try:
                 if not isinstance(data, list):
                     raise TypeError()
-                kubernetes_filter_type_0 = cast(List[str], data)
+                kubernetes_filter_type_0 = cast(list[str], data)
 
                 return kubernetes_filter_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[List[str], None], data)
+            return cast(Union[None, list[str]], data)
 
         kubernetes_filter = _parse_kubernetes_filter(d.pop("kubernetes_filter"))
 
-        def _parse_pod_filter(data: object) -> Union[List[str], None]:
+        def _parse_pod_filter(data: object) -> Union[None, list[str]]:
             if data is None:
                 return data
             try:
                 if not isinstance(data, list):
                     raise TypeError()
-                pod_filter_type_0 = cast(List[str], data)
+                pod_filter_type_0 = cast(list[str], data)
 
                 return pod_filter_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[List[str], None], data)
+            return cast(Union[None, list[str]], data)
 
         pod_filter = _parse_pod_filter(d.pop("pod_filter"))
 
-        def _parse_region_filter(data: object) -> Union[List[str], None]:
+        def _parse_region_filter(data: object) -> Union[None, list[str]]:
             if data is None:
                 return data
             try:
                 if not isinstance(data, list):
                     raise TypeError()
-                region_filter_type_0 = cast(List[str], data)
+                region_filter_type_0 = cast(list[str], data)
 
                 return region_filter_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[List[str], None], data)
+            return cast(Union[None, list[str]], data)
 
         region_filter = _parse_region_filter(d.pop("region_filter"))
 
@@ -230,7 +214,7 @@ class GraphTopologyFilters:
         return graph_topology_filters
 
     @property
-    def additional_keys(self) -> List[str]:
+    def additional_keys(self) -> list[str]:
         return list(self.additional_properties.keys())
 
     def __getitem__(self, key: str) -> Any:

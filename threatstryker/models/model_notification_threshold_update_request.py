@@ -1,4 +1,5 @@
-from typing import Any, Dict, List, Type, TypeVar
+from collections.abc import Mapping
+from typing import Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -9,20 +10,17 @@ T = TypeVar("T", bound="ModelNotificationThresholdUpdateRequest")
 @_attrs_define
 class ModelNotificationThresholdUpdateRequest:
     """
-    Example:
-        {'notification_threshold_percentage': 0}
-
     Attributes:
         notification_threshold_percentage (int):
     """
 
     notification_threshold_percentage: int
-    additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
+    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
-    def to_dict(self) -> Dict[str, Any]:
+    def to_dict(self) -> dict[str, Any]:
         notification_threshold_percentage = self.notification_threshold_percentage
 
-        field_dict: Dict[str, Any] = {}
+        field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
@@ -33,8 +31,8 @@ class ModelNotificationThresholdUpdateRequest:
         return field_dict
 
     @classmethod
-    def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
-        d = src_dict.copy()
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        d = dict(src_dict)
         notification_threshold_percentage = d.pop("notification_threshold_percentage")
 
         model_notification_threshold_update_request = cls(
@@ -45,7 +43,7 @@ class ModelNotificationThresholdUpdateRequest:
         return model_notification_threshold_update_request
 
     @property
-    def additional_keys(self) -> List[str]:
+    def additional_keys(self) -> list[str]:
         return list(self.additional_properties.keys())
 
     def __getitem__(self, key: str) -> Any:

@@ -1,4 +1,5 @@
-from typing import Any, Dict, List, Type, TypeVar, Union, cast
+from collections.abc import Mapping
+from typing import Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -12,27 +13,23 @@ T = TypeVar("T", bound="ModelScanResultsActionRequest")
 @_attrs_define
 class ModelScanResultsActionRequest:
     """
-    Example:
-        {'notify_individual': True, 'result_ids': ['result_ids', 'result_ids'], 'scan_type': 'SecretScan', 'scan_id':
-            'scan_id', 'integration_ids': [0, 0]}
-
     Attributes:
-        result_ids (Union[List[str], None]):
+        result_ids (Union[None, list[str]]):
         scan_id (str):
         scan_type (ModelScanResultsActionRequestScanType):
-        integration_ids (Union[List[int], None, Unset]):
+        integration_ids (Union[None, Unset, list[int]]):
         notify_individual (Union[Unset, bool]):
     """
 
-    result_ids: Union[List[str], None]
+    result_ids: Union[None, list[str]]
     scan_id: str
     scan_type: ModelScanResultsActionRequestScanType
-    integration_ids: Union[List[int], None, Unset] = UNSET
+    integration_ids: Union[None, Unset, list[int]] = UNSET
     notify_individual: Union[Unset, bool] = UNSET
-    additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
+    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
-    def to_dict(self) -> Dict[str, Any]:
-        result_ids: Union[List[str], None]
+    def to_dict(self) -> dict[str, Any]:
+        result_ids: Union[None, list[str]]
         if isinstance(self.result_ids, list):
             result_ids = self.result_ids
 
@@ -43,7 +40,7 @@ class ModelScanResultsActionRequest:
 
         scan_type = self.scan_type.value
 
-        integration_ids: Union[List[int], None, Unset]
+        integration_ids: Union[None, Unset, list[int]]
         if isinstance(self.integration_ids, Unset):
             integration_ids = UNSET
         elif isinstance(self.integration_ids, list):
@@ -54,7 +51,7 @@ class ModelScanResultsActionRequest:
 
         notify_individual = self.notify_individual
 
-        field_dict: Dict[str, Any] = {}
+        field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
@@ -71,21 +68,21 @@ class ModelScanResultsActionRequest:
         return field_dict
 
     @classmethod
-    def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
-        d = src_dict.copy()
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        d = dict(src_dict)
 
-        def _parse_result_ids(data: object) -> Union[List[str], None]:
+        def _parse_result_ids(data: object) -> Union[None, list[str]]:
             if data is None:
                 return data
             try:
                 if not isinstance(data, list):
                     raise TypeError()
-                result_ids_type_0 = cast(List[str], data)
+                result_ids_type_0 = cast(list[str], data)
 
                 return result_ids_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[List[str], None], data)
+            return cast(Union[None, list[str]], data)
 
         result_ids = _parse_result_ids(d.pop("result_ids"))
 
@@ -93,7 +90,7 @@ class ModelScanResultsActionRequest:
 
         scan_type = ModelScanResultsActionRequestScanType(d.pop("scan_type"))
 
-        def _parse_integration_ids(data: object) -> Union[List[int], None, Unset]:
+        def _parse_integration_ids(data: object) -> Union[None, Unset, list[int]]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -101,12 +98,12 @@ class ModelScanResultsActionRequest:
             try:
                 if not isinstance(data, list):
                     raise TypeError()
-                integration_ids_type_0 = cast(List[int], data)
+                integration_ids_type_0 = cast(list[int], data)
 
                 return integration_ids_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[List[int], None, Unset], data)
+            return cast(Union[None, Unset, list[int]], data)
 
         integration_ids = _parse_integration_ids(d.pop("integration_ids", UNSET))
 
@@ -124,7 +121,7 @@ class ModelScanResultsActionRequest:
         return model_scan_results_action_request
 
     @property
-    def additional_keys(self) -> List[str]:
+    def additional_keys(self) -> list[str]:
         return list(self.additional_properties.keys())
 
     def __getitem__(self, key: str) -> Any:

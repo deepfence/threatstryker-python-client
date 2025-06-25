@@ -1,4 +1,5 @@
-from typing import TYPE_CHECKING, Any, Dict, List, Type, TypeVar, Union, cast
+from collections.abc import Mapping
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -13,24 +14,17 @@ T = TypeVar("T", bound="ModelScanResultBasicNode")
 @_attrs_define
 class ModelScanResultBasicNode:
     """
-    Example:
-        {'basic_nodes': [{'node_type': 'node_type', 'live_secrets': ['live_secrets', 'live_secrets'], 'live_cves':
-            ['live_cves', 'live_cves'], 'name': 'name', 'host_name': 'host_name', 'live_malwares': ['live_malwares',
-            'live_malwares'], 'node_id': 'node_id'}, {'node_type': 'node_type', 'live_secrets': ['live_secrets',
-            'live_secrets'], 'live_cves': ['live_cves', 'live_cves'], 'name': 'name', 'host_name': 'host_name',
-            'live_malwares': ['live_malwares', 'live_malwares'], 'node_id': 'node_id'}], 'result_id': 'result_id'}
-
     Attributes:
-        basic_nodes (Union[List['ModelBasicNode'], None]):
+        basic_nodes (Union[None, list['ModelBasicNode']]):
         result_id (str):
     """
 
-    basic_nodes: Union[List["ModelBasicNode"], None]
+    basic_nodes: Union[None, list["ModelBasicNode"]]
     result_id: str
-    additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
+    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
-    def to_dict(self) -> Dict[str, Any]:
-        basic_nodes: Union[List[Dict[str, Any]], None]
+    def to_dict(self) -> dict[str, Any]:
+        basic_nodes: Union[None, list[dict[str, Any]]]
         if isinstance(self.basic_nodes, list):
             basic_nodes = []
             for basic_nodes_type_0_item_data in self.basic_nodes:
@@ -42,7 +36,7 @@ class ModelScanResultBasicNode:
 
         result_id = self.result_id
 
-        field_dict: Dict[str, Any] = {}
+        field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
@@ -54,12 +48,12 @@ class ModelScanResultBasicNode:
         return field_dict
 
     @classmethod
-    def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.model_basic_node import ModelBasicNode
 
-        d = src_dict.copy()
+        d = dict(src_dict)
 
-        def _parse_basic_nodes(data: object) -> Union[List["ModelBasicNode"], None]:
+        def _parse_basic_nodes(data: object) -> Union[None, list["ModelBasicNode"]]:
             if data is None:
                 return data
             try:
@@ -75,7 +69,7 @@ class ModelScanResultBasicNode:
                 return basic_nodes_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[List["ModelBasicNode"], None], data)
+            return cast(Union[None, list["ModelBasicNode"]], data)
 
         basic_nodes = _parse_basic_nodes(d.pop("basic_nodes"))
 
@@ -90,7 +84,7 @@ class ModelScanResultBasicNode:
         return model_scan_result_basic_node
 
     @property
-    def additional_keys(self) -> List[str]:
+    def additional_keys(self) -> list[str]:
         return list(self.additional_properties.keys())
 
     def __getitem__(self, key: str) -> Any:

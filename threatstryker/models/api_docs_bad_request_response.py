@@ -1,4 +1,5 @@
-from typing import TYPE_CHECKING, Any, Dict, List, Type, TypeVar, Union, cast
+from collections.abc import Mapping
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -16,10 +17,6 @@ T = TypeVar("T", bound="ApiDocsBadRequestResponse")
 @_attrs_define
 class ApiDocsBadRequestResponse:
     """
-    Example:
-        {'error_index': {'key': [0, 0]}, 'success': False, 'error_fields': {'key': 'error_fields'}, 'message':
-            'message'}
-
     Attributes:
         error_fields (Union['ApiDocsBadRequestResponseErrorFieldsType0', None, Unset]):
         error_index (Union['ApiDocsBadRequestResponseErrorIndexType0', None, Unset]):
@@ -31,13 +28,13 @@ class ApiDocsBadRequestResponse:
     error_index: Union["ApiDocsBadRequestResponseErrorIndexType0", None, Unset] = UNSET
     message: Union[Unset, str] = UNSET
     success: Union[Unset, bool] = UNSET
-    additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
+    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
-    def to_dict(self) -> Dict[str, Any]:
+    def to_dict(self) -> dict[str, Any]:
         from ..models.api_docs_bad_request_response_error_fields_type_0 import ApiDocsBadRequestResponseErrorFieldsType0
         from ..models.api_docs_bad_request_response_error_index_type_0 import ApiDocsBadRequestResponseErrorIndexType0
 
-        error_fields: Union[Dict[str, Any], None, Unset]
+        error_fields: Union[None, Unset, dict[str, Any]]
         if isinstance(self.error_fields, Unset):
             error_fields = UNSET
         elif isinstance(self.error_fields, ApiDocsBadRequestResponseErrorFieldsType0):
@@ -45,7 +42,7 @@ class ApiDocsBadRequestResponse:
         else:
             error_fields = self.error_fields
 
-        error_index: Union[Dict[str, Any], None, Unset]
+        error_index: Union[None, Unset, dict[str, Any]]
         if isinstance(self.error_index, Unset):
             error_index = UNSET
         elif isinstance(self.error_index, ApiDocsBadRequestResponseErrorIndexType0):
@@ -57,7 +54,7 @@ class ApiDocsBadRequestResponse:
 
         success = self.success
 
-        field_dict: Dict[str, Any] = {}
+        field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
         if error_fields is not UNSET:
@@ -72,11 +69,11 @@ class ApiDocsBadRequestResponse:
         return field_dict
 
     @classmethod
-    def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.api_docs_bad_request_response_error_fields_type_0 import ApiDocsBadRequestResponseErrorFieldsType0
         from ..models.api_docs_bad_request_response_error_index_type_0 import ApiDocsBadRequestResponseErrorIndexType0
 
-        d = src_dict.copy()
+        d = dict(src_dict)
 
         def _parse_error_fields(data: object) -> Union["ApiDocsBadRequestResponseErrorFieldsType0", None, Unset]:
             if data is None:
@@ -127,7 +124,7 @@ class ApiDocsBadRequestResponse:
         return api_docs_bad_request_response
 
     @property
-    def additional_keys(self) -> List[str]:
+    def additional_keys(self) -> list[str]:
         return list(self.additional_properties.keys())
 
     def __getitem__(self, key: str) -> Any:

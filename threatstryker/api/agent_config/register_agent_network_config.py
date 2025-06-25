@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Dict, Optional, Union, cast
+from typing import Any, Optional, Union, cast
 
 import httpx
 
@@ -14,17 +14,16 @@ from ...types import Response
 def _get_kwargs(
     *,
     body: ControlsNetworkTracerConfig,
-) -> Dict[str, Any]:
-    headers: Dict[str, Any] = {}
+) -> dict[str, Any]:
+    headers: dict[str, Any] = {}
 
-    _kwargs: Dict[str, Any] = {
+    _kwargs: dict[str, Any] = {
         "method": "post",
         "url": "/deepfence/configs/agent/network/",
     }
 
-    _body = body.to_dict()
+    _kwargs["json"] = body.to_dict()
 
-    _kwargs["json"] = _body
     headers["Content-Type"] = "application/json"
 
     _kwargs["headers"] = headers
@@ -34,24 +33,24 @@ def _get_kwargs(
 def _parse_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
 ) -> Optional[Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse]]:
-    if response.status_code == HTTPStatus.NO_CONTENT:
+    if response.status_code == 204:
         response_204 = cast(Any, None)
         return response_204
-    if response.status_code == HTTPStatus.BAD_REQUEST:
+    if response.status_code == 400:
         response_400 = ApiDocsBadRequestResponse.from_dict(response.json())
 
         return response_400
-    if response.status_code == HTTPStatus.UNAUTHORIZED:
+    if response.status_code == 401:
         response_401 = cast(Any, None)
         return response_401
-    if response.status_code == HTTPStatus.FORBIDDEN:
+    if response.status_code == 403:
         response_403 = cast(Any, None)
         return response_403
-    if response.status_code == HTTPStatus.NOT_FOUND:
+    if response.status_code == 404:
         response_404 = ApiDocsFailureResponse.from_dict(response.json())
 
         return response_404
-    if response.status_code == HTTPStatus.INTERNAL_SERVER_ERROR:
+    if response.status_code == 500:
         response_500 = ApiDocsFailureResponse.from_dict(response.json())
 
         return response_500
@@ -82,12 +81,7 @@ def sync_detailed(
      Register Agent Network config
 
     Args:
-        body (ControlsNetworkTracerConfig):  Example: {'mode': 'all', 'process_names':
-            ['process_names', 'process_names'], 'tcp_rules': {'inbound': ['inbound', 'inbound'],
-            'outbound': ['outbound', 'outbound']}, 'http_rules': {'inbound': ['inbound', 'inbound'],
-            'outbound': ['outbound', 'outbound']}, 'updated_at': 0, 'ignored_rule_ids':
-            ['ignored_rule_ids', 'ignored_rule_ids'], 'https_rules': {'inbound': ['inbound',
-            'inbound'], 'outbound': ['outbound', 'outbound']}, 'node_id': 'node_id'}.
+        body (ControlsNetworkTracerConfig):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -118,12 +112,7 @@ def sync(
      Register Agent Network config
 
     Args:
-        body (ControlsNetworkTracerConfig):  Example: {'mode': 'all', 'process_names':
-            ['process_names', 'process_names'], 'tcp_rules': {'inbound': ['inbound', 'inbound'],
-            'outbound': ['outbound', 'outbound']}, 'http_rules': {'inbound': ['inbound', 'inbound'],
-            'outbound': ['outbound', 'outbound']}, 'updated_at': 0, 'ignored_rule_ids':
-            ['ignored_rule_ids', 'ignored_rule_ids'], 'https_rules': {'inbound': ['inbound',
-            'inbound'], 'outbound': ['outbound', 'outbound']}, 'node_id': 'node_id'}.
+        body (ControlsNetworkTracerConfig):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -149,12 +138,7 @@ async def asyncio_detailed(
      Register Agent Network config
 
     Args:
-        body (ControlsNetworkTracerConfig):  Example: {'mode': 'all', 'process_names':
-            ['process_names', 'process_names'], 'tcp_rules': {'inbound': ['inbound', 'inbound'],
-            'outbound': ['outbound', 'outbound']}, 'http_rules': {'inbound': ['inbound', 'inbound'],
-            'outbound': ['outbound', 'outbound']}, 'updated_at': 0, 'ignored_rule_ids':
-            ['ignored_rule_ids', 'ignored_rule_ids'], 'https_rules': {'inbound': ['inbound',
-            'inbound'], 'outbound': ['outbound', 'outbound']}, 'node_id': 'node_id'}.
+        body (ControlsNetworkTracerConfig):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -183,12 +167,7 @@ async def asyncio(
      Register Agent Network config
 
     Args:
-        body (ControlsNetworkTracerConfig):  Example: {'mode': 'all', 'process_names':
-            ['process_names', 'process_names'], 'tcp_rules': {'inbound': ['inbound', 'inbound'],
-            'outbound': ['outbound', 'outbound']}, 'http_rules': {'inbound': ['inbound', 'inbound'],
-            'outbound': ['outbound', 'outbound']}, 'updated_at': 0, 'ignored_rule_ids':
-            ['ignored_rule_ids', 'ignored_rule_ids'], 'https_rules': {'inbound': ['inbound',
-            'inbound'], 'outbound': ['outbound', 'outbound']}, 'node_id': 'node_id'}.
+        body (ControlsNetworkTracerConfig):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

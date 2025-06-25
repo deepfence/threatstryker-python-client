@@ -1,4 +1,5 @@
-from typing import Any, Dict, List, Type, TypeVar, Union
+from collections.abc import Mapping
+from typing import Any, TypeVar, Union
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -15,10 +16,6 @@ T = TypeVar("T", bound="ModelAddGenerativeAiBedrockIntegration")
 @_attrs_define
 class ModelAddGenerativeAiBedrockIntegration:
     """
-    Example:
-        {'aws_region': 'us-east-1', 'aws_access_key': 'aws_access_key', 'model_id': 'anthropic.claude-v2',
-            'aws_secret_key': 'aws_secret_key', 'use_iam_role': True}
-
     Attributes:
         aws_region (ModelAddGenerativeAiBedrockIntegrationAwsRegion):
         model_id (ModelAddGenerativeAiBedrockIntegrationModelId):
@@ -32,9 +29,9 @@ class ModelAddGenerativeAiBedrockIntegration:
     aws_access_key: Union[Unset, str] = UNSET
     aws_secret_key: Union[Unset, str] = UNSET
     use_iam_role: Union[Unset, bool] = UNSET
-    additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
+    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
-    def to_dict(self) -> Dict[str, Any]:
+    def to_dict(self) -> dict[str, Any]:
         aws_region = self.aws_region.value
 
         model_id = self.model_id.value
@@ -45,7 +42,7 @@ class ModelAddGenerativeAiBedrockIntegration:
 
         use_iam_role = self.use_iam_role
 
-        field_dict: Dict[str, Any] = {}
+        field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
@@ -63,8 +60,8 @@ class ModelAddGenerativeAiBedrockIntegration:
         return field_dict
 
     @classmethod
-    def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
-        d = src_dict.copy()
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        d = dict(src_dict)
         aws_region = ModelAddGenerativeAiBedrockIntegrationAwsRegion(d.pop("aws_region"))
 
         model_id = ModelAddGenerativeAiBedrockIntegrationModelId(d.pop("model_id"))
@@ -87,7 +84,7 @@ class ModelAddGenerativeAiBedrockIntegration:
         return model_add_generative_ai_bedrock_integration
 
     @property
-    def additional_keys(self) -> List[str]:
+    def additional_keys(self) -> list[str]:
         return list(self.additional_properties.keys())
 
     def __getitem__(self, key: str) -> Any:

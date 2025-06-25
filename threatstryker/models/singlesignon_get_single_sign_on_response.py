@@ -1,4 +1,5 @@
-from typing import TYPE_CHECKING, Any, Dict, List, Type, TypeVar, Union, cast
+from collections.abc import Mapping
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -14,34 +15,17 @@ T = TypeVar("T", bound="SinglesignonGetSingleSignOnResponse")
 @_attrs_define
 class SinglesignonGetSingleSignOnResponse:
     """
-    Example:
-        {'instructions': {'github': [{'value': 'value', 'key': 'key'}, {'value': 'value', 'key': 'key'}], 'google':
-            [{'value': 'value', 'key': 'key'}, {'value': 'value', 'key': 'key'}], 'microsoft': [{'value': 'value', 'key':
-            'key'}, {'value': 'value', 'key': 'key'}], 'oidc': [{'value': 'value', 'key': 'key'}, {'value': 'value', 'key':
-            'key'}]}, 'config': [{'issuer_alias_url': 'issuer_alias_url', 'issuer_url': 'issuer_url', 'updated_at':
-            datetime.datetime(2000, 1, 23, 4, 56, 7, tzinfo=datetime.timezone(datetime.timedelta(0), '+00:00')),
-            'sso_provider_type': 'sso_provider_type', 'created_at': datetime.datetime(2000, 1, 23, 4, 56, 7,
-            tzinfo=datetime.timezone(datetime.timedelta(0), '+00:00')), 'disable_password_login': True, 'id': 0, 'label':
-            'label', 'client_id': 'client_id'}, {'issuer_alias_url': 'issuer_alias_url', 'issuer_url': 'issuer_url',
-            'updated_at': datetime.datetime(2000, 1, 23, 4, 56, 7, tzinfo=datetime.timezone(datetime.timedelta(0),
-            '+00:00')), 'sso_provider_type': 'sso_provider_type', 'created_at': datetime.datetime(2000, 1, 23, 4, 56, 7,
-            tzinfo=datetime.timezone(datetime.timedelta(0), '+00:00')), 'disable_password_login': True, 'id': 0, 'label':
-            'label', 'client_id': 'client_id'}]}
-
     Attributes:
-        config (Union[List['SinglesignonSSOResponse'], None]):
-        instructions (SinglesignonSSOConfigurationInstructions):  Example: {'github': [{'value': 'value', 'key': 'key'},
-            {'value': 'value', 'key': 'key'}], 'google': [{'value': 'value', 'key': 'key'}, {'value': 'value', 'key':
-            'key'}], 'microsoft': [{'value': 'value', 'key': 'key'}, {'value': 'value', 'key': 'key'}], 'oidc': [{'value':
-            'value', 'key': 'key'}, {'value': 'value', 'key': 'key'}]}.
+        config (Union[None, list['SinglesignonSSOResponse']]):
+        instructions (SinglesignonSSOConfigurationInstructions):
     """
 
-    config: Union[List["SinglesignonSSOResponse"], None]
+    config: Union[None, list["SinglesignonSSOResponse"]]
     instructions: "SinglesignonSSOConfigurationInstructions"
-    additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
+    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
-    def to_dict(self) -> Dict[str, Any]:
-        config: Union[List[Dict[str, Any]], None]
+    def to_dict(self) -> dict[str, Any]:
+        config: Union[None, list[dict[str, Any]]]
         if isinstance(self.config, list):
             config = []
             for config_type_0_item_data in self.config:
@@ -53,7 +37,7 @@ class SinglesignonGetSingleSignOnResponse:
 
         instructions = self.instructions.to_dict()
 
-        field_dict: Dict[str, Any] = {}
+        field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
@@ -65,13 +49,13 @@ class SinglesignonGetSingleSignOnResponse:
         return field_dict
 
     @classmethod
-    def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.singlesignon_sso_configuration_instructions import SinglesignonSSOConfigurationInstructions
         from ..models.singlesignon_sso_response import SinglesignonSSOResponse
 
-        d = src_dict.copy()
+        d = dict(src_dict)
 
-        def _parse_config(data: object) -> Union[List["SinglesignonSSOResponse"], None]:
+        def _parse_config(data: object) -> Union[None, list["SinglesignonSSOResponse"]]:
             if data is None:
                 return data
             try:
@@ -87,7 +71,7 @@ class SinglesignonGetSingleSignOnResponse:
                 return config_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[List["SinglesignonSSOResponse"], None], data)
+            return cast(Union[None, list["SinglesignonSSOResponse"]], data)
 
         config = _parse_config(d.pop("config"))
 
@@ -102,7 +86,7 @@ class SinglesignonGetSingleSignOnResponse:
         return singlesignon_get_single_sign_on_response
 
     @property
-    def additional_keys(self) -> List[str]:
+    def additional_keys(self) -> list[str]:
         return list(self.additional_properties.keys())
 
     def __getitem__(self, key: str) -> Any:

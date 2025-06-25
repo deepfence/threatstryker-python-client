@@ -1,4 +1,5 @@
-from typing import Any, Dict, List, Type, TypeVar, Union
+from collections.abc import Mapping
+from typing import Any, TypeVar, Union
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -11,9 +12,6 @@ T = TypeVar("T", bound="IngestersSecretSeverity")
 @_attrs_define
 class IngestersSecretSeverity:
     """
-    Example:
-        {'score': 5.637376656633329, 'level': 'level'}
-
     Attributes:
         level (Union[Unset, str]):
         score (Union[Unset, float]):
@@ -21,14 +19,14 @@ class IngestersSecretSeverity:
 
     level: Union[Unset, str] = UNSET
     score: Union[Unset, float] = UNSET
-    additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
+    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
-    def to_dict(self) -> Dict[str, Any]:
+    def to_dict(self) -> dict[str, Any]:
         level = self.level
 
         score = self.score
 
-        field_dict: Dict[str, Any] = {}
+        field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
         if level is not UNSET:
@@ -39,8 +37,8 @@ class IngestersSecretSeverity:
         return field_dict
 
     @classmethod
-    def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
-        d = src_dict.copy()
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        d = dict(src_dict)
         level = d.pop("level", UNSET)
 
         score = d.pop("score", UNSET)
@@ -54,7 +52,7 @@ class IngestersSecretSeverity:
         return ingesters_secret_severity
 
     @property
-    def additional_keys(self) -> List[str]:
+    def additional_keys(self) -> list[str]:
         return list(self.additional_properties.keys())
 
     def __getitem__(self, key: str) -> Any:

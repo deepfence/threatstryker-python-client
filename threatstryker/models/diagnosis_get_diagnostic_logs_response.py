@@ -1,4 +1,5 @@
-from typing import TYPE_CHECKING, Any, Dict, List, Type, TypeVar, Union, cast
+from collections.abc import Mapping
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -15,24 +16,17 @@ T = TypeVar("T", bound="DiagnosisGetDiagnosticLogsResponse")
 @_attrs_define
 class DiagnosisGetDiagnosticLogsResponse:
     """
-    Example:
-        {'console_logs': [{'url_link': 'url_link', 'created_at': 'created_at', 'label': 'label', 'message': 'message',
-            'type': 'type'}, {'url_link': 'url_link', 'created_at': 'created_at', 'label': 'label', 'message': 'message',
-            'type': 'type'}], 'agent_logs': [{'url_link': 'url_link', 'created_at': 'created_at', 'label': 'label',
-            'message': 'message', 'type': 'type'}, {'url_link': 'url_link', 'created_at': 'created_at', 'label': 'label',
-            'message': 'message', 'type': 'type'}]}
-
     Attributes:
-        agent_logs (Union[List['DiagnosisDiagnosticLogsLink'], None, Unset]):
-        console_logs (Union[List['DiagnosisDiagnosticLogsLink'], None, Unset]):
+        agent_logs (Union[None, Unset, list['DiagnosisDiagnosticLogsLink']]):
+        console_logs (Union[None, Unset, list['DiagnosisDiagnosticLogsLink']]):
     """
 
-    agent_logs: Union[List["DiagnosisDiagnosticLogsLink"], None, Unset] = UNSET
-    console_logs: Union[List["DiagnosisDiagnosticLogsLink"], None, Unset] = UNSET
-    additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
+    agent_logs: Union[None, Unset, list["DiagnosisDiagnosticLogsLink"]] = UNSET
+    console_logs: Union[None, Unset, list["DiagnosisDiagnosticLogsLink"]] = UNSET
+    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
-    def to_dict(self) -> Dict[str, Any]:
-        agent_logs: Union[List[Dict[str, Any]], None, Unset]
+    def to_dict(self) -> dict[str, Any]:
+        agent_logs: Union[None, Unset, list[dict[str, Any]]]
         if isinstance(self.agent_logs, Unset):
             agent_logs = UNSET
         elif isinstance(self.agent_logs, list):
@@ -44,7 +38,7 @@ class DiagnosisGetDiagnosticLogsResponse:
         else:
             agent_logs = self.agent_logs
 
-        console_logs: Union[List[Dict[str, Any]], None, Unset]
+        console_logs: Union[None, Unset, list[dict[str, Any]]]
         if isinstance(self.console_logs, Unset):
             console_logs = UNSET
         elif isinstance(self.console_logs, list):
@@ -56,7 +50,7 @@ class DiagnosisGetDiagnosticLogsResponse:
         else:
             console_logs = self.console_logs
 
-        field_dict: Dict[str, Any] = {}
+        field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
         if agent_logs is not UNSET:
@@ -67,12 +61,12 @@ class DiagnosisGetDiagnosticLogsResponse:
         return field_dict
 
     @classmethod
-    def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.diagnosis_diagnostic_logs_link import DiagnosisDiagnosticLogsLink
 
-        d = src_dict.copy()
+        d = dict(src_dict)
 
-        def _parse_agent_logs(data: object) -> Union[List["DiagnosisDiagnosticLogsLink"], None, Unset]:
+        def _parse_agent_logs(data: object) -> Union[None, Unset, list["DiagnosisDiagnosticLogsLink"]]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -90,11 +84,11 @@ class DiagnosisGetDiagnosticLogsResponse:
                 return agent_logs_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[List["DiagnosisDiagnosticLogsLink"], None, Unset], data)
+            return cast(Union[None, Unset, list["DiagnosisDiagnosticLogsLink"]], data)
 
         agent_logs = _parse_agent_logs(d.pop("agent_logs", UNSET))
 
-        def _parse_console_logs(data: object) -> Union[List["DiagnosisDiagnosticLogsLink"], None, Unset]:
+        def _parse_console_logs(data: object) -> Union[None, Unset, list["DiagnosisDiagnosticLogsLink"]]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -112,7 +106,7 @@ class DiagnosisGetDiagnosticLogsResponse:
                 return console_logs_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[List["DiagnosisDiagnosticLogsLink"], None, Unset], data)
+            return cast(Union[None, Unset, list["DiagnosisDiagnosticLogsLink"]], data)
 
         console_logs = _parse_console_logs(d.pop("console_logs", UNSET))
 
@@ -125,7 +119,7 @@ class DiagnosisGetDiagnosticLogsResponse:
         return diagnosis_get_diagnostic_logs_response
 
     @property
-    def additional_keys(self) -> List[str]:
+    def additional_keys(self) -> list[str]:
         return list(self.additional_properties.keys())
 
     def __getitem__(self, key: str) -> Any:

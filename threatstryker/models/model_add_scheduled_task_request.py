@@ -1,4 +1,5 @@
-from typing import TYPE_CHECKING, Any, Dict, List, Type, TypeVar, Union, cast
+from collections.abc import Mapping
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -19,24 +20,12 @@ T = TypeVar("T", bound="ModelAddScheduledTaskRequest")
 @_attrs_define
 class ModelAddScheduledTaskRequest:
     """
-    Example:
-        {'is_priority': True, 'benchmark_types': ['hipaa', 'hipaa'], 'scan_config': [{'language': 'base'}, {'language':
-            'base'}], 'cron_expr': 'cron_expr', 'action': 'SecretScan', 'description': 'description',
-            'deepfence_system_scan': True, 'filters': {'container_scan_filter': {'filter_in': {'key': ['', '']}},
-            'cloud_account_scan_filter': {'filter_in': {'key': ['', '']}}, 'image_scan_filter': {'filter_in': {'key': ['',
-            '']}}, 'kubernetes_cluster_scan_filter': {'filter_in': {'key': ['', '']}}, 'host_scan_filter': {'filter_in':
-            {'key': ['', '']}}}, 'node_ids': [{'node_type': 'image', 'node_id': 'node_id'}, {'node_type': 'image',
-            'node_id': 'node_id'}]}
-
     Attributes:
         action (ModelAddScheduledTaskRequestAction):
-        benchmark_types (Union[List[ModelBenchmarkType], None]):
-        filters (ModelScanFilter):  Example: {'container_scan_filter': {'filter_in': {'key': ['', '']}},
-            'cloud_account_scan_filter': {'filter_in': {'key': ['', '']}}, 'image_scan_filter': {'filter_in': {'key': ['',
-            '']}}, 'kubernetes_cluster_scan_filter': {'filter_in': {'key': ['', '']}}, 'host_scan_filter': {'filter_in':
-            {'key': ['', '']}}}.
-        node_ids (Union[List['ModelNodeIdentifier'], None]):
-        scan_config (Union[List['ModelVulnerabilityScanConfigLanguage'], None]):
+        benchmark_types (Union[None, list[ModelBenchmarkType]]):
+        filters (ModelScanFilter):
+        node_ids (Union[None, list['ModelNodeIdentifier']]):
+        scan_config (Union[None, list['ModelVulnerabilityScanConfigLanguage']]):
         cron_expr (Union[Unset, str]):
         deepfence_system_scan (Union[Unset, bool]):
         description (Union[Unset, str]):
@@ -44,20 +33,20 @@ class ModelAddScheduledTaskRequest:
     """
 
     action: ModelAddScheduledTaskRequestAction
-    benchmark_types: Union[List[ModelBenchmarkType], None]
+    benchmark_types: Union[None, list[ModelBenchmarkType]]
     filters: "ModelScanFilter"
-    node_ids: Union[List["ModelNodeIdentifier"], None]
-    scan_config: Union[List["ModelVulnerabilityScanConfigLanguage"], None]
+    node_ids: Union[None, list["ModelNodeIdentifier"]]
+    scan_config: Union[None, list["ModelVulnerabilityScanConfigLanguage"]]
     cron_expr: Union[Unset, str] = UNSET
     deepfence_system_scan: Union[Unset, bool] = UNSET
     description: Union[Unset, str] = UNSET
     is_priority: Union[Unset, bool] = UNSET
-    additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
+    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
-    def to_dict(self) -> Dict[str, Any]:
+    def to_dict(self) -> dict[str, Any]:
         action = self.action.value
 
-        benchmark_types: Union[List[str], None]
+        benchmark_types: Union[None, list[str]]
         if isinstance(self.benchmark_types, list):
             benchmark_types = []
             for benchmark_types_type_0_item_data in self.benchmark_types:
@@ -69,7 +58,7 @@ class ModelAddScheduledTaskRequest:
 
         filters = self.filters.to_dict()
 
-        node_ids: Union[List[Dict[str, Any]], None]
+        node_ids: Union[None, list[dict[str, Any]]]
         if isinstance(self.node_ids, list):
             node_ids = []
             for node_ids_type_0_item_data in self.node_ids:
@@ -79,7 +68,7 @@ class ModelAddScheduledTaskRequest:
         else:
             node_ids = self.node_ids
 
-        scan_config: Union[List[Dict[str, Any]], None]
+        scan_config: Union[None, list[dict[str, Any]]]
         if isinstance(self.scan_config, list):
             scan_config = []
             for scan_config_type_0_item_data in self.scan_config:
@@ -97,7 +86,7 @@ class ModelAddScheduledTaskRequest:
 
         is_priority = self.is_priority
 
-        field_dict: Dict[str, Any] = {}
+        field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
@@ -120,15 +109,15 @@ class ModelAddScheduledTaskRequest:
         return field_dict
 
     @classmethod
-    def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.model_node_identifier import ModelNodeIdentifier
         from ..models.model_scan_filter import ModelScanFilter
         from ..models.model_vulnerability_scan_config_language import ModelVulnerabilityScanConfigLanguage
 
-        d = src_dict.copy()
+        d = dict(src_dict)
         action = ModelAddScheduledTaskRequestAction(d.pop("action"))
 
-        def _parse_benchmark_types(data: object) -> Union[List[ModelBenchmarkType], None]:
+        def _parse_benchmark_types(data: object) -> Union[None, list[ModelBenchmarkType]]:
             if data is None:
                 return data
             try:
@@ -144,13 +133,13 @@ class ModelAddScheduledTaskRequest:
                 return benchmark_types_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[List[ModelBenchmarkType], None], data)
+            return cast(Union[None, list[ModelBenchmarkType]], data)
 
         benchmark_types = _parse_benchmark_types(d.pop("benchmark_types"))
 
         filters = ModelScanFilter.from_dict(d.pop("filters"))
 
-        def _parse_node_ids(data: object) -> Union[List["ModelNodeIdentifier"], None]:
+        def _parse_node_ids(data: object) -> Union[None, list["ModelNodeIdentifier"]]:
             if data is None:
                 return data
             try:
@@ -166,11 +155,11 @@ class ModelAddScheduledTaskRequest:
                 return node_ids_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[List["ModelNodeIdentifier"], None], data)
+            return cast(Union[None, list["ModelNodeIdentifier"]], data)
 
         node_ids = _parse_node_ids(d.pop("node_ids"))
 
-        def _parse_scan_config(data: object) -> Union[List["ModelVulnerabilityScanConfigLanguage"], None]:
+        def _parse_scan_config(data: object) -> Union[None, list["ModelVulnerabilityScanConfigLanguage"]]:
             if data is None:
                 return data
             try:
@@ -188,7 +177,7 @@ class ModelAddScheduledTaskRequest:
                 return scan_config_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[List["ModelVulnerabilityScanConfigLanguage"], None], data)
+            return cast(Union[None, list["ModelVulnerabilityScanConfigLanguage"]], data)
 
         scan_config = _parse_scan_config(d.pop("scan_config"))
 
@@ -216,7 +205,7 @@ class ModelAddScheduledTaskRequest:
         return model_add_scheduled_task_request
 
     @property
-    def additional_keys(self) -> List[str]:
+    def additional_keys(self) -> list[str]:
         return list(self.additional_properties.keys())
 
     def __getitem__(self, key: str) -> Any:

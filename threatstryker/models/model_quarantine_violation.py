@@ -1,4 +1,5 @@
-from typing import Any, Dict, List, Type, TypeVar
+from collections.abc import Mapping
+from typing import Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -9,11 +10,6 @@ T = TypeVar("T", bound="ModelQuarantineViolation")
 @_attrs_define
 class ModelQuarantineViolation:
     """
-    Example:
-        {'severity': 'severity', 'executed_at': 6, 'policy_index': 1, 'created_at': 0, 'type': 'type', 'ttl': 5,
-            'config_id': 'config_id', 'alert_id': 'alert_id', 'action': 'action', 'pod_id': 'pod_id', 'container_id':
-            'container_id', 'host_name': 'host_name', 'node_id': 'node_id'}
-
     Attributes:
         action (str):
         alert_id (str):
@@ -27,7 +23,7 @@ class ModelQuarantineViolation:
         policy_index (int):
         severity (str):
         ttl (int):
-        type (str):
+        type_ (str):
     """
 
     action: str
@@ -42,10 +38,10 @@ class ModelQuarantineViolation:
     policy_index: int
     severity: str
     ttl: int
-    type: str
-    additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
+    type_: str
+    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
-    def to_dict(self) -> Dict[str, Any]:
+    def to_dict(self) -> dict[str, Any]:
         action = self.action
 
         alert_id = self.alert_id
@@ -70,9 +66,9 @@ class ModelQuarantineViolation:
 
         ttl = self.ttl
 
-        type = self.type
+        type_ = self.type_
 
-        field_dict: Dict[str, Any] = {}
+        field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
@@ -88,15 +84,15 @@ class ModelQuarantineViolation:
                 "policy_index": policy_index,
                 "severity": severity,
                 "ttl": ttl,
-                "type": type,
+                "type": type_,
             }
         )
 
         return field_dict
 
     @classmethod
-    def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
-        d = src_dict.copy()
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        d = dict(src_dict)
         action = d.pop("action")
 
         alert_id = d.pop("alert_id")
@@ -121,7 +117,7 @@ class ModelQuarantineViolation:
 
         ttl = d.pop("ttl")
 
-        type = d.pop("type")
+        type_ = d.pop("type")
 
         model_quarantine_violation = cls(
             action=action,
@@ -136,14 +132,14 @@ class ModelQuarantineViolation:
             policy_index=policy_index,
             severity=severity,
             ttl=ttl,
-            type=type,
+            type_=type_,
         )
 
         model_quarantine_violation.additional_properties = d
         return model_quarantine_violation
 
     @property
-    def additional_keys(self) -> List[str]:
+    def additional_keys(self) -> list[str]:
         return list(self.additional_properties.keys())
 
     def __getitem__(self, key: str) -> Any:

@@ -1,4 +1,5 @@
-from typing import Any, Dict, List, Type, TypeVar, Union, cast
+from collections.abc import Mapping
+from typing import Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -9,29 +10,26 @@ T = TypeVar("T", bound="ModelScanTriggerResp")
 @_attrs_define
 class ModelScanTriggerResp:
     """
-    Example:
-        {'bulk_scan_id': 'bulk_scan_id', 'scan_ids': ['scan_ids', 'scan_ids']}
-
     Attributes:
         bulk_scan_id (str):
-        scan_ids (Union[List[str], None]):
+        scan_ids (Union[None, list[str]]):
     """
 
     bulk_scan_id: str
-    scan_ids: Union[List[str], None]
-    additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
+    scan_ids: Union[None, list[str]]
+    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
-    def to_dict(self) -> Dict[str, Any]:
+    def to_dict(self) -> dict[str, Any]:
         bulk_scan_id = self.bulk_scan_id
 
-        scan_ids: Union[List[str], None]
+        scan_ids: Union[None, list[str]]
         if isinstance(self.scan_ids, list):
             scan_ids = self.scan_ids
 
         else:
             scan_ids = self.scan_ids
 
-        field_dict: Dict[str, Any] = {}
+        field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
@@ -43,22 +41,22 @@ class ModelScanTriggerResp:
         return field_dict
 
     @classmethod
-    def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
-        d = src_dict.copy()
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        d = dict(src_dict)
         bulk_scan_id = d.pop("bulk_scan_id")
 
-        def _parse_scan_ids(data: object) -> Union[List[str], None]:
+        def _parse_scan_ids(data: object) -> Union[None, list[str]]:
             if data is None:
                 return data
             try:
                 if not isinstance(data, list):
                     raise TypeError()
-                scan_ids_type_0 = cast(List[str], data)
+                scan_ids_type_0 = cast(list[str], data)
 
                 return scan_ids_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[List[str], None], data)
+            return cast(Union[None, list[str]], data)
 
         scan_ids = _parse_scan_ids(d.pop("scan_ids"))
 
@@ -71,7 +69,7 @@ class ModelScanTriggerResp:
         return model_scan_trigger_resp
 
     @property
-    def additional_keys(self) -> List[str]:
+    def additional_keys(self) -> list[str]:
         return list(self.additional_properties.keys())
 
     def __getitem__(self, key: str) -> Any:

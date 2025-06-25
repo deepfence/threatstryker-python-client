@@ -1,9 +1,11 @@
+from collections.abc import Mapping
 from io import BytesIO
-from typing import Any, Dict, List, Type, TypeVar
+from typing import Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
+from .. import types
 from ..types import File
 
 T = TypeVar("T", bound="FormDataModelRegistryGCRAddReq")
@@ -21,16 +23,16 @@ class FormDataModelRegistryGCRAddReq:
     name: str
     registry_url: str
     service_account_json: File
-    additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
+    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
-    def to_dict(self) -> Dict[str, Any]:
+    def to_dict(self) -> dict[str, Any]:
         name = self.name
 
         registry_url = self.registry_url
 
         service_account_json = self.service_account_json.to_tuple()
 
-        field_dict: Dict[str, Any] = {}
+        field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
@@ -42,30 +44,23 @@ class FormDataModelRegistryGCRAddReq:
 
         return field_dict
 
-    def to_multipart(self) -> Dict[str, Any]:
-        name = (None, str(self.name).encode(), "text/plain")
+    def to_multipart(self) -> types.RequestFiles:
+        files: types.RequestFiles = []
 
-        registry_url = (None, str(self.registry_url).encode(), "text/plain")
+        files.append(("name", (None, str(self.name).encode(), "text/plain")))
 
-        service_account_json = self.service_account_json.to_tuple()
+        files.append(("registry_url", (None, str(self.registry_url).encode(), "text/plain")))
 
-        field_dict: Dict[str, Any] = {}
+        files.append(("service_account_json", self.service_account_json.to_tuple()))
+
         for prop_name, prop in self.additional_properties.items():
-            field_dict[prop_name] = (None, str(prop).encode(), "text/plain")
+            files.append((prop_name, (None, str(prop).encode(), "text/plain")))
 
-        field_dict.update(
-            {
-                "name": name,
-                "registry_url": registry_url,
-                "service_account_json": service_account_json,
-            }
-        )
-
-        return field_dict
+        return files
 
     @classmethod
-    def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
-        d = src_dict.copy()
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        d = dict(src_dict)
         name = d.pop("name")
 
         registry_url = d.pop("registry_url")
@@ -82,7 +77,7 @@ class FormDataModelRegistryGCRAddReq:
         return form_data_model_registry_gcr_add_req
 
     @property
-    def additional_keys(self) -> List[str]:
+    def additional_keys(self) -> list[str]:
         return list(self.additional_properties.keys())
 
     def __getitem__(self, key: str) -> Any:

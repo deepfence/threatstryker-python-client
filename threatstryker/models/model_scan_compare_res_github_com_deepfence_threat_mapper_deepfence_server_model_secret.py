@@ -1,4 +1,5 @@
-from typing import TYPE_CHECKING, Any, Dict, List, Type, TypeVar, Union, cast
+from collections.abc import Mapping
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -13,32 +14,15 @@ T = TypeVar("T", bound="ModelScanCompareResGithubComDeepfenceThreatMapperDeepfen
 @_attrs_define
 class ModelScanCompareResGithubComDeepfenceThreatMapperDeepfenceServerModelSecret:
     """
-    Example:
-        {'new': [{'rule_id': 'rule_id', 'score': 1.4658129805029452, 'full_filename': 'full_filename',
-            'matched_content': 'matched_content', 'updated_at': 5, 'level': 'critical', 'masked': True, 'starting_index': 5,
-            'resources': [{'node_type': 'node_type', 'live_secrets': ['live_secrets', 'live_secrets'], 'live_cves':
-            ['live_cves', 'live_cves'], 'name': 'name', 'host_name': 'host_name', 'live_malwares': ['live_malwares',
-            'live_malwares'], 'node_id': 'node_id'}, {'node_type': 'node_type', 'live_secrets': ['live_secrets',
-            'live_secrets'], 'live_cves': ['live_cves', 'live_cves'], 'name': 'name', 'host_name': 'host_name',
-            'live_malwares': ['live_malwares', 'live_malwares'], 'node_id': 'node_id'}], 'exploitability_score': 0,
-            'max_exploitability_score': 6, 'node_id': 'node_id'}, {'rule_id': 'rule_id', 'score': 1.4658129805029452,
-            'full_filename': 'full_filename', 'matched_content': 'matched_content', 'updated_at': 5, 'level': 'critical',
-            'masked': True, 'starting_index': 5, 'resources': [{'node_type': 'node_type', 'live_secrets': ['live_secrets',
-            'live_secrets'], 'live_cves': ['live_cves', 'live_cves'], 'name': 'name', 'host_name': 'host_name',
-            'live_malwares': ['live_malwares', 'live_malwares'], 'node_id': 'node_id'}, {'node_type': 'node_type',
-            'live_secrets': ['live_secrets', 'live_secrets'], 'live_cves': ['live_cves', 'live_cves'], 'name': 'name',
-            'host_name': 'host_name', 'live_malwares': ['live_malwares', 'live_malwares'], 'node_id': 'node_id'}],
-            'exploitability_score': 0, 'max_exploitability_score': 6, 'node_id': 'node_id'}]}
-
     Attributes:
-        new (Union[List['ModelSecret'], None]):
+        new (Union[None, list['ModelSecret']]):
     """
 
-    new: Union[List["ModelSecret"], None]
-    additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
+    new: Union[None, list["ModelSecret"]]
+    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
-    def to_dict(self) -> Dict[str, Any]:
-        new: Union[List[Dict[str, Any]], None]
+    def to_dict(self) -> dict[str, Any]:
+        new: Union[None, list[dict[str, Any]]]
         if isinstance(self.new, list):
             new = []
             for new_type_0_item_data in self.new:
@@ -48,7 +32,7 @@ class ModelScanCompareResGithubComDeepfenceThreatMapperDeepfenceServerModelSecre
         else:
             new = self.new
 
-        field_dict: Dict[str, Any] = {}
+        field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
@@ -59,12 +43,12 @@ class ModelScanCompareResGithubComDeepfenceThreatMapperDeepfenceServerModelSecre
         return field_dict
 
     @classmethod
-    def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.model_secret import ModelSecret
 
-        d = src_dict.copy()
+        d = dict(src_dict)
 
-        def _parse_new(data: object) -> Union[List["ModelSecret"], None]:
+        def _parse_new(data: object) -> Union[None, list["ModelSecret"]]:
             if data is None:
                 return data
             try:
@@ -80,7 +64,7 @@ class ModelScanCompareResGithubComDeepfenceThreatMapperDeepfenceServerModelSecre
                 return new_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[List["ModelSecret"], None], data)
+            return cast(Union[None, list["ModelSecret"]], data)
 
         new = _parse_new(d.pop("new"))
 
@@ -92,7 +76,7 @@ class ModelScanCompareResGithubComDeepfenceThreatMapperDeepfenceServerModelSecre
         return model_scan_compare_res_github_com_deepfence_threat_mapper_deepfence_server_model_secret
 
     @property
-    def additional_keys(self) -> List[str]:
+    def additional_keys(self) -> list[str]:
         return list(self.additional_properties.keys())
 
     def __getitem__(self, key: str) -> Any:

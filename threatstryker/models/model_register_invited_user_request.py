@@ -1,4 +1,5 @@
-from typing import Any, Dict, List, Type, TypeVar, Union
+from collections.abc import Mapping
+from typing import Any, TypeVar, Union
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -11,10 +12,6 @@ T = TypeVar("T", bound="ModelRegisterInvitedUserRequest")
 @_attrs_define
 class ModelRegisterInvitedUserRequest:
     """
-    Example:
-        {'password': 'password', 'code': 'code', 'namespace': 'namespace', 'last_name': 'last_name', 'first_name':
-            'first_name', 'is_temporary_password': True}
-
     Attributes:
         code (str):
         first_name (str):
@@ -30,9 +27,9 @@ class ModelRegisterInvitedUserRequest:
     namespace: str
     password: str
     is_temporary_password: Union[Unset, bool] = UNSET
-    additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
+    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
-    def to_dict(self) -> Dict[str, Any]:
+    def to_dict(self) -> dict[str, Any]:
         code = self.code
 
         first_name = self.first_name
@@ -45,7 +42,7 @@ class ModelRegisterInvitedUserRequest:
 
         is_temporary_password = self.is_temporary_password
 
-        field_dict: Dict[str, Any] = {}
+        field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
@@ -62,8 +59,8 @@ class ModelRegisterInvitedUserRequest:
         return field_dict
 
     @classmethod
-    def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
-        d = src_dict.copy()
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        d = dict(src_dict)
         code = d.pop("code")
 
         first_name = d.pop("first_name")
@@ -89,7 +86,7 @@ class ModelRegisterInvitedUserRequest:
         return model_register_invited_user_request
 
     @property
-    def additional_keys(self) -> List[str]:
+    def additional_keys(self) -> list[str]:
         return list(self.additional_properties.keys())
 
     def __getitem__(self, key: str) -> Any:

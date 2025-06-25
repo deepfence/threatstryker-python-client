@@ -1,4 +1,5 @@
-from typing import TYPE_CHECKING, Any, Dict, List, Type, TypeVar, Union, cast
+from collections.abc import Mapping
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -15,28 +16,25 @@ T = TypeVar("T", bound="ReportersDailySevCounts")
 @_attrs_define
 class ReportersDailySevCounts:
     """
-    Example:
-        {'days_to_sev_counts': {'key': {'counts': {'key': 0}}}}
-
     Attributes:
         days_to_sev_counts (Union['ReportersDailySevCountsDaysToSevCountsType0', None]):
     """
 
     days_to_sev_counts: Union["ReportersDailySevCountsDaysToSevCountsType0", None]
-    additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
+    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
-    def to_dict(self) -> Dict[str, Any]:
+    def to_dict(self) -> dict[str, Any]:
         from ..models.reporters_daily_sev_counts_days_to_sev_counts_type_0 import (
             ReportersDailySevCountsDaysToSevCountsType0,
         )
 
-        days_to_sev_counts: Union[Dict[str, Any], None]
+        days_to_sev_counts: Union[None, dict[str, Any]]
         if isinstance(self.days_to_sev_counts, ReportersDailySevCountsDaysToSevCountsType0):
             days_to_sev_counts = self.days_to_sev_counts.to_dict()
         else:
             days_to_sev_counts = self.days_to_sev_counts
 
-        field_dict: Dict[str, Any] = {}
+        field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
@@ -47,12 +45,12 @@ class ReportersDailySevCounts:
         return field_dict
 
     @classmethod
-    def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.reporters_daily_sev_counts_days_to_sev_counts_type_0 import (
             ReportersDailySevCountsDaysToSevCountsType0,
         )
 
-        d = src_dict.copy()
+        d = dict(src_dict)
 
         def _parse_days_to_sev_counts(data: object) -> Union["ReportersDailySevCountsDaysToSevCountsType0", None]:
             if data is None:
@@ -77,7 +75,7 @@ class ReportersDailySevCounts:
         return reporters_daily_sev_counts
 
     @property
-    def additional_keys(self) -> List[str]:
+    def additional_keys(self) -> list[str]:
         return list(self.additional_properties.keys())
 
     def __getitem__(self, key: str) -> Any:

@@ -1,4 +1,5 @@
-from typing import TYPE_CHECKING, Any, Dict, List, Type, TypeVar, Union, cast
+from collections.abc import Mapping
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -15,33 +16,29 @@ T = TypeVar("T", bound="ModelComplianceScanResultControlGroup")
 @_attrs_define
 class ModelComplianceScanResultControlGroup:
     """
-    Example:
-        {'benchmark_types': ['benchmark_types', 'benchmark_types'], 'counts': {'key': 0}, 'problem_title':
-            'problem_title'}
-
     Attributes:
-        benchmark_types (Union[Unset, List[str]]):
+        benchmark_types (Union[Unset, list[str]]):
         counts (Union[Unset, ModelComplianceScanResultControlGroupCounts]):
         problem_title (Union[Unset, str]):
     """
 
-    benchmark_types: Union[Unset, List[str]] = UNSET
+    benchmark_types: Union[Unset, list[str]] = UNSET
     counts: Union[Unset, "ModelComplianceScanResultControlGroupCounts"] = UNSET
     problem_title: Union[Unset, str] = UNSET
-    additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
+    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
-    def to_dict(self) -> Dict[str, Any]:
-        benchmark_types: Union[Unset, List[str]] = UNSET
+    def to_dict(self) -> dict[str, Any]:
+        benchmark_types: Union[Unset, list[str]] = UNSET
         if not isinstance(self.benchmark_types, Unset):
             benchmark_types = self.benchmark_types
 
-        counts: Union[Unset, Dict[str, Any]] = UNSET
+        counts: Union[Unset, dict[str, Any]] = UNSET
         if not isinstance(self.counts, Unset):
             counts = self.counts.to_dict()
 
         problem_title = self.problem_title
 
-        field_dict: Dict[str, Any] = {}
+        field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
         if benchmark_types is not UNSET:
@@ -54,13 +51,13 @@ class ModelComplianceScanResultControlGroup:
         return field_dict
 
     @classmethod
-    def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.model_compliance_scan_result_control_group_counts import (
             ModelComplianceScanResultControlGroupCounts,
         )
 
-        d = src_dict.copy()
-        benchmark_types = cast(List[str], d.pop("benchmark_types", UNSET))
+        d = dict(src_dict)
+        benchmark_types = cast(list[str], d.pop("benchmark_types", UNSET))
 
         _counts = d.pop("counts", UNSET)
         counts: Union[Unset, ModelComplianceScanResultControlGroupCounts]
@@ -81,7 +78,7 @@ class ModelComplianceScanResultControlGroup:
         return model_compliance_scan_result_control_group
 
     @property
-    def additional_keys(self) -> List[str]:
+    def additional_keys(self) -> list[str]:
         return list(self.additional_properties.keys())
 
     def __getitem__(self, key: str) -> Any:

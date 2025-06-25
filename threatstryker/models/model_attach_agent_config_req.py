@@ -1,4 +1,5 @@
-from typing import TYPE_CHECKING, Any, Dict, List, Type, TypeVar, Union, cast
+from collections.abc import Mapping
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -13,21 +14,17 @@ T = TypeVar("T", bound="ModelAttachAgentConfigReq")
 @_attrs_define
 class ModelAttachAgentConfigReq:
     """
-    Example:
-        {'config_id': 'config_id', 'agent_ids': [{'node_type': 'node_type', 'available_workload': 0, 'node_id':
-            'node_id'}, {'node_type': 'node_type', 'available_workload': 0, 'node_id': 'node_id'}]}
-
     Attributes:
-        agent_ids (Union[List['ModelAgentID'], None]):
+        agent_ids (Union[None, list['ModelAgentID']]):
         config_id (str):
     """
 
-    agent_ids: Union[List["ModelAgentID"], None]
+    agent_ids: Union[None, list["ModelAgentID"]]
     config_id: str
-    additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
+    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
-    def to_dict(self) -> Dict[str, Any]:
-        agent_ids: Union[List[Dict[str, Any]], None]
+    def to_dict(self) -> dict[str, Any]:
+        agent_ids: Union[None, list[dict[str, Any]]]
         if isinstance(self.agent_ids, list):
             agent_ids = []
             for agent_ids_type_0_item_data in self.agent_ids:
@@ -39,7 +36,7 @@ class ModelAttachAgentConfigReq:
 
         config_id = self.config_id
 
-        field_dict: Dict[str, Any] = {}
+        field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
@@ -51,12 +48,12 @@ class ModelAttachAgentConfigReq:
         return field_dict
 
     @classmethod
-    def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.model_agent_id import ModelAgentID
 
-        d = src_dict.copy()
+        d = dict(src_dict)
 
-        def _parse_agent_ids(data: object) -> Union[List["ModelAgentID"], None]:
+        def _parse_agent_ids(data: object) -> Union[None, list["ModelAgentID"]]:
             if data is None:
                 return data
             try:
@@ -72,7 +69,7 @@ class ModelAttachAgentConfigReq:
                 return agent_ids_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[List["ModelAgentID"], None], data)
+            return cast(Union[None, list["ModelAgentID"]], data)
 
         agent_ids = _parse_agent_ids(d.pop("agent_ids"))
 
@@ -87,7 +84,7 @@ class ModelAttachAgentConfigReq:
         return model_attach_agent_config_req
 
     @property
-    def additional_keys(self) -> List[str]:
+    def additional_keys(self) -> list[str]:
         return list(self.additional_properties.keys())
 
     def __getitem__(self, key: str) -> Any:

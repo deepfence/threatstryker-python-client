@@ -1,4 +1,5 @@
-from typing import Any, Dict, List, Type, TypeVar, Union, cast
+from collections.abc import Mapping
+from typing import Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -11,17 +12,6 @@ T = TypeVar("T", bound="ModelNetworkAlert")
 @_attrs_define
 class ModelNetworkAlert:
     """
-    Example:
-        {'request': 'request', 'references': 'references', 'destination_port': 1, 'kubernetes_cluster_name':
-            'kubernetes_cluster_name', 'masked': True, 'created_at': 6, 'source_ip': 'source_ip', 'protocol': 'protocol',
-            'base_64_payload': 'base_64_payload', 'destination_ip': 'destination_ip', 'event_type': 'event_type',
-            'node_type': 'node_type', 'updated_at': 5, 'payload': 'payload', 'source_port': 5, 'direction': 'direction',
-            'severity': 'severity', 'summary': 'summary', 'headers': 'headers', 'kubernetes_cluster_id':
-            'kubernetes_cluster_id', 'count': 0, 'http_type': 'http_type', 'url': 'url', 'pod_name': 'pod_name', 'tags':
-            'tags', 'rule_id': 'rule_id', 'container_name': 'container_name', 'encrypted': True, 'response': 'response',
-            'techniques': ['techniques', 'techniques'], 'tactics': ['tactics', 'tactics'], 'category': 'category',
-            'host_name': 'host_name', 'node_id': 'node_id'}
-
     Attributes:
         base_64_payload (str):
         category (str):
@@ -50,9 +40,9 @@ class ModelNetworkAlert:
         source_ip (str):
         source_port (int):
         summary (str):
-        tactics (Union[List[str], None]):
+        tactics (Union[None, list[str]]):
         tags (str):
-        techniques (Union[List[str], None]):
+        techniques (Union[None, list[str]]):
         updated_at (int):
         url (str):
         request (Union[Unset, str]):
@@ -86,16 +76,16 @@ class ModelNetworkAlert:
     source_ip: str
     source_port: int
     summary: str
-    tactics: Union[List[str], None]
+    tactics: Union[None, list[str]]
     tags: str
-    techniques: Union[List[str], None]
+    techniques: Union[None, list[str]]
     updated_at: int
     url: str
     request: Union[Unset, str] = UNSET
     response: Union[Unset, str] = UNSET
-    additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
+    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
-    def to_dict(self) -> Dict[str, Any]:
+    def to_dict(self) -> dict[str, Any]:
         base_64_payload = self.base_64_payload
 
         category = self.category
@@ -150,7 +140,7 @@ class ModelNetworkAlert:
 
         summary = self.summary
 
-        tactics: Union[List[str], None]
+        tactics: Union[None, list[str]]
         if isinstance(self.tactics, list):
             tactics = self.tactics
 
@@ -159,7 +149,7 @@ class ModelNetworkAlert:
 
         tags = self.tags
 
-        techniques: Union[List[str], None]
+        techniques: Union[None, list[str]]
         if isinstance(self.techniques, list):
             techniques = self.techniques
 
@@ -174,7 +164,7 @@ class ModelNetworkAlert:
 
         response = self.response
 
-        field_dict: Dict[str, Any] = {}
+        field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
@@ -220,8 +210,8 @@ class ModelNetworkAlert:
         return field_dict
 
     @classmethod
-    def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
-        d = src_dict.copy()
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        d = dict(src_dict)
         base_64_payload = d.pop("base_64_payload")
 
         category = d.pop("category")
@@ -276,35 +266,35 @@ class ModelNetworkAlert:
 
         summary = d.pop("summary")
 
-        def _parse_tactics(data: object) -> Union[List[str], None]:
+        def _parse_tactics(data: object) -> Union[None, list[str]]:
             if data is None:
                 return data
             try:
                 if not isinstance(data, list):
                     raise TypeError()
-                tactics_type_0 = cast(List[str], data)
+                tactics_type_0 = cast(list[str], data)
 
                 return tactics_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[List[str], None], data)
+            return cast(Union[None, list[str]], data)
 
         tactics = _parse_tactics(d.pop("tactics"))
 
         tags = d.pop("tags")
 
-        def _parse_techniques(data: object) -> Union[List[str], None]:
+        def _parse_techniques(data: object) -> Union[None, list[str]]:
             if data is None:
                 return data
             try:
                 if not isinstance(data, list):
                     raise TypeError()
-                techniques_type_0 = cast(List[str], data)
+                techniques_type_0 = cast(list[str], data)
 
                 return techniques_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[List[str], None], data)
+            return cast(Union[None, list[str]], data)
 
         techniques = _parse_techniques(d.pop("techniques"))
 
@@ -357,7 +347,7 @@ class ModelNetworkAlert:
         return model_network_alert
 
     @property
-    def additional_keys(self) -> List[str]:
+    def additional_keys(self) -> list[str]:
         return list(self.additional_properties.keys())
 
     def __getitem__(self, key: str) -> Any:

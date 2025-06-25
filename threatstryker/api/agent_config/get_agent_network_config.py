@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Dict, List, Optional, Union, cast
+from typing import Any, Optional, Union, cast
 
 import httpx
 
@@ -15,17 +15,16 @@ from ...types import Response
 def _get_kwargs(
     *,
     body: ModelGetAgentConfigReq,
-) -> Dict[str, Any]:
-    headers: Dict[str, Any] = {}
+) -> dict[str, Any]:
+    headers: dict[str, Any] = {}
 
-    _kwargs: Dict[str, Any] = {
+    _kwargs: dict[str, Any] = {
         "method": "post",
         "url": "/deepfence/configs/agent/network/list",
     }
 
-    _body = body.to_dict()
+    _kwargs["json"] = body.to_dict()
 
-    _kwargs["json"] = _body
     headers["Content-Type"] = "application/json"
 
     _kwargs["headers"] = headers
@@ -34,8 +33,8 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse, List["ControlsNetworkTracerConfig"]]]:
-    if response.status_code == HTTPStatus.OK:
+) -> Optional[Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse, list["ControlsNetworkTracerConfig"]]]:
+    if response.status_code == 200:
         response_200 = []
         _response_200 = response.json()
         for response_200_item_data in _response_200:
@@ -44,21 +43,21 @@ def _parse_response(
             response_200.append(response_200_item)
 
         return response_200
-    if response.status_code == HTTPStatus.BAD_REQUEST:
+    if response.status_code == 400:
         response_400 = ApiDocsBadRequestResponse.from_dict(response.json())
 
         return response_400
-    if response.status_code == HTTPStatus.UNAUTHORIZED:
+    if response.status_code == 401:
         response_401 = cast(Any, None)
         return response_401
-    if response.status_code == HTTPStatus.FORBIDDEN:
+    if response.status_code == 403:
         response_403 = cast(Any, None)
         return response_403
-    if response.status_code == HTTPStatus.NOT_FOUND:
+    if response.status_code == 404:
         response_404 = ApiDocsFailureResponse.from_dict(response.json())
 
         return response_404
-    if response.status_code == HTTPStatus.INTERNAL_SERVER_ERROR:
+    if response.status_code == 500:
         response_500 = ApiDocsFailureResponse.from_dict(response.json())
 
         return response_500
@@ -70,7 +69,7 @@ def _parse_response(
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse, List["ControlsNetworkTracerConfig"]]]:
+) -> Response[Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse, list["ControlsNetworkTracerConfig"]]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -83,20 +82,20 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: ModelGetAgentConfigReq,
-) -> Response[Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse, List["ControlsNetworkTracerConfig"]]]:
+) -> Response[Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse, list["ControlsNetworkTracerConfig"]]]:
     """Get Agent Network config
 
      Get Agent Network config
 
     Args:
-        body (ModelGetAgentConfigReq):  Example: {'config_ids': ['config_ids', 'config_ids']}.
+        body (ModelGetAgentConfigReq):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse, List['ControlsNetworkTracerConfig']]]
+        Response[Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse, list['ControlsNetworkTracerConfig']]]
     """
 
     kwargs = _get_kwargs(
@@ -114,20 +113,20 @@ def sync(
     *,
     client: AuthenticatedClient,
     body: ModelGetAgentConfigReq,
-) -> Optional[Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse, List["ControlsNetworkTracerConfig"]]]:
+) -> Optional[Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse, list["ControlsNetworkTracerConfig"]]]:
     """Get Agent Network config
 
      Get Agent Network config
 
     Args:
-        body (ModelGetAgentConfigReq):  Example: {'config_ids': ['config_ids', 'config_ids']}.
+        body (ModelGetAgentConfigReq):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse, List['ControlsNetworkTracerConfig']]
+        Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse, list['ControlsNetworkTracerConfig']]
     """
 
     return sync_detailed(
@@ -140,20 +139,20 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     body: ModelGetAgentConfigReq,
-) -> Response[Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse, List["ControlsNetworkTracerConfig"]]]:
+) -> Response[Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse, list["ControlsNetworkTracerConfig"]]]:
     """Get Agent Network config
 
      Get Agent Network config
 
     Args:
-        body (ModelGetAgentConfigReq):  Example: {'config_ids': ['config_ids', 'config_ids']}.
+        body (ModelGetAgentConfigReq):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse, List['ControlsNetworkTracerConfig']]]
+        Response[Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse, list['ControlsNetworkTracerConfig']]]
     """
 
     kwargs = _get_kwargs(
@@ -169,20 +168,20 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     body: ModelGetAgentConfigReq,
-) -> Optional[Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse, List["ControlsNetworkTracerConfig"]]]:
+) -> Optional[Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse, list["ControlsNetworkTracerConfig"]]]:
     """Get Agent Network config
 
      Get Agent Network config
 
     Args:
-        body (ModelGetAgentConfigReq):  Example: {'config_ids': ['config_ids', 'config_ids']}.
+        body (ModelGetAgentConfigReq):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse, List['ControlsNetworkTracerConfig']]
+        Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse, list['ControlsNetworkTracerConfig']]
     """
 
     return (

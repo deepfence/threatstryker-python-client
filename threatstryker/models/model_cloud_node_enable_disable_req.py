@@ -1,4 +1,5 @@
-from typing import Any, Dict, List, Type, TypeVar, Union, cast
+from collections.abc import Mapping
+from typing import Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -11,20 +12,17 @@ T = TypeVar("T", bound="ModelCloudNodeEnableDisableReq")
 @_attrs_define
 class ModelCloudNodeEnableDisableReq:
     """
-    Example:
-        {'control_ids': ['control_ids', 'control_ids'], 'node_id': 'node_id'}
-
     Attributes:
-        control_ids (Union[List[str], None, Unset]):
+        control_ids (Union[None, Unset, list[str]]):
         node_id (Union[Unset, str]):
     """
 
-    control_ids: Union[List[str], None, Unset] = UNSET
+    control_ids: Union[None, Unset, list[str]] = UNSET
     node_id: Union[Unset, str] = UNSET
-    additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
+    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
-    def to_dict(self) -> Dict[str, Any]:
-        control_ids: Union[List[str], None, Unset]
+    def to_dict(self) -> dict[str, Any]:
+        control_ids: Union[None, Unset, list[str]]
         if isinstance(self.control_ids, Unset):
             control_ids = UNSET
         elif isinstance(self.control_ids, list):
@@ -35,7 +33,7 @@ class ModelCloudNodeEnableDisableReq:
 
         node_id = self.node_id
 
-        field_dict: Dict[str, Any] = {}
+        field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
         if control_ids is not UNSET:
@@ -46,10 +44,10 @@ class ModelCloudNodeEnableDisableReq:
         return field_dict
 
     @classmethod
-    def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
-        d = src_dict.copy()
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        d = dict(src_dict)
 
-        def _parse_control_ids(data: object) -> Union[List[str], None, Unset]:
+        def _parse_control_ids(data: object) -> Union[None, Unset, list[str]]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -57,12 +55,12 @@ class ModelCloudNodeEnableDisableReq:
             try:
                 if not isinstance(data, list):
                     raise TypeError()
-                control_ids_type_0 = cast(List[str], data)
+                control_ids_type_0 = cast(list[str], data)
 
                 return control_ids_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[List[str], None, Unset], data)
+            return cast(Union[None, Unset, list[str]], data)
 
         control_ids = _parse_control_ids(d.pop("control_ids", UNSET))
 
@@ -77,7 +75,7 @@ class ModelCloudNodeEnableDisableReq:
         return model_cloud_node_enable_disable_req
 
     @property
-    def additional_keys(self) -> List[str]:
+    def additional_keys(self) -> list[str]:
         return list(self.additional_properties.keys())
 
     def __getitem__(self, key: str) -> Any:

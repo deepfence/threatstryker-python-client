@@ -1,4 +1,5 @@
-from typing import Any, Dict, List, Type, TypeVar, Union
+from collections.abc import Mapping
+from typing import Any, TypeVar, Union
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -11,10 +12,6 @@ T = TypeVar("T", bound="IngestersSecretMatch")
 @_attrs_define
 class IngestersSecretMatch:
     """
-    Example:
-        {'full_filename': 'full_filename', 'matched_content': 'matched_content', 'relative_ending_index': 0,
-            'starting_index': 1, 'relative_starting_index': 6}
-
     Attributes:
         full_filename (Union[Unset, str]):
         matched_content (Union[Unset, str]):
@@ -28,9 +25,9 @@ class IngestersSecretMatch:
     relative_ending_index: Union[Unset, int] = UNSET
     relative_starting_index: Union[Unset, int] = UNSET
     starting_index: Union[Unset, int] = UNSET
-    additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
+    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
-    def to_dict(self) -> Dict[str, Any]:
+    def to_dict(self) -> dict[str, Any]:
         full_filename = self.full_filename
 
         matched_content = self.matched_content
@@ -41,7 +38,7 @@ class IngestersSecretMatch:
 
         starting_index = self.starting_index
 
-        field_dict: Dict[str, Any] = {}
+        field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
         if full_filename is not UNSET:
@@ -58,8 +55,8 @@ class IngestersSecretMatch:
         return field_dict
 
     @classmethod
-    def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
-        d = src_dict.copy()
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        d = dict(src_dict)
         full_filename = d.pop("full_filename", UNSET)
 
         matched_content = d.pop("matched_content", UNSET)
@@ -82,7 +79,7 @@ class IngestersSecretMatch:
         return ingesters_secret_match
 
     @property
-    def additional_keys(self) -> List[str]:
+    def additional_keys(self) -> list[str]:
         return list(self.additional_properties.keys())
 
     def __getitem__(self, key: str) -> Any:

@@ -1,4 +1,5 @@
-from typing import TYPE_CHECKING, Any, Dict, List, Type, TypeVar, Union, cast
+from collections.abc import Mapping
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -16,37 +17,21 @@ T = TypeVar("T", bound="ModelIntegrationFilters")
 @_attrs_define
 class ModelIntegrationFilters:
     """
-    Example:
-        {'fields_filters': {'compare_filter': [{'greater_than': True, 'field_value': '', 'field_name': 'field_name'},
-            {'greater_than': True, 'field_value': '', 'field_name': 'field_name'}], 'not_contains_filter': {'filter_in':
-            {'key': ['', '']}}, 'order_filter': {'order_fields': [{'size': 0, 'descending': True, 'field_name':
-            'field_name'}, {'size': 0, 'descending': True, 'field_name': 'field_name'}]}, 'contains_filter': {'filter_in':
-            {'key': ['', '']}}, 'contains_in_array_filter': {'filter_in': {'key': ['', '']}}, 'match_filter': {'filter_in':
-            {'key': ['', '']}}, 'match_in_array_filter': {'filter_in': {'key': ['', '']}}}, 'cloud_provider':
-            'cloud_provider', 'container_names': ['container_names', 'container_names'], 'node_ids': [{'node_type': 'image',
-            'node_id': 'node_id'}, {'node_type': 'image', 'node_id': 'node_id'}]}
-
     Attributes:
-        node_ids (Union[List['ModelNodeIdentifier'], None]):
+        node_ids (Union[None, list['ModelNodeIdentifier']]):
         cloud_provider (Union[Unset, str]):
-        container_names (Union[List[str], None, Unset]):
-        fields_filters (Union[Unset, ReportersFieldsFilters]):  Example: {'compare_filter': [{'greater_than': True,
-            'field_value': '', 'field_name': 'field_name'}, {'greater_than': True, 'field_value': '', 'field_name':
-            'field_name'}], 'not_contains_filter': {'filter_in': {'key': ['', '']}}, 'order_filter': {'order_fields':
-            [{'size': 0, 'descending': True, 'field_name': 'field_name'}, {'size': 0, 'descending': True, 'field_name':
-            'field_name'}]}, 'contains_filter': {'filter_in': {'key': ['', '']}}, 'contains_in_array_filter': {'filter_in':
-            {'key': ['', '']}}, 'match_filter': {'filter_in': {'key': ['', '']}}, 'match_in_array_filter': {'filter_in':
-            {'key': ['', '']}}}.
+        container_names (Union[None, Unset, list[str]]):
+        fields_filters (Union[Unset, ReportersFieldsFilters]):
     """
 
-    node_ids: Union[List["ModelNodeIdentifier"], None]
+    node_ids: Union[None, list["ModelNodeIdentifier"]]
     cloud_provider: Union[Unset, str] = UNSET
-    container_names: Union[List[str], None, Unset] = UNSET
+    container_names: Union[None, Unset, list[str]] = UNSET
     fields_filters: Union[Unset, "ReportersFieldsFilters"] = UNSET
-    additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
+    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
-    def to_dict(self) -> Dict[str, Any]:
-        node_ids: Union[List[Dict[str, Any]], None]
+    def to_dict(self) -> dict[str, Any]:
+        node_ids: Union[None, list[dict[str, Any]]]
         if isinstance(self.node_ids, list):
             node_ids = []
             for node_ids_type_0_item_data in self.node_ids:
@@ -58,7 +43,7 @@ class ModelIntegrationFilters:
 
         cloud_provider = self.cloud_provider
 
-        container_names: Union[List[str], None, Unset]
+        container_names: Union[None, Unset, list[str]]
         if isinstance(self.container_names, Unset):
             container_names = UNSET
         elif isinstance(self.container_names, list):
@@ -67,11 +52,11 @@ class ModelIntegrationFilters:
         else:
             container_names = self.container_names
 
-        fields_filters: Union[Unset, Dict[str, Any]] = UNSET
+        fields_filters: Union[Unset, dict[str, Any]] = UNSET
         if not isinstance(self.fields_filters, Unset):
             fields_filters = self.fields_filters.to_dict()
 
-        field_dict: Dict[str, Any] = {}
+        field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
@@ -88,13 +73,13 @@ class ModelIntegrationFilters:
         return field_dict
 
     @classmethod
-    def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.model_node_identifier import ModelNodeIdentifier
         from ..models.reporters_fields_filters import ReportersFieldsFilters
 
-        d = src_dict.copy()
+        d = dict(src_dict)
 
-        def _parse_node_ids(data: object) -> Union[List["ModelNodeIdentifier"], None]:
+        def _parse_node_ids(data: object) -> Union[None, list["ModelNodeIdentifier"]]:
             if data is None:
                 return data
             try:
@@ -110,13 +95,13 @@ class ModelIntegrationFilters:
                 return node_ids_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[List["ModelNodeIdentifier"], None], data)
+            return cast(Union[None, list["ModelNodeIdentifier"]], data)
 
         node_ids = _parse_node_ids(d.pop("node_ids"))
 
         cloud_provider = d.pop("cloud_provider", UNSET)
 
-        def _parse_container_names(data: object) -> Union[List[str], None, Unset]:
+        def _parse_container_names(data: object) -> Union[None, Unset, list[str]]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -124,12 +109,12 @@ class ModelIntegrationFilters:
             try:
                 if not isinstance(data, list):
                     raise TypeError()
-                container_names_type_0 = cast(List[str], data)
+                container_names_type_0 = cast(list[str], data)
 
                 return container_names_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[List[str], None, Unset], data)
+            return cast(Union[None, Unset, list[str]], data)
 
         container_names = _parse_container_names(d.pop("container_names", UNSET))
 
@@ -151,7 +136,7 @@ class ModelIntegrationFilters:
         return model_integration_filters
 
     @property
-    def additional_keys(self) -> List[str]:
+    def additional_keys(self) -> list[str]:
         return list(self.additional_properties.keys())
 
     def __getitem__(self, key: str) -> Any:

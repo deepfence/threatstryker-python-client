@@ -1,4 +1,5 @@
-from typing import Any, Dict, List, Type, TypeVar, Union, cast
+from collections.abc import Mapping
+from typing import Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -11,15 +12,11 @@ T = TypeVar("T", bound="ModelSbomResponse")
 @_attrs_define
 class ModelSbomResponse:
     """
-    Example:
-        {'severity': 'severity', 'licenses': ['licenses', 'licenses'], 'cve_id': 'cve_id', 'package_name':
-            'package_name', 'cve_node_id': 'cve_node_id', 'locations': ['locations', 'locations'], 'version': 'version'}
-
     Attributes:
         cve_id (Union[Unset, str]):
         cve_node_id (Union[Unset, str]):
-        licenses (Union[Unset, List[str]]):
-        locations (Union[Unset, List[str]]):
+        licenses (Union[Unset, list[str]]):
+        locations (Union[Unset, list[str]]):
         package_name (Union[Unset, str]):
         severity (Union[Unset, str]):
         version (Union[Unset, str]):
@@ -27,23 +24,23 @@ class ModelSbomResponse:
 
     cve_id: Union[Unset, str] = UNSET
     cve_node_id: Union[Unset, str] = UNSET
-    licenses: Union[Unset, List[str]] = UNSET
-    locations: Union[Unset, List[str]] = UNSET
+    licenses: Union[Unset, list[str]] = UNSET
+    locations: Union[Unset, list[str]] = UNSET
     package_name: Union[Unset, str] = UNSET
     severity: Union[Unset, str] = UNSET
     version: Union[Unset, str] = UNSET
-    additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
+    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
-    def to_dict(self) -> Dict[str, Any]:
+    def to_dict(self) -> dict[str, Any]:
         cve_id = self.cve_id
 
         cve_node_id = self.cve_node_id
 
-        licenses: Union[Unset, List[str]] = UNSET
+        licenses: Union[Unset, list[str]] = UNSET
         if not isinstance(self.licenses, Unset):
             licenses = self.licenses
 
-        locations: Union[Unset, List[str]] = UNSET
+        locations: Union[Unset, list[str]] = UNSET
         if not isinstance(self.locations, Unset):
             locations = self.locations
 
@@ -53,7 +50,7 @@ class ModelSbomResponse:
 
         version = self.version
 
-        field_dict: Dict[str, Any] = {}
+        field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
         if cve_id is not UNSET:
@@ -74,15 +71,15 @@ class ModelSbomResponse:
         return field_dict
 
     @classmethod
-    def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
-        d = src_dict.copy()
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        d = dict(src_dict)
         cve_id = d.pop("cve_id", UNSET)
 
         cve_node_id = d.pop("cve_node_id", UNSET)
 
-        licenses = cast(List[str], d.pop("licenses", UNSET))
+        licenses = cast(list[str], d.pop("licenses", UNSET))
 
-        locations = cast(List[str], d.pop("locations", UNSET))
+        locations = cast(list[str], d.pop("locations", UNSET))
 
         package_name = d.pop("package_name", UNSET)
 
@@ -104,7 +101,7 @@ class ModelSbomResponse:
         return model_sbom_response
 
     @property
-    def additional_keys(self) -> List[str]:
+    def additional_keys(self) -> list[str]:
         return list(self.additional_properties.keys())
 
     def __getitem__(self, key: str) -> Any:

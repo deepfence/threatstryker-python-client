@@ -1,4 +1,5 @@
-from typing import TYPE_CHECKING, Any, Dict, List, Type, TypeVar, Union, cast
+from collections.abc import Mapping
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -22,19 +23,10 @@ T = TypeVar("T", bound="ModelCloudNodeAccountInfo")
 @_attrs_define
 class ModelCloudNodeAccountInfo:
     """
-    Example:
-        {'last_scan_status': 'last_scan_status', 'last_scan_id': 'last_scan_id', 'refresh_message': 'refresh_message',
-            'node_name': 'node_name', 'active': True, 'cloud_provider': 'aws', 'scan_status_map': {'key': 1},
-            'refresh_metadata': 'refresh_metadata', 'host_node_id': 'host_node_id', 'version': 'version',
-            'refresh_status_map': {'key': 6}, 'refresh_status': 'refresh_status', 'compliance_percentage':
-            0.8008281904610115, 'account_name': 'account_name', 'cloud_network_tracer_status': {'description':
-            'description', 'status': 'status'}, 'node_id': 'node_id'}
-
     Attributes:
         account_name (Union[Unset, str]):
         active (Union[Unset, bool]):
-        cloud_network_tracer_status (Union[Unset, ModelPluginStatus]):  Example: {'description': 'description',
-            'status': 'status'}.
+        cloud_network_tracer_status (Union[Unset, ModelPluginStatus]):
         cloud_provider (Union[Unset, ModelCloudNodeAccountInfoCloudProvider]):
         compliance_percentage (Union[Unset, float]):
         host_node_id (Union[Unset, str]):
@@ -66,9 +58,9 @@ class ModelCloudNodeAccountInfo:
     refresh_status_map: Union["ModelCloudNodeAccountInfoRefreshStatusMapType0", None, Unset] = UNSET
     scan_status_map: Union["ModelCloudNodeAccountInfoScanStatusMapType0", None, Unset] = UNSET
     version: Union[Unset, str] = UNSET
-    additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
+    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
-    def to_dict(self) -> Dict[str, Any]:
+    def to_dict(self) -> dict[str, Any]:
         from ..models.model_cloud_node_account_info_refresh_status_map_type_0 import (
             ModelCloudNodeAccountInfoRefreshStatusMapType0,
         )
@@ -80,7 +72,7 @@ class ModelCloudNodeAccountInfo:
 
         active = self.active
 
-        cloud_network_tracer_status: Union[Unset, Dict[str, Any]] = UNSET
+        cloud_network_tracer_status: Union[Unset, dict[str, Any]] = UNSET
         if not isinstance(self.cloud_network_tracer_status, Unset):
             cloud_network_tracer_status = self.cloud_network_tracer_status.to_dict()
 
@@ -106,7 +98,7 @@ class ModelCloudNodeAccountInfo:
 
         refresh_status = self.refresh_status
 
-        refresh_status_map: Union[Dict[str, Any], None, Unset]
+        refresh_status_map: Union[None, Unset, dict[str, Any]]
         if isinstance(self.refresh_status_map, Unset):
             refresh_status_map = UNSET
         elif isinstance(self.refresh_status_map, ModelCloudNodeAccountInfoRefreshStatusMapType0):
@@ -114,7 +106,7 @@ class ModelCloudNodeAccountInfo:
         else:
             refresh_status_map = self.refresh_status_map
 
-        scan_status_map: Union[Dict[str, Any], None, Unset]
+        scan_status_map: Union[None, Unset, dict[str, Any]]
         if isinstance(self.scan_status_map, Unset):
             scan_status_map = UNSET
         elif isinstance(self.scan_status_map, ModelCloudNodeAccountInfoScanStatusMapType0):
@@ -124,7 +116,7 @@ class ModelCloudNodeAccountInfo:
 
         version = self.version
 
-        field_dict: Dict[str, Any] = {}
+        field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
         if account_name is not UNSET:
@@ -163,7 +155,7 @@ class ModelCloudNodeAccountInfo:
         return field_dict
 
     @classmethod
-    def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.model_cloud_node_account_info_refresh_status_map_type_0 import (
             ModelCloudNodeAccountInfoRefreshStatusMapType0,
         )
@@ -172,7 +164,7 @@ class ModelCloudNodeAccountInfo:
         )
         from ..models.model_plugin_status import ModelPluginStatus
 
-        d = src_dict.copy()
+        d = dict(src_dict)
         account_name = d.pop("account_name", UNSET)
 
         active = d.pop("active", UNSET)
@@ -270,7 +262,7 @@ class ModelCloudNodeAccountInfo:
         return model_cloud_node_account_info
 
     @property
-    def additional_keys(self) -> List[str]:
+    def additional_keys(self) -> list[str]:
         return list(self.additional_properties.keys())
 
     def __getitem__(self, key: str) -> Any:

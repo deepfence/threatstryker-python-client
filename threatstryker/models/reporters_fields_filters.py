@@ -1,4 +1,5 @@
-from typing import TYPE_CHECKING, Any, Dict, List, Type, TypeVar, Union, cast
+from collections.abc import Mapping
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -18,36 +19,27 @@ T = TypeVar("T", bound="ReportersFieldsFilters")
 @_attrs_define
 class ReportersFieldsFilters:
     """
-    Example:
-        {'compare_filter': [{'greater_than': True, 'field_value': '', 'field_name': 'field_name'}, {'greater_than':
-            True, 'field_value': '', 'field_name': 'field_name'}], 'not_contains_filter': {'filter_in': {'key': ['', '']}},
-            'order_filter': {'order_fields': [{'size': 0, 'descending': True, 'field_name': 'field_name'}, {'size': 0,
-            'descending': True, 'field_name': 'field_name'}]}, 'contains_filter': {'filter_in': {'key': ['', '']}},
-            'contains_in_array_filter': {'filter_in': {'key': ['', '']}}, 'match_filter': {'filter_in': {'key': ['', '']}},
-            'match_in_array_filter': {'filter_in': {'key': ['', '']}}}
-
     Attributes:
-        compare_filter (Union[List['ReportersCompareFilter'], None]):
-        contains_filter (ReportersContainsFilter):  Example: {'filter_in': {'key': ['', '']}}.
-        match_filter (ReportersMatchFilter):  Example: {'filter_in': {'key': ['', '']}}.
-        order_filter (ReportersOrderFilter):  Example: {'order_fields': [{'size': 0, 'descending': True, 'field_name':
-            'field_name'}, {'size': 0, 'descending': True, 'field_name': 'field_name'}]}.
-        contains_in_array_filter (Union[Unset, ReportersContainsFilter]):  Example: {'filter_in': {'key': ['', '']}}.
-        match_in_array_filter (Union[Unset, ReportersMatchFilter]):  Example: {'filter_in': {'key': ['', '']}}.
-        not_contains_filter (Union[Unset, ReportersContainsFilter]):  Example: {'filter_in': {'key': ['', '']}}.
+        compare_filter (Union[None, list['ReportersCompareFilter']]):
+        contains_filter (ReportersContainsFilter):
+        match_filter (ReportersMatchFilter):
+        order_filter (ReportersOrderFilter):
+        contains_in_array_filter (Union[Unset, ReportersContainsFilter]):
+        match_in_array_filter (Union[Unset, ReportersMatchFilter]):
+        not_contains_filter (Union[Unset, ReportersContainsFilter]):
     """
 
-    compare_filter: Union[List["ReportersCompareFilter"], None]
+    compare_filter: Union[None, list["ReportersCompareFilter"]]
     contains_filter: "ReportersContainsFilter"
     match_filter: "ReportersMatchFilter"
     order_filter: "ReportersOrderFilter"
     contains_in_array_filter: Union[Unset, "ReportersContainsFilter"] = UNSET
     match_in_array_filter: Union[Unset, "ReportersMatchFilter"] = UNSET
     not_contains_filter: Union[Unset, "ReportersContainsFilter"] = UNSET
-    additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
+    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
-    def to_dict(self) -> Dict[str, Any]:
-        compare_filter: Union[List[Dict[str, Any]], None]
+    def to_dict(self) -> dict[str, Any]:
+        compare_filter: Union[None, list[dict[str, Any]]]
         if isinstance(self.compare_filter, list):
             compare_filter = []
             for compare_filter_type_0_item_data in self.compare_filter:
@@ -63,19 +55,19 @@ class ReportersFieldsFilters:
 
         order_filter = self.order_filter.to_dict()
 
-        contains_in_array_filter: Union[Unset, Dict[str, Any]] = UNSET
+        contains_in_array_filter: Union[Unset, dict[str, Any]] = UNSET
         if not isinstance(self.contains_in_array_filter, Unset):
             contains_in_array_filter = self.contains_in_array_filter.to_dict()
 
-        match_in_array_filter: Union[Unset, Dict[str, Any]] = UNSET
+        match_in_array_filter: Union[Unset, dict[str, Any]] = UNSET
         if not isinstance(self.match_in_array_filter, Unset):
             match_in_array_filter = self.match_in_array_filter.to_dict()
 
-        not_contains_filter: Union[Unset, Dict[str, Any]] = UNSET
+        not_contains_filter: Union[Unset, dict[str, Any]] = UNSET
         if not isinstance(self.not_contains_filter, Unset):
             not_contains_filter = self.not_contains_filter.to_dict()
 
-        field_dict: Dict[str, Any] = {}
+        field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
@@ -95,15 +87,15 @@ class ReportersFieldsFilters:
         return field_dict
 
     @classmethod
-    def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.reporters_compare_filter import ReportersCompareFilter
         from ..models.reporters_contains_filter import ReportersContainsFilter
         from ..models.reporters_match_filter import ReportersMatchFilter
         from ..models.reporters_order_filter import ReportersOrderFilter
 
-        d = src_dict.copy()
+        d = dict(src_dict)
 
-        def _parse_compare_filter(data: object) -> Union[List["ReportersCompareFilter"], None]:
+        def _parse_compare_filter(data: object) -> Union[None, list["ReportersCompareFilter"]]:
             if data is None:
                 return data
             try:
@@ -119,7 +111,7 @@ class ReportersFieldsFilters:
                 return compare_filter_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[List["ReportersCompareFilter"], None], data)
+            return cast(Union[None, list["ReportersCompareFilter"]], data)
 
         compare_filter = _parse_compare_filter(d.pop("compare_filter"))
 
@@ -164,7 +156,7 @@ class ReportersFieldsFilters:
         return reporters_fields_filters
 
     @property
-    def additional_keys(self) -> List[str]:
+    def additional_keys(self) -> list[str]:
         return list(self.additional_properties.keys())
 
     def __getitem__(self, key: str) -> Any:

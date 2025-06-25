@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Dict, Optional, Union, cast
+from typing import Any, Optional, Union, cast
 
 import httpx
 
@@ -14,17 +14,16 @@ from ...types import Response
 def _get_kwargs(
     *,
     body: ControlsThreatIntelInfo,
-) -> Dict[str, Any]:
-    headers: Dict[str, Any] = {}
+) -> dict[str, Any]:
+    headers: dict[str, Any] = {}
 
-    _kwargs: Dict[str, Any] = {
+    _kwargs: dict[str, Any] = {
         "method": "post",
         "url": "/deepfence/configs/agent/threatintel/",
     }
 
-    _body = body.to_dict()
+    _kwargs["json"] = body.to_dict()
 
-    _kwargs["json"] = _body
     headers["Content-Type"] = "application/json"
 
     _kwargs["headers"] = headers
@@ -34,24 +33,24 @@ def _get_kwargs(
 def _parse_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
 ) -> Optional[Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse]]:
-    if response.status_code == HTTPStatus.NO_CONTENT:
+    if response.status_code == 204:
         response_204 = cast(Any, None)
         return response_204
-    if response.status_code == HTTPStatus.BAD_REQUEST:
+    if response.status_code == 400:
         response_400 = ApiDocsBadRequestResponse.from_dict(response.json())
 
         return response_400
-    if response.status_code == HTTPStatus.UNAUTHORIZED:
+    if response.status_code == 401:
         response_401 = cast(Any, None)
         return response_401
-    if response.status_code == HTTPStatus.FORBIDDEN:
+    if response.status_code == 403:
         response_403 = cast(Any, None)
         return response_403
-    if response.status_code == HTTPStatus.NOT_FOUND:
+    if response.status_code == 404:
         response_404 = ApiDocsFailureResponse.from_dict(response.json())
 
         return response_404
-    if response.status_code == HTTPStatus.INTERNAL_SERVER_ERROR:
+    if response.status_code == 500:
         response_500 = ApiDocsFailureResponse.from_dict(response.json())
 
         return response_500
@@ -82,14 +81,7 @@ def sync_detailed(
      Register threat intel config
 
     Args:
-        body (ControlsThreatIntelInfo):  Example: {'cloud_posture_controls_hash':
-            'cloud_posture_controls_hash', 'cloud_posture_controls_url': 'cloud_posture_controls_url',
-            'updated_at': 0, 'network_alert_rules_url': 'network_alert_rules_url',
-            'ignored_alert_rule_ids': ['ignored_alert_rule_ids', 'ignored_alert_rule_ids'],
-            'internal_ips': ['internal_ips', 'internal_ips'], 'secret_scanner_rules_hash':
-            'secret_scanner_rules_hash', 'secret_scanner_rules_url': 'secret_scanner_rules_url',
-            'malware_scanner_rules_hash': 'malware_scanner_rules_hash', 'malware_scanner_rules_url':
-            'malware_scanner_rules_url', 'rules_hash': 'rules_hash'}.
+        body (ControlsThreatIntelInfo):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -120,14 +112,7 @@ def sync(
      Register threat intel config
 
     Args:
-        body (ControlsThreatIntelInfo):  Example: {'cloud_posture_controls_hash':
-            'cloud_posture_controls_hash', 'cloud_posture_controls_url': 'cloud_posture_controls_url',
-            'updated_at': 0, 'network_alert_rules_url': 'network_alert_rules_url',
-            'ignored_alert_rule_ids': ['ignored_alert_rule_ids', 'ignored_alert_rule_ids'],
-            'internal_ips': ['internal_ips', 'internal_ips'], 'secret_scanner_rules_hash':
-            'secret_scanner_rules_hash', 'secret_scanner_rules_url': 'secret_scanner_rules_url',
-            'malware_scanner_rules_hash': 'malware_scanner_rules_hash', 'malware_scanner_rules_url':
-            'malware_scanner_rules_url', 'rules_hash': 'rules_hash'}.
+        body (ControlsThreatIntelInfo):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -153,14 +138,7 @@ async def asyncio_detailed(
      Register threat intel config
 
     Args:
-        body (ControlsThreatIntelInfo):  Example: {'cloud_posture_controls_hash':
-            'cloud_posture_controls_hash', 'cloud_posture_controls_url': 'cloud_posture_controls_url',
-            'updated_at': 0, 'network_alert_rules_url': 'network_alert_rules_url',
-            'ignored_alert_rule_ids': ['ignored_alert_rule_ids', 'ignored_alert_rule_ids'],
-            'internal_ips': ['internal_ips', 'internal_ips'], 'secret_scanner_rules_hash':
-            'secret_scanner_rules_hash', 'secret_scanner_rules_url': 'secret_scanner_rules_url',
-            'malware_scanner_rules_hash': 'malware_scanner_rules_hash', 'malware_scanner_rules_url':
-            'malware_scanner_rules_url', 'rules_hash': 'rules_hash'}.
+        body (ControlsThreatIntelInfo):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -189,14 +167,7 @@ async def asyncio(
      Register threat intel config
 
     Args:
-        body (ControlsThreatIntelInfo):  Example: {'cloud_posture_controls_hash':
-            'cloud_posture_controls_hash', 'cloud_posture_controls_url': 'cloud_posture_controls_url',
-            'updated_at': 0, 'network_alert_rules_url': 'network_alert_rules_url',
-            'ignored_alert_rule_ids': ['ignored_alert_rule_ids', 'ignored_alert_rule_ids'],
-            'internal_ips': ['internal_ips', 'internal_ips'], 'secret_scanner_rules_hash':
-            'secret_scanner_rules_hash', 'secret_scanner_rules_url': 'secret_scanner_rules_url',
-            'malware_scanner_rules_hash': 'malware_scanner_rules_hash', 'malware_scanner_rules_url':
-            'malware_scanner_rules_url', 'rules_hash': 'rules_hash'}.
+        body (ControlsThreatIntelInfo):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

@@ -1,4 +1,5 @@
-from typing import Any, Dict, List, Type, TypeVar, Union
+from collections.abc import Mapping
+from typing import Any, TypeVar, Union
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -11,10 +12,6 @@ T = TypeVar("T", bound="ModelGenerativeAiIntegrationListResponse")
 @_attrs_define
 class ModelGenerativeAiIntegrationListResponse:
     """
-    Example:
-        {'default_integration': True, 'id': 0, 'label': 'label', 'integration_type': 'integration_type',
-            'last_error_msg': 'last_error_msg'}
-
     Attributes:
         default_integration (Union[Unset, bool]):
         id (Union[Unset, int]):
@@ -28,9 +25,9 @@ class ModelGenerativeAiIntegrationListResponse:
     integration_type: Union[Unset, str] = UNSET
     label: Union[Unset, str] = UNSET
     last_error_msg: Union[Unset, str] = UNSET
-    additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
+    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
-    def to_dict(self) -> Dict[str, Any]:
+    def to_dict(self) -> dict[str, Any]:
         default_integration = self.default_integration
 
         id = self.id
@@ -41,7 +38,7 @@ class ModelGenerativeAiIntegrationListResponse:
 
         last_error_msg = self.last_error_msg
 
-        field_dict: Dict[str, Any] = {}
+        field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
         if default_integration is not UNSET:
@@ -58,8 +55,8 @@ class ModelGenerativeAiIntegrationListResponse:
         return field_dict
 
     @classmethod
-    def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
-        d = src_dict.copy()
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        d = dict(src_dict)
         default_integration = d.pop("default_integration", UNSET)
 
         id = d.pop("id", UNSET)
@@ -82,7 +79,7 @@ class ModelGenerativeAiIntegrationListResponse:
         return model_generative_ai_integration_list_response
 
     @property
-    def additional_keys(self) -> List[str]:
+    def additional_keys(self) -> list[str]:
         return list(self.additional_properties.keys())
 
     def __getitem__(self, key: str) -> Any:

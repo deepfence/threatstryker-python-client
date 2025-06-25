@@ -1,4 +1,5 @@
-from typing import Any, Dict, List, Type, TypeVar
+from collections.abc import Mapping
+from typing import Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -9,11 +10,6 @@ T = TypeVar("T", bound="ModelComplianceRule")
 @_attrs_define
 class ModelComplianceRule:
     """
-    Example:
-        {'test_rationale': 'test_rationale', 'test_severity': 'test_severity', 'updated_at': 0, 'masked': True,
-            'description': 'description', 'test_category': 'test_category', 'test_desc': 'test_desc', 'test_number':
-            'test_number'}
-
     Attributes:
         description (str):
         masked (bool):
@@ -33,9 +29,9 @@ class ModelComplianceRule:
     test_rationale: str
     test_severity: str
     updated_at: int
-    additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
+    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
-    def to_dict(self) -> Dict[str, Any]:
+    def to_dict(self) -> dict[str, Any]:
         description = self.description
 
         masked = self.masked
@@ -52,7 +48,7 @@ class ModelComplianceRule:
 
         updated_at = self.updated_at
 
-        field_dict: Dict[str, Any] = {}
+        field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
@@ -70,8 +66,8 @@ class ModelComplianceRule:
         return field_dict
 
     @classmethod
-    def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
-        d = src_dict.copy()
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        d = dict(src_dict)
         description = d.pop("description")
 
         masked = d.pop("masked")
@@ -103,7 +99,7 @@ class ModelComplianceRule:
         return model_compliance_rule
 
     @property
-    def additional_keys(self) -> List[str]:
+    def additional_keys(self) -> list[str]:
         return list(self.additional_properties.keys())
 
     def __getitem__(self, key: str) -> Any:

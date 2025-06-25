@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Dict, Optional, Union, cast
+from typing import Any, Optional, Union, cast
 
 import httpx
 
@@ -14,17 +14,16 @@ from ...types import Response
 def _get_kwargs(
     *,
     body: ModelAddScheduledTaskRequest,
-) -> Dict[str, Any]:
-    headers: Dict[str, Any] = {}
+) -> dict[str, Any]:
+    headers: dict[str, Any] = {}
 
-    _kwargs: Dict[str, Any] = {
+    _kwargs: dict[str, Any] = {
         "method": "post",
         "url": "/deepfence/scheduled-task",
     }
 
-    _body = body.to_dict()
+    _kwargs["json"] = body.to_dict()
 
-    _kwargs["json"] = _body
     headers["Content-Type"] = "application/json"
 
     _kwargs["headers"] = headers
@@ -34,24 +33,24 @@ def _get_kwargs(
 def _parse_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
 ) -> Optional[Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse]]:
-    if response.status_code == HTTPStatus.NO_CONTENT:
+    if response.status_code == 204:
         response_204 = cast(Any, None)
         return response_204
-    if response.status_code == HTTPStatus.BAD_REQUEST:
+    if response.status_code == 400:
         response_400 = ApiDocsBadRequestResponse.from_dict(response.json())
 
         return response_400
-    if response.status_code == HTTPStatus.UNAUTHORIZED:
+    if response.status_code == 401:
         response_401 = cast(Any, None)
         return response_401
-    if response.status_code == HTTPStatus.FORBIDDEN:
+    if response.status_code == 403:
         response_403 = cast(Any, None)
         return response_403
-    if response.status_code == HTTPStatus.NOT_FOUND:
+    if response.status_code == 404:
         response_404 = ApiDocsFailureResponse.from_dict(response.json())
 
         return response_404
-    if response.status_code == HTTPStatus.INTERNAL_SERVER_ERROR:
+    if response.status_code == 500:
         response_500 = ApiDocsFailureResponse.from_dict(response.json())
 
         return response_500
@@ -82,15 +81,7 @@ def sync_detailed(
      Add scheduled task
 
     Args:
-        body (ModelAddScheduledTaskRequest):  Example: {'is_priority': True, 'benchmark_types':
-            ['hipaa', 'hipaa'], 'scan_config': [{'language': 'base'}, {'language': 'base'}],
-            'cron_expr': 'cron_expr', 'action': 'SecretScan', 'description': 'description',
-            'deepfence_system_scan': True, 'filters': {'container_scan_filter': {'filter_in': {'key':
-            ['', '']}}, 'cloud_account_scan_filter': {'filter_in': {'key': ['', '']}},
-            'image_scan_filter': {'filter_in': {'key': ['', '']}}, 'kubernetes_cluster_scan_filter':
-            {'filter_in': {'key': ['', '']}}, 'host_scan_filter': {'filter_in': {'key': ['', '']}}},
-            'node_ids': [{'node_type': 'image', 'node_id': 'node_id'}, {'node_type': 'image',
-            'node_id': 'node_id'}]}.
+        body (ModelAddScheduledTaskRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -121,15 +112,7 @@ def sync(
      Add scheduled task
 
     Args:
-        body (ModelAddScheduledTaskRequest):  Example: {'is_priority': True, 'benchmark_types':
-            ['hipaa', 'hipaa'], 'scan_config': [{'language': 'base'}, {'language': 'base'}],
-            'cron_expr': 'cron_expr', 'action': 'SecretScan', 'description': 'description',
-            'deepfence_system_scan': True, 'filters': {'container_scan_filter': {'filter_in': {'key':
-            ['', '']}}, 'cloud_account_scan_filter': {'filter_in': {'key': ['', '']}},
-            'image_scan_filter': {'filter_in': {'key': ['', '']}}, 'kubernetes_cluster_scan_filter':
-            {'filter_in': {'key': ['', '']}}, 'host_scan_filter': {'filter_in': {'key': ['', '']}}},
-            'node_ids': [{'node_type': 'image', 'node_id': 'node_id'}, {'node_type': 'image',
-            'node_id': 'node_id'}]}.
+        body (ModelAddScheduledTaskRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -155,15 +138,7 @@ async def asyncio_detailed(
      Add scheduled task
 
     Args:
-        body (ModelAddScheduledTaskRequest):  Example: {'is_priority': True, 'benchmark_types':
-            ['hipaa', 'hipaa'], 'scan_config': [{'language': 'base'}, {'language': 'base'}],
-            'cron_expr': 'cron_expr', 'action': 'SecretScan', 'description': 'description',
-            'deepfence_system_scan': True, 'filters': {'container_scan_filter': {'filter_in': {'key':
-            ['', '']}}, 'cloud_account_scan_filter': {'filter_in': {'key': ['', '']}},
-            'image_scan_filter': {'filter_in': {'key': ['', '']}}, 'kubernetes_cluster_scan_filter':
-            {'filter_in': {'key': ['', '']}}, 'host_scan_filter': {'filter_in': {'key': ['', '']}}},
-            'node_ids': [{'node_type': 'image', 'node_id': 'node_id'}, {'node_type': 'image',
-            'node_id': 'node_id'}]}.
+        body (ModelAddScheduledTaskRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -192,15 +167,7 @@ async def asyncio(
      Add scheduled task
 
     Args:
-        body (ModelAddScheduledTaskRequest):  Example: {'is_priority': True, 'benchmark_types':
-            ['hipaa', 'hipaa'], 'scan_config': [{'language': 'base'}, {'language': 'base'}],
-            'cron_expr': 'cron_expr', 'action': 'SecretScan', 'description': 'description',
-            'deepfence_system_scan': True, 'filters': {'container_scan_filter': {'filter_in': {'key':
-            ['', '']}}, 'cloud_account_scan_filter': {'filter_in': {'key': ['', '']}},
-            'image_scan_filter': {'filter_in': {'key': ['', '']}}, 'kubernetes_cluster_scan_filter':
-            {'filter_in': {'key': ['', '']}}, 'host_scan_filter': {'filter_in': {'key': ['', '']}}},
-            'node_ids': [{'node_type': 'image', 'node_id': 'node_id'}, {'node_type': 'image',
-            'node_id': 'node_id'}]}.
+        body (ModelAddScheduledTaskRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

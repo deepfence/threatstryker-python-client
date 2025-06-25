@@ -1,4 +1,5 @@
-from typing import TYPE_CHECKING, Any, Dict, List, Type, TypeVar, Union, cast
+from collections.abc import Mapping
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -17,10 +18,6 @@ T = TypeVar("T", bound="ModelRegistryAddReq")
 @_attrs_define
 class ModelRegistryAddReq:
     """
-    Example:
-        {'non_secret': {'key': ''}, 'registry_type': 'registry_type', 'name': 'name', 'extras': {'key': ''}, 'secret':
-            {'key': ''}}
-
     Attributes:
         name (str):
         registry_type (str):
@@ -34,9 +31,9 @@ class ModelRegistryAddReq:
     extras: Union["ModelRegistryAddReqExtrasType0", None, Unset] = UNSET
     non_secret: Union["ModelRegistryAddReqNonSecretType0", None, Unset] = UNSET
     secret: Union["ModelRegistryAddReqSecretType0", None, Unset] = UNSET
-    additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
+    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
-    def to_dict(self) -> Dict[str, Any]:
+    def to_dict(self) -> dict[str, Any]:
         from ..models.model_registry_add_req_extras_type_0 import ModelRegistryAddReqExtrasType0
         from ..models.model_registry_add_req_non_secret_type_0 import ModelRegistryAddReqNonSecretType0
         from ..models.model_registry_add_req_secret_type_0 import ModelRegistryAddReqSecretType0
@@ -45,7 +42,7 @@ class ModelRegistryAddReq:
 
         registry_type = self.registry_type
 
-        extras: Union[Dict[str, Any], None, Unset]
+        extras: Union[None, Unset, dict[str, Any]]
         if isinstance(self.extras, Unset):
             extras = UNSET
         elif isinstance(self.extras, ModelRegistryAddReqExtrasType0):
@@ -53,7 +50,7 @@ class ModelRegistryAddReq:
         else:
             extras = self.extras
 
-        non_secret: Union[Dict[str, Any], None, Unset]
+        non_secret: Union[None, Unset, dict[str, Any]]
         if isinstance(self.non_secret, Unset):
             non_secret = UNSET
         elif isinstance(self.non_secret, ModelRegistryAddReqNonSecretType0):
@@ -61,7 +58,7 @@ class ModelRegistryAddReq:
         else:
             non_secret = self.non_secret
 
-        secret: Union[Dict[str, Any], None, Unset]
+        secret: Union[None, Unset, dict[str, Any]]
         if isinstance(self.secret, Unset):
             secret = UNSET
         elif isinstance(self.secret, ModelRegistryAddReqSecretType0):
@@ -69,7 +66,7 @@ class ModelRegistryAddReq:
         else:
             secret = self.secret
 
-        field_dict: Dict[str, Any] = {}
+        field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
@@ -87,12 +84,12 @@ class ModelRegistryAddReq:
         return field_dict
 
     @classmethod
-    def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.model_registry_add_req_extras_type_0 import ModelRegistryAddReqExtrasType0
         from ..models.model_registry_add_req_non_secret_type_0 import ModelRegistryAddReqNonSecretType0
         from ..models.model_registry_add_req_secret_type_0 import ModelRegistryAddReqSecretType0
 
-        d = src_dict.copy()
+        d = dict(src_dict)
         name = d.pop("name")
 
         registry_type = d.pop("registry_type")
@@ -160,7 +157,7 @@ class ModelRegistryAddReq:
         return model_registry_add_req
 
     @property
-    def additional_keys(self) -> List[str]:
+    def additional_keys(self) -> list[str]:
         return list(self.additional_properties.keys())
 
     def __getitem__(self, key: str) -> Any:

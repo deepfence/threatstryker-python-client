@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Dict, Optional, Union, cast
+from typing import Any, Optional, Union, cast
 
 import httpx
 
@@ -15,17 +15,16 @@ from ...types import Response
 def _get_kwargs(
     *,
     body: CompletionCompletionNodeFieldReq,
-) -> Dict[str, Any]:
-    headers: Dict[str, Any] = {}
+) -> dict[str, Any]:
+    headers: dict[str, Any] = {}
 
-    _kwargs: Dict[str, Any] = {
+    _kwargs: dict[str, Any] = {
         "method": "post",
         "url": "/deepfence/complete/cloud-account",
     }
 
-    _body = body.to_dict()
+    _kwargs["json"] = body.to_dict()
 
-    _kwargs["json"] = _body
     headers["Content-Type"] = "application/json"
 
     _kwargs["headers"] = headers
@@ -35,25 +34,25 @@ def _get_kwargs(
 def _parse_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
 ) -> Optional[Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse, CompletionCompletionNodeFieldRes]]:
-    if response.status_code == HTTPStatus.OK:
+    if response.status_code == 200:
         response_200 = CompletionCompletionNodeFieldRes.from_dict(response.json())
 
         return response_200
-    if response.status_code == HTTPStatus.BAD_REQUEST:
+    if response.status_code == 400:
         response_400 = ApiDocsBadRequestResponse.from_dict(response.json())
 
         return response_400
-    if response.status_code == HTTPStatus.UNAUTHORIZED:
+    if response.status_code == 401:
         response_401 = cast(Any, None)
         return response_401
-    if response.status_code == HTTPStatus.FORBIDDEN:
+    if response.status_code == 403:
         response_403 = cast(Any, None)
         return response_403
-    if response.status_code == HTTPStatus.NOT_FOUND:
+    if response.status_code == 404:
         response_404 = ApiDocsFailureResponse.from_dict(response.json())
 
         return response_404
-    if response.status_code == HTTPStatus.INTERNAL_SERVER_ERROR:
+    if response.status_code == 500:
         response_500 = ApiDocsFailureResponse.from_dict(response.json())
 
         return response_500
@@ -84,16 +83,7 @@ def sync_detailed(
      Complete cloud account info
 
     Args:
-        body (CompletionCompletionNodeFieldReq):  Example: {'completion': 'completion', 'filters':
-            {'compare_filter': [{'greater_than': True, 'field_value': '', 'field_name': 'field_name'},
-            {'greater_than': True, 'field_value': '', 'field_name': 'field_name'}],
-            'not_contains_filter': {'filter_in': {'key': ['', '']}}, 'order_filter': {'order_fields':
-            [{'size': 0, 'descending': True, 'field_name': 'field_name'}, {'size': 0, 'descending':
-            True, 'field_name': 'field_name'}]}, 'contains_filter': {'filter_in': {'key': ['', '']}},
-            'contains_in_array_filter': {'filter_in': {'key': ['', '']}}, 'match_filter':
-            {'filter_in': {'key': ['', '']}}, 'match_in_array_filter': {'filter_in': {'key': ['',
-            '']}}}, 'scan_id': 'scan_id', 'window': {'offset': 0, 'size': 6}, 'field_name':
-            'field_name'}.
+        body (CompletionCompletionNodeFieldReq):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -124,16 +114,7 @@ def sync(
      Complete cloud account info
 
     Args:
-        body (CompletionCompletionNodeFieldReq):  Example: {'completion': 'completion', 'filters':
-            {'compare_filter': [{'greater_than': True, 'field_value': '', 'field_name': 'field_name'},
-            {'greater_than': True, 'field_value': '', 'field_name': 'field_name'}],
-            'not_contains_filter': {'filter_in': {'key': ['', '']}}, 'order_filter': {'order_fields':
-            [{'size': 0, 'descending': True, 'field_name': 'field_name'}, {'size': 0, 'descending':
-            True, 'field_name': 'field_name'}]}, 'contains_filter': {'filter_in': {'key': ['', '']}},
-            'contains_in_array_filter': {'filter_in': {'key': ['', '']}}, 'match_filter':
-            {'filter_in': {'key': ['', '']}}, 'match_in_array_filter': {'filter_in': {'key': ['',
-            '']}}}, 'scan_id': 'scan_id', 'window': {'offset': 0, 'size': 6}, 'field_name':
-            'field_name'}.
+        body (CompletionCompletionNodeFieldReq):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -159,16 +140,7 @@ async def asyncio_detailed(
      Complete cloud account info
 
     Args:
-        body (CompletionCompletionNodeFieldReq):  Example: {'completion': 'completion', 'filters':
-            {'compare_filter': [{'greater_than': True, 'field_value': '', 'field_name': 'field_name'},
-            {'greater_than': True, 'field_value': '', 'field_name': 'field_name'}],
-            'not_contains_filter': {'filter_in': {'key': ['', '']}}, 'order_filter': {'order_fields':
-            [{'size': 0, 'descending': True, 'field_name': 'field_name'}, {'size': 0, 'descending':
-            True, 'field_name': 'field_name'}]}, 'contains_filter': {'filter_in': {'key': ['', '']}},
-            'contains_in_array_filter': {'filter_in': {'key': ['', '']}}, 'match_filter':
-            {'filter_in': {'key': ['', '']}}, 'match_in_array_filter': {'filter_in': {'key': ['',
-            '']}}}, 'scan_id': 'scan_id', 'window': {'offset': 0, 'size': 6}, 'field_name':
-            'field_name'}.
+        body (CompletionCompletionNodeFieldReq):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -197,16 +169,7 @@ async def asyncio(
      Complete cloud account info
 
     Args:
-        body (CompletionCompletionNodeFieldReq):  Example: {'completion': 'completion', 'filters':
-            {'compare_filter': [{'greater_than': True, 'field_value': '', 'field_name': 'field_name'},
-            {'greater_than': True, 'field_value': '', 'field_name': 'field_name'}],
-            'not_contains_filter': {'filter_in': {'key': ['', '']}}, 'order_filter': {'order_fields':
-            [{'size': 0, 'descending': True, 'field_name': 'field_name'}, {'size': 0, 'descending':
-            True, 'field_name': 'field_name'}]}, 'contains_filter': {'filter_in': {'key': ['', '']}},
-            'contains_in_array_filter': {'filter_in': {'key': ['', '']}}, 'match_filter':
-            {'filter_in': {'key': ['', '']}}, 'match_in_array_filter': {'filter_in': {'key': ['',
-            '']}}}, 'scan_id': 'scan_id', 'window': {'offset': 0, 'size': 6}, 'field_name':
-            'field_name'}.
+        body (CompletionCompletionNodeFieldReq):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

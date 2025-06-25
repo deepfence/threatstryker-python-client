@@ -1,4 +1,5 @@
-from typing import Any, Dict, List, Type, TypeVar, Union
+from collections.abc import Mapping
+from typing import Any, TypeVar, Union
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -17,11 +18,6 @@ T = TypeVar("T", bound="ModelGenerativeAiIntegrationCloudPostureRequest")
 @_attrs_define
 class ModelGenerativeAiIntegrationCloudPostureRequest:
     """
-    Example:
-        {'integration_id': 0, 'remediation_format': 'all', 'service': 'service', 'cloud_provider': 'cloud_provider',
-            'query_type': 'remediation', 'title': 'title', 'compliance_check_type': 'compliance_check_type', 'group':
-            'group'}
-
     Attributes:
         cloud_provider (str):
         compliance_check_type (str):
@@ -41,9 +37,9 @@ class ModelGenerativeAiIntegrationCloudPostureRequest:
     group: Union[Unset, str] = UNSET
     integration_id: Union[Unset, int] = UNSET
     service: Union[Unset, str] = UNSET
-    additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
+    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
-    def to_dict(self) -> Dict[str, Any]:
+    def to_dict(self) -> dict[str, Any]:
         cloud_provider = self.cloud_provider
 
         compliance_check_type = self.compliance_check_type
@@ -60,7 +56,7 @@ class ModelGenerativeAiIntegrationCloudPostureRequest:
 
         service = self.service
 
-        field_dict: Dict[str, Any] = {}
+        field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
@@ -81,8 +77,8 @@ class ModelGenerativeAiIntegrationCloudPostureRequest:
         return field_dict
 
     @classmethod
-    def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
-        d = src_dict.copy()
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        d = dict(src_dict)
         cloud_provider = d.pop("cloud_provider")
 
         compliance_check_type = d.pop("compliance_check_type")
@@ -116,7 +112,7 @@ class ModelGenerativeAiIntegrationCloudPostureRequest:
         return model_generative_ai_integration_cloud_posture_request
 
     @property
-    def additional_keys(self) -> List[str]:
+    def additional_keys(self) -> list[str]:
         return list(self.additional_properties.keys())
 
     def __getitem__(self, key: str) -> Any:

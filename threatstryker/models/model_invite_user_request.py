@@ -1,4 +1,5 @@
-from typing import Any, Dict, List, Type, TypeVar
+from collections.abc import Mapping
+from typing import Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -12,9 +13,6 @@ T = TypeVar("T", bound="ModelInviteUserRequest")
 @_attrs_define
 class ModelInviteUserRequest:
     """
-    Example:
-        {'role': 'admin', 'action': 'send-invite-email', 'email': 'email'}
-
     Attributes:
         action (ModelInviteUserRequestAction):
         email (str):
@@ -24,16 +22,16 @@ class ModelInviteUserRequest:
     action: ModelInviteUserRequestAction
     email: str
     role: ModelInviteUserRequestRole
-    additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
+    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
-    def to_dict(self) -> Dict[str, Any]:
+    def to_dict(self) -> dict[str, Any]:
         action = self.action.value
 
         email = self.email
 
         role = self.role.value
 
-        field_dict: Dict[str, Any] = {}
+        field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
@@ -46,8 +44,8 @@ class ModelInviteUserRequest:
         return field_dict
 
     @classmethod
-    def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
-        d = src_dict.copy()
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        d = dict(src_dict)
         action = ModelInviteUserRequestAction(d.pop("action"))
 
         email = d.pop("email")
@@ -64,7 +62,7 @@ class ModelInviteUserRequest:
         return model_invite_user_request
 
     @property
-    def additional_keys(self) -> List[str]:
+    def additional_keys(self) -> list[str]:
         return list(self.additional_properties.keys())
 
     def __getitem__(self, key: str) -> Any:

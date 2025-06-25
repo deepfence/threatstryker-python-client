@@ -1,4 +1,5 @@
-from typing import Any, Dict, List, Type, TypeVar, Union, cast
+from collections.abc import Mapping
+from typing import Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -13,27 +14,23 @@ T = TypeVar("T", bound="GraphIndividualThreatGraphRequest")
 @_attrs_define
 class GraphIndividualThreatGraphRequest:
     """
-    Example:
-        {'graph_type': 'most_vulnerable_attack_paths', 'issue_type': 'vulnerability', 'node_ids': ['node_ids',
-            'node_ids']}
-
     Attributes:
         graph_type (GraphIndividualThreatGraphRequestGraphType):
         issue_type (GraphIndividualThreatGraphRequestIssueType):
-        node_ids (Union[List[str], None, Unset]):
+        node_ids (Union[None, Unset, list[str]]):
     """
 
     graph_type: GraphIndividualThreatGraphRequestGraphType
     issue_type: GraphIndividualThreatGraphRequestIssueType
-    node_ids: Union[List[str], None, Unset] = UNSET
-    additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
+    node_ids: Union[None, Unset, list[str]] = UNSET
+    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
-    def to_dict(self) -> Dict[str, Any]:
+    def to_dict(self) -> dict[str, Any]:
         graph_type = self.graph_type.value
 
         issue_type = self.issue_type.value
 
-        node_ids: Union[List[str], None, Unset]
+        node_ids: Union[None, Unset, list[str]]
         if isinstance(self.node_ids, Unset):
             node_ids = UNSET
         elif isinstance(self.node_ids, list):
@@ -42,7 +39,7 @@ class GraphIndividualThreatGraphRequest:
         else:
             node_ids = self.node_ids
 
-        field_dict: Dict[str, Any] = {}
+        field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
@@ -56,13 +53,13 @@ class GraphIndividualThreatGraphRequest:
         return field_dict
 
     @classmethod
-    def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
-        d = src_dict.copy()
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        d = dict(src_dict)
         graph_type = GraphIndividualThreatGraphRequestGraphType(d.pop("graph_type"))
 
         issue_type = GraphIndividualThreatGraphRequestIssueType(d.pop("issue_type"))
 
-        def _parse_node_ids(data: object) -> Union[List[str], None, Unset]:
+        def _parse_node_ids(data: object) -> Union[None, Unset, list[str]]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -70,12 +67,12 @@ class GraphIndividualThreatGraphRequest:
             try:
                 if not isinstance(data, list):
                     raise TypeError()
-                node_ids_type_0 = cast(List[str], data)
+                node_ids_type_0 = cast(list[str], data)
 
                 return node_ids_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[List[str], None, Unset], data)
+            return cast(Union[None, Unset, list[str]], data)
 
         node_ids = _parse_node_ids(d.pop("node_ids", UNSET))
 
@@ -89,7 +86,7 @@ class GraphIndividualThreatGraphRequest:
         return graph_individual_threat_graph_request
 
     @property
-    def additional_keys(self) -> List[str]:
+    def additional_keys(self) -> list[str]:
         return list(self.additional_properties.keys())
 
     def __getitem__(self, key: str) -> Any:

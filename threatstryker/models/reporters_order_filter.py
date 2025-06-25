@@ -1,4 +1,5 @@
-from typing import TYPE_CHECKING, Any, Dict, List, Type, TypeVar, Union, cast
+from collections.abc import Mapping
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -13,19 +14,15 @@ T = TypeVar("T", bound="ReportersOrderFilter")
 @_attrs_define
 class ReportersOrderFilter:
     """
-    Example:
-        {'order_fields': [{'size': 0, 'descending': True, 'field_name': 'field_name'}, {'size': 0, 'descending': True,
-            'field_name': 'field_name'}]}
-
     Attributes:
-        order_fields (Union[List['ReportersOrderSpec'], None]):
+        order_fields (Union[None, list['ReportersOrderSpec']]):
     """
 
-    order_fields: Union[List["ReportersOrderSpec"], None]
-    additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
+    order_fields: Union[None, list["ReportersOrderSpec"]]
+    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
-    def to_dict(self) -> Dict[str, Any]:
-        order_fields: Union[List[Dict[str, Any]], None]
+    def to_dict(self) -> dict[str, Any]:
+        order_fields: Union[None, list[dict[str, Any]]]
         if isinstance(self.order_fields, list):
             order_fields = []
             for order_fields_type_0_item_data in self.order_fields:
@@ -35,7 +32,7 @@ class ReportersOrderFilter:
         else:
             order_fields = self.order_fields
 
-        field_dict: Dict[str, Any] = {}
+        field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
@@ -46,12 +43,12 @@ class ReportersOrderFilter:
         return field_dict
 
     @classmethod
-    def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.reporters_order_spec import ReportersOrderSpec
 
-        d = src_dict.copy()
+        d = dict(src_dict)
 
-        def _parse_order_fields(data: object) -> Union[List["ReportersOrderSpec"], None]:
+        def _parse_order_fields(data: object) -> Union[None, list["ReportersOrderSpec"]]:
             if data is None:
                 return data
             try:
@@ -67,7 +64,7 @@ class ReportersOrderFilter:
                 return order_fields_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[List["ReportersOrderSpec"], None], data)
+            return cast(Union[None, list["ReportersOrderSpec"]], data)
 
         order_fields = _parse_order_fields(d.pop("order_fields"))
 
@@ -79,7 +76,7 @@ class ReportersOrderFilter:
         return reporters_order_filter
 
     @property
-    def additional_keys(self) -> List[str]:
+    def additional_keys(self) -> list[str]:
         return list(self.additional_properties.keys())
 
     def __getitem__(self, key: str) -> Any:

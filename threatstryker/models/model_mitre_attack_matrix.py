@@ -1,4 +1,5 @@
-from typing import TYPE_CHECKING, Any, Dict, List, Type, TypeVar, Union, cast
+from collections.abc import Mapping
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -13,9 +14,6 @@ T = TypeVar("T", bound="ModelMitreAttackMatrix")
 @_attrs_define
 class ModelMitreAttackMatrix:
     """
-    Example:
-        {'count': 0, 'technique_summary': {'key': {'severity': 'severity', 'count': 6}}, 'tactic': 'tactic'}
-
     Attributes:
         count (int):
         tactic (str):
@@ -25,9 +23,9 @@ class ModelMitreAttackMatrix:
     count: int
     tactic: str
     technique_summary: Union["ModelMitreAttackMatrixTechniqueSummaryType0", None]
-    additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
+    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
-    def to_dict(self) -> Dict[str, Any]:
+    def to_dict(self) -> dict[str, Any]:
         from ..models.model_mitre_attack_matrix_technique_summary_type_0 import (
             ModelMitreAttackMatrixTechniqueSummaryType0,
         )
@@ -36,13 +34,13 @@ class ModelMitreAttackMatrix:
 
         tactic = self.tactic
 
-        technique_summary: Union[Dict[str, Any], None]
+        technique_summary: Union[None, dict[str, Any]]
         if isinstance(self.technique_summary, ModelMitreAttackMatrixTechniqueSummaryType0):
             technique_summary = self.technique_summary.to_dict()
         else:
             technique_summary = self.technique_summary
 
-        field_dict: Dict[str, Any] = {}
+        field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
@@ -55,12 +53,12 @@ class ModelMitreAttackMatrix:
         return field_dict
 
     @classmethod
-    def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.model_mitre_attack_matrix_technique_summary_type_0 import (
             ModelMitreAttackMatrixTechniqueSummaryType0,
         )
 
-        d = src_dict.copy()
+        d = dict(src_dict)
         count = d.pop("count")
 
         tactic = d.pop("tactic")
@@ -90,7 +88,7 @@ class ModelMitreAttackMatrix:
         return model_mitre_attack_matrix
 
     @property
-    def additional_keys(self) -> List[str]:
+    def additional_keys(self) -> list[str]:
         return list(self.additional_properties.keys())
 
     def __getitem__(self, key: str) -> Any:

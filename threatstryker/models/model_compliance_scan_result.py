@@ -1,4 +1,5 @@
-from typing import TYPE_CHECKING, Any, Dict, List, Type, TypeVar, Union, cast
+from collections.abc import Mapping
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -14,37 +15,11 @@ T = TypeVar("T", bound="ModelComplianceScanResult")
 @_attrs_define
 class ModelComplianceScanResult:
     """
-    Example:
-        {'benchmark_type': ['benchmark_type', 'benchmark_type'], 'docker_container_name': 'docker_container_name',
-            'kubernetes_cluster_name': 'kubernetes_cluster_name', 'node_name': 'node_name', 'created_at': 6,
-            'cloud_account_id': 'cloud_account_id', 'compliances': [{'resource': 'resource', 'masked': True, 'description':
-            'description', 'resources': [{'node_type': 'node_type', 'live_secrets': ['live_secrets', 'live_secrets'],
-            'live_cves': ['live_cves', 'live_cves'], 'name': 'name', 'host_name': 'host_name', 'live_malwares':
-            ['live_malwares', 'live_malwares'], 'node_id': 'node_id'}, {'node_type': 'node_type', 'live_secrets':
-            ['live_secrets', 'live_secrets'], 'live_cves': ['live_cves', 'live_cves'], 'name': 'name', 'host_name':
-            'host_name', 'live_malwares': ['live_malwares', 'live_malwares'], 'node_id': 'node_id'}], 'test_category':
-            'test_category', 'remediation_ansible': 'remediation_ansible', 'compliance_check_type': 'hipaa', 'rule_id':
-            'rule_id', 'test_rationale': 'test_rationale', 'test_severity': 'test_severity', 'node_type': 'node_type',
-            'updated_at': 0, 'remediation_puppet': 'remediation_puppet', 'remediation_script': 'remediation_script',
-            'node_id': 'node_id', 'status': 'pass', 'test_desc': 'test_desc', 'test_number': 'test_number'}, {'resource':
-            'resource', 'masked': True, 'description': 'description', 'resources': [{'node_type': 'node_type',
-            'live_secrets': ['live_secrets', 'live_secrets'], 'live_cves': ['live_cves', 'live_cves'], 'name': 'name',
-            'host_name': 'host_name', 'live_malwares': ['live_malwares', 'live_malwares'], 'node_id': 'node_id'},
-            {'node_type': 'node_type', 'live_secrets': ['live_secrets', 'live_secrets'], 'live_cves': ['live_cves',
-            'live_cves'], 'name': 'name', 'host_name': 'host_name', 'live_malwares': ['live_malwares', 'live_malwares'],
-            'node_id': 'node_id'}], 'test_category': 'test_category', 'remediation_ansible': 'remediation_ansible',
-            'compliance_check_type': 'hipaa', 'rule_id': 'rule_id', 'test_rationale': 'test_rationale', 'test_severity':
-            'test_severity', 'node_type': 'node_type', 'updated_at': 0, 'remediation_puppet': 'remediation_puppet',
-            'remediation_script': 'remediation_script', 'node_id': 'node_id', 'status': 'pass', 'test_desc': 'test_desc',
-            'test_number': 'test_number'}], 'compliance_percentage': 0.8008281904610115, 'node_type': 'node_type',
-            'updated_at': 5, 'scan_id': 'scan_id', 'status_counts': {'key': 1}, 'docker_image_name': 'docker_image_name',
-            'host_name': 'host_name', 'node_id': 'node_id'}
-
     Attributes:
-        benchmark_type (Union[List[str], None]):
+        benchmark_type (Union[None, list[str]]):
         cloud_account_id (str):
         compliance_percentage (float):
-        compliances (Union[List['ModelCompliance'], None]):
+        compliances (Union[None, list['ModelCompliance']]):
         created_at (int):
         docker_container_name (str):
         docker_image_name (str):
@@ -58,10 +33,10 @@ class ModelComplianceScanResult:
         updated_at (int):
     """
 
-    benchmark_type: Union[List[str], None]
+    benchmark_type: Union[None, list[str]]
     cloud_account_id: str
     compliance_percentage: float
-    compliances: Union[List["ModelCompliance"], None]
+    compliances: Union[None, list["ModelCompliance"]]
     created_at: int
     docker_container_name: str
     docker_image_name: str
@@ -73,14 +48,14 @@ class ModelComplianceScanResult:
     scan_id: str
     status_counts: Union["ModelComplianceScanResultStatusCountsType0", None]
     updated_at: int
-    additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
+    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
-    def to_dict(self) -> Dict[str, Any]:
+    def to_dict(self) -> dict[str, Any]:
         from ..models.model_compliance_scan_result_status_counts_type_0 import (
             ModelComplianceScanResultStatusCountsType0,
         )
 
-        benchmark_type: Union[List[str], None]
+        benchmark_type: Union[None, list[str]]
         if isinstance(self.benchmark_type, list):
             benchmark_type = self.benchmark_type
 
@@ -91,7 +66,7 @@ class ModelComplianceScanResult:
 
         compliance_percentage = self.compliance_percentage
 
-        compliances: Union[List[Dict[str, Any]], None]
+        compliances: Union[None, list[dict[str, Any]]]
         if isinstance(self.compliances, list):
             compliances = []
             for compliances_type_0_item_data in self.compliances:
@@ -119,7 +94,7 @@ class ModelComplianceScanResult:
 
         scan_id = self.scan_id
 
-        status_counts: Union[Dict[str, Any], None]
+        status_counts: Union[None, dict[str, Any]]
         if isinstance(self.status_counts, ModelComplianceScanResultStatusCountsType0):
             status_counts = self.status_counts.to_dict()
         else:
@@ -127,7 +102,7 @@ class ModelComplianceScanResult:
 
         updated_at = self.updated_at
 
-        field_dict: Dict[str, Any] = {}
+        field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
@@ -152,26 +127,26 @@ class ModelComplianceScanResult:
         return field_dict
 
     @classmethod
-    def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.model_compliance import ModelCompliance
         from ..models.model_compliance_scan_result_status_counts_type_0 import (
             ModelComplianceScanResultStatusCountsType0,
         )
 
-        d = src_dict.copy()
+        d = dict(src_dict)
 
-        def _parse_benchmark_type(data: object) -> Union[List[str], None]:
+        def _parse_benchmark_type(data: object) -> Union[None, list[str]]:
             if data is None:
                 return data
             try:
                 if not isinstance(data, list):
                     raise TypeError()
-                benchmark_type_type_0 = cast(List[str], data)
+                benchmark_type_type_0 = cast(list[str], data)
 
                 return benchmark_type_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[List[str], None], data)
+            return cast(Union[None, list[str]], data)
 
         benchmark_type = _parse_benchmark_type(d.pop("benchmark_type"))
 
@@ -179,7 +154,7 @@ class ModelComplianceScanResult:
 
         compliance_percentage = d.pop("compliance_percentage")
 
-        def _parse_compliances(data: object) -> Union[List["ModelCompliance"], None]:
+        def _parse_compliances(data: object) -> Union[None, list["ModelCompliance"]]:
             if data is None:
                 return data
             try:
@@ -195,7 +170,7 @@ class ModelComplianceScanResult:
                 return compliances_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[List["ModelCompliance"], None], data)
+            return cast(Union[None, list["ModelCompliance"]], data)
 
         compliances = _parse_compliances(d.pop("compliances"))
 
@@ -256,7 +231,7 @@ class ModelComplianceScanResult:
         return model_compliance_scan_result
 
     @property
-    def additional_keys(self) -> List[str]:
+    def additional_keys(self) -> list[str]:
         return list(self.additional_properties.keys())
 
     def __getitem__(self, key: str) -> Any:

@@ -1,4 +1,5 @@
-from typing import Any, Dict, List, Type, TypeVar, Union
+from collections.abc import Mapping
+from typing import Any, TypeVar, Union
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -11,9 +12,6 @@ T = TypeVar("T", bound="ModelCloudNodeMonitoredAccount")
 @_attrs_define
 class ModelCloudNodeMonitoredAccount:
     """
-    Example:
-        {'account_id': 'account_id', 'account_name': 'account_name', 'node_id': 'node_id'}
-
     Attributes:
         account_id (str):
         node_id (str):
@@ -23,16 +21,16 @@ class ModelCloudNodeMonitoredAccount:
     account_id: str
     node_id: str
     account_name: Union[Unset, str] = UNSET
-    additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
+    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
-    def to_dict(self) -> Dict[str, Any]:
+    def to_dict(self) -> dict[str, Any]:
         account_id = self.account_id
 
         node_id = self.node_id
 
         account_name = self.account_name
 
-        field_dict: Dict[str, Any] = {}
+        field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
@@ -46,8 +44,8 @@ class ModelCloudNodeMonitoredAccount:
         return field_dict
 
     @classmethod
-    def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
-        d = src_dict.copy()
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        d = dict(src_dict)
         account_id = d.pop("account_id")
 
         node_id = d.pop("node_id")
@@ -64,7 +62,7 @@ class ModelCloudNodeMonitoredAccount:
         return model_cloud_node_monitored_account
 
     @property
-    def additional_keys(self) -> List[str]:
+    def additional_keys(self) -> list[str]:
         return list(self.additional_properties.keys())
 
     def __getitem__(self, key: str) -> Any:

@@ -1,4 +1,5 @@
-from typing import TYPE_CHECKING, Any, Dict, List, Type, TypeVar, Union, cast
+from collections.abc import Mapping
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -15,26 +16,21 @@ T = TypeVar("T", bound="SinglesignonSSOConfigurationInstructions")
 @_attrs_define
 class SinglesignonSSOConfigurationInstructions:
     """
-    Example:
-        {'github': [{'value': 'value', 'key': 'key'}, {'value': 'value', 'key': 'key'}], 'google': [{'value': 'value',
-            'key': 'key'}, {'value': 'value', 'key': 'key'}], 'microsoft': [{'value': 'value', 'key': 'key'}, {'value':
-            'value', 'key': 'key'}], 'oidc': [{'value': 'value', 'key': 'key'}, {'value': 'value', 'key': 'key'}]}
-
     Attributes:
-        github (Union[List['SinglesignonSSOConfigurationInstruction'], None, Unset]):
-        google (Union[List['SinglesignonSSOConfigurationInstruction'], None, Unset]):
-        microsoft (Union[List['SinglesignonSSOConfigurationInstruction'], None, Unset]):
-        oidc (Union[List['SinglesignonSSOConfigurationInstruction'], None, Unset]):
+        github (Union[None, Unset, list['SinglesignonSSOConfigurationInstruction']]):
+        google (Union[None, Unset, list['SinglesignonSSOConfigurationInstruction']]):
+        microsoft (Union[None, Unset, list['SinglesignonSSOConfigurationInstruction']]):
+        oidc (Union[None, Unset, list['SinglesignonSSOConfigurationInstruction']]):
     """
 
-    github: Union[List["SinglesignonSSOConfigurationInstruction"], None, Unset] = UNSET
-    google: Union[List["SinglesignonSSOConfigurationInstruction"], None, Unset] = UNSET
-    microsoft: Union[List["SinglesignonSSOConfigurationInstruction"], None, Unset] = UNSET
-    oidc: Union[List["SinglesignonSSOConfigurationInstruction"], None, Unset] = UNSET
-    additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
+    github: Union[None, Unset, list["SinglesignonSSOConfigurationInstruction"]] = UNSET
+    google: Union[None, Unset, list["SinglesignonSSOConfigurationInstruction"]] = UNSET
+    microsoft: Union[None, Unset, list["SinglesignonSSOConfigurationInstruction"]] = UNSET
+    oidc: Union[None, Unset, list["SinglesignonSSOConfigurationInstruction"]] = UNSET
+    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
-    def to_dict(self) -> Dict[str, Any]:
-        github: Union[List[Dict[str, Any]], None, Unset]
+    def to_dict(self) -> dict[str, Any]:
+        github: Union[None, Unset, list[dict[str, Any]]]
         if isinstance(self.github, Unset):
             github = UNSET
         elif isinstance(self.github, list):
@@ -46,7 +42,7 @@ class SinglesignonSSOConfigurationInstructions:
         else:
             github = self.github
 
-        google: Union[List[Dict[str, Any]], None, Unset]
+        google: Union[None, Unset, list[dict[str, Any]]]
         if isinstance(self.google, Unset):
             google = UNSET
         elif isinstance(self.google, list):
@@ -58,7 +54,7 @@ class SinglesignonSSOConfigurationInstructions:
         else:
             google = self.google
 
-        microsoft: Union[List[Dict[str, Any]], None, Unset]
+        microsoft: Union[None, Unset, list[dict[str, Any]]]
         if isinstance(self.microsoft, Unset):
             microsoft = UNSET
         elif isinstance(self.microsoft, list):
@@ -70,7 +66,7 @@ class SinglesignonSSOConfigurationInstructions:
         else:
             microsoft = self.microsoft
 
-        oidc: Union[List[Dict[str, Any]], None, Unset]
+        oidc: Union[None, Unset, list[dict[str, Any]]]
         if isinstance(self.oidc, Unset):
             oidc = UNSET
         elif isinstance(self.oidc, list):
@@ -82,7 +78,7 @@ class SinglesignonSSOConfigurationInstructions:
         else:
             oidc = self.oidc
 
-        field_dict: Dict[str, Any] = {}
+        field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
         if github is not UNSET:
@@ -97,12 +93,12 @@ class SinglesignonSSOConfigurationInstructions:
         return field_dict
 
     @classmethod
-    def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.singlesignon_sso_configuration_instruction import SinglesignonSSOConfigurationInstruction
 
-        d = src_dict.copy()
+        d = dict(src_dict)
 
-        def _parse_github(data: object) -> Union[List["SinglesignonSSOConfigurationInstruction"], None, Unset]:
+        def _parse_github(data: object) -> Union[None, Unset, list["SinglesignonSSOConfigurationInstruction"]]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -120,11 +116,11 @@ class SinglesignonSSOConfigurationInstructions:
                 return github_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[List["SinglesignonSSOConfigurationInstruction"], None, Unset], data)
+            return cast(Union[None, Unset, list["SinglesignonSSOConfigurationInstruction"]], data)
 
         github = _parse_github(d.pop("github", UNSET))
 
-        def _parse_google(data: object) -> Union[List["SinglesignonSSOConfigurationInstruction"], None, Unset]:
+        def _parse_google(data: object) -> Union[None, Unset, list["SinglesignonSSOConfigurationInstruction"]]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -142,11 +138,11 @@ class SinglesignonSSOConfigurationInstructions:
                 return google_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[List["SinglesignonSSOConfigurationInstruction"], None, Unset], data)
+            return cast(Union[None, Unset, list["SinglesignonSSOConfigurationInstruction"]], data)
 
         google = _parse_google(d.pop("google", UNSET))
 
-        def _parse_microsoft(data: object) -> Union[List["SinglesignonSSOConfigurationInstruction"], None, Unset]:
+        def _parse_microsoft(data: object) -> Union[None, Unset, list["SinglesignonSSOConfigurationInstruction"]]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -166,11 +162,11 @@ class SinglesignonSSOConfigurationInstructions:
                 return microsoft_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[List["SinglesignonSSOConfigurationInstruction"], None, Unset], data)
+            return cast(Union[None, Unset, list["SinglesignonSSOConfigurationInstruction"]], data)
 
         microsoft = _parse_microsoft(d.pop("microsoft", UNSET))
 
-        def _parse_oidc(data: object) -> Union[List["SinglesignonSSOConfigurationInstruction"], None, Unset]:
+        def _parse_oidc(data: object) -> Union[None, Unset, list["SinglesignonSSOConfigurationInstruction"]]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -188,7 +184,7 @@ class SinglesignonSSOConfigurationInstructions:
                 return oidc_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[List["SinglesignonSSOConfigurationInstruction"], None, Unset], data)
+            return cast(Union[None, Unset, list["SinglesignonSSOConfigurationInstruction"]], data)
 
         oidc = _parse_oidc(d.pop("oidc", UNSET))
 
@@ -203,7 +199,7 @@ class SinglesignonSSOConfigurationInstructions:
         return singlesignon_sso_configuration_instructions
 
     @property
-    def additional_keys(self) -> List[str]:
+    def additional_keys(self) -> list[str]:
         return list(self.additional_properties.keys())
 
     def __getitem__(self, key: str) -> Any:

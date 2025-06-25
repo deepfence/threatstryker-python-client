@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Dict, List, Optional, Union, cast
+from typing import Any, Optional, Union, cast
 
 import httpx
 
@@ -15,17 +15,16 @@ from ...types import Response
 def _get_kwargs(
     *,
     body: SearchSearchNodeReq,
-) -> Dict[str, Any]:
-    headers: Dict[str, Any] = {}
+) -> dict[str, Any]:
+    headers: dict[str, Any] = {}
 
-    _kwargs: Dict[str, Any] = {
+    _kwargs: dict[str, Any] = {
         "method": "post",
         "url": "/deepfence/search/secret-rules",
     }
 
-    _body = body.to_dict()
+    _kwargs["json"] = body.to_dict()
 
-    _kwargs["json"] = _body
     headers["Content-Type"] = "application/json"
 
     _kwargs["headers"] = headers
@@ -34,8 +33,8 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse, List["ModelSecretRule"]]]:
-    if response.status_code == HTTPStatus.OK:
+) -> Optional[Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse, list["ModelSecretRule"]]]:
+    if response.status_code == 200:
         response_200 = []
         _response_200 = response.json()
         for response_200_item_data in _response_200:
@@ -44,21 +43,21 @@ def _parse_response(
             response_200.append(response_200_item)
 
         return response_200
-    if response.status_code == HTTPStatus.BAD_REQUEST:
+    if response.status_code == 400:
         response_400 = ApiDocsBadRequestResponse.from_dict(response.json())
 
         return response_400
-    if response.status_code == HTTPStatus.UNAUTHORIZED:
+    if response.status_code == 401:
         response_401 = cast(Any, None)
         return response_401
-    if response.status_code == HTTPStatus.FORBIDDEN:
+    if response.status_code == 403:
         response_403 = cast(Any, None)
         return response_403
-    if response.status_code == HTTPStatus.NOT_FOUND:
+    if response.status_code == 404:
         response_404 = ApiDocsFailureResponse.from_dict(response.json())
 
         return response_404
-    if response.status_code == HTTPStatus.INTERNAL_SERVER_ERROR:
+    if response.status_code == 500:
         response_500 = ApiDocsFailureResponse.from_dict(response.json())
 
         return response_500
@@ -70,7 +69,7 @@ def _parse_response(
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse, List["ModelSecretRule"]]]:
+) -> Response[Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse, list["ModelSecretRule"]]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -83,48 +82,20 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: SearchSearchNodeReq,
-) -> Response[Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse, List["ModelSecretRule"]]]:
+) -> Response[Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse, list["ModelSecretRule"]]]:
     """Search Secret Rules
 
      Search across all the data associated with secret rules
 
     Args:
-        body (SearchSearchNodeReq):  Example: {'node_filter': {'in_field_filter':
-            ['in_field_filter', 'in_field_filter'], 'filters': {'compare_filter': [{'greater_than':
-            True, 'field_value': '', 'field_name': 'field_name'}, {'greater_than': True,
-            'field_value': '', 'field_name': 'field_name'}], 'not_contains_filter': {'filter_in':
-            {'key': ['', '']}}, 'order_filter': {'order_fields': [{'size': 0, 'descending': True,
-            'field_name': 'field_name'}, {'size': 0, 'descending': True, 'field_name':
-            'field_name'}]}, 'contains_filter': {'filter_in': {'key': ['', '']}},
-            'contains_in_array_filter': {'filter_in': {'key': ['', '']}}, 'match_filter':
-            {'filter_in': {'key': ['', '']}}, 'match_in_array_filter': {'filter_in': {'key': ['',
-            '']}}}, 'window': {'offset': 0, 'size': 6}}, 'extended_node_filter': {'in_field_filter':
-            ['in_field_filter', 'in_field_filter'], 'filters': {'compare_filter': [{'greater_than':
-            True, 'field_value': '', 'field_name': 'field_name'}, {'greater_than': True,
-            'field_value': '', 'field_name': 'field_name'}], 'not_contains_filter': {'filter_in':
-            {'key': ['', '']}}, 'order_filter': {'order_fields': [{'size': 0, 'descending': True,
-            'field_name': 'field_name'}, {'size': 0, 'descending': True, 'field_name':
-            'field_name'}]}, 'contains_filter': {'filter_in': {'key': ['', '']}},
-            'contains_in_array_filter': {'filter_in': {'key': ['', '']}}, 'match_filter':
-            {'filter_in': {'key': ['', '']}}, 'match_in_array_filter': {'filter_in': {'key': ['',
-            '']}}}, 'window': {'offset': 0, 'size': 6}}, 'related_node_filter': {'node_filter':
-            {'in_field_filter': ['in_field_filter', 'in_field_filter'], 'filters': {'compare_filter':
-            [{'greater_than': True, 'field_value': '', 'field_name': 'field_name'}, {'greater_than':
-            True, 'field_value': '', 'field_name': 'field_name'}], 'not_contains_filter':
-            {'filter_in': {'key': ['', '']}}, 'order_filter': {'order_fields': [{'size': 0,
-            'descending': True, 'field_name': 'field_name'}, {'size': 0, 'descending': True,
-            'field_name': 'field_name'}]}, 'contains_filter': {'filter_in': {'key': ['', '']}},
-            'contains_in_array_filter': {'filter_in': {'key': ['', '']}}, 'match_filter':
-            {'filter_in': {'key': ['', '']}}, 'match_in_array_filter': {'filter_in': {'key': ['',
-            '']}}}, 'window': {'offset': 0, 'size': 6}}, 'next_filter': None, 'relation_ship':
-            'relation_ship'}, 'window': {'offset': 0, 'size': 6}}.
+        body (SearchSearchNodeReq):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse, List['ModelSecretRule']]]
+        Response[Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse, list['ModelSecretRule']]]
     """
 
     kwargs = _get_kwargs(
@@ -142,48 +113,20 @@ def sync(
     *,
     client: AuthenticatedClient,
     body: SearchSearchNodeReq,
-) -> Optional[Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse, List["ModelSecretRule"]]]:
+) -> Optional[Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse, list["ModelSecretRule"]]]:
     """Search Secret Rules
 
      Search across all the data associated with secret rules
 
     Args:
-        body (SearchSearchNodeReq):  Example: {'node_filter': {'in_field_filter':
-            ['in_field_filter', 'in_field_filter'], 'filters': {'compare_filter': [{'greater_than':
-            True, 'field_value': '', 'field_name': 'field_name'}, {'greater_than': True,
-            'field_value': '', 'field_name': 'field_name'}], 'not_contains_filter': {'filter_in':
-            {'key': ['', '']}}, 'order_filter': {'order_fields': [{'size': 0, 'descending': True,
-            'field_name': 'field_name'}, {'size': 0, 'descending': True, 'field_name':
-            'field_name'}]}, 'contains_filter': {'filter_in': {'key': ['', '']}},
-            'contains_in_array_filter': {'filter_in': {'key': ['', '']}}, 'match_filter':
-            {'filter_in': {'key': ['', '']}}, 'match_in_array_filter': {'filter_in': {'key': ['',
-            '']}}}, 'window': {'offset': 0, 'size': 6}}, 'extended_node_filter': {'in_field_filter':
-            ['in_field_filter', 'in_field_filter'], 'filters': {'compare_filter': [{'greater_than':
-            True, 'field_value': '', 'field_name': 'field_name'}, {'greater_than': True,
-            'field_value': '', 'field_name': 'field_name'}], 'not_contains_filter': {'filter_in':
-            {'key': ['', '']}}, 'order_filter': {'order_fields': [{'size': 0, 'descending': True,
-            'field_name': 'field_name'}, {'size': 0, 'descending': True, 'field_name':
-            'field_name'}]}, 'contains_filter': {'filter_in': {'key': ['', '']}},
-            'contains_in_array_filter': {'filter_in': {'key': ['', '']}}, 'match_filter':
-            {'filter_in': {'key': ['', '']}}, 'match_in_array_filter': {'filter_in': {'key': ['',
-            '']}}}, 'window': {'offset': 0, 'size': 6}}, 'related_node_filter': {'node_filter':
-            {'in_field_filter': ['in_field_filter', 'in_field_filter'], 'filters': {'compare_filter':
-            [{'greater_than': True, 'field_value': '', 'field_name': 'field_name'}, {'greater_than':
-            True, 'field_value': '', 'field_name': 'field_name'}], 'not_contains_filter':
-            {'filter_in': {'key': ['', '']}}, 'order_filter': {'order_fields': [{'size': 0,
-            'descending': True, 'field_name': 'field_name'}, {'size': 0, 'descending': True,
-            'field_name': 'field_name'}]}, 'contains_filter': {'filter_in': {'key': ['', '']}},
-            'contains_in_array_filter': {'filter_in': {'key': ['', '']}}, 'match_filter':
-            {'filter_in': {'key': ['', '']}}, 'match_in_array_filter': {'filter_in': {'key': ['',
-            '']}}}, 'window': {'offset': 0, 'size': 6}}, 'next_filter': None, 'relation_ship':
-            'relation_ship'}, 'window': {'offset': 0, 'size': 6}}.
+        body (SearchSearchNodeReq):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse, List['ModelSecretRule']]
+        Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse, list['ModelSecretRule']]
     """
 
     return sync_detailed(
@@ -196,48 +139,20 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     body: SearchSearchNodeReq,
-) -> Response[Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse, List["ModelSecretRule"]]]:
+) -> Response[Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse, list["ModelSecretRule"]]]:
     """Search Secret Rules
 
      Search across all the data associated with secret rules
 
     Args:
-        body (SearchSearchNodeReq):  Example: {'node_filter': {'in_field_filter':
-            ['in_field_filter', 'in_field_filter'], 'filters': {'compare_filter': [{'greater_than':
-            True, 'field_value': '', 'field_name': 'field_name'}, {'greater_than': True,
-            'field_value': '', 'field_name': 'field_name'}], 'not_contains_filter': {'filter_in':
-            {'key': ['', '']}}, 'order_filter': {'order_fields': [{'size': 0, 'descending': True,
-            'field_name': 'field_name'}, {'size': 0, 'descending': True, 'field_name':
-            'field_name'}]}, 'contains_filter': {'filter_in': {'key': ['', '']}},
-            'contains_in_array_filter': {'filter_in': {'key': ['', '']}}, 'match_filter':
-            {'filter_in': {'key': ['', '']}}, 'match_in_array_filter': {'filter_in': {'key': ['',
-            '']}}}, 'window': {'offset': 0, 'size': 6}}, 'extended_node_filter': {'in_field_filter':
-            ['in_field_filter', 'in_field_filter'], 'filters': {'compare_filter': [{'greater_than':
-            True, 'field_value': '', 'field_name': 'field_name'}, {'greater_than': True,
-            'field_value': '', 'field_name': 'field_name'}], 'not_contains_filter': {'filter_in':
-            {'key': ['', '']}}, 'order_filter': {'order_fields': [{'size': 0, 'descending': True,
-            'field_name': 'field_name'}, {'size': 0, 'descending': True, 'field_name':
-            'field_name'}]}, 'contains_filter': {'filter_in': {'key': ['', '']}},
-            'contains_in_array_filter': {'filter_in': {'key': ['', '']}}, 'match_filter':
-            {'filter_in': {'key': ['', '']}}, 'match_in_array_filter': {'filter_in': {'key': ['',
-            '']}}}, 'window': {'offset': 0, 'size': 6}}, 'related_node_filter': {'node_filter':
-            {'in_field_filter': ['in_field_filter', 'in_field_filter'], 'filters': {'compare_filter':
-            [{'greater_than': True, 'field_value': '', 'field_name': 'field_name'}, {'greater_than':
-            True, 'field_value': '', 'field_name': 'field_name'}], 'not_contains_filter':
-            {'filter_in': {'key': ['', '']}}, 'order_filter': {'order_fields': [{'size': 0,
-            'descending': True, 'field_name': 'field_name'}, {'size': 0, 'descending': True,
-            'field_name': 'field_name'}]}, 'contains_filter': {'filter_in': {'key': ['', '']}},
-            'contains_in_array_filter': {'filter_in': {'key': ['', '']}}, 'match_filter':
-            {'filter_in': {'key': ['', '']}}, 'match_in_array_filter': {'filter_in': {'key': ['',
-            '']}}}, 'window': {'offset': 0, 'size': 6}}, 'next_filter': None, 'relation_ship':
-            'relation_ship'}, 'window': {'offset': 0, 'size': 6}}.
+        body (SearchSearchNodeReq):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse, List['ModelSecretRule']]]
+        Response[Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse, list['ModelSecretRule']]]
     """
 
     kwargs = _get_kwargs(
@@ -253,48 +168,20 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     body: SearchSearchNodeReq,
-) -> Optional[Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse, List["ModelSecretRule"]]]:
+) -> Optional[Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse, list["ModelSecretRule"]]]:
     """Search Secret Rules
 
      Search across all the data associated with secret rules
 
     Args:
-        body (SearchSearchNodeReq):  Example: {'node_filter': {'in_field_filter':
-            ['in_field_filter', 'in_field_filter'], 'filters': {'compare_filter': [{'greater_than':
-            True, 'field_value': '', 'field_name': 'field_name'}, {'greater_than': True,
-            'field_value': '', 'field_name': 'field_name'}], 'not_contains_filter': {'filter_in':
-            {'key': ['', '']}}, 'order_filter': {'order_fields': [{'size': 0, 'descending': True,
-            'field_name': 'field_name'}, {'size': 0, 'descending': True, 'field_name':
-            'field_name'}]}, 'contains_filter': {'filter_in': {'key': ['', '']}},
-            'contains_in_array_filter': {'filter_in': {'key': ['', '']}}, 'match_filter':
-            {'filter_in': {'key': ['', '']}}, 'match_in_array_filter': {'filter_in': {'key': ['',
-            '']}}}, 'window': {'offset': 0, 'size': 6}}, 'extended_node_filter': {'in_field_filter':
-            ['in_field_filter', 'in_field_filter'], 'filters': {'compare_filter': [{'greater_than':
-            True, 'field_value': '', 'field_name': 'field_name'}, {'greater_than': True,
-            'field_value': '', 'field_name': 'field_name'}], 'not_contains_filter': {'filter_in':
-            {'key': ['', '']}}, 'order_filter': {'order_fields': [{'size': 0, 'descending': True,
-            'field_name': 'field_name'}, {'size': 0, 'descending': True, 'field_name':
-            'field_name'}]}, 'contains_filter': {'filter_in': {'key': ['', '']}},
-            'contains_in_array_filter': {'filter_in': {'key': ['', '']}}, 'match_filter':
-            {'filter_in': {'key': ['', '']}}, 'match_in_array_filter': {'filter_in': {'key': ['',
-            '']}}}, 'window': {'offset': 0, 'size': 6}}, 'related_node_filter': {'node_filter':
-            {'in_field_filter': ['in_field_filter', 'in_field_filter'], 'filters': {'compare_filter':
-            [{'greater_than': True, 'field_value': '', 'field_name': 'field_name'}, {'greater_than':
-            True, 'field_value': '', 'field_name': 'field_name'}], 'not_contains_filter':
-            {'filter_in': {'key': ['', '']}}, 'order_filter': {'order_fields': [{'size': 0,
-            'descending': True, 'field_name': 'field_name'}, {'size': 0, 'descending': True,
-            'field_name': 'field_name'}]}, 'contains_filter': {'filter_in': {'key': ['', '']}},
-            'contains_in_array_filter': {'filter_in': {'key': ['', '']}}, 'match_filter':
-            {'filter_in': {'key': ['', '']}}, 'match_in_array_filter': {'filter_in': {'key': ['',
-            '']}}}, 'window': {'offset': 0, 'size': 6}}, 'next_filter': None, 'relation_ship':
-            'relation_ship'}, 'window': {'offset': 0, 'size': 6}}.
+        body (SearchSearchNodeReq):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse, List['ModelSecretRule']]
+        Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse, list['ModelSecretRule']]
     """
 
     return (

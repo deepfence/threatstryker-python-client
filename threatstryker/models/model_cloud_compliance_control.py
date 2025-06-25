@@ -1,4 +1,5 @@
-from typing import Any, Dict, List, Type, TypeVar, Union, cast
+from collections.abc import Mapping
+from typing import Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -11,17 +12,10 @@ T = TypeVar("T", bound="ModelCloudComplianceControl")
 @_attrs_define
 class ModelCloudComplianceControl:
     """
-    Example:
-        {'control_id': 'control_id', 'documentation': 'documentation', 'active': True, 'description': 'description',
-            'cloud_provider': 'cloud_provider', 'title': 'title', 'category_hierarchy_short': 'category_hierarchy_short',
-            'executable': True, 'category_hierarchy': ['category_hierarchy', 'category_hierarchy'], 'service': 'service',
-            'parent_control_hierarchy': ['parent_control_hierarchy', 'parent_control_hierarchy'], 'compliance_type':
-            'compliance_type', 'disabled': True, 'category': 'category', 'node_id': 'node_id'}
-
     Attributes:
         active (Union[Unset, bool]):
         category (Union[Unset, str]):
-        category_hierarchy (Union[List[str], None, Unset]):
+        category_hierarchy (Union[None, Unset, list[str]]):
         category_hierarchy_short (Union[Unset, str]):
         cloud_provider (Union[Unset, str]):
         compliance_type (Union[Unset, str]):
@@ -31,14 +25,14 @@ class ModelCloudComplianceControl:
         documentation (Union[Unset, str]):
         executable (Union[Unset, bool]):
         node_id (Union[Unset, str]):
-        parent_control_hierarchy (Union[List[str], None, Unset]):
+        parent_control_hierarchy (Union[None, Unset, list[str]]):
         service (Union[Unset, str]):
         title (Union[Unset, str]):
     """
 
     active: Union[Unset, bool] = UNSET
     category: Union[Unset, str] = UNSET
-    category_hierarchy: Union[List[str], None, Unset] = UNSET
+    category_hierarchy: Union[None, Unset, list[str]] = UNSET
     category_hierarchy_short: Union[Unset, str] = UNSET
     cloud_provider: Union[Unset, str] = UNSET
     compliance_type: Union[Unset, str] = UNSET
@@ -48,17 +42,17 @@ class ModelCloudComplianceControl:
     documentation: Union[Unset, str] = UNSET
     executable: Union[Unset, bool] = UNSET
     node_id: Union[Unset, str] = UNSET
-    parent_control_hierarchy: Union[List[str], None, Unset] = UNSET
+    parent_control_hierarchy: Union[None, Unset, list[str]] = UNSET
     service: Union[Unset, str] = UNSET
     title: Union[Unset, str] = UNSET
-    additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
+    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
-    def to_dict(self) -> Dict[str, Any]:
+    def to_dict(self) -> dict[str, Any]:
         active = self.active
 
         category = self.category
 
-        category_hierarchy: Union[List[str], None, Unset]
+        category_hierarchy: Union[None, Unset, list[str]]
         if isinstance(self.category_hierarchy, Unset):
             category_hierarchy = UNSET
         elif isinstance(self.category_hierarchy, list):
@@ -85,7 +79,7 @@ class ModelCloudComplianceControl:
 
         node_id = self.node_id
 
-        parent_control_hierarchy: Union[List[str], None, Unset]
+        parent_control_hierarchy: Union[None, Unset, list[str]]
         if isinstance(self.parent_control_hierarchy, Unset):
             parent_control_hierarchy = UNSET
         elif isinstance(self.parent_control_hierarchy, list):
@@ -98,7 +92,7 @@ class ModelCloudComplianceControl:
 
         title = self.title
 
-        field_dict: Dict[str, Any] = {}
+        field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
         if active is not UNSET:
@@ -135,13 +129,13 @@ class ModelCloudComplianceControl:
         return field_dict
 
     @classmethod
-    def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
-        d = src_dict.copy()
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        d = dict(src_dict)
         active = d.pop("active", UNSET)
 
         category = d.pop("category", UNSET)
 
-        def _parse_category_hierarchy(data: object) -> Union[List[str], None, Unset]:
+        def _parse_category_hierarchy(data: object) -> Union[None, Unset, list[str]]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -149,12 +143,12 @@ class ModelCloudComplianceControl:
             try:
                 if not isinstance(data, list):
                     raise TypeError()
-                category_hierarchy_type_0 = cast(List[str], data)
+                category_hierarchy_type_0 = cast(list[str], data)
 
                 return category_hierarchy_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[List[str], None, Unset], data)
+            return cast(Union[None, Unset, list[str]], data)
 
         category_hierarchy = _parse_category_hierarchy(d.pop("category_hierarchy", UNSET))
 
@@ -176,7 +170,7 @@ class ModelCloudComplianceControl:
 
         node_id = d.pop("node_id", UNSET)
 
-        def _parse_parent_control_hierarchy(data: object) -> Union[List[str], None, Unset]:
+        def _parse_parent_control_hierarchy(data: object) -> Union[None, Unset, list[str]]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -184,12 +178,12 @@ class ModelCloudComplianceControl:
             try:
                 if not isinstance(data, list):
                     raise TypeError()
-                parent_control_hierarchy_type_0 = cast(List[str], data)
+                parent_control_hierarchy_type_0 = cast(list[str], data)
 
                 return parent_control_hierarchy_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[List[str], None, Unset], data)
+            return cast(Union[None, Unset, list[str]], data)
 
         parent_control_hierarchy = _parse_parent_control_hierarchy(d.pop("parent_control_hierarchy", UNSET))
 
@@ -219,7 +213,7 @@ class ModelCloudComplianceControl:
         return model_cloud_compliance_control
 
     @property
-    def additional_keys(self) -> List[str]:
+    def additional_keys(self) -> list[str]:
         return list(self.additional_properties.keys())
 
     def __getitem__(self, key: str) -> Any:

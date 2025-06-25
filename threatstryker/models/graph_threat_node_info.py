@@ -1,4 +1,5 @@
-from typing import TYPE_CHECKING, Any, Dict, List, Type, TypeVar, Union, cast
+from collections.abc import Mapping
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -15,7 +16,7 @@ class GraphThreatNodeInfo:
     """
     Attributes:
         alerts_count (int):
-        attack_path (Union[List[List[str]], None]):
+        attack_path (Union[None, list[list[str]]]):
         cloud_compliance_count (int):
         cloud_warn_alarm_count (int):
         compliance_count (int):
@@ -32,7 +33,7 @@ class GraphThreatNodeInfo:
     """
 
     alerts_count: int
-    attack_path: Union[List[List[str]], None]
+    attack_path: Union[None, list[list[str]]]
     cloud_compliance_count: int
     cloud_warn_alarm_count: int
     compliance_count: int
@@ -46,14 +47,14 @@ class GraphThreatNodeInfo:
     secrets_count: int
     vulnerability_count: int
     warn_alarm_count: int
-    additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
+    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
-    def to_dict(self) -> Dict[str, Any]:
+    def to_dict(self) -> dict[str, Any]:
         from ..models.graph_threat_node_info_nodes_type_0 import GraphThreatNodeInfoNodesType0
 
         alerts_count = self.alerts_count
 
-        attack_path: Union[List[List[str]], None]
+        attack_path: Union[None, list[list[str]]]
         if isinstance(self.attack_path, list):
             attack_path = []
             for attack_path_type_0_item_data in self.attack_path:
@@ -82,7 +83,7 @@ class GraphThreatNodeInfo:
 
         node_type = self.node_type
 
-        nodes: Union[Dict[str, Any], None]
+        nodes: Union[None, dict[str, Any]]
         if isinstance(self.nodes, GraphThreatNodeInfoNodesType0):
             nodes = self.nodes.to_dict()
         else:
@@ -94,7 +95,7 @@ class GraphThreatNodeInfo:
 
         warn_alarm_count = self.warn_alarm_count
 
-        field_dict: Dict[str, Any] = {}
+        field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
@@ -119,13 +120,13 @@ class GraphThreatNodeInfo:
         return field_dict
 
     @classmethod
-    def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.graph_threat_node_info_nodes_type_0 import GraphThreatNodeInfoNodesType0
 
-        d = src_dict.copy()
+        d = dict(src_dict)
         alerts_count = d.pop("alerts_count")
 
-        def _parse_attack_path(data: object) -> Union[List[List[str]], None]:
+        def _parse_attack_path(data: object) -> Union[None, list[list[str]]]:
             if data is None:
                 return data
             try:
@@ -134,14 +135,14 @@ class GraphThreatNodeInfo:
                 attack_path_type_0 = []
                 _attack_path_type_0 = data
                 for attack_path_type_0_item_data in _attack_path_type_0:
-                    attack_path_type_0_item = cast(List[str], attack_path_type_0_item_data)
+                    attack_path_type_0_item = cast(list[str], attack_path_type_0_item_data)
 
                     attack_path_type_0.append(attack_path_type_0_item)
 
                 return attack_path_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[List[List[str]], None], data)
+            return cast(Union[None, list[list[str]]], data)
 
         attack_path = _parse_attack_path(d.pop("attack_path"))
 
@@ -206,7 +207,7 @@ class GraphThreatNodeInfo:
         return graph_threat_node_info
 
     @property
-    def additional_keys(self) -> List[str]:
+    def additional_keys(self) -> list[str]:
         return list(self.additional_properties.keys())
 
     def __getitem__(self, key: str) -> Any:

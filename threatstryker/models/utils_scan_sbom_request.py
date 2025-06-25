@@ -1,4 +1,5 @@
-from typing import Any, Dict, List, Type, TypeVar, Union
+from collections.abc import Mapping
+from typing import Any, TypeVar, Union
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -11,12 +12,6 @@ T = TypeVar("T", bound="UtilsScanSbomRequest")
 @_attrs_define
 class UtilsScanSbomRequest:
     """
-    Example:
-        {'skip_scan': True, 'kubernetes_cluster_name': 'kubernetes_cluster_name', 'scan_type': 'scan_type',
-            'sbom_file_path': 'sbom_file_path', 'registry_id': 'registry_id', 'mode': 'mode', 'image_name': 'image_name',
-            'node_type': 'node_type', 'container_name': 'container_name', 'sbom': 'sbom', 'scan_id': 'scan_id', 'image_id':
-            'image_id', 'host_name': 'host_name', 'node_id': 'node_id'}
-
     Attributes:
         sbom (str):
         scan_id (str):
@@ -48,9 +43,9 @@ class UtilsScanSbomRequest:
     sbom_file_path: Union[Unset, str] = UNSET
     scan_type: Union[Unset, str] = UNSET
     skip_scan: Union[Unset, bool] = UNSET
-    additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
+    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
-    def to_dict(self) -> Dict[str, Any]:
+    def to_dict(self) -> dict[str, Any]:
         sbom = self.sbom
 
         scan_id = self.scan_id
@@ -79,7 +74,7 @@ class UtilsScanSbomRequest:
 
         skip_scan = self.skip_scan
 
-        field_dict: Dict[str, Any] = {}
+        field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
@@ -115,8 +110,8 @@ class UtilsScanSbomRequest:
         return field_dict
 
     @classmethod
-    def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
-        d = src_dict.copy()
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        d = dict(src_dict)
         sbom = d.pop("sbom")
 
         scan_id = d.pop("scan_id")
@@ -166,7 +161,7 @@ class UtilsScanSbomRequest:
         return utils_scan_sbom_request
 
     @property
-    def additional_keys(self) -> List[str]:
+    def additional_keys(self) -> list[str]:
         return list(self.additional_properties.keys())
 
     def __getitem__(self, key: str) -> Any:

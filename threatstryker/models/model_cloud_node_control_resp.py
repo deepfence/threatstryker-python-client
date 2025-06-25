@@ -1,4 +1,5 @@
-from typing import TYPE_CHECKING, Any, Dict, List, Type, TypeVar, Union, cast
+from collections.abc import Mapping
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -15,24 +16,15 @@ T = TypeVar("T", bound="ModelCloudNodeControlResp")
 @_attrs_define
 class ModelCloudNodeControlResp:
     """
-    Example:
-        {'controls': [{'category_hierarchy': ['category_hierarchy', 'category_hierarchy'], 'control_id': 'control_id',
-            'service': 'service', 'description': 'description', 'compliance_type': 'compliance_type', 'problem_title':
-            'problem_title', 'title': 'title', 'category_hierarchy_short': 'category_hierarchy_short', 'enabled': True,
-            'node_id': 'node_id'}, {'category_hierarchy': ['category_hierarchy', 'category_hierarchy'], 'control_id':
-            'control_id', 'service': 'service', 'description': 'description', 'compliance_type': 'compliance_type',
-            'problem_title': 'problem_title', 'title': 'title', 'category_hierarchy_short': 'category_hierarchy_short',
-            'enabled': True, 'node_id': 'node_id'}]}
-
     Attributes:
-        controls (Union[List['ModelCloudNodeComplianceControl'], None, Unset]):
+        controls (Union[None, Unset, list['ModelCloudNodeComplianceControl']]):
     """
 
-    controls: Union[List["ModelCloudNodeComplianceControl"], None, Unset] = UNSET
-    additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
+    controls: Union[None, Unset, list["ModelCloudNodeComplianceControl"]] = UNSET
+    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
-    def to_dict(self) -> Dict[str, Any]:
-        controls: Union[List[Dict[str, Any]], None, Unset]
+    def to_dict(self) -> dict[str, Any]:
+        controls: Union[None, Unset, list[dict[str, Any]]]
         if isinstance(self.controls, Unset):
             controls = UNSET
         elif isinstance(self.controls, list):
@@ -44,7 +36,7 @@ class ModelCloudNodeControlResp:
         else:
             controls = self.controls
 
-        field_dict: Dict[str, Any] = {}
+        field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
         if controls is not UNSET:
@@ -53,12 +45,12 @@ class ModelCloudNodeControlResp:
         return field_dict
 
     @classmethod
-    def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.model_cloud_node_compliance_control import ModelCloudNodeComplianceControl
 
-        d = src_dict.copy()
+        d = dict(src_dict)
 
-        def _parse_controls(data: object) -> Union[List["ModelCloudNodeComplianceControl"], None, Unset]:
+        def _parse_controls(data: object) -> Union[None, Unset, list["ModelCloudNodeComplianceControl"]]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -76,7 +68,7 @@ class ModelCloudNodeControlResp:
                 return controls_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[List["ModelCloudNodeComplianceControl"], None, Unset], data)
+            return cast(Union[None, Unset, list["ModelCloudNodeComplianceControl"]], data)
 
         controls = _parse_controls(d.pop("controls", UNSET))
 
@@ -88,7 +80,7 @@ class ModelCloudNodeControlResp:
         return model_cloud_node_control_resp
 
     @property
-    def additional_keys(self) -> List[str]:
+    def additional_keys(self) -> list[str]:
         return list(self.additional_properties.keys())
 
     def __getitem__(self, key: str) -> Any:

@@ -1,4 +1,5 @@
-from typing import TYPE_CHECKING, Any, Dict, List, Type, TypeVar, Union, cast
+from collections.abc import Mapping
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -13,23 +14,19 @@ T = TypeVar("T", bound="ControlsAgentControls")
 @_attrs_define
 class ControlsAgentControls:
     """
-    Example:
-        {'beatrate': 0, 'commands': [{'id': 6, 'request_payload': 'request_payload'}, {'id': 6, 'request_payload':
-            'request_payload'}]}
-
     Attributes:
         beatrate (int):
-        commands (Union[List['ControlsAction'], None]):
+        commands (Union[None, list['ControlsAction']]):
     """
 
     beatrate: int
-    commands: Union[List["ControlsAction"], None]
-    additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
+    commands: Union[None, list["ControlsAction"]]
+    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
-    def to_dict(self) -> Dict[str, Any]:
+    def to_dict(self) -> dict[str, Any]:
         beatrate = self.beatrate
 
-        commands: Union[List[Dict[str, Any]], None]
+        commands: Union[None, list[dict[str, Any]]]
         if isinstance(self.commands, list):
             commands = []
             for commands_type_0_item_data in self.commands:
@@ -39,7 +36,7 @@ class ControlsAgentControls:
         else:
             commands = self.commands
 
-        field_dict: Dict[str, Any] = {}
+        field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
@@ -51,13 +48,13 @@ class ControlsAgentControls:
         return field_dict
 
     @classmethod
-    def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.controls_action import ControlsAction
 
-        d = src_dict.copy()
+        d = dict(src_dict)
         beatrate = d.pop("beatrate")
 
-        def _parse_commands(data: object) -> Union[List["ControlsAction"], None]:
+        def _parse_commands(data: object) -> Union[None, list["ControlsAction"]]:
             if data is None:
                 return data
             try:
@@ -73,7 +70,7 @@ class ControlsAgentControls:
                 return commands_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[List["ControlsAction"], None], data)
+            return cast(Union[None, list["ControlsAction"]], data)
 
         commands = _parse_commands(d.pop("commands"))
 
@@ -86,7 +83,7 @@ class ControlsAgentControls:
         return controls_agent_controls
 
     @property
-    def additional_keys(self) -> List[str]:
+    def additional_keys(self) -> list[str]:
         return list(self.additional_properties.keys())
 
     def __getitem__(self, key: str) -> Any:

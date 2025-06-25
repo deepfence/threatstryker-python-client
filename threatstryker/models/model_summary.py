@@ -1,4 +1,5 @@
-from typing import Any, Dict, List, Type, TypeVar, Union
+from collections.abc import Mapping
+from typing import Any, TypeVar, Union
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -11,9 +12,6 @@ T = TypeVar("T", bound="ModelSummary")
 @_attrs_define
 class ModelSummary:
     """
-    Example:
-        {'images': 0, 'repositories': 1, 'scans_total': 2, 'registries': 6, 'scans_complete': 5, 'scans_in_progress': 5}
-
     Attributes:
         images (Union[Unset, int]):
         registries (Union[Unset, int]):
@@ -29,9 +27,9 @@ class ModelSummary:
     scans_complete: Union[Unset, int] = UNSET
     scans_in_progress: Union[Unset, int] = UNSET
     scans_total: Union[Unset, int] = UNSET
-    additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
+    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
-    def to_dict(self) -> Dict[str, Any]:
+    def to_dict(self) -> dict[str, Any]:
         images = self.images
 
         registries = self.registries
@@ -44,7 +42,7 @@ class ModelSummary:
 
         scans_total = self.scans_total
 
-        field_dict: Dict[str, Any] = {}
+        field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
         if images is not UNSET:
@@ -63,8 +61,8 @@ class ModelSummary:
         return field_dict
 
     @classmethod
-    def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
-        d = src_dict.copy()
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        d = dict(src_dict)
         images = d.pop("images", UNSET)
 
         registries = d.pop("registries", UNSET)
@@ -90,7 +88,7 @@ class ModelSummary:
         return model_summary
 
     @property
-    def additional_keys(self) -> List[str]:
+    def additional_keys(self) -> list[str]:
         return list(self.additional_properties.keys())
 
     def __getitem__(self, key: str) -> Any:

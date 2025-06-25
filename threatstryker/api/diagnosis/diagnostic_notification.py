@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Dict, List, Optional, Union, cast
+from typing import Any, Optional, Union, cast
 
 import httpx
 
@@ -11,8 +11,8 @@ from ...models.diagnosis_diagnostic_notification import DiagnosisDiagnosticNotif
 from ...types import Response
 
 
-def _get_kwargs() -> Dict[str, Any]:
-    _kwargs: Dict[str, Any] = {
+def _get_kwargs() -> dict[str, Any]:
+    _kwargs: dict[str, Any] = {
         "method": "get",
         "url": "/deepfence/diagnosis/notification",
     }
@@ -22,8 +22,8 @@ def _get_kwargs() -> Dict[str, Any]:
 
 def _parse_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse, List["DiagnosisDiagnosticNotification"]]]:
-    if response.status_code == HTTPStatus.OK:
+) -> Optional[Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse, list["DiagnosisDiagnosticNotification"]]]:
+    if response.status_code == 200:
         response_200 = []
         _response_200 = response.json()
         for response_200_item_data in _response_200:
@@ -32,21 +32,21 @@ def _parse_response(
             response_200.append(response_200_item)
 
         return response_200
-    if response.status_code == HTTPStatus.BAD_REQUEST:
+    if response.status_code == 400:
         response_400 = ApiDocsBadRequestResponse.from_dict(response.json())
 
         return response_400
-    if response.status_code == HTTPStatus.UNAUTHORIZED:
+    if response.status_code == 401:
         response_401 = cast(Any, None)
         return response_401
-    if response.status_code == HTTPStatus.FORBIDDEN:
+    if response.status_code == 403:
         response_403 = cast(Any, None)
         return response_403
-    if response.status_code == HTTPStatus.NOT_FOUND:
+    if response.status_code == 404:
         response_404 = ApiDocsFailureResponse.from_dict(response.json())
 
         return response_404
-    if response.status_code == HTTPStatus.INTERNAL_SERVER_ERROR:
+    if response.status_code == 500:
         response_500 = ApiDocsFailureResponse.from_dict(response.json())
 
         return response_500
@@ -58,7 +58,7 @@ def _parse_response(
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse, List["DiagnosisDiagnosticNotification"]]]:
+) -> Response[Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse, list["DiagnosisDiagnosticNotification"]]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -70,7 +70,7 @@ def _build_response(
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-) -> Response[Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse, List["DiagnosisDiagnosticNotification"]]]:
+) -> Response[Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse, list["DiagnosisDiagnosticNotification"]]]:
     """Get Diagnostic Notification
 
      Get Diagnostic Notification
@@ -80,7 +80,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse, List['DiagnosisDiagnosticNotification']]]
+        Response[Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse, list['DiagnosisDiagnosticNotification']]]
     """
 
     kwargs = _get_kwargs()
@@ -95,7 +95,7 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-) -> Optional[Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse, List["DiagnosisDiagnosticNotification"]]]:
+) -> Optional[Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse, list["DiagnosisDiagnosticNotification"]]]:
     """Get Diagnostic Notification
 
      Get Diagnostic Notification
@@ -105,7 +105,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse, List['DiagnosisDiagnosticNotification']]
+        Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse, list['DiagnosisDiagnosticNotification']]
     """
 
     return sync_detailed(
@@ -116,7 +116,7 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-) -> Response[Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse, List["DiagnosisDiagnosticNotification"]]]:
+) -> Response[Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse, list["DiagnosisDiagnosticNotification"]]]:
     """Get Diagnostic Notification
 
      Get Diagnostic Notification
@@ -126,7 +126,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse, List['DiagnosisDiagnosticNotification']]]
+        Response[Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse, list['DiagnosisDiagnosticNotification']]]
     """
 
     kwargs = _get_kwargs()
@@ -139,7 +139,7 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-) -> Optional[Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse, List["DiagnosisDiagnosticNotification"]]]:
+) -> Optional[Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse, list["DiagnosisDiagnosticNotification"]]]:
     """Get Diagnostic Notification
 
      Get Diagnostic Notification
@@ -149,7 +149,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse, List['DiagnosisDiagnosticNotification']]
+        Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse, list['DiagnosisDiagnosticNotification']]
     """
 
     return (

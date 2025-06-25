@@ -1,4 +1,5 @@
-from typing import Any, Dict, List, Type, TypeVar, Union
+from collections.abc import Mapping
+from typing import Any, TypeVar, Union
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -11,13 +12,6 @@ T = TypeVar("T", bound="IngestersCompliance")
 @_attrs_define
 class IngestersCompliance:
     """
-    Example:
-        {'resource': 'resource', 'description': 'description', 'test_category': 'test_category', 'type': 'type',
-            'remediation_ansible': 'remediation_ansible', 'compliance_check_type': 'compliance_check_type',
-            'test_rationale': 'test_rationale', 'test_severity': 'test_severity', 'node_type': 'node_type',
-            'remediation_puppet': 'remediation_puppet', 'scan_id': 'scan_id', 'remediation_script': 'remediation_script',
-            'node_id': 'node_id', 'status': 'status', 'test_desc': 'test_desc', 'test_number': 'test_number'}
-
     Attributes:
         compliance_check_type (Union[Unset, str]):
         description (Union[Unset, str]):
@@ -34,7 +28,7 @@ class IngestersCompliance:
         test_number (Union[Unset, str]):
         test_rationale (Union[Unset, str]):
         test_severity (Union[Unset, str]):
-        type (Union[Unset, str]):
+        type_ (Union[Unset, str]):
     """
 
     compliance_check_type: Union[Unset, str] = UNSET
@@ -52,10 +46,10 @@ class IngestersCompliance:
     test_number: Union[Unset, str] = UNSET
     test_rationale: Union[Unset, str] = UNSET
     test_severity: Union[Unset, str] = UNSET
-    type: Union[Unset, str] = UNSET
-    additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
+    type_: Union[Unset, str] = UNSET
+    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
-    def to_dict(self) -> Dict[str, Any]:
+    def to_dict(self) -> dict[str, Any]:
         compliance_check_type = self.compliance_check_type
 
         description = self.description
@@ -86,9 +80,9 @@ class IngestersCompliance:
 
         test_severity = self.test_severity
 
-        type = self.type
+        type_ = self.type_
 
-        field_dict: Dict[str, Any] = {}
+        field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
         if compliance_check_type is not UNSET:
@@ -121,14 +115,14 @@ class IngestersCompliance:
             field_dict["test_rationale"] = test_rationale
         if test_severity is not UNSET:
             field_dict["test_severity"] = test_severity
-        if type is not UNSET:
-            field_dict["type"] = type
+        if type_ is not UNSET:
+            field_dict["type"] = type_
 
         return field_dict
 
     @classmethod
-    def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
-        d = src_dict.copy()
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        d = dict(src_dict)
         compliance_check_type = d.pop("compliance_check_type", UNSET)
 
         description = d.pop("description", UNSET)
@@ -159,7 +153,7 @@ class IngestersCompliance:
 
         test_severity = d.pop("test_severity", UNSET)
 
-        type = d.pop("type", UNSET)
+        type_ = d.pop("type", UNSET)
 
         ingesters_compliance = cls(
             compliance_check_type=compliance_check_type,
@@ -177,14 +171,14 @@ class IngestersCompliance:
             test_number=test_number,
             test_rationale=test_rationale,
             test_severity=test_severity,
-            type=type,
+            type_=type_,
         )
 
         ingesters_compliance.additional_properties = d
         return ingesters_compliance
 
     @property
-    def additional_keys(self) -> List[str]:
+    def additional_keys(self) -> list[str]:
         return list(self.additional_properties.keys())
 
     def __getitem__(self, key: str) -> Any:

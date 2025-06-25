@@ -1,4 +1,5 @@
-from typing import TYPE_CHECKING, Any, Dict, List, Type, TypeVar, Union, cast
+from collections.abc import Mapping
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -16,11 +17,6 @@ T = TypeVar("T", bound="ModelUser")
 @_attrs_define
 class ModelUser:
     """
-    Example:
-        {'is_active': True, 'role': 'admin', 'company_id': 0, 'role_id': 1, 'groups': {'key': 'groups'}, 'last_name':
-            'last_name', 'company': 'company', 'id': 6, 'password_invalidated': True, 'first_name': 'first_name', 'email':
-            'email', 'current_user': True}
-
     Attributes:
         company (str):
         email (str):
@@ -48,9 +44,9 @@ class ModelUser:
     password_invalidated: Union[Unset, bool] = UNSET
     role: Union[Unset, ModelUserRole] = UNSET
     role_id: Union[Unset, int] = UNSET
-    additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
+    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
-    def to_dict(self) -> Dict[str, Any]:
+    def to_dict(self) -> dict[str, Any]:
         from ..models.model_user_groups_type_0 import ModelUserGroupsType0
 
         company = self.company
@@ -69,7 +65,7 @@ class ModelUser:
         else:
             current_user = self.current_user
 
-        groups: Union[Dict[str, Any], None, Unset]
+        groups: Union[None, Unset, dict[str, Any]]
         if isinstance(self.groups, Unset):
             groups = UNSET
         elif isinstance(self.groups, ModelUserGroupsType0):
@@ -89,7 +85,7 @@ class ModelUser:
 
         role_id = self.role_id
 
-        field_dict: Dict[str, Any] = {}
+        field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
@@ -119,10 +115,10 @@ class ModelUser:
         return field_dict
 
     @classmethod
-    def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.model_user_groups_type_0 import ModelUserGroupsType0
 
-        d = src_dict.copy()
+        d = dict(src_dict)
         company = d.pop("company")
 
         email = d.pop("email")
@@ -193,7 +189,7 @@ class ModelUser:
         return model_user
 
     @property
-    def additional_keys(self) -> List[str]:
+    def additional_keys(self) -> list[str]:
         return list(self.additional_properties.keys())
 
     def __getitem__(self, key: str) -> Any:

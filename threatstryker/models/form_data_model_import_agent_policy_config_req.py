@@ -1,9 +1,11 @@
+from collections.abc import Mapping
 from io import BytesIO
-from typing import Any, Dict, List, Type, TypeVar
+from typing import Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
+from .. import types
 from ..types import File
 
 T = TypeVar("T", bound="FormDataModelImportAgentPolicyConfigReq")
@@ -19,14 +21,14 @@ class FormDataModelImportAgentPolicyConfigReq:
 
     config_id: str
     network_policy_json: File
-    additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
+    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
-    def to_dict(self) -> Dict[str, Any]:
+    def to_dict(self) -> dict[str, Any]:
         config_id = self.config_id
 
         network_policy_json = self.network_policy_json.to_tuple()
 
-        field_dict: Dict[str, Any] = {}
+        field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
@@ -37,27 +39,21 @@ class FormDataModelImportAgentPolicyConfigReq:
 
         return field_dict
 
-    def to_multipart(self) -> Dict[str, Any]:
-        config_id = (None, str(self.config_id).encode(), "text/plain")
+    def to_multipart(self) -> types.RequestFiles:
+        files: types.RequestFiles = []
 
-        network_policy_json = self.network_policy_json.to_tuple()
+        files.append(("config_id", (None, str(self.config_id).encode(), "text/plain")))
 
-        field_dict: Dict[str, Any] = {}
+        files.append(("network_policy_json", self.network_policy_json.to_tuple()))
+
         for prop_name, prop in self.additional_properties.items():
-            field_dict[prop_name] = (None, str(prop).encode(), "text/plain")
+            files.append((prop_name, (None, str(prop).encode(), "text/plain")))
 
-        field_dict.update(
-            {
-                "config_id": config_id,
-                "network_policy_json": network_policy_json,
-            }
-        )
-
-        return field_dict
+        return files
 
     @classmethod
-    def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
-        d = src_dict.copy()
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        d = dict(src_dict)
         config_id = d.pop("config_id")
 
         network_policy_json = File(payload=BytesIO(d.pop("network_policy_json")))
@@ -71,7 +67,7 @@ class FormDataModelImportAgentPolicyConfigReq:
         return form_data_model_import_agent_policy_config_req
 
     @property
-    def additional_keys(self) -> List[str]:
+    def additional_keys(self) -> list[str]:
         return list(self.additional_properties.keys())
 
     def __getitem__(self, key: str) -> Any:

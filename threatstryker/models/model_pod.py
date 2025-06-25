@@ -1,4 +1,5 @@
-from typing import TYPE_CHECKING, Any, Dict, List, Type, TypeVar, Union, cast
+from collections.abc import Mapping
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -15,66 +16,8 @@ T = TypeVar("T", bound="ModelPod")
 @_attrs_define
 class ModelPod:
     """
-    Example:
-        {'is_deepfence_system': True, 'kubernetes_ip': 'kubernetes_ip', 'processes': [{'cpu_max': 2.3021358869347655,
-            'node_name': 'node_name', 'memory_usage': 3, 'open_files_count': 2, 'threads': 1, 'pid': 4, 'ppid': 7,
-            'memory_max': 9, 'active_secrets': ['active_secrets', 'active_secrets'], 'cmdline': 'cmdline', 'active_cves':
-            ['active_cves', 'active_cves'], 'active_malwares': ['active_malwares', 'active_malwares'], 'short_name':
-            'short_name', 'cpu_usage': 7.061401241503109, 'node_id': 'node_id'}, {'cpu_max': 2.3021358869347655,
-            'node_name': 'node_name', 'memory_usage': 3, 'open_files_count': 2, 'threads': 1, 'pid': 4, 'ppid': 7,
-            'memory_max': 9, 'active_secrets': ['active_secrets', 'active_secrets'], 'cmdline': 'cmdline', 'active_cves':
-            ['active_cves', 'active_cves'], 'active_malwares': ['active_malwares', 'active_malwares'], 'short_name':
-            'short_name', 'cpu_usage': 7.061401241503109, 'node_id': 'node_id'}], 'secret_scan_status':
-            'secret_scan_status', 'kubernetes_cluster_id': 'kubernetes_cluster_id', 'kubernetes_cluster_name':
-            'kubernetes_cluster_name', 'kubernetes_state': 'kubernetes_state', 'node_name': 'node_name',
-            'kubernetes_created': 'kubernetes_created', 'pod_name': 'pod_name', 'kubernetes_namespace':
-            'kubernetes_namespace', 'kubernetes_is_in_host_network': True, 'malware_scan_status': 'malware_scan_status',
-            'kubernetes_labels': {'key': ''}, 'containers': [{'vulnerabilities_count': 6, 'secrets_count': 1,
-            'kubernetes_cluster_name': 'kubernetes_cluster_name', 'docker_container_state': 'docker_container_state',
-            'cpu_max': 0.8008281904610115, 'memory_usage': 5, 'secret_latest_scan_id': 'secret_latest_scan_id',
-            'docker_container_network_mode': 'docker_container_network_mode', 'vulnerability_latest_scan_id':
-            'vulnerability_latest_scan_id', 'kubernetes_namespace': 'kubernetes_namespace', 'malware_scan_status':
-            'malware_scan_status', 'docker_container_ips': ['', ''], 'docker_labels': {'key': ''}, 'is_deepfence_system':
-            True, 'image': None, 'processes': [{'cpu_max': 2.3021358869347655, 'node_name': 'node_name', 'memory_usage': 3,
-            'open_files_count': 2, 'threads': 1, 'pid': 4, 'ppid': 7, 'memory_max': 9, 'active_secrets': ['active_secrets',
-            'active_secrets'], 'cmdline': 'cmdline', 'active_cves': ['active_cves', 'active_cves'], 'active_malwares':
-            ['active_malwares', 'active_malwares'], 'short_name': 'short_name', 'cpu_usage': 7.061401241503109, 'node_id':
-            'node_id'}, {'cpu_max': 2.3021358869347655, 'node_name': 'node_name', 'memory_usage': 3, 'open_files_count': 2,
-            'threads': 1, 'pid': 4, 'ppid': 7, 'memory_max': 9, 'active_secrets': ['active_secrets', 'active_secrets'],
-            'cmdline': 'cmdline', 'active_cves': ['active_cves', 'active_cves'], 'active_malwares': ['active_malwares',
-            'active_malwares'], 'short_name': 'short_name', 'cpu_usage': 7.061401241503109, 'node_id': 'node_id'}],
-            'secret_scan_status': 'secret_scan_status', 'docker_container_name': 'docker_container_name',
-            'docker_container_created': 'docker_container_created', 'malware_latest_scan_id': 'malware_latest_scan_id',
-            'kubernetes_cluster_id': 'kubernetes_cluster_id', 'malwares_count': 1, 'node_name': 'node_name',
-            'docker_container_networks': 'docker_container_networks', 'docker_container_command':
-            'docker_container_command', 'uptime': 1, 'memory_max': 5, 'docker_container_ports': 'docker_container_ports',
-            'docker_container_state_human': 'docker_container_state_human', 'cpu_usage': 6.027456183070403,
-            'vulnerability_scan_status': 'vulnerability_scan_status', 'host_name': 'host_name', 'node_id': 'node_id'},
-            {'vulnerabilities_count': 6, 'secrets_count': 1, 'kubernetes_cluster_name': 'kubernetes_cluster_name',
-            'docker_container_state': 'docker_container_state', 'cpu_max': 0.8008281904610115, 'memory_usage': 5,
-            'secret_latest_scan_id': 'secret_latest_scan_id', 'docker_container_network_mode':
-            'docker_container_network_mode', 'vulnerability_latest_scan_id': 'vulnerability_latest_scan_id',
-            'kubernetes_namespace': 'kubernetes_namespace', 'malware_scan_status': 'malware_scan_status',
-            'docker_container_ips': ['', ''], 'docker_labels': {'key': ''}, 'is_deepfence_system': True, 'image': None,
-            'processes': [{'cpu_max': 2.3021358869347655, 'node_name': 'node_name', 'memory_usage': 3, 'open_files_count':
-            2, 'threads': 1, 'pid': 4, 'ppid': 7, 'memory_max': 9, 'active_secrets': ['active_secrets', 'active_secrets'],
-            'cmdline': 'cmdline', 'active_cves': ['active_cves', 'active_cves'], 'active_malwares': ['active_malwares',
-            'active_malwares'], 'short_name': 'short_name', 'cpu_usage': 7.061401241503109, 'node_id': 'node_id'},
-            {'cpu_max': 2.3021358869347655, 'node_name': 'node_name', 'memory_usage': 3, 'open_files_count': 2, 'threads':
-            1, 'pid': 4, 'ppid': 7, 'memory_max': 9, 'active_secrets': ['active_secrets', 'active_secrets'], 'cmdline':
-            'cmdline', 'active_cves': ['active_cves', 'active_cves'], 'active_malwares': ['active_malwares',
-            'active_malwares'], 'short_name': 'short_name', 'cpu_usage': 7.061401241503109, 'node_id': 'node_id'}],
-            'secret_scan_status': 'secret_scan_status', 'docker_container_name': 'docker_container_name',
-            'docker_container_created': 'docker_container_created', 'malware_latest_scan_id': 'malware_latest_scan_id',
-            'kubernetes_cluster_id': 'kubernetes_cluster_id', 'malwares_count': 1, 'node_name': 'node_name',
-            'docker_container_networks': 'docker_container_networks', 'docker_container_command':
-            'docker_container_command', 'uptime': 1, 'memory_max': 5, 'docker_container_ports': 'docker_container_ports',
-            'docker_container_state_human': 'docker_container_state_human', 'cpu_usage': 6.027456183070403,
-            'vulnerability_scan_status': 'vulnerability_scan_status', 'host_name': 'host_name', 'node_id': 'node_id'}],
-            'vulnerability_scan_status': 'vulnerability_scan_status', 'host_name': 'host_name', 'node_id': 'node_id'}
-
     Attributes:
-        containers (Union[List['ModelContainer'], None]):
+        containers (Union[None, list['ModelContainer']]):
         host_name (str):
         is_deepfence_system (bool):
         kubernetes_cluster_id (str):
@@ -89,12 +32,13 @@ class ModelPod:
         node_id (str):
         node_name (str):
         pod_name (str):
-        processes (Union[List['ModelProcess'], None]):
+        processes (Union[None, list['ModelProcess']]):
         secret_scan_status (str):
+        tags (Union[None, list[str]]):
         vulnerability_scan_status (str):
     """
 
-    containers: Union[List["ModelContainer"], None]
+    containers: Union[None, list["ModelContainer"]]
     host_name: str
     is_deepfence_system: bool
     kubernetes_cluster_id: str
@@ -109,15 +53,16 @@ class ModelPod:
     node_id: str
     node_name: str
     pod_name: str
-    processes: Union[List["ModelProcess"], None]
+    processes: Union[None, list["ModelProcess"]]
     secret_scan_status: str
+    tags: Union[None, list[str]]
     vulnerability_scan_status: str
-    additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
+    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
-    def to_dict(self) -> Dict[str, Any]:
+    def to_dict(self) -> dict[str, Any]:
         from ..models.model_pod_kubernetes_labels_type_0 import ModelPodKubernetesLabelsType0
 
-        containers: Union[List[Dict[str, Any]], None]
+        containers: Union[None, list[dict[str, Any]]]
         if isinstance(self.containers, list):
             containers = []
             for containers_type_0_item_data in self.containers:
@@ -141,7 +86,7 @@ class ModelPod:
 
         kubernetes_is_in_host_network = self.kubernetes_is_in_host_network
 
-        kubernetes_labels: Union[Dict[str, Any], None]
+        kubernetes_labels: Union[None, dict[str, Any]]
         if isinstance(self.kubernetes_labels, ModelPodKubernetesLabelsType0):
             kubernetes_labels = self.kubernetes_labels.to_dict()
         else:
@@ -159,7 +104,7 @@ class ModelPod:
 
         pod_name = self.pod_name
 
-        processes: Union[List[Dict[str, Any]], None]
+        processes: Union[None, list[dict[str, Any]]]
         if isinstance(self.processes, list):
             processes = []
             for processes_type_0_item_data in self.processes:
@@ -171,9 +116,16 @@ class ModelPod:
 
         secret_scan_status = self.secret_scan_status
 
+        tags: Union[None, list[str]]
+        if isinstance(self.tags, list):
+            tags = self.tags
+
+        else:
+            tags = self.tags
+
         vulnerability_scan_status = self.vulnerability_scan_status
 
-        field_dict: Dict[str, Any] = {}
+        field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
@@ -194,6 +146,7 @@ class ModelPod:
                 "pod_name": pod_name,
                 "processes": processes,
                 "secret_scan_status": secret_scan_status,
+                "tags": tags,
                 "vulnerability_scan_status": vulnerability_scan_status,
             }
         )
@@ -201,14 +154,14 @@ class ModelPod:
         return field_dict
 
     @classmethod
-    def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.model_container import ModelContainer
         from ..models.model_pod_kubernetes_labels_type_0 import ModelPodKubernetesLabelsType0
         from ..models.model_process import ModelProcess
 
-        d = src_dict.copy()
+        d = dict(src_dict)
 
-        def _parse_containers(data: object) -> Union[List["ModelContainer"], None]:
+        def _parse_containers(data: object) -> Union[None, list["ModelContainer"]]:
             if data is None:
                 return data
             try:
@@ -224,7 +177,7 @@ class ModelPod:
                 return containers_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[List["ModelContainer"], None], data)
+            return cast(Union[None, list["ModelContainer"]], data)
 
         containers = _parse_containers(d.pop("containers"))
 
@@ -269,7 +222,7 @@ class ModelPod:
 
         pod_name = d.pop("pod_name")
 
-        def _parse_processes(data: object) -> Union[List["ModelProcess"], None]:
+        def _parse_processes(data: object) -> Union[None, list["ModelProcess"]]:
             if data is None:
                 return data
             try:
@@ -285,11 +238,26 @@ class ModelPod:
                 return processes_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[List["ModelProcess"], None], data)
+            return cast(Union[None, list["ModelProcess"]], data)
 
         processes = _parse_processes(d.pop("processes"))
 
         secret_scan_status = d.pop("secret_scan_status")
+
+        def _parse_tags(data: object) -> Union[None, list[str]]:
+            if data is None:
+                return data
+            try:
+                if not isinstance(data, list):
+                    raise TypeError()
+                tags_type_0 = cast(list[str], data)
+
+                return tags_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[None, list[str]], data)
+
+        tags = _parse_tags(d.pop("tags"))
 
         vulnerability_scan_status = d.pop("vulnerability_scan_status")
 
@@ -311,6 +279,7 @@ class ModelPod:
             pod_name=pod_name,
             processes=processes,
             secret_scan_status=secret_scan_status,
+            tags=tags,
             vulnerability_scan_status=vulnerability_scan_status,
         )
 
@@ -318,7 +287,7 @@ class ModelPod:
         return model_pod
 
     @property
-    def additional_keys(self) -> List[str]:
+    def additional_keys(self) -> list[str]:
         return list(self.additional_properties.keys())
 
     def __getitem__(self, key: str) -> Any:

@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Dict, Optional, Union, cast
+from typing import Any, Optional, Union, cast
 
 import httpx
 
@@ -11,8 +11,8 @@ from ...models.model_registry_summary_all_resp_type_0 import ModelRegistrySummar
 from ...types import Response
 
 
-def _get_kwargs() -> Dict[str, Any]:
-    _kwargs: Dict[str, Any] = {
+def _get_kwargs() -> dict[str, Any]:
+    _kwargs: dict[str, Any] = {
         "method": "get",
         "url": "/deepfence/registryaccount/summary",
     }
@@ -25,7 +25,7 @@ def _parse_response(
 ) -> Optional[
     Union[Any, ApiDocsBadRequestResponse, ApiDocsFailureResponse, Union["ModelRegistrySummaryAllRespType0", None]]
 ]:
-    if response.status_code == HTTPStatus.OK:
+    if response.status_code == 200:
 
         def _parse_response_200(data: object) -> Union["ModelRegistrySummaryAllRespType0", None]:
             if data is None:
@@ -45,21 +45,21 @@ def _parse_response(
         response_200 = _parse_response_200(response.json())
 
         return response_200
-    if response.status_code == HTTPStatus.BAD_REQUEST:
+    if response.status_code == 400:
         response_400 = ApiDocsBadRequestResponse.from_dict(response.json())
 
         return response_400
-    if response.status_code == HTTPStatus.UNAUTHORIZED:
+    if response.status_code == 401:
         response_401 = cast(Any, None)
         return response_401
-    if response.status_code == HTTPStatus.FORBIDDEN:
+    if response.status_code == 403:
         response_403 = cast(Any, None)
         return response_403
-    if response.status_code == HTTPStatus.NOT_FOUND:
+    if response.status_code == 404:
         response_404 = ApiDocsFailureResponse.from_dict(response.json())
 
         return response_404
-    if response.status_code == HTTPStatus.INTERNAL_SERVER_ERROR:
+    if response.status_code == 500:
         response_500 = ApiDocsFailureResponse.from_dict(response.json())
 
         return response_500

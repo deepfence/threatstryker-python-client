@@ -1,4 +1,5 @@
-from typing import TYPE_CHECKING, Any, Dict, List, Type, TypeVar, Union, cast
+from collections.abc import Mapping
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -13,28 +14,21 @@ T = TypeVar("T", bound="ControlsQuarantineConfig")
 @_attrs_define
 class ControlsQuarantineConfig:
     """
-    Example:
-        {'updated_at': 5, 'policies': [{'node_type': 'container', 'policy_id': 'policy_id', 'updated_at': 1,
-            'count_limit': 0, 'action': 'restart', 'duration_count_limit_sec': 6, 'matcher': {'fields_matcher': {'key':
-            ['fields_matcher', 'fields_matcher']}}}, {'node_type': 'container', 'policy_id': 'policy_id', 'updated_at': 1,
-            'count_limit': 0, 'action': 'restart', 'duration_count_limit_sec': 6, 'matcher': {'fields_matcher': {'key':
-            ['fields_matcher', 'fields_matcher']}}}], 'node_id': 'node_id'}
-
     Attributes:
         node_id (str):
-        policies (Union[List['ControlsRuncPolicy'], None]):
+        policies (Union[None, list['ControlsRuncPolicy']]):
         updated_at (int):
     """
 
     node_id: str
-    policies: Union[List["ControlsRuncPolicy"], None]
+    policies: Union[None, list["ControlsRuncPolicy"]]
     updated_at: int
-    additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
+    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
-    def to_dict(self) -> Dict[str, Any]:
+    def to_dict(self) -> dict[str, Any]:
         node_id = self.node_id
 
-        policies: Union[List[Dict[str, Any]], None]
+        policies: Union[None, list[dict[str, Any]]]
         if isinstance(self.policies, list):
             policies = []
             for policies_type_0_item_data in self.policies:
@@ -46,7 +40,7 @@ class ControlsQuarantineConfig:
 
         updated_at = self.updated_at
 
-        field_dict: Dict[str, Any] = {}
+        field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
@@ -59,13 +53,13 @@ class ControlsQuarantineConfig:
         return field_dict
 
     @classmethod
-    def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.controls_runc_policy import ControlsRuncPolicy
 
-        d = src_dict.copy()
+        d = dict(src_dict)
         node_id = d.pop("node_id")
 
-        def _parse_policies(data: object) -> Union[List["ControlsRuncPolicy"], None]:
+        def _parse_policies(data: object) -> Union[None, list["ControlsRuncPolicy"]]:
             if data is None:
                 return data
             try:
@@ -81,7 +75,7 @@ class ControlsQuarantineConfig:
                 return policies_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[List["ControlsRuncPolicy"], None], data)
+            return cast(Union[None, list["ControlsRuncPolicy"]], data)
 
         policies = _parse_policies(d.pop("policies"))
 
@@ -97,7 +91,7 @@ class ControlsQuarantineConfig:
         return controls_quarantine_config
 
     @property
-    def additional_keys(self) -> List[str]:
+    def additional_keys(self) -> list[str]:
         return list(self.additional_properties.keys())
 
     def __getitem__(self, key: str) -> Any:

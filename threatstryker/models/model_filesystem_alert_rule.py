@@ -1,4 +1,5 @@
-from typing import Any, Dict, List, Type, TypeVar, Union, cast
+from collections.abc import Mapping
+from typing import Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -11,18 +12,14 @@ T = TypeVar("T", bound="ModelFilesystemAlertRule")
 @_attrs_define
 class ModelFilesystemAlertRule:
     """
-    Example:
-        {'rule_id': 'rule_id', 'severity': 'severity', 'summary': 'summary', 'anomaly': 'anomaly', 'techniques':
-            ['techniques', 'techniques'], 'tactics': ['tactics', 'tactics'], 'category': 'category'}
-
     Attributes:
         anomaly (Union[Unset, str]):
         category (Union[Unset, str]):
         rule_id (Union[Unset, str]):
         severity (Union[Unset, str]):
         summary (Union[Unset, str]):
-        tactics (Union[List[str], None, Unset]):
-        techniques (Union[List[str], None, Unset]):
+        tactics (Union[None, Unset, list[str]]):
+        techniques (Union[None, Unset, list[str]]):
     """
 
     anomaly: Union[Unset, str] = UNSET
@@ -30,11 +27,11 @@ class ModelFilesystemAlertRule:
     rule_id: Union[Unset, str] = UNSET
     severity: Union[Unset, str] = UNSET
     summary: Union[Unset, str] = UNSET
-    tactics: Union[List[str], None, Unset] = UNSET
-    techniques: Union[List[str], None, Unset] = UNSET
-    additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
+    tactics: Union[None, Unset, list[str]] = UNSET
+    techniques: Union[None, Unset, list[str]] = UNSET
+    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
-    def to_dict(self) -> Dict[str, Any]:
+    def to_dict(self) -> dict[str, Any]:
         anomaly = self.anomaly
 
         category = self.category
@@ -45,7 +42,7 @@ class ModelFilesystemAlertRule:
 
         summary = self.summary
 
-        tactics: Union[List[str], None, Unset]
+        tactics: Union[None, Unset, list[str]]
         if isinstance(self.tactics, Unset):
             tactics = UNSET
         elif isinstance(self.tactics, list):
@@ -54,7 +51,7 @@ class ModelFilesystemAlertRule:
         else:
             tactics = self.tactics
 
-        techniques: Union[List[str], None, Unset]
+        techniques: Union[None, Unset, list[str]]
         if isinstance(self.techniques, Unset):
             techniques = UNSET
         elif isinstance(self.techniques, list):
@@ -63,7 +60,7 @@ class ModelFilesystemAlertRule:
         else:
             techniques = self.techniques
 
-        field_dict: Dict[str, Any] = {}
+        field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
         if anomaly is not UNSET:
@@ -84,8 +81,8 @@ class ModelFilesystemAlertRule:
         return field_dict
 
     @classmethod
-    def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
-        d = src_dict.copy()
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        d = dict(src_dict)
         anomaly = d.pop("anomaly", UNSET)
 
         category = d.pop("category", UNSET)
@@ -96,7 +93,7 @@ class ModelFilesystemAlertRule:
 
         summary = d.pop("summary", UNSET)
 
-        def _parse_tactics(data: object) -> Union[List[str], None, Unset]:
+        def _parse_tactics(data: object) -> Union[None, Unset, list[str]]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -104,16 +101,16 @@ class ModelFilesystemAlertRule:
             try:
                 if not isinstance(data, list):
                     raise TypeError()
-                tactics_type_0 = cast(List[str], data)
+                tactics_type_0 = cast(list[str], data)
 
                 return tactics_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[List[str], None, Unset], data)
+            return cast(Union[None, Unset, list[str]], data)
 
         tactics = _parse_tactics(d.pop("tactics", UNSET))
 
-        def _parse_techniques(data: object) -> Union[List[str], None, Unset]:
+        def _parse_techniques(data: object) -> Union[None, Unset, list[str]]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -121,12 +118,12 @@ class ModelFilesystemAlertRule:
             try:
                 if not isinstance(data, list):
                     raise TypeError()
-                techniques_type_0 = cast(List[str], data)
+                techniques_type_0 = cast(list[str], data)
 
                 return techniques_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[List[str], None, Unset], data)
+            return cast(Union[None, Unset, list[str]], data)
 
         techniques = _parse_techniques(d.pop("techniques", UNSET))
 
@@ -144,7 +141,7 @@ class ModelFilesystemAlertRule:
         return model_filesystem_alert_rule
 
     @property
-    def additional_keys(self) -> List[str]:
+    def additional_keys(self) -> list[str]:
         return list(self.additional_properties.keys())
 
     def __getitem__(self, key: str) -> Any:

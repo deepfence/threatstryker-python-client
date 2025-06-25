@@ -1,4 +1,5 @@
-from typing import Any, Dict, List, Type, TypeVar, Union, cast
+from collections.abc import Mapping
+from typing import Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -9,17 +10,6 @@ T = TypeVar("T", bound="ModelProcessAlert")
 @_attrs_define
 class ModelProcessAlert:
     """
-    Example:
-        {'container_ip': 'container_ip', 'vsize': 0, 'kubernetes_cluster_name': 'kubernetes_cluster_name', 'masked':
-            True, 'session': 3, 'user_name': 'user_name', 'created_at': 1, 'pid': 5, 'exec_path': 'exec_path', 'event_type':
-            'event_type', 'node_type': 'node_type', 'rss': 9, 'top': 'top', 'updated_at': 2, 'state': 'state', 'group':
-            'group', 'severity': 'severity', 'summary': 'summary', 'cpu_time': 6.027456183070403, 'kubernetes_cluster_id':
-            'kubernetes_cluster_id', 'count': 0, 'priority': 2, 'command': 'command', 'container_image': 'container_image',
-            'netstat': 'netstat', 'users': 'users', 'pod_name': 'pod_name', 'rule_id': 'rule_id', 'container_name':
-            'container_name', 'techniques': ['techniques', 'techniques'], 'num_threads': 5, 'tactics': ['tactics',
-            'tactics'], 'proc_status': 'proc_status', 'category': 'category', 'user': 'user', 'container_id':
-            'container_id', 'return': 7, 'node_id': 'node_id'}
-
     Attributes:
         category (str):
         command (str):
@@ -51,8 +41,8 @@ class ModelProcessAlert:
         severity (str):
         state (str):
         summary (str):
-        tactics (Union[List[str], None]):
-        techniques (Union[List[str], None]):
+        tactics (Union[None, list[str]]):
+        techniques (Union[None, list[str]]):
         top (str):
         updated_at (int):
         user (str):
@@ -91,17 +81,17 @@ class ModelProcessAlert:
     severity: str
     state: str
     summary: str
-    tactics: Union[List[str], None]
-    techniques: Union[List[str], None]
+    tactics: Union[None, list[str]]
+    techniques: Union[None, list[str]]
     top: str
     updated_at: int
     user: str
     user_name: str
     users: str
     vsize: int
-    additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
+    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
-    def to_dict(self) -> Dict[str, Any]:
+    def to_dict(self) -> dict[str, Any]:
         category = self.category
 
         command = self.command
@@ -162,14 +152,14 @@ class ModelProcessAlert:
 
         summary = self.summary
 
-        tactics: Union[List[str], None]
+        tactics: Union[None, list[str]]
         if isinstance(self.tactics, list):
             tactics = self.tactics
 
         else:
             tactics = self.tactics
 
-        techniques: Union[List[str], None]
+        techniques: Union[None, list[str]]
         if isinstance(self.techniques, list):
             techniques = self.techniques
 
@@ -188,7 +178,7 @@ class ModelProcessAlert:
 
         vsize = self.vsize
 
-        field_dict: Dict[str, Any] = {}
+        field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
@@ -236,8 +226,8 @@ class ModelProcessAlert:
         return field_dict
 
     @classmethod
-    def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
-        d = src_dict.copy()
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        d = dict(src_dict)
         category = d.pop("category")
 
         command = d.pop("command")
@@ -298,33 +288,33 @@ class ModelProcessAlert:
 
         summary = d.pop("summary")
 
-        def _parse_tactics(data: object) -> Union[List[str], None]:
+        def _parse_tactics(data: object) -> Union[None, list[str]]:
             if data is None:
                 return data
             try:
                 if not isinstance(data, list):
                     raise TypeError()
-                tactics_type_0 = cast(List[str], data)
+                tactics_type_0 = cast(list[str], data)
 
                 return tactics_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[List[str], None], data)
+            return cast(Union[None, list[str]], data)
 
         tactics = _parse_tactics(d.pop("tactics"))
 
-        def _parse_techniques(data: object) -> Union[List[str], None]:
+        def _parse_techniques(data: object) -> Union[None, list[str]]:
             if data is None:
                 return data
             try:
                 if not isinstance(data, list):
                     raise TypeError()
-                techniques_type_0 = cast(List[str], data)
+                techniques_type_0 = cast(list[str], data)
 
                 return techniques_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[List[str], None], data)
+            return cast(Union[None, list[str]], data)
 
         techniques = _parse_techniques(d.pop("techniques"))
 
@@ -385,7 +375,7 @@ class ModelProcessAlert:
         return model_process_alert
 
     @property
-    def additional_keys(self) -> List[str]:
+    def additional_keys(self) -> list[str]:
         return list(self.additional_properties.keys())
 
     def __getitem__(self, key: str) -> Any:

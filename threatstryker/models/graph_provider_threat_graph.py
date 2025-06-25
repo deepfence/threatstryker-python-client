@@ -1,4 +1,5 @@
-from typing import TYPE_CHECKING, Any, Dict, List, Type, TypeVar, Union, cast
+from collections.abc import Mapping
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -20,7 +21,7 @@ class GraphProviderThreatGraph:
         compliance_count (int):
         exploitable_secrets_count (int):
         exploitable_vulnerabilities_count (int):
-        resources (Union[List['GraphThreatNodeInfo'], None]):
+        resources (Union[None, list['GraphThreatNodeInfo']]):
         secrets_count (int):
         vulnerability_count (int):
         warn_alarm_count (int):
@@ -32,13 +33,13 @@ class GraphProviderThreatGraph:
     compliance_count: int
     exploitable_secrets_count: int
     exploitable_vulnerabilities_count: int
-    resources: Union[List["GraphThreatNodeInfo"], None]
+    resources: Union[None, list["GraphThreatNodeInfo"]]
     secrets_count: int
     vulnerability_count: int
     warn_alarm_count: int
-    additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
+    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
-    def to_dict(self) -> Dict[str, Any]:
+    def to_dict(self) -> dict[str, Any]:
         alerts_count = self.alerts_count
 
         cloud_compliance_count = self.cloud_compliance_count
@@ -51,7 +52,7 @@ class GraphProviderThreatGraph:
 
         exploitable_vulnerabilities_count = self.exploitable_vulnerabilities_count
 
-        resources: Union[List[Dict[str, Any]], None]
+        resources: Union[None, list[dict[str, Any]]]
         if isinstance(self.resources, list):
             resources = []
             for resources_type_0_item_data in self.resources:
@@ -67,7 +68,7 @@ class GraphProviderThreatGraph:
 
         warn_alarm_count = self.warn_alarm_count
 
-        field_dict: Dict[str, Any] = {}
+        field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
@@ -87,10 +88,10 @@ class GraphProviderThreatGraph:
         return field_dict
 
     @classmethod
-    def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.graph_threat_node_info import GraphThreatNodeInfo
 
-        d = src_dict.copy()
+        d = dict(src_dict)
         alerts_count = d.pop("alerts_count")
 
         cloud_compliance_count = d.pop("cloud_compliance_count")
@@ -103,7 +104,7 @@ class GraphProviderThreatGraph:
 
         exploitable_vulnerabilities_count = d.pop("exploitable_vulnerabilities_count")
 
-        def _parse_resources(data: object) -> Union[List["GraphThreatNodeInfo"], None]:
+        def _parse_resources(data: object) -> Union[None, list["GraphThreatNodeInfo"]]:
             if data is None:
                 return data
             try:
@@ -119,7 +120,7 @@ class GraphProviderThreatGraph:
                 return resources_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[List["GraphThreatNodeInfo"], None], data)
+            return cast(Union[None, list["GraphThreatNodeInfo"]], data)
 
         resources = _parse_resources(d.pop("resources"))
 
@@ -146,7 +147,7 @@ class GraphProviderThreatGraph:
         return graph_provider_threat_graph
 
     @property
-    def additional_keys(self) -> List[str]:
+    def additional_keys(self) -> list[str]:
         return list(self.additional_properties.keys())
 
     def __getitem__(self, key: str) -> Any:

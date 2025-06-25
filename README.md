@@ -7,6 +7,30 @@ A client library for accessing Deepfence ThreatStryker
 pip install git+https://github.com/deepfence/threatstryker-python-client.git
 ```
 
+## CLI Tool
+
+This repository includes a comprehensive CLI tool for ThreatStryker operations. The CLI provides an interactive interface for:
+
+- 🔐 **Authentication** with ThreatStryker console
+- 🔍 **Resource Discovery** (hosts, containers, pods, runtime incidents)
+- 🛡️ **Security Scanning** (vulnerability, secret, malware scans)
+- 📊 **Interactive Management** with user-friendly menus
+
+### Quick Start with CLI
+
+```bash
+# Navigate to CLI directory
+cd cli
+
+# Run interactive CLI
+python threatstryker_cli.py
+
+# Or with command line arguments
+python threatstryker_cli.py --url https://your-console.example.com --api-key YOUR_KEY
+```
+
+See [`cli/README.md`](cli/README.md) for detailed CLI documentation and usage examples.
+
 ## Usage
 First, create a client:
 

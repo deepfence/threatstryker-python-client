@@ -1,4 +1,5 @@
-from typing import Any, Dict, List, Type, TypeVar
+from collections.abc import Mapping
+from typing import Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -9,10 +10,6 @@ T = TypeVar("T", bound="ModelGenerateLicenseRequest")
 @_attrs_define
 class ModelGenerateLicenseRequest:
     """
-    Example:
-        {'last_name': 'last_name', 'company': 'company', 'resend_email': True, 'first_name': 'first_name', 'email':
-            'email'}
-
     Attributes:
         company (str):
         email (str):
@@ -26,9 +23,9 @@ class ModelGenerateLicenseRequest:
     first_name: str
     last_name: str
     resend_email: bool
-    additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
+    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
-    def to_dict(self) -> Dict[str, Any]:
+    def to_dict(self) -> dict[str, Any]:
         company = self.company
 
         email = self.email
@@ -39,7 +36,7 @@ class ModelGenerateLicenseRequest:
 
         resend_email = self.resend_email
 
-        field_dict: Dict[str, Any] = {}
+        field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
@@ -54,8 +51,8 @@ class ModelGenerateLicenseRequest:
         return field_dict
 
     @classmethod
-    def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
-        d = src_dict.copy()
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        d = dict(src_dict)
         company = d.pop("company")
 
         email = d.pop("email")
@@ -78,7 +75,7 @@ class ModelGenerateLicenseRequest:
         return model_generate_license_request
 
     @property
-    def additional_keys(self) -> List[str]:
+    def additional_keys(self) -> list[str]:
         return list(self.additional_properties.keys())
 
     def __getitem__(self, key: str) -> Any:

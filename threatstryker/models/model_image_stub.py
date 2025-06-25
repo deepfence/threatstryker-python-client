@@ -1,4 +1,5 @@
-from typing import Any, Dict, List, Type, TypeVar, Union, cast
+from collections.abc import Mapping
+from typing import Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -11,30 +12,27 @@ T = TypeVar("T", bound="ModelImageStub")
 @_attrs_define
 class ModelImageStub:
     """
-    Example:
-        {'images': 0, 'name': 'name', 'id': 'id', 'tags': ['tags', 'tags']}
-
     Attributes:
         id (Union[Unset, str]):
         images (Union[Unset, int]):
         name (Union[Unset, str]):
-        tags (Union[List[str], None, Unset]):
+        tags (Union[None, Unset, list[str]]):
     """
 
     id: Union[Unset, str] = UNSET
     images: Union[Unset, int] = UNSET
     name: Union[Unset, str] = UNSET
-    tags: Union[List[str], None, Unset] = UNSET
-    additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
+    tags: Union[None, Unset, list[str]] = UNSET
+    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
-    def to_dict(self) -> Dict[str, Any]:
+    def to_dict(self) -> dict[str, Any]:
         id = self.id
 
         images = self.images
 
         name = self.name
 
-        tags: Union[List[str], None, Unset]
+        tags: Union[None, Unset, list[str]]
         if isinstance(self.tags, Unset):
             tags = UNSET
         elif isinstance(self.tags, list):
@@ -43,7 +41,7 @@ class ModelImageStub:
         else:
             tags = self.tags
 
-        field_dict: Dict[str, Any] = {}
+        field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
         if id is not UNSET:
@@ -58,15 +56,15 @@ class ModelImageStub:
         return field_dict
 
     @classmethod
-    def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
-        d = src_dict.copy()
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        d = dict(src_dict)
         id = d.pop("id", UNSET)
 
         images = d.pop("images", UNSET)
 
         name = d.pop("name", UNSET)
 
-        def _parse_tags(data: object) -> Union[List[str], None, Unset]:
+        def _parse_tags(data: object) -> Union[None, Unset, list[str]]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -74,12 +72,12 @@ class ModelImageStub:
             try:
                 if not isinstance(data, list):
                     raise TypeError()
-                tags_type_0 = cast(List[str], data)
+                tags_type_0 = cast(list[str], data)
 
                 return tags_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[List[str], None, Unset], data)
+            return cast(Union[None, Unset, list[str]], data)
 
         tags = _parse_tags(d.pop("tags", UNSET))
 
@@ -94,7 +92,7 @@ class ModelImageStub:
         return model_image_stub
 
     @property
-    def additional_keys(self) -> List[str]:
+    def additional_keys(self) -> list[str]:
         return list(self.additional_properties.keys())
 
     def __getitem__(self, key: str) -> Any:

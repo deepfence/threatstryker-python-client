@@ -210,6 +210,8 @@ from .model_container import ModelContainer
 from .model_container_docker_labels_type_0 import ModelContainerDockerLabelsType0
 from .model_container_image import ModelContainerImage
 from .model_container_image_metadata_type_0 import ModelContainerImageMetadataType0
+from .model_database_info_response import ModelDatabaseInfoResponse
+from .model_deepfence_communication import ModelDeepfenceCommunication
 from .model_delete_filter import ModelDeleteFilter
 from .model_delete_integration_req import ModelDeleteIntegrationReq
 from .model_delete_registry_bulk_req import ModelDeleteRegistryBulkReq
@@ -283,8 +285,6 @@ from .model_get_agent_config_req import ModelGetAgentConfigReq
 from .model_get_attached_nodes_resp import ModelGetAttachedNodesResp
 from .model_get_audit_logs_request import ModelGetAuditLogsRequest
 from .model_graph_result import ModelGraphResult
-from .model_graph_result_edges import ModelGraphResultEdges
-from .model_graph_result_nodes import ModelGraphResultNodes
 from .model_host import ModelHost
 from .model_host_alerts_counts_type_0 import ModelHostAlertsCountsType0
 from .model_image_stub import ModelImageStub
@@ -305,6 +305,7 @@ from .model_license import ModelLicense
 from .model_list_agent_version_resp import ModelListAgentVersionResp
 from .model_login_request import ModelLoginRequest
 from .model_login_response import ModelLoginResponse
+from .model_malicious_connection_alert import ModelMaliciousConnectionAlert
 from .model_malware import ModelMalware
 from .model_malware_file_severity import ModelMalwareFileSeverity
 from .model_malware_rule import ModelMalwareRule
@@ -328,6 +329,10 @@ from .model_node_identifier_node_type import ModelNodeIdentifierNodeType
 from .model_nodes_in_scan_result_request import ModelNodesInScanResultRequest
 from .model_nodes_in_scan_result_request_scan_type import ModelNodesInScanResultRequestScanType
 from .model_notification_threshold_update_request import ModelNotificationThresholdUpdateRequest
+from .model_package_vulnerability_scan_result import ModelPackageVulnerabilityScanResult
+from .model_package_vulnerability_scan_result_packages_vulnerability_type_0 import (
+    ModelPackageVulnerabilityScanResultPackagesVulnerabilityType0,
+)
 from .model_password_reset_request import ModelPasswordResetRequest
 from .model_password_reset_verify_request import ModelPasswordResetVerifyRequest
 from .model_plugin_status import ModelPluginStatus
@@ -427,7 +432,6 @@ from .model_vulnerability_scan_result_severity_counts_type_0 import ModelVulnera
 from .model_vulnerability_scan_trigger_req import ModelVulnerabilityScanTriggerReq
 from .postgresql_db_get_audit_logs_row import PostgresqlDbGetAuditLogsRow
 from .postgresql_db_scheduler import PostgresqlDbScheduler
-from .postgresql_db_scheduler_last_ran_at import PostgresqlDbSchedulerLastRanAt
 from .report_metadata import ReportMetadata
 from .report_raw_report import ReportRawReport
 from .reporters_compare_filter import ReportersCompareFilter
@@ -662,6 +666,8 @@ __all__ = (
     "ModelContainerDockerLabelsType0",
     "ModelContainerImage",
     "ModelContainerImageMetadataType0",
+    "ModelDatabaseInfoResponse",
+    "ModelDeepfenceCommunication",
     "ModelDeleteFilter",
     "ModelDeleteIntegrationReq",
     "ModelDeleteRegistryBulkReq",
@@ -711,8 +717,6 @@ __all__ = (
     "ModelGetAttachedNodesResp",
     "ModelGetAuditLogsRequest",
     "ModelGraphResult",
-    "ModelGraphResultEdges",
-    "ModelGraphResultNodes",
     "ModelHost",
     "ModelHostAlertsCountsType0",
     "ModelImageStub",
@@ -733,6 +737,7 @@ __all__ = (
     "ModelListAgentVersionResp",
     "ModelLoginRequest",
     "ModelLoginResponse",
+    "ModelMaliciousConnectionAlert",
     "ModelMalware",
     "ModelMalwareFileSeverity",
     "ModelMalwareRule",
@@ -756,6 +761,8 @@ __all__ = (
     "ModelNodesInScanResultRequest",
     "ModelNodesInScanResultRequestScanType",
     "ModelNotificationThresholdUpdateRequest",
+    "ModelPackageVulnerabilityScanResult",
+    "ModelPackageVulnerabilityScanResultPackagesVulnerabilityType0",
     "ModelPasswordResetRequest",
     "ModelPasswordResetVerifyRequest",
     "ModelPluginStatus",
@@ -845,7 +852,6 @@ __all__ = (
     "ModelVulnerabilityScanTriggerReq",
     "PostgresqlDbGetAuditLogsRow",
     "PostgresqlDbScheduler",
-    "PostgresqlDbSchedulerLastRanAt",
     "ReportersCompareFilter",
     "ReportersContainsFilter",
     "ReportersContainsFilterFilterInType0",

@@ -1,4 +1,5 @@
-from typing import TYPE_CHECKING, Any, Dict, List, Type, TypeVar, Union, cast
+from collections.abc import Mapping
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -61,61 +62,51 @@ T = TypeVar("T", bound="IngestersReportIngestionData")
 @_attrs_define
 class IngestersReportIngestionData:
     """
-    Example:
-        {'hosts': [{'key': ''}, {'key': ''}], 'host_batch': [{'key': ''}, {'key': ''}], 'kubernetes_cluster_edge_batch':
-            [{'key': ''}, {'key': ''}], 'process_batch': [{'key': ''}, {'key': ''}], 'container_image_edge_batch': [{'key':
-            ''}, {'key': ''}], 'num_merged': 0, 'container_process_edge_batch': [{'key': ''}, {'key': ''}], 'pod_batch':
-            [{'key': ''}, {'key': ''}], 'process_edges_batch': [{'key': ''}, {'key': ''}], 'container_edges_batch': [{'key':
-            ''}, {'key': ''}], 'api_endpoints_edge_batch': [{'key': ''}, {'key': ''}], 'container_batch': [{'key': ''},
-            {'key': ''}], 'container_image_batch': [{'key': ''}, {'key': ''}], 'kubernetes_cluster_batch': [{'key': ''},
-            {'key': ''}], 'api_endpoints_batch': [{'key': ''}, {'key': ''}], 'pod_edges_batch': [{'key': ''}, {'key': ''}],
-            'endpoint_edges_batch': [{'key': ''}, {'key': ''}], 'pod_host_edges_batch': [{'key': ''}, {'key': ''}]}
-
     Attributes:
-        api_endpoints_batch (Union[List['IngestersReportIngestionDataApiEndpointsBatchType0Item'], None]):
-        api_endpoints_edge_batch (Union[List['IngestersReportIngestionDataApiEndpointsEdgeBatchType0Item'], None]):
-        container_batch (Union[List['IngestersReportIngestionDataContainerBatchType0Item'], None]):
-        container_edges_batch (Union[List['IngestersReportIngestionDataContainerEdgesBatchType0Item'], None]):
-        container_image_batch (Union[List['IngestersReportIngestionDataContainerImageBatchType0Item'], None]):
-        container_image_edge_batch (Union[List['IngestersReportIngestionDataContainerImageEdgeBatchType0Item'], None]):
-        container_process_edge_batch (Union[List['IngestersReportIngestionDataContainerProcessEdgeBatchType0Item'],
-            None]):
-        endpoint_edges_batch (Union[List['IngestersReportIngestionDataEndpointEdgesBatchType0Item'], None]):
-        host_batch (Union[List['IngestersReportIngestionDataHostBatchType0Item'], None]):
-        hosts (Union[List['IngestersReportIngestionDataHostsType0Item'], None]):
-        kubernetes_cluster_batch (Union[List['IngestersReportIngestionDataKubernetesClusterBatchType0Item'], None]):
-        kubernetes_cluster_edge_batch (Union[List['IngestersReportIngestionDataKubernetesClusterEdgeBatchType0Item'],
-            None]):
+        api_endpoints_batch (Union[None, list['IngestersReportIngestionDataApiEndpointsBatchType0Item']]):
+        api_endpoints_edge_batch (Union[None, list['IngestersReportIngestionDataApiEndpointsEdgeBatchType0Item']]):
+        container_batch (Union[None, list['IngestersReportIngestionDataContainerBatchType0Item']]):
+        container_edges_batch (Union[None, list['IngestersReportIngestionDataContainerEdgesBatchType0Item']]):
+        container_image_batch (Union[None, list['IngestersReportIngestionDataContainerImageBatchType0Item']]):
+        container_image_edge_batch (Union[None, list['IngestersReportIngestionDataContainerImageEdgeBatchType0Item']]):
+        container_process_edge_batch (Union[None,
+            list['IngestersReportIngestionDataContainerProcessEdgeBatchType0Item']]):
+        endpoint_edges_batch (Union[None, list['IngestersReportIngestionDataEndpointEdgesBatchType0Item']]):
+        host_batch (Union[None, list['IngestersReportIngestionDataHostBatchType0Item']]):
+        hosts (Union[None, list['IngestersReportIngestionDataHostsType0Item']]):
+        kubernetes_cluster_batch (Union[None, list['IngestersReportIngestionDataKubernetesClusterBatchType0Item']]):
+        kubernetes_cluster_edge_batch (Union[None,
+            list['IngestersReportIngestionDataKubernetesClusterEdgeBatchType0Item']]):
         num_merged (int):
-        pod_batch (Union[List['IngestersReportIngestionDataPodBatchType0Item'], None]):
-        pod_edges_batch (Union[List['IngestersReportIngestionDataPodEdgesBatchType0Item'], None]):
-        pod_host_edges_batch (Union[List['IngestersReportIngestionDataPodHostEdgesBatchType0Item'], None]):
-        process_batch (Union[List['IngestersReportIngestionDataProcessBatchType0Item'], None]):
-        process_edges_batch (Union[List['IngestersReportIngestionDataProcessEdgesBatchType0Item'], None]):
+        pod_batch (Union[None, list['IngestersReportIngestionDataPodBatchType0Item']]):
+        pod_edges_batch (Union[None, list['IngestersReportIngestionDataPodEdgesBatchType0Item']]):
+        pod_host_edges_batch (Union[None, list['IngestersReportIngestionDataPodHostEdgesBatchType0Item']]):
+        process_batch (Union[None, list['IngestersReportIngestionDataProcessBatchType0Item']]):
+        process_edges_batch (Union[None, list['IngestersReportIngestionDataProcessEdgesBatchType0Item']]):
     """
 
-    api_endpoints_batch: Union[List["IngestersReportIngestionDataApiEndpointsBatchType0Item"], None]
-    api_endpoints_edge_batch: Union[List["IngestersReportIngestionDataApiEndpointsEdgeBatchType0Item"], None]
-    container_batch: Union[List["IngestersReportIngestionDataContainerBatchType0Item"], None]
-    container_edges_batch: Union[List["IngestersReportIngestionDataContainerEdgesBatchType0Item"], None]
-    container_image_batch: Union[List["IngestersReportIngestionDataContainerImageBatchType0Item"], None]
-    container_image_edge_batch: Union[List["IngestersReportIngestionDataContainerImageEdgeBatchType0Item"], None]
-    container_process_edge_batch: Union[List["IngestersReportIngestionDataContainerProcessEdgeBatchType0Item"], None]
-    endpoint_edges_batch: Union[List["IngestersReportIngestionDataEndpointEdgesBatchType0Item"], None]
-    host_batch: Union[List["IngestersReportIngestionDataHostBatchType0Item"], None]
-    hosts: Union[List["IngestersReportIngestionDataHostsType0Item"], None]
-    kubernetes_cluster_batch: Union[List["IngestersReportIngestionDataKubernetesClusterBatchType0Item"], None]
-    kubernetes_cluster_edge_batch: Union[List["IngestersReportIngestionDataKubernetesClusterEdgeBatchType0Item"], None]
+    api_endpoints_batch: Union[None, list["IngestersReportIngestionDataApiEndpointsBatchType0Item"]]
+    api_endpoints_edge_batch: Union[None, list["IngestersReportIngestionDataApiEndpointsEdgeBatchType0Item"]]
+    container_batch: Union[None, list["IngestersReportIngestionDataContainerBatchType0Item"]]
+    container_edges_batch: Union[None, list["IngestersReportIngestionDataContainerEdgesBatchType0Item"]]
+    container_image_batch: Union[None, list["IngestersReportIngestionDataContainerImageBatchType0Item"]]
+    container_image_edge_batch: Union[None, list["IngestersReportIngestionDataContainerImageEdgeBatchType0Item"]]
+    container_process_edge_batch: Union[None, list["IngestersReportIngestionDataContainerProcessEdgeBatchType0Item"]]
+    endpoint_edges_batch: Union[None, list["IngestersReportIngestionDataEndpointEdgesBatchType0Item"]]
+    host_batch: Union[None, list["IngestersReportIngestionDataHostBatchType0Item"]]
+    hosts: Union[None, list["IngestersReportIngestionDataHostsType0Item"]]
+    kubernetes_cluster_batch: Union[None, list["IngestersReportIngestionDataKubernetesClusterBatchType0Item"]]
+    kubernetes_cluster_edge_batch: Union[None, list["IngestersReportIngestionDataKubernetesClusterEdgeBatchType0Item"]]
     num_merged: int
-    pod_batch: Union[List["IngestersReportIngestionDataPodBatchType0Item"], None]
-    pod_edges_batch: Union[List["IngestersReportIngestionDataPodEdgesBatchType0Item"], None]
-    pod_host_edges_batch: Union[List["IngestersReportIngestionDataPodHostEdgesBatchType0Item"], None]
-    process_batch: Union[List["IngestersReportIngestionDataProcessBatchType0Item"], None]
-    process_edges_batch: Union[List["IngestersReportIngestionDataProcessEdgesBatchType0Item"], None]
-    additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
+    pod_batch: Union[None, list["IngestersReportIngestionDataPodBatchType0Item"]]
+    pod_edges_batch: Union[None, list["IngestersReportIngestionDataPodEdgesBatchType0Item"]]
+    pod_host_edges_batch: Union[None, list["IngestersReportIngestionDataPodHostEdgesBatchType0Item"]]
+    process_batch: Union[None, list["IngestersReportIngestionDataProcessBatchType0Item"]]
+    process_edges_batch: Union[None, list["IngestersReportIngestionDataProcessEdgesBatchType0Item"]]
+    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
-    def to_dict(self) -> Dict[str, Any]:
-        api_endpoints_batch: Union[List[Dict[str, Any]], None]
+    def to_dict(self) -> dict[str, Any]:
+        api_endpoints_batch: Union[None, list[dict[str, Any]]]
         if isinstance(self.api_endpoints_batch, list):
             api_endpoints_batch = []
             for api_endpoints_batch_type_0_item_data in self.api_endpoints_batch:
@@ -125,7 +116,7 @@ class IngestersReportIngestionData:
         else:
             api_endpoints_batch = self.api_endpoints_batch
 
-        api_endpoints_edge_batch: Union[List[Dict[str, Any]], None]
+        api_endpoints_edge_batch: Union[None, list[dict[str, Any]]]
         if isinstance(self.api_endpoints_edge_batch, list):
             api_endpoints_edge_batch = []
             for api_endpoints_edge_batch_type_0_item_data in self.api_endpoints_edge_batch:
@@ -135,7 +126,7 @@ class IngestersReportIngestionData:
         else:
             api_endpoints_edge_batch = self.api_endpoints_edge_batch
 
-        container_batch: Union[List[Dict[str, Any]], None]
+        container_batch: Union[None, list[dict[str, Any]]]
         if isinstance(self.container_batch, list):
             container_batch = []
             for container_batch_type_0_item_data in self.container_batch:
@@ -145,7 +136,7 @@ class IngestersReportIngestionData:
         else:
             container_batch = self.container_batch
 
-        container_edges_batch: Union[List[Dict[str, Any]], None]
+        container_edges_batch: Union[None, list[dict[str, Any]]]
         if isinstance(self.container_edges_batch, list):
             container_edges_batch = []
             for container_edges_batch_type_0_item_data in self.container_edges_batch:
@@ -155,7 +146,7 @@ class IngestersReportIngestionData:
         else:
             container_edges_batch = self.container_edges_batch
 
-        container_image_batch: Union[List[Dict[str, Any]], None]
+        container_image_batch: Union[None, list[dict[str, Any]]]
         if isinstance(self.container_image_batch, list):
             container_image_batch = []
             for container_image_batch_type_0_item_data in self.container_image_batch:
@@ -165,7 +156,7 @@ class IngestersReportIngestionData:
         else:
             container_image_batch = self.container_image_batch
 
-        container_image_edge_batch: Union[List[Dict[str, Any]], None]
+        container_image_edge_batch: Union[None, list[dict[str, Any]]]
         if isinstance(self.container_image_edge_batch, list):
             container_image_edge_batch = []
             for container_image_edge_batch_type_0_item_data in self.container_image_edge_batch:
@@ -175,7 +166,7 @@ class IngestersReportIngestionData:
         else:
             container_image_edge_batch = self.container_image_edge_batch
 
-        container_process_edge_batch: Union[List[Dict[str, Any]], None]
+        container_process_edge_batch: Union[None, list[dict[str, Any]]]
         if isinstance(self.container_process_edge_batch, list):
             container_process_edge_batch = []
             for container_process_edge_batch_type_0_item_data in self.container_process_edge_batch:
@@ -185,7 +176,7 @@ class IngestersReportIngestionData:
         else:
             container_process_edge_batch = self.container_process_edge_batch
 
-        endpoint_edges_batch: Union[List[Dict[str, Any]], None]
+        endpoint_edges_batch: Union[None, list[dict[str, Any]]]
         if isinstance(self.endpoint_edges_batch, list):
             endpoint_edges_batch = []
             for endpoint_edges_batch_type_0_item_data in self.endpoint_edges_batch:
@@ -195,7 +186,7 @@ class IngestersReportIngestionData:
         else:
             endpoint_edges_batch = self.endpoint_edges_batch
 
-        host_batch: Union[List[Dict[str, Any]], None]
+        host_batch: Union[None, list[dict[str, Any]]]
         if isinstance(self.host_batch, list):
             host_batch = []
             for host_batch_type_0_item_data in self.host_batch:
@@ -205,7 +196,7 @@ class IngestersReportIngestionData:
         else:
             host_batch = self.host_batch
 
-        hosts: Union[List[Dict[str, Any]], None]
+        hosts: Union[None, list[dict[str, Any]]]
         if isinstance(self.hosts, list):
             hosts = []
             for hosts_type_0_item_data in self.hosts:
@@ -215,7 +206,7 @@ class IngestersReportIngestionData:
         else:
             hosts = self.hosts
 
-        kubernetes_cluster_batch: Union[List[Dict[str, Any]], None]
+        kubernetes_cluster_batch: Union[None, list[dict[str, Any]]]
         if isinstance(self.kubernetes_cluster_batch, list):
             kubernetes_cluster_batch = []
             for kubernetes_cluster_batch_type_0_item_data in self.kubernetes_cluster_batch:
@@ -225,7 +216,7 @@ class IngestersReportIngestionData:
         else:
             kubernetes_cluster_batch = self.kubernetes_cluster_batch
 
-        kubernetes_cluster_edge_batch: Union[List[Dict[str, Any]], None]
+        kubernetes_cluster_edge_batch: Union[None, list[dict[str, Any]]]
         if isinstance(self.kubernetes_cluster_edge_batch, list):
             kubernetes_cluster_edge_batch = []
             for kubernetes_cluster_edge_batch_type_0_item_data in self.kubernetes_cluster_edge_batch:
@@ -237,7 +228,7 @@ class IngestersReportIngestionData:
 
         num_merged = self.num_merged
 
-        pod_batch: Union[List[Dict[str, Any]], None]
+        pod_batch: Union[None, list[dict[str, Any]]]
         if isinstance(self.pod_batch, list):
             pod_batch = []
             for pod_batch_type_0_item_data in self.pod_batch:
@@ -247,7 +238,7 @@ class IngestersReportIngestionData:
         else:
             pod_batch = self.pod_batch
 
-        pod_edges_batch: Union[List[Dict[str, Any]], None]
+        pod_edges_batch: Union[None, list[dict[str, Any]]]
         if isinstance(self.pod_edges_batch, list):
             pod_edges_batch = []
             for pod_edges_batch_type_0_item_data in self.pod_edges_batch:
@@ -257,7 +248,7 @@ class IngestersReportIngestionData:
         else:
             pod_edges_batch = self.pod_edges_batch
 
-        pod_host_edges_batch: Union[List[Dict[str, Any]], None]
+        pod_host_edges_batch: Union[None, list[dict[str, Any]]]
         if isinstance(self.pod_host_edges_batch, list):
             pod_host_edges_batch = []
             for pod_host_edges_batch_type_0_item_data in self.pod_host_edges_batch:
@@ -267,7 +258,7 @@ class IngestersReportIngestionData:
         else:
             pod_host_edges_batch = self.pod_host_edges_batch
 
-        process_batch: Union[List[Dict[str, Any]], None]
+        process_batch: Union[None, list[dict[str, Any]]]
         if isinstance(self.process_batch, list):
             process_batch = []
             for process_batch_type_0_item_data in self.process_batch:
@@ -277,7 +268,7 @@ class IngestersReportIngestionData:
         else:
             process_batch = self.process_batch
 
-        process_edges_batch: Union[List[Dict[str, Any]], None]
+        process_edges_batch: Union[None, list[dict[str, Any]]]
         if isinstance(self.process_edges_batch, list):
             process_edges_batch = []
             for process_edges_batch_type_0_item_data in self.process_edges_batch:
@@ -287,7 +278,7 @@ class IngestersReportIngestionData:
         else:
             process_edges_batch = self.process_edges_batch
 
-        field_dict: Dict[str, Any] = {}
+        field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
@@ -315,7 +306,7 @@ class IngestersReportIngestionData:
         return field_dict
 
     @classmethod
-    def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.ingesters_report_ingestion_data_api_endpoints_batch_type_0_item import (
             IngestersReportIngestionDataApiEndpointsBatchType0Item,
         )
@@ -368,11 +359,11 @@ class IngestersReportIngestionData:
             IngestersReportIngestionDataProcessEdgesBatchType0Item,
         )
 
-        d = src_dict.copy()
+        d = dict(src_dict)
 
         def _parse_api_endpoints_batch(
             data: object,
-        ) -> Union[List["IngestersReportIngestionDataApiEndpointsBatchType0Item"], None]:
+        ) -> Union[None, list["IngestersReportIngestionDataApiEndpointsBatchType0Item"]]:
             if data is None:
                 return data
             try:
@@ -390,13 +381,13 @@ class IngestersReportIngestionData:
                 return api_endpoints_batch_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[List["IngestersReportIngestionDataApiEndpointsBatchType0Item"], None], data)
+            return cast(Union[None, list["IngestersReportIngestionDataApiEndpointsBatchType0Item"]], data)
 
         api_endpoints_batch = _parse_api_endpoints_batch(d.pop("api_endpoints_batch"))
 
         def _parse_api_endpoints_edge_batch(
             data: object,
-        ) -> Union[List["IngestersReportIngestionDataApiEndpointsEdgeBatchType0Item"], None]:
+        ) -> Union[None, list["IngestersReportIngestionDataApiEndpointsEdgeBatchType0Item"]]:
             if data is None:
                 return data
             try:
@@ -416,13 +407,13 @@ class IngestersReportIngestionData:
                 return api_endpoints_edge_batch_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[List["IngestersReportIngestionDataApiEndpointsEdgeBatchType0Item"], None], data)
+            return cast(Union[None, list["IngestersReportIngestionDataApiEndpointsEdgeBatchType0Item"]], data)
 
         api_endpoints_edge_batch = _parse_api_endpoints_edge_batch(d.pop("api_endpoints_edge_batch"))
 
         def _parse_container_batch(
             data: object,
-        ) -> Union[List["IngestersReportIngestionDataContainerBatchType0Item"], None]:
+        ) -> Union[None, list["IngestersReportIngestionDataContainerBatchType0Item"]]:
             if data is None:
                 return data
             try:
@@ -440,13 +431,13 @@ class IngestersReportIngestionData:
                 return container_batch_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[List["IngestersReportIngestionDataContainerBatchType0Item"], None], data)
+            return cast(Union[None, list["IngestersReportIngestionDataContainerBatchType0Item"]], data)
 
         container_batch = _parse_container_batch(d.pop("container_batch"))
 
         def _parse_container_edges_batch(
             data: object,
-        ) -> Union[List["IngestersReportIngestionDataContainerEdgesBatchType0Item"], None]:
+        ) -> Union[None, list["IngestersReportIngestionDataContainerEdgesBatchType0Item"]]:
             if data is None:
                 return data
             try:
@@ -466,13 +457,13 @@ class IngestersReportIngestionData:
                 return container_edges_batch_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[List["IngestersReportIngestionDataContainerEdgesBatchType0Item"], None], data)
+            return cast(Union[None, list["IngestersReportIngestionDataContainerEdgesBatchType0Item"]], data)
 
         container_edges_batch = _parse_container_edges_batch(d.pop("container_edges_batch"))
 
         def _parse_container_image_batch(
             data: object,
-        ) -> Union[List["IngestersReportIngestionDataContainerImageBatchType0Item"], None]:
+        ) -> Union[None, list["IngestersReportIngestionDataContainerImageBatchType0Item"]]:
             if data is None:
                 return data
             try:
@@ -492,13 +483,13 @@ class IngestersReportIngestionData:
                 return container_image_batch_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[List["IngestersReportIngestionDataContainerImageBatchType0Item"], None], data)
+            return cast(Union[None, list["IngestersReportIngestionDataContainerImageBatchType0Item"]], data)
 
         container_image_batch = _parse_container_image_batch(d.pop("container_image_batch"))
 
         def _parse_container_image_edge_batch(
             data: object,
-        ) -> Union[List["IngestersReportIngestionDataContainerImageEdgeBatchType0Item"], None]:
+        ) -> Union[None, list["IngestersReportIngestionDataContainerImageEdgeBatchType0Item"]]:
             if data is None:
                 return data
             try:
@@ -518,13 +509,13 @@ class IngestersReportIngestionData:
                 return container_image_edge_batch_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[List["IngestersReportIngestionDataContainerImageEdgeBatchType0Item"], None], data)
+            return cast(Union[None, list["IngestersReportIngestionDataContainerImageEdgeBatchType0Item"]], data)
 
         container_image_edge_batch = _parse_container_image_edge_batch(d.pop("container_image_edge_batch"))
 
         def _parse_container_process_edge_batch(
             data: object,
-        ) -> Union[List["IngestersReportIngestionDataContainerProcessEdgeBatchType0Item"], None]:
+        ) -> Union[None, list["IngestersReportIngestionDataContainerProcessEdgeBatchType0Item"]]:
             if data is None:
                 return data
             try:
@@ -544,13 +535,13 @@ class IngestersReportIngestionData:
                 return container_process_edge_batch_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[List["IngestersReportIngestionDataContainerProcessEdgeBatchType0Item"], None], data)
+            return cast(Union[None, list["IngestersReportIngestionDataContainerProcessEdgeBatchType0Item"]], data)
 
         container_process_edge_batch = _parse_container_process_edge_batch(d.pop("container_process_edge_batch"))
 
         def _parse_endpoint_edges_batch(
             data: object,
-        ) -> Union[List["IngestersReportIngestionDataEndpointEdgesBatchType0Item"], None]:
+        ) -> Union[None, list["IngestersReportIngestionDataEndpointEdgesBatchType0Item"]]:
             if data is None:
                 return data
             try:
@@ -570,11 +561,11 @@ class IngestersReportIngestionData:
                 return endpoint_edges_batch_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[List["IngestersReportIngestionDataEndpointEdgesBatchType0Item"], None], data)
+            return cast(Union[None, list["IngestersReportIngestionDataEndpointEdgesBatchType0Item"]], data)
 
         endpoint_edges_batch = _parse_endpoint_edges_batch(d.pop("endpoint_edges_batch"))
 
-        def _parse_host_batch(data: object) -> Union[List["IngestersReportIngestionDataHostBatchType0Item"], None]:
+        def _parse_host_batch(data: object) -> Union[None, list["IngestersReportIngestionDataHostBatchType0Item"]]:
             if data is None:
                 return data
             try:
@@ -592,11 +583,11 @@ class IngestersReportIngestionData:
                 return host_batch_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[List["IngestersReportIngestionDataHostBatchType0Item"], None], data)
+            return cast(Union[None, list["IngestersReportIngestionDataHostBatchType0Item"]], data)
 
         host_batch = _parse_host_batch(d.pop("host_batch"))
 
-        def _parse_hosts(data: object) -> Union[List["IngestersReportIngestionDataHostsType0Item"], None]:
+        def _parse_hosts(data: object) -> Union[None, list["IngestersReportIngestionDataHostsType0Item"]]:
             if data is None:
                 return data
             try:
@@ -612,13 +603,13 @@ class IngestersReportIngestionData:
                 return hosts_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[List["IngestersReportIngestionDataHostsType0Item"], None], data)
+            return cast(Union[None, list["IngestersReportIngestionDataHostsType0Item"]], data)
 
         hosts = _parse_hosts(d.pop("hosts"))
 
         def _parse_kubernetes_cluster_batch(
             data: object,
-        ) -> Union[List["IngestersReportIngestionDataKubernetesClusterBatchType0Item"], None]:
+        ) -> Union[None, list["IngestersReportIngestionDataKubernetesClusterBatchType0Item"]]:
             if data is None:
                 return data
             try:
@@ -638,13 +629,13 @@ class IngestersReportIngestionData:
                 return kubernetes_cluster_batch_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[List["IngestersReportIngestionDataKubernetesClusterBatchType0Item"], None], data)
+            return cast(Union[None, list["IngestersReportIngestionDataKubernetesClusterBatchType0Item"]], data)
 
         kubernetes_cluster_batch = _parse_kubernetes_cluster_batch(d.pop("kubernetes_cluster_batch"))
 
         def _parse_kubernetes_cluster_edge_batch(
             data: object,
-        ) -> Union[List["IngestersReportIngestionDataKubernetesClusterEdgeBatchType0Item"], None]:
+        ) -> Union[None, list["IngestersReportIngestionDataKubernetesClusterEdgeBatchType0Item"]]:
             if data is None:
                 return data
             try:
@@ -664,13 +655,13 @@ class IngestersReportIngestionData:
                 return kubernetes_cluster_edge_batch_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[List["IngestersReportIngestionDataKubernetesClusterEdgeBatchType0Item"], None], data)
+            return cast(Union[None, list["IngestersReportIngestionDataKubernetesClusterEdgeBatchType0Item"]], data)
 
         kubernetes_cluster_edge_batch = _parse_kubernetes_cluster_edge_batch(d.pop("kubernetes_cluster_edge_batch"))
 
         num_merged = d.pop("num_merged")
 
-        def _parse_pod_batch(data: object) -> Union[List["IngestersReportIngestionDataPodBatchType0Item"], None]:
+        def _parse_pod_batch(data: object) -> Union[None, list["IngestersReportIngestionDataPodBatchType0Item"]]:
             if data is None:
                 return data
             try:
@@ -688,13 +679,13 @@ class IngestersReportIngestionData:
                 return pod_batch_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[List["IngestersReportIngestionDataPodBatchType0Item"], None], data)
+            return cast(Union[None, list["IngestersReportIngestionDataPodBatchType0Item"]], data)
 
         pod_batch = _parse_pod_batch(d.pop("pod_batch"))
 
         def _parse_pod_edges_batch(
             data: object,
-        ) -> Union[List["IngestersReportIngestionDataPodEdgesBatchType0Item"], None]:
+        ) -> Union[None, list["IngestersReportIngestionDataPodEdgesBatchType0Item"]]:
             if data is None:
                 return data
             try:
@@ -712,13 +703,13 @@ class IngestersReportIngestionData:
                 return pod_edges_batch_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[List["IngestersReportIngestionDataPodEdgesBatchType0Item"], None], data)
+            return cast(Union[None, list["IngestersReportIngestionDataPodEdgesBatchType0Item"]], data)
 
         pod_edges_batch = _parse_pod_edges_batch(d.pop("pod_edges_batch"))
 
         def _parse_pod_host_edges_batch(
             data: object,
-        ) -> Union[List["IngestersReportIngestionDataPodHostEdgesBatchType0Item"], None]:
+        ) -> Union[None, list["IngestersReportIngestionDataPodHostEdgesBatchType0Item"]]:
             if data is None:
                 return data
             try:
@@ -736,13 +727,13 @@ class IngestersReportIngestionData:
                 return pod_host_edges_batch_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[List["IngestersReportIngestionDataPodHostEdgesBatchType0Item"], None], data)
+            return cast(Union[None, list["IngestersReportIngestionDataPodHostEdgesBatchType0Item"]], data)
 
         pod_host_edges_batch = _parse_pod_host_edges_batch(d.pop("pod_host_edges_batch"))
 
         def _parse_process_batch(
             data: object,
-        ) -> Union[List["IngestersReportIngestionDataProcessBatchType0Item"], None]:
+        ) -> Union[None, list["IngestersReportIngestionDataProcessBatchType0Item"]]:
             if data is None:
                 return data
             try:
@@ -760,13 +751,13 @@ class IngestersReportIngestionData:
                 return process_batch_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[List["IngestersReportIngestionDataProcessBatchType0Item"], None], data)
+            return cast(Union[None, list["IngestersReportIngestionDataProcessBatchType0Item"]], data)
 
         process_batch = _parse_process_batch(d.pop("process_batch"))
 
         def _parse_process_edges_batch(
             data: object,
-        ) -> Union[List["IngestersReportIngestionDataProcessEdgesBatchType0Item"], None]:
+        ) -> Union[None, list["IngestersReportIngestionDataProcessEdgesBatchType0Item"]]:
             if data is None:
                 return data
             try:
@@ -784,7 +775,7 @@ class IngestersReportIngestionData:
                 return process_edges_batch_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[List["IngestersReportIngestionDataProcessEdgesBatchType0Item"], None], data)
+            return cast(Union[None, list["IngestersReportIngestionDataProcessEdgesBatchType0Item"]], data)
 
         process_edges_batch = _parse_process_edges_batch(d.pop("process_edges_batch"))
 
@@ -813,7 +804,7 @@ class IngestersReportIngestionData:
         return ingesters_report_ingestion_data
 
     @property
-    def additional_keys(self) -> List[str]:
+    def additional_keys(self) -> list[str]:
         return list(self.additional_properties.keys())
 
     def __getitem__(self, key: str) -> Any:

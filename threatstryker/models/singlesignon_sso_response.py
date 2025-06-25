@@ -1,5 +1,6 @@
 import datetime
-from typing import Any, Dict, List, Type, TypeVar
+from collections.abc import Mapping
+from typing import Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -11,13 +12,6 @@ T = TypeVar("T", bound="SinglesignonSSOResponse")
 @_attrs_define
 class SinglesignonSSOResponse:
     """
-    Example:
-        {'issuer_alias_url': 'issuer_alias_url', 'issuer_url': 'issuer_url', 'updated_at': datetime.datetime(2000, 1,
-            23, 4, 56, 7, tzinfo=datetime.timezone(datetime.timedelta(0), '+00:00')), 'sso_provider_type':
-            'sso_provider_type', 'created_at': datetime.datetime(2000, 1, 23, 4, 56, 7,
-            tzinfo=datetime.timezone(datetime.timedelta(0), '+00:00')), 'disable_password_login': True, 'id': 0, 'label':
-            'label', 'client_id': 'client_id'}
-
     Attributes:
         client_id (str):
         created_at (datetime.datetime):
@@ -39,9 +33,9 @@ class SinglesignonSSOResponse:
     label: str
     sso_provider_type: str
     updated_at: datetime.datetime
-    additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
+    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
-    def to_dict(self) -> Dict[str, Any]:
+    def to_dict(self) -> dict[str, Any]:
         client_id = self.client_id
 
         created_at = self.created_at.isoformat()
@@ -60,7 +54,7 @@ class SinglesignonSSOResponse:
 
         updated_at = self.updated_at.isoformat()
 
-        field_dict: Dict[str, Any] = {}
+        field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
@@ -79,8 +73,8 @@ class SinglesignonSSOResponse:
         return field_dict
 
     @classmethod
-    def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
-        d = src_dict.copy()
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        d = dict(src_dict)
         client_id = d.pop("client_id")
 
         created_at = isoparse(d.pop("created_at"))
@@ -115,7 +109,7 @@ class SinglesignonSSOResponse:
         return singlesignon_sso_response
 
     @property
-    def additional_keys(self) -> List[str]:
+    def additional_keys(self) -> list[str]:
         return list(self.additional_properties.keys())
 
     def __getitem__(self, key: str) -> Any:

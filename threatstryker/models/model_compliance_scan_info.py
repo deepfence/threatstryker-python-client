@@ -1,4 +1,5 @@
-from typing import TYPE_CHECKING, Any, Dict, List, Type, TypeVar, Union, cast
+from collections.abc import Mapping
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -15,13 +16,8 @@ T = TypeVar("T", bound="ModelComplianceScanInfo")
 @_attrs_define
 class ModelComplianceScanInfo:
     """
-    Example:
-        {'severity_counts': {'key': 6}, 'status_message': 'status_message', 'node_type': 'node_type', 'benchmark_types':
-            ['benchmark_types', 'benchmark_types'], 'updated_at': 1, 'node_name': 'node_name', 'created_at': 0,
-            'cloud_provider': 'cloud_provider', 'scan_id': 'scan_id', 'node_id': 'node_id', 'status': 'COMPLETE'}
-
     Attributes:
-        benchmark_types (Union[List[str], None]):
+        benchmark_types (Union[None, list[str]]):
         cloud_provider (str):
         created_at (int):
         node_id (str):
@@ -34,7 +30,7 @@ class ModelComplianceScanInfo:
         updated_at (int):
     """
 
-    benchmark_types: Union[List[str], None]
+    benchmark_types: Union[None, list[str]]
     cloud_provider: str
     created_at: int
     node_id: str
@@ -45,14 +41,14 @@ class ModelComplianceScanInfo:
     status: ModelComplianceScanInfoStatus
     status_message: str
     updated_at: int
-    additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
+    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
-    def to_dict(self) -> Dict[str, Any]:
+    def to_dict(self) -> dict[str, Any]:
         from ..models.model_compliance_scan_info_severity_counts_type_0 import (
             ModelComplianceScanInfoSeverityCountsType0,
         )
 
-        benchmark_types: Union[List[str], None]
+        benchmark_types: Union[None, list[str]]
         if isinstance(self.benchmark_types, list):
             benchmark_types = self.benchmark_types
 
@@ -71,7 +67,7 @@ class ModelComplianceScanInfo:
 
         scan_id = self.scan_id
 
-        severity_counts: Union[Dict[str, Any], None]
+        severity_counts: Union[None, dict[str, Any]]
         if isinstance(self.severity_counts, ModelComplianceScanInfoSeverityCountsType0):
             severity_counts = self.severity_counts.to_dict()
         else:
@@ -83,7 +79,7 @@ class ModelComplianceScanInfo:
 
         updated_at = self.updated_at
 
-        field_dict: Dict[str, Any] = {}
+        field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
@@ -104,25 +100,25 @@ class ModelComplianceScanInfo:
         return field_dict
 
     @classmethod
-    def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.model_compliance_scan_info_severity_counts_type_0 import (
             ModelComplianceScanInfoSeverityCountsType0,
         )
 
-        d = src_dict.copy()
+        d = dict(src_dict)
 
-        def _parse_benchmark_types(data: object) -> Union[List[str], None]:
+        def _parse_benchmark_types(data: object) -> Union[None, list[str]]:
             if data is None:
                 return data
             try:
                 if not isinstance(data, list):
                     raise TypeError()
-                benchmark_types_type_0 = cast(List[str], data)
+                benchmark_types_type_0 = cast(list[str], data)
 
                 return benchmark_types_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[List[str], None], data)
+            return cast(Union[None, list[str]], data)
 
         benchmark_types = _parse_benchmark_types(d.pop("benchmark_types"))
 
@@ -177,7 +173,7 @@ class ModelComplianceScanInfo:
         return model_compliance_scan_info
 
     @property
-    def additional_keys(self) -> List[str]:
+    def additional_keys(self) -> list[str]:
         return list(self.additional_properties.keys())
 
     def __getitem__(self, key: str) -> Any:

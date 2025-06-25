@@ -1,4 +1,5 @@
-from typing import TYPE_CHECKING, Any, Dict, List, Type, TypeVar, Union, cast
+from collections.abc import Mapping
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -16,14 +17,6 @@ T = TypeVar("T", bound="ModelCloudNodeAccountRegisterReq")
 @_attrs_define
 class ModelCloudNodeAccountRegisterReq:
     """
-    Example:
-        {'initial_request': True, 'account_id': 'account_id', 'monitored_accounts': [{'account_id': 'account_id',
-            'account_name': 'account_name', 'node_id': 'node_id'}, {'account_id': 'account_id', 'account_name':
-            'account_name', 'node_id': 'node_id'}], 'account_name': 'account_name', 'is_organization_deployment': True,
-            'installation_id': 'installation_id', 'cloud_provider': 'aws', 'persistent_volume_supported': True,
-            'organization_account_id': 'organization_account_id', 'host_node_id': 'host_node_id', 'version': 'version',
-            'node_id': 'node_id'}
-
     Attributes:
         account_id (str):
         cloud_provider (ModelCloudNodeAccountRegisterReqCloudProvider):
@@ -34,7 +27,7 @@ class ModelCloudNodeAccountRegisterReq:
         account_name (Union[Unset, str]):
         initial_request (Union[Unset, bool]):
         is_organization_deployment (Union[Unset, bool]):
-        monitored_accounts (Union[List['ModelCloudNodeMonitoredAccount'], None, Unset]):
+        monitored_accounts (Union[None, Unset, list['ModelCloudNodeMonitoredAccount']]):
         organization_account_id (Union[Unset, str]):
         persistent_volume_supported (Union[Unset, bool]):
     """
@@ -48,12 +41,12 @@ class ModelCloudNodeAccountRegisterReq:
     account_name: Union[Unset, str] = UNSET
     initial_request: Union[Unset, bool] = UNSET
     is_organization_deployment: Union[Unset, bool] = UNSET
-    monitored_accounts: Union[List["ModelCloudNodeMonitoredAccount"], None, Unset] = UNSET
+    monitored_accounts: Union[None, Unset, list["ModelCloudNodeMonitoredAccount"]] = UNSET
     organization_account_id: Union[Unset, str] = UNSET
     persistent_volume_supported: Union[Unset, bool] = UNSET
-    additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
+    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
-    def to_dict(self) -> Dict[str, Any]:
+    def to_dict(self) -> dict[str, Any]:
         account_id = self.account_id
 
         cloud_provider = self.cloud_provider.value
@@ -72,7 +65,7 @@ class ModelCloudNodeAccountRegisterReq:
 
         is_organization_deployment = self.is_organization_deployment
 
-        monitored_accounts: Union[List[Dict[str, Any]], None, Unset]
+        monitored_accounts: Union[None, Unset, list[dict[str, Any]]]
         if isinstance(self.monitored_accounts, Unset):
             monitored_accounts = UNSET
         elif isinstance(self.monitored_accounts, list):
@@ -88,7 +81,7 @@ class ModelCloudNodeAccountRegisterReq:
 
         persistent_volume_supported = self.persistent_volume_supported
 
-        field_dict: Dict[str, Any] = {}
+        field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
@@ -116,10 +109,10 @@ class ModelCloudNodeAccountRegisterReq:
         return field_dict
 
     @classmethod
-    def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.model_cloud_node_monitored_account import ModelCloudNodeMonitoredAccount
 
-        d = src_dict.copy()
+        d = dict(src_dict)
         account_id = d.pop("account_id")
 
         cloud_provider = ModelCloudNodeAccountRegisterReqCloudProvider(d.pop("cloud_provider"))
@@ -138,7 +131,7 @@ class ModelCloudNodeAccountRegisterReq:
 
         is_organization_deployment = d.pop("is_organization_deployment", UNSET)
 
-        def _parse_monitored_accounts(data: object) -> Union[List["ModelCloudNodeMonitoredAccount"], None, Unset]:
+        def _parse_monitored_accounts(data: object) -> Union[None, Unset, list["ModelCloudNodeMonitoredAccount"]]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -158,7 +151,7 @@ class ModelCloudNodeAccountRegisterReq:
                 return monitored_accounts_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[List["ModelCloudNodeMonitoredAccount"], None, Unset], data)
+            return cast(Union[None, Unset, list["ModelCloudNodeMonitoredAccount"]], data)
 
         monitored_accounts = _parse_monitored_accounts(d.pop("monitored_accounts", UNSET))
 
@@ -185,7 +178,7 @@ class ModelCloudNodeAccountRegisterReq:
         return model_cloud_node_account_register_req
 
     @property
-    def additional_keys(self) -> List[str]:
+    def additional_keys(self) -> list[str]:
         return list(self.additional_properties.keys())
 
     def __getitem__(self, key: str) -> Any:

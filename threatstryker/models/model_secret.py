@@ -1,4 +1,5 @@
-from typing import TYPE_CHECKING, Any, Dict, List, Type, TypeVar, Union, cast
+from collections.abc import Mapping
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -16,16 +17,6 @@ T = TypeVar("T", bound="ModelSecret")
 @_attrs_define
 class ModelSecret:
     """
-    Example:
-        {'rule_id': 'rule_id', 'score': 1.4658129805029452, 'full_filename': 'full_filename', 'matched_content':
-            'matched_content', 'updated_at': 5, 'level': 'critical', 'masked': True, 'starting_index': 5, 'resources':
-            [{'node_type': 'node_type', 'live_secrets': ['live_secrets', 'live_secrets'], 'live_cves': ['live_cves',
-            'live_cves'], 'name': 'name', 'host_name': 'host_name', 'live_malwares': ['live_malwares', 'live_malwares'],
-            'node_id': 'node_id'}, {'node_type': 'node_type', 'live_secrets': ['live_secrets', 'live_secrets'], 'live_cves':
-            ['live_cves', 'live_cves'], 'name': 'name', 'host_name': 'host_name', 'live_malwares': ['live_malwares',
-            'live_malwares'], 'node_id': 'node_id'}], 'exploitability_score': 0, 'max_exploitability_score': 6, 'node_id':
-            'node_id'}
-
     Attributes:
         full_filename (str):
         level (ModelSecretLevel):
@@ -38,7 +29,7 @@ class ModelSecret:
         updated_at (int):
         exploitability_score (Union[Unset, int]):
         max_exploitability_score (Union[Unset, int]):
-        resources (Union[List['ModelBasicNode'], None, Unset]):
+        resources (Union[None, Unset, list['ModelBasicNode']]):
     """
 
     full_filename: str
@@ -52,10 +43,10 @@ class ModelSecret:
     updated_at: int
     exploitability_score: Union[Unset, int] = UNSET
     max_exploitability_score: Union[Unset, int] = UNSET
-    resources: Union[List["ModelBasicNode"], None, Unset] = UNSET
-    additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
+    resources: Union[None, Unset, list["ModelBasicNode"]] = UNSET
+    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
-    def to_dict(self) -> Dict[str, Any]:
+    def to_dict(self) -> dict[str, Any]:
         full_filename = self.full_filename
 
         level = self.level.value
@@ -78,7 +69,7 @@ class ModelSecret:
 
         max_exploitability_score = self.max_exploitability_score
 
-        resources: Union[List[Dict[str, Any]], None, Unset]
+        resources: Union[None, Unset, list[dict[str, Any]]]
         if isinstance(self.resources, Unset):
             resources = UNSET
         elif isinstance(self.resources, list):
@@ -90,7 +81,7 @@ class ModelSecret:
         else:
             resources = self.resources
 
-        field_dict: Dict[str, Any] = {}
+        field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
@@ -115,10 +106,10 @@ class ModelSecret:
         return field_dict
 
     @classmethod
-    def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.model_basic_node import ModelBasicNode
 
-        d = src_dict.copy()
+        d = dict(src_dict)
         full_filename = d.pop("full_filename")
 
         level = ModelSecretLevel(d.pop("level"))
@@ -141,7 +132,7 @@ class ModelSecret:
 
         max_exploitability_score = d.pop("max_exploitability_score", UNSET)
 
-        def _parse_resources(data: object) -> Union[List["ModelBasicNode"], None, Unset]:
+        def _parse_resources(data: object) -> Union[None, Unset, list["ModelBasicNode"]]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -159,7 +150,7 @@ class ModelSecret:
                 return resources_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[List["ModelBasicNode"], None, Unset], data)
+            return cast(Union[None, Unset, list["ModelBasicNode"]], data)
 
         resources = _parse_resources(d.pop("resources", UNSET))
 
@@ -182,7 +173,7 @@ class ModelSecret:
         return model_secret
 
     @property
-    def additional_keys(self) -> List[str]:
+    def additional_keys(self) -> list[str]:
         return list(self.additional_properties.keys())
 
     def __getitem__(self, key: str) -> Any:
