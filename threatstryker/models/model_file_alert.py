@@ -12,6 +12,9 @@ class ModelFileAlert:
     """
     Attributes:
         category (str):
+        cloud_account_id (str):
+        cloud_provider (str):
+        cloud_region (str):
         container_id (str):
         container_image (str):
         container_ip (str):
@@ -44,6 +47,9 @@ class ModelFileAlert:
     """
 
     category: str
+    cloud_account_id: str
+    cloud_provider: str
+    cloud_region: str
     container_id: str
     container_image: str
     container_ip: str
@@ -77,6 +83,12 @@ class ModelFileAlert:
 
     def to_dict(self) -> dict[str, Any]:
         category = self.category
+
+        cloud_account_id = self.cloud_account_id
+
+        cloud_provider = self.cloud_provider
+
+        cloud_region = self.cloud_region
 
         container_id = self.container_id
 
@@ -151,6 +163,9 @@ class ModelFileAlert:
         field_dict.update(
             {
                 "category": category,
+                "cloud_account_id": cloud_account_id,
+                "cloud_provider": cloud_provider,
+                "cloud_region": cloud_region,
                 "container_id": container_id,
                 "container_image": container_image,
                 "container_ip": container_ip,
@@ -189,6 +204,12 @@ class ModelFileAlert:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
         category = d.pop("category")
+
+        cloud_account_id = d.pop("cloud_account_id")
+
+        cloud_provider = d.pop("cloud_provider")
+
+        cloud_region = d.pop("cloud_region")
 
         container_id = d.pop("container_id")
 
@@ -276,6 +297,9 @@ class ModelFileAlert:
 
         model_file_alert = cls(
             category=category,
+            cloud_account_id=cloud_account_id,
+            cloud_provider=cloud_provider,
+            cloud_region=cloud_region,
             container_id=container_id,
             container_image=container_image,
             container_ip=container_ip,

@@ -15,6 +15,9 @@ class ModelCommonAlert:
     """
     Attributes:
         category (str):
+        cloud_account_id (str):
+        cloud_provider (str):
+        cloud_region (str):
         container_name (str):
         count (int):
         created_at (int):
@@ -36,6 +39,9 @@ class ModelCommonAlert:
     """
 
     category: str
+    cloud_account_id: str
+    cloud_provider: str
+    cloud_region: str
     container_name: str
     count: int
     created_at: int
@@ -58,6 +64,12 @@ class ModelCommonAlert:
 
     def to_dict(self) -> dict[str, Any]:
         category = self.category
+
+        cloud_account_id = self.cloud_account_id
+
+        cloud_provider = self.cloud_provider
+
+        cloud_region = self.cloud_region
 
         container_name = self.container_name
 
@@ -110,6 +122,9 @@ class ModelCommonAlert:
         field_dict.update(
             {
                 "category": category,
+                "cloud_account_id": cloud_account_id,
+                "cloud_provider": cloud_provider,
+                "cloud_region": cloud_region,
                 "container_name": container_name,
                 "count": count,
                 "created_at": created_at,
@@ -137,6 +152,12 @@ class ModelCommonAlert:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
         category = d.pop("category")
+
+        cloud_account_id = d.pop("cloud_account_id")
+
+        cloud_provider = d.pop("cloud_provider")
+
+        cloud_region = d.pop("cloud_region")
 
         container_name = d.pop("container_name")
 
@@ -202,6 +223,9 @@ class ModelCommonAlert:
 
         model_common_alert = cls(
             category=category,
+            cloud_account_id=cloud_account_id,
+            cloud_provider=cloud_provider,
+            cloud_region=cloud_region,
             container_name=container_name,
             count=count,
             created_at=created_at,

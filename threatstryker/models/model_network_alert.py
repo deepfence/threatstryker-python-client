@@ -13,8 +13,10 @@ T = TypeVar("T", bound="ModelNetworkAlert")
 class ModelNetworkAlert:
     """
     Attributes:
-        base_64_payload (str):
         category (str):
+        cloud_account_id (str):
+        cloud_provider (str):
+        cloud_region (str):
         container_name (str):
         count (int):
         created_at (int):
@@ -31,7 +33,6 @@ class ModelNetworkAlert:
         masked (bool):
         node_id (str):
         node_type (str):
-        payload (str):
         pod_name (str):
         protocol (str):
         references (str):
@@ -49,8 +50,10 @@ class ModelNetworkAlert:
         response (Union[Unset, str]):
     """
 
-    base_64_payload: str
     category: str
+    cloud_account_id: str
+    cloud_provider: str
+    cloud_region: str
     container_name: str
     count: int
     created_at: int
@@ -67,7 +70,6 @@ class ModelNetworkAlert:
     masked: bool
     node_id: str
     node_type: str
-    payload: str
     pod_name: str
     protocol: str
     references: str
@@ -86,9 +88,13 @@ class ModelNetworkAlert:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        base_64_payload = self.base_64_payload
-
         category = self.category
+
+        cloud_account_id = self.cloud_account_id
+
+        cloud_provider = self.cloud_provider
+
+        cloud_region = self.cloud_region
 
         container_name = self.container_name
 
@@ -121,8 +127,6 @@ class ModelNetworkAlert:
         node_id = self.node_id
 
         node_type = self.node_type
-
-        payload = self.payload
 
         pod_name = self.pod_name
 
@@ -168,8 +172,10 @@ class ModelNetworkAlert:
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
-                "base_64_payload": base_64_payload,
                 "category": category,
+                "cloud_account_id": cloud_account_id,
+                "cloud_provider": cloud_provider,
+                "cloud_region": cloud_region,
                 "container_name": container_name,
                 "count": count,
                 "created_at": created_at,
@@ -186,7 +192,6 @@ class ModelNetworkAlert:
                 "masked": masked,
                 "node_id": node_id,
                 "node_type": node_type,
-                "payload": payload,
                 "pod_name": pod_name,
                 "protocol": protocol,
                 "references": references,
@@ -212,9 +217,13 @@ class ModelNetworkAlert:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        base_64_payload = d.pop("base_64_payload")
-
         category = d.pop("category")
+
+        cloud_account_id = d.pop("cloud_account_id")
+
+        cloud_provider = d.pop("cloud_provider")
+
+        cloud_region = d.pop("cloud_region")
 
         container_name = d.pop("container_name")
 
@@ -247,8 +256,6 @@ class ModelNetworkAlert:
         node_id = d.pop("node_id")
 
         node_type = d.pop("node_type")
-
-        payload = d.pop("payload")
 
         pod_name = d.pop("pod_name")
 
@@ -307,8 +314,10 @@ class ModelNetworkAlert:
         response = d.pop("response", UNSET)
 
         model_network_alert = cls(
-            base_64_payload=base_64_payload,
             category=category,
+            cloud_account_id=cloud_account_id,
+            cloud_provider=cloud_provider,
+            cloud_region=cloud_region,
             container_name=container_name,
             count=count,
             created_at=created_at,
@@ -325,7 +334,6 @@ class ModelNetworkAlert:
             masked=masked,
             node_id=node_id,
             node_type=node_type,
-            payload=payload,
             pod_name=pod_name,
             protocol=protocol,
             references=references,

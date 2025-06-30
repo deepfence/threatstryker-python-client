@@ -12,6 +12,9 @@ class ModelProcessAlert:
     """
     Attributes:
         category (str):
+        cloud_account_id (str):
+        cloud_provider (str):
+        cloud_region (str):
         command (str):
         container_id (str):
         container_image (str):
@@ -52,6 +55,9 @@ class ModelProcessAlert:
     """
 
     category: str
+    cloud_account_id: str
+    cloud_provider: str
+    cloud_region: str
     command: str
     container_id: str
     container_image: str
@@ -93,6 +99,12 @@ class ModelProcessAlert:
 
     def to_dict(self) -> dict[str, Any]:
         category = self.category
+
+        cloud_account_id = self.cloud_account_id
+
+        cloud_provider = self.cloud_provider
+
+        cloud_region = self.cloud_region
 
         command = self.command
 
@@ -183,6 +195,9 @@ class ModelProcessAlert:
         field_dict.update(
             {
                 "category": category,
+                "cloud_account_id": cloud_account_id,
+                "cloud_provider": cloud_provider,
+                "cloud_region": cloud_region,
                 "command": command,
                 "container_id": container_id,
                 "container_image": container_image,
@@ -229,6 +244,12 @@ class ModelProcessAlert:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
         category = d.pop("category")
+
+        cloud_account_id = d.pop("cloud_account_id")
+
+        cloud_provider = d.pop("cloud_provider")
+
+        cloud_region = d.pop("cloud_region")
 
         command = d.pop("command")
 
@@ -332,6 +353,9 @@ class ModelProcessAlert:
 
         model_process_alert = cls(
             category=category,
+            cloud_account_id=cloud_account_id,
+            cloud_provider=cloud_provider,
+            cloud_region=cloud_region,
             command=command,
             container_id=container_id,
             container_image=container_image,
